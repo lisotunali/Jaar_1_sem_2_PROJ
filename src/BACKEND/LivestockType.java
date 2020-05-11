@@ -1,3 +1,5 @@
+package BACKEND;
+
 public enum LivestockType {
     BIRD,
     COW,

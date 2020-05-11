@@ -1,3 +1,5 @@
+package BACKEND;
+
 public class AnimalProduct extends Product {
 
     private Animal animal;

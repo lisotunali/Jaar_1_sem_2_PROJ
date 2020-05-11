@@ -1,3 +1,5 @@
+package BACKEND;
+
 public class Bid {
     private Integer price;
     private Person person;

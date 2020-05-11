@@ -1,3 +1,5 @@
+package BACKEND;
+
 public class Contact {
 
     private String name;

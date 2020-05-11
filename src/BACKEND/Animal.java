@@ -1,3 +1,5 @@
+package BACKEND;
+
 public class Animal {
     private Integer amountInStock;
     private LivestockType type;
