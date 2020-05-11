@@ -4,14 +4,16 @@ public class Contact {
     private String phoneNumber;
     private String email;
     private String address;
-    private static Long contactID = 0L;
+    private Long contactID;
+    private static Long uniqueID = 0L;
 
     public Contact(String name, String phoneNumber, String email, String address){
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
-        this.contactID++;
+        this.uniqueID++;
+        contactID = getUniqueID();
     }
 
     public String getName(){
@@ -28,6 +30,10 @@ public class Contact {
 
     public String getAddress() {
         return address;
+    }
+
+    public Long getUniqueID(){
+        return uniqueID;
     }
 
     public void setName (String name){
