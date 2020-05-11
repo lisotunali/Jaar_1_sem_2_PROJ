@@ -53,7 +53,7 @@ public class Person {
         addressBook.add(contact);
     }
 
-    public void removeContact(Contact contact){
+    public void removeContact(Contact contact) {
         addressBook.remove(contact);
     }
 }
