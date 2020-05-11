@@ -5,13 +5,16 @@ public class Person {
     private String password;
     private ArrayList<Contact> addressBook;
     private ArrayList<Animal> hasLivestock;
+    private Long personID;
+    private static Long uniqueID = 0L;
 
     public Person(String name, String password) {
         this.name = name;
         this.password = password;
+        uniqueID++;
+        this.personID = uniqueID;
 
         //Todo:
-        // Add addressbook
         // Add livestock
     }
 
