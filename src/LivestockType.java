@@ -1,2 +1,7 @@
-public class LivestockType {
+public enum LivestockType {
+    BIRD,
+    COW,
+    GOAT,
+    PIG,
+    SHEEP
 }
