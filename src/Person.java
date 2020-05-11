@@ -5,10 +5,17 @@ public class Person {
     private String password;
     private ArrayList<Contact> addressBook;
     private ArrayList<Animal> hasLivestock;
+    private Long personID;
+    private static Long uniquePersonID = 0L;
 
     public Person(String name, String password) {
         this.name = name;
         this.password = password;
+        this.personID = uniquePersonID++;
+
+        //Todo:
+        // Add addressbook
+        // Add livestock
     }
 
     public String getName() {
@@ -31,16 +38,9 @@ public class Person {
     }
 
     public Animal getAnimal(LivestockType type) {
-        for (Animal animal : hasLivestock) {
-            if (animal.getType() == type)
-                return animal;
-        }
-
-        return null;
     }
 
-    public ArrayList<Animal> getAnimals() {
-        return hasLivestock;
+    public void getAnimals() {
     }
 
     public ArrayList<Contact> getAddressBook() {
@@ -51,7 +51,7 @@ public class Person {
         addressBook.add(contact);
     }
 
-    public void removeContact(Contact contact){
+    public void removeContact(Contact contact) {
         addressBook.remove(contact);
     }
 }
