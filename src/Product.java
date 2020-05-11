@@ -2,20 +2,21 @@ import java.util.ArrayList;
 
 public class Product {
 
-    private Integer ID;
-    private static Integer uniqueID = 0;
+
     private String advertTitle;
     private String advertDescription;
     private Integer price;
     private Integer amount;
     private ArrayList<Bid> hasBid;
+    private Integer ID;
+    private static Integer uniqueID = 0;
 
     public Product(Integer ID, String advertTitle, String advertDescription, Integer price, Integer amount) {
-        this.ID = uniqueID++;
         this.advertTitle = advertTitle;
         this.advertDescription = advertDescription;
         this.price = price;
         this.amount = amount;
+        this.ID = uniqueID++;
     }
 
     public ArrayList<Bid> getBids() {

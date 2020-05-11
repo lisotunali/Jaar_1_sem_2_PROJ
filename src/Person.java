@@ -38,9 +38,16 @@ public class Person {
     }
 
     public Animal getAnimal(LivestockType type) {
+        for (Animal animal : hasLivestock) {
+            if (animal.getType() == type)
+                return animal;
+        }
+
+        return null;
     }
 
-    public void getAnimals() {
+    public ArrayList<Animal> getAnimals() {
+        return hasLivestock;
     }
 
     public ArrayList<Contact> getAddressBook() {

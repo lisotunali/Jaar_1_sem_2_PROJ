@@ -1,13 +1,9 @@
-public class AnimalProduct {
-    private String title; private String description; private Integer price;
-    private Integer amount; private Person person ;private Animal animal;
+public class AnimalProduct extends Product {
 
-    public AnimalProduct(String title, String description, Integer price, Integer amount, Person person, Animal animal) {
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.amount = amount;
-        this.person = person;
+    private Animal animal;
+
+    public AnimalProduct(Integer ID, String advertTitle, String advertDescription, Integer price, Integer amount, Animal animal) {
+        super(ID, advertTitle, advertDescription, price, amount);
         this.animal = animal;
     }
 
