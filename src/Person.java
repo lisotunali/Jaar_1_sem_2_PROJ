@@ -5,6 +5,9 @@ public class Person {
     private String password;
     private ArrayList<Contact> addressBook;
     private ArrayList<Animal> hasLivestock;
+
+
+
     private Long personID;
     private static Long uniquePersonID = 0L;
 
@@ -35,6 +38,10 @@ public class Person {
     }
 
     public void addAnimal(Animal animal) {
+    }
+
+    public Long getPersonID() {
+        return personID;
     }
 
     public Animal getAnimal(LivestockType type) {
