@@ -8,6 +8,9 @@ public class Person {
     private String password;
     private ArrayList<Contact> addressBook;
     private ArrayList<Animal> hasLivestock;
+
+
+
     private Long personID;
 
     public Person(String name, String password) {
@@ -33,6 +36,10 @@ public class Person {
     }
 
     public void addAnimal(Animal animal) {
+    }
+
+    public Long getPersonID() {
+        return personID;
     }
 
     public Animal getAnimal(LivestockType type) {
