@@ -16,7 +16,7 @@ public class Marketplace {
         public Product getProduct(Integer id){
             Product tempProduct;
             for (Product products : hasProducts){
-                if (products.getID() == id){
+                if (products.getID().equals(id)){
                     return products;
                 }
             }
