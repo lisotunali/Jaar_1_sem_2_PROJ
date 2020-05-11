@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="400.0" xmlns="http://javafx.com/javafx/11.0.1">
+    <children>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Main menu:">
+            <font>
+                <Font size="48.0"/>
+            </font>
+        </Text>
+        <HBox prefHeight="473.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+            <children>
+                <StackPane>
+                    <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" stroke="BLACK"
+                                   strokeType="INSIDE" width="200.0"/>
+                        <Button mnemonicParsing="false" text="Profile"/>
+                    </children>
+                </StackPane>
+                <StackPane>
+                    <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fbff1f" height="200.0" stroke="BLACK"
+                                   strokeType="INSIDE" width="200.0"/>
+                        <Button mnemonicParsing="false" text="Contacts"/>
+                    </children>
+                </StackPane>
+                <StackPane>
+                    <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b31fff" height="200.0" stroke="BLACK"
+                                   strokeType="INSIDE" width="200.0"/>
+                        <Button mnemonicParsing="false" text="Livestock "/>
+                    </children>
+                </StackPane>
+                <StackPane>
+                    <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff21ac" height="200.0" stroke="BLACK"
+                                   strokeType="INSIDE" width="200.0"/>
+                        <Button mnemonicParsing="false" text="Marketplace"/>
+                    </children>
+                </StackPane>
+            </children>
+        </HBox>
+    </children>
+</VBox>

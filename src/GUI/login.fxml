@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="1.7976931348623157E308"
+      maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/11.0.1">
+    <children>
+        <Label text="Login" VBox.vgrow="ALWAYS">
+            <font>
+                <Font size="72.0"/>
+            </font>
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+        </Label>
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0">
+            <children>
+                <Label text="Username: "/>
+                <TextField/>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0">
+            <children>
+                <Label text="Password: "/>
+                <PasswordField/>
+            </children>
+        </HBox>
+        <Button mnemonicParsing="false" prefWidth="46.0" text="Login"/>
+    </children>
+</VBox>
