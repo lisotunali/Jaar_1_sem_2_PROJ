@@ -1,21 +1,17 @@
 import java.util.ArrayList;
 
 public class Person {
+    private static Long uniquePersonID = 0L;
     private String name;
     private String password;
     private ArrayList<Contact> addressBook;
     private ArrayList<Animal> hasLivestock;
     private Long personID;
-    private static Long uniquePersonID = 0L;
 
     public Person(String name, String password) {
         this.name = name;
         this.password = password;
         this.personID = uniquePersonID++;
-
-        //Todo:
-        // Add addressbook
-        // Add livestock
     }
 
     public String getName() {
