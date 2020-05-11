@@ -11,11 +11,6 @@ public class Person {
     public Person(String name, String password) {
         this.name = name;
         this.password = password;
-        uniqueID++;
-        this.personID = uniqueID;
-
-        //Todo:
-        // Add livestock
     }
 
     public String getName() {
@@ -38,9 +33,16 @@ public class Person {
     }
 
     public Animal getAnimal(LivestockType type) {
+        for (Animal animal : hasLivestock) {
+            if (animal.getType() == type)
+                return animal;
+        }
+
+        return null;
     }
 
-    public void getAnimals() {
+    public ArrayList<Animal> getAnimals() {
+        return hasLivestock;
     }
 
     public ArrayList<Contact> getAddressBook() {
