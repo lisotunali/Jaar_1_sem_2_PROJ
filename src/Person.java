@@ -41,8 +41,14 @@ public class Person {
     }
 
     public ArrayList<Contact> getAddressBook() {
+        return addressBook;
     }
 
-    public void addConcact(Contact contact) {
+    public void addContact(Contact contact) {
+        addressBook.add(contact);
+    }
+
+    public void removeContact(Contact contact){
+        addressBook.remove(contact);
     }
 }
