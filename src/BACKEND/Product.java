@@ -11,32 +11,21 @@ public class Product {
     private Integer amount;
     private ArrayList<Bid> hasBid;
     private Integer ID;
-    private Person person;
     private static Integer uniqueID = 0;
 
-    public Product(Integer ID, String advertTitle, String advertDescription, Integer price, Integer amount, Person person) {
+    public Product(Integer ID, String advertTitle, String advertDescription, Integer price, Integer amount) {
         this.advertTitle = advertTitle;
         this.advertDescription = advertDescription;
         this.price = price;
         this.amount = amount;
-        this.person = person;
         this.ID = uniqueID++;
-        //uniqueID = this.ID;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 
     public ArrayList<Bid> getBids() {
         return hasBid;
     }
 
-    public void addBid(Bid bid) {
+    public void addBid(Bid bid){
         hasBid.add(bid);
     }
 
