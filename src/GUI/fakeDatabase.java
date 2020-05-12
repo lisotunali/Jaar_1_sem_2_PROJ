@@ -10,4 +10,13 @@ public class fakeDatabase {
     public static ArrayList<Person> getUserDatabase() {
         return userDatabase;
     }
+
+    // Find given person in the database and update it
+    public static void updatePerson(Person person) {
+        for (Person dbPerson : userDatabase) {
+            if (dbPerson.getPersonID().equals(person.getPersonID())) {
+                dbPerson.setPassword(person.getPassword());
+            }
+        }
+    }
 }

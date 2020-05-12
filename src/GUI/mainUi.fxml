@@ -20,7 +20,7 @@
                     <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" stroke="BLACK"
                                    strokeType="INSIDE" width="200.0"/>
-                        <Button mnemonicParsing="false" text="Profile"/>
+                        <Button mnemonicParsing="false" onAction="#profileButtonClicked" text="Profile"/>
                     </children>
                 </StackPane>
                 <StackPane>
