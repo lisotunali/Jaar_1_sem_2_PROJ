@@ -1,5 +1,6 @@
 package GUI;
 
+import BACKEND.Contact;
 import BACKEND.Person;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +32,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Add fake persons
-        fakeDatabase.getUserDatabase().add(new Person("test", "test123"));
+
+        setUpTestInstances();
 
         Main.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
@@ -39,5 +41,12 @@ public class Main extends Application {
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public void setUpTestInstances() {
+        Person testperson = new Person("test", "test123");
+        fakeDatabase.getUserDatabase().add(testperson);
+        Contact testContact1 = new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool");
+        testperson.addContact(testContact1);
     }
 }
