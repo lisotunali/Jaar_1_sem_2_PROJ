@@ -11,13 +11,15 @@ public class Product {
     private Integer amount;
     private ArrayList<Bid> hasBid;
     private Integer ID;
+    Person person;
     private static Integer uniqueID = 0;
 
-    public Product(Integer ID, String advertTitle, String advertDescription, Integer price, Integer amount) {
+    public Product(Integer ID, String advertTitle, String advertDescription, Integer price, Integer amount, Person person) {
         this.advertTitle = advertTitle;
         this.advertDescription = advertDescription;
         this.price = price;
         this.amount = amount;
+        this.person = person;
         this.ID = uniqueID++;
     }
 
