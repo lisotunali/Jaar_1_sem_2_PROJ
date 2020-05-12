@@ -1,13 +1,9 @@
 package GUI;
 
 import BACKEND.Person;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,10 +20,7 @@ public class LoginController {
         for (Person person : fakeDatabase.getUserDatabase()) {
             if (person.getName().equals(nameInput.getText()) && person.getPassword().equals(passwordInput.getText())) {
                 // TODO: Should this pass the current user to the main menu?
-                Stage primaryStage = Main.getPrimaryStage();
-                Parent root = FXMLLoader.load(getClass().getResource("mainUi.fxml"));
-                primaryStage.setScene(new Scene(root));
-                primaryStage.show();
+                Main.switchSceneTo("mainUi");
             }
         }
 
@@ -35,9 +28,6 @@ public class LoginController {
     }
 
     public void registerButtonClicked() throws IOException {
-        Stage primaryStage = Main.getPrimaryStage();
-        Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        Main.switchSceneTo("register");
     }
 }
