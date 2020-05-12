@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Marketplace {
 
-    private ArrayList<Product> hasProducts;
+    private static ArrayList<Product> hasProducts;
     private Product specifiedProduct;
 
     public Marketplace(ArrayList<Product> Products) {
@@ -16,7 +16,6 @@ public class Marketplace {
     }
 
     public Product getProduct(Integer id) {
-        Product tempProduct;
         for (Product products : hasProducts) {
             if (products.getID().equals(id)) {
                 return products;
