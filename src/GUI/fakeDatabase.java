@@ -11,11 +11,11 @@ public class fakeDatabase {
         return userDatabase;
     }
 
-    // Find given person in the database and update the password
-    public static void updateUserPassword(Person person, String password) {
+    // Find given person in the database and update it
+    public static void updatePerson(Person person) {
         for (Person dbPerson : userDatabase) {
             if (dbPerson.getPersonID().equals(person.getPersonID())) {
-                dbPerson.setPassword(password);
+                dbPerson.setPassword(person.getPassword());
             }
         }
     }

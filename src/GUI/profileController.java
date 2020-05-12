@@ -23,7 +23,7 @@ public class profileController {
     // Updates the user in the database with the new values
     public void onUpdateClicked() {
         if (passwordInput.getText().equals(passwordConfirmInput.getText())) {
-            fakeDatabase.updateUserPassword(singletonPerson.getInstance(), passwordInput.getText());
+            fakeDatabase.updatePerson(singletonPerson.getInstance());
             System.out.println("Updated password");
         } else {
             errorLabel.setText("Error updating profile password is not the same");
