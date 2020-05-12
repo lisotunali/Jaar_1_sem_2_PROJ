@@ -11,7 +11,7 @@ public class Product {
     private Integer amount;
     private ArrayList<Bid> hasBid;
     private Integer ID;
-    Person person;
+    private Person person;
     private static Integer uniqueID = 0;
 
     public Product(Integer ID, String advertTitle, String advertDescription, Integer price, Integer amount, Person person) {
