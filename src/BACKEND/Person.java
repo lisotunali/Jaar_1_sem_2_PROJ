@@ -6,11 +6,8 @@ public class Person {
     private static Long uniquePersonID = 0L;
     private String name;
     private String password;
-    private ArrayList<Contact> addressBook;
-    private ArrayList<Animal> hasLivestock;
-
-
-
+    private ArrayList<Contact> addressBook = new ArrayList<>();
+    private ArrayList<Animal> hasLivestock = new ArrayList<>();
     private Long personID;
 
     public Person(String name, String password) {
