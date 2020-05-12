@@ -21,9 +21,10 @@ public class registerController {
         }
 
         if (passwordInput.getText().equals(passwordConfirmInput.getText())) {
-            fakeDatabase.getUserDatabase().add(new Person(nameInput.getText(), passwordInput.getText()));
+            Person person = new Person(nameInput.getText(), passwordInput.getText());
+            fakeDatabase.getUserDatabase().add(person);
+            singletonPerson.setPerson(person);
 
-            // TODO: User needs to be passed to mainUi
             Main.switchSceneTo("mainUi");
         } else {
             // Dit moet natuurlijk in de GUI komen.

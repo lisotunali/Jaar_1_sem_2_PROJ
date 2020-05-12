@@ -19,7 +19,7 @@ public class LoginController {
 
         for (Person person : fakeDatabase.getUserDatabase()) {
             if (person.getName().equals(nameInput.getText()) && person.getPassword().equals(passwordInput.getText())) {
-                // TODO: Should this pass the current user to the main menu?
+                singletonPerson.setPerson(person);
                 Main.switchSceneTo("mainUi");
             }
         }
