@@ -10,4 +10,5 @@ public class fakeDatabase {
     public static ArrayList<Person> getUserDatabase() {
         return userDatabase;
     }
+
 }

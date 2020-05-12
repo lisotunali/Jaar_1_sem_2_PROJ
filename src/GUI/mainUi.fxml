@@ -41,7 +41,8 @@
                     <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff21ac" height="200.0" stroke="BLACK"
                                    strokeType="INSIDE" width="200.0"/>
-                        <Button mnemonicParsing="false" text="BACKEND.Marketplace"/>
+                        <Button fx:id="marketplaceButton" mnemonicParsing="false" onAction="#pressMarketplace"
+                                text="Marketplace"/>
                     </children>
                 </StackPane>
             </children>

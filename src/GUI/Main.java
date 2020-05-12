@@ -1,6 +1,7 @@
 package GUI;
 
 import BACKEND.Person;
+import BACKEND.Product;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,7 +32,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Add fake persons
-        fakeDatabase.getUserDatabase().add(new Person("test", "test123"));
+        Person person = new Person("test", "test123");
+        fakeDatabase.getUserDatabase().add(person);
+        singletonMarketplace.getInstance().addProduct(new Product(25, "Test Product", "Dit is een testproduct voor de marketplace", 999, 10, person));
 
         Main.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));

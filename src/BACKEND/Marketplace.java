@@ -4,12 +4,9 @@ import java.util.ArrayList;
 
 public class Marketplace {
 
-    private static ArrayList<Product> hasProducts;
-    private Product specifiedProduct;
+    private ArrayList<Product> hasProducts = new ArrayList<>();
 
-    public Marketplace(ArrayList<Product> Products) {
-        this.hasProducts = Products;
-    }
+    private Product specifiedProduct;
 
     public void addProduct(Product product) {
         hasProducts.add(product);
