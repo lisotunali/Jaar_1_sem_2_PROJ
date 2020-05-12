@@ -48,7 +48,7 @@ public class contactsController {
     }
 
     public void contactsSearchButtonClicked() {
-        for (Contact contact : contacts) {
+        for (Contact contact : singletonPerson.getInstance().getAddressBook()) {
             if (contact.getName().equalsIgnoreCase((nameTextField.getText()))) {
                 phoneTextField.setText(contact.getPhoneNumber());
                 emailTextField.setText(contact.getEmail());
@@ -69,7 +69,7 @@ public class contactsController {
 
     public void contactsRemoveButtonClicked() throws IOException {
         Contact contactToBeDeleted = tableView.getSelectionModel().getSelectedItem();
-        for (Contact contact : contacts) {
+        for (Contact contact : singletonPerson.getInstance().getAddressBook()) {
             if (contact.getName().equals(contactToBeDeleted.getName())) {
                 singletonPerson.getInstance().removeContact(contact);
                 Main.switchSceneTo("contacts");
