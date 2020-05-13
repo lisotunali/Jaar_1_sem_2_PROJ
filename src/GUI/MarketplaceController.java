@@ -1,6 +1,8 @@
 package GUI;
 
 import BACKEND.Bid;
+import BACKEND.Contact;
+import BACKEND.Marketplace;
 import BACKEND.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +22,10 @@ public class MarketplaceController {
     public TableColumn<Product, Integer> amountColumn;
     public TableColumn<Product, Integer> priceColumn;
 
+    public TableView<Bid> bidTable;
+    public TableColumn<Bid, String> nameColumn;
+    public TableColumn<Bid, Integer> bidColumn;
+
 
     public void initialize() {
         ObservableList<Product> products = (ObservableList<Product>) FXCollections.observableArrayList(singletonMarketplace.getInstance().getAllProducts());
@@ -30,21 +36,25 @@ public class MarketplaceController {
     }
 
     public void bidButtonAction() throws IOException {
+        if (productTable.getSelectionModel().getSelectedItem() == null){
+            Main.showAlert(Alert.AlertType.WARNING, "Please select a product before trying to bid.");
+        }
+
         System.out.println("Trying to place bid...");
-        //Product product = productTable.getSelectionModel().getSelectedItem();
+        if (Integer.parseInt(bidInput.getText()) <= productTable.getSelectionModel().getSelectedItem().getPrice()){
+            System.out.println("Bid is lower than current highest.");
+            Main.showAlert(Alert.AlertType.ERROR, "Your bid is not higher than current highest bid.");
+        }
+
         if (Integer.parseInt(bidInput.getText()) > productTable.getSelectionModel().getSelectedItem().getPrice()){
             productTable.getSelectionModel().getSelectedItem().setPrice(Integer.parseInt(bidInput.getText()));
 
             productTable.getSelectionModel().getSelectedItem().addBid(new Bid(Integer.parseInt(bidInput.getText()), singletonPerson.getInstance()));
-            //productTable.getSelectionModel().getSelectedItem().getBids();
+            System.out.println(productTable.getSelectionModel().getSelectedItem().getBids());
 
             System.out.println("Bid placed");
-            Main.switchSceneTo("marketplace");
+            productTable.refresh();
             Main.showAlert(Alert.AlertType.CONFIRMATION, "Bid placed");
-        }
-        if (Integer.parseInt(bidInput.getText()) < productTable.getSelectionModel().getSelectedItem().getPrice()){
-            System.out.println("Bid is lower than current highest.");
-            Main.showAlert(Alert.AlertType.ERROR, "Bid is lower than current highest.");
         }
     }
 
