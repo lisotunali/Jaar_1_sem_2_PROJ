@@ -39,8 +39,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Add fake persons
-
+        // Set up instances for testing
         setUpTestInstances();
 
         Main.primaryStage = primaryStage;
@@ -56,7 +55,7 @@ public class Main extends Application {
         fakeDatabase.getUserDatabase().add(testperson);
         Contact testContact1 = new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool");
         testperson.addContact(testContact1);
-        singletonMarketplace.getInstance().addProduct(new Product(25, "Test Product", "Dit is een testproduct voor de marketplace", 999, 10, testperson));
-        singletonMarketplace.getInstance().addProduct(new Product(6, "New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson));
+        singletonMarketplace.getInstance().addProduct(new Product("Test Product", "Dit is een testproduct voor de marketplace", 999, 10, testperson));
+        singletonMarketplace.getInstance().addProduct(new Product("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson));
     }
 }
