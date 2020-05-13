@@ -20,6 +20,15 @@ public class LoginController {
         for (Person person : fakeDatabase.getUserDatabase()) {
             if (person.getName().equals(nameInput.getText()) && person.getPassword().equals(passwordInput.getText())) {
                 singletonPerson.setPerson(person);
+
+//                Product product = new Product(25, "Test Product", "Dit is een testproduct voor de marketplace", 999, 10, person);
+//                marketplace.addProduct(product);
+//                if (marketplace.getAllProducts().isEmpty()) {
+//                    System.out.println("Marketplace is empty!");
+//                }
+//                if (!(marketplace.getAllProducts().isEmpty())) {
+//                    System.out.println("Marketplace contains products");
+//                }
                 Main.switchSceneTo("mainUi");
             }
         }
