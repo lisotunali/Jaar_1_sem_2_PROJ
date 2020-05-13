@@ -35,6 +35,7 @@ public class Main extends Application {
         Person person = new Person("test", "test123");
         fakeDatabase.getUserDatabase().add(person);
         singletonMarketplace.getInstance().addProduct(new Product(25, "Test Product", "Dit is een testproduct voor de marketplace", 999, 10, person));
+        singletonMarketplace.getInstance().addProduct(new Product(6, "New Product", "Nieuwe testproduct voor de marketplace", 50, 2, person));
 
         Main.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));

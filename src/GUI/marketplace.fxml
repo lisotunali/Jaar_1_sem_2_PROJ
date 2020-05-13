@@ -50,9 +50,9 @@
                     <children>
                         <Button id="backButton" fx:id="backButton" mnemonicParsing="false" onAction="#mainScreen"
                                 prefHeight="40.0" prefWidth="400.0" text="Back" GridPane.rowIndex="1"/>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0" text="Bid"
+                        <Button fx:id="bidButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0" text="Bid"
                                 GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                        <TextField prefWidth="400.0" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <TextField fx:id="bidInput" prefWidth="400.0" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
                     </children>
                 </GridPane>
             </children>

@@ -6,12 +6,15 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 
 public class MarketplaceController {
     public Button backButton;
+    public Button bidButton;
+    public TextField bidInput;
 
     public TableView<Product> productTable;
     public TableColumn<Product, String> titleColumn;
@@ -25,6 +28,11 @@ public class MarketplaceController {
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         productTable.setItems(products);
+    }
+
+    public void bidButtonAction() {
+        //Product product = productTable.getSelectionModel().getSelectedItem();
+
     }
 
     public void mainScreen() throws IOException {
