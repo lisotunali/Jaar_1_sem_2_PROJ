@@ -31,8 +31,16 @@ public class MarketplaceController {
     }
 
     public void bidButtonAction() {
+        System.out.println("Trying to place bid...");
         //Product product = productTable.getSelectionModel().getSelectedItem();
-        //if (bidInput.getText() > productTable.getSelectionModel().getSelectedItem().getPrice()){}
+        if (Integer.parseInt(bidInput.getText()) > productTable.getSelectionModel().getSelectedItem().getPrice()){
+            productTable.getSelectionModel().getSelectedItem().setPrice(Integer.parseInt(bidInput.getText()));
+            System.out.println("Bid placed");
+        }
+        if (Integer.parseInt(bidInput.getText()) < productTable.getSelectionModel().getSelectedItem().getPrice()){
+            productTable.getSelectionModel().getSelectedItem().setPrice(Integer.parseInt(bidInput.getText()));
+            System.out.println("Bid is lower than current highest.");
+        }
     }
 
     public void mainScreen() throws IOException {
