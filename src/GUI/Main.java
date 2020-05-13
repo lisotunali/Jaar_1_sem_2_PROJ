@@ -1,5 +1,6 @@
 package GUI;
 
+import BACKEND.Bid;
 import BACKEND.Contact;
 import BACKEND.Person;
 import BACKEND.Product;
