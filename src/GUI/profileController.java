@@ -1,6 +1,7 @@
 package GUI;
 
 import BACKEND.Person;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -22,11 +23,15 @@ public class profileController {
 
     // Updates the user in the database with the new values
     public void onUpdateClicked() {
-        if (passwordInput.getText().equals(passwordConfirmInput.getText())) {
-            fakeDatabase.updatePerson(singletonPerson.getInstance());
-            System.out.println("Updated password");
+        String password = passwordInput.getText();
+
+        if (password.equals(passwordConfirmInput.getText())) {
+            Person currentPerson = singletonPerson.getInstance();
+            currentPerson.setPassword(password);
+            fakeDatabase.updatePerson(currentPerson);
+            Main.showAlert(Alert.AlertType.INFORMATION, "Profile has been updated");
         } else {
-            errorLabel.setText("Error updating profile password is not the same");
+            Main.showAlert(Alert.AlertType.ERROR, "Error updating profile, password is not the same");
         }
     }
 
