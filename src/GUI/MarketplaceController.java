@@ -51,6 +51,7 @@ public class MarketplaceController {
             productTable.getSelectionModel().getSelectedItem().setPrice(Integer.parseInt(bidInput.getText()));
 
             productTable.getSelectionModel().getSelectedItem().addBid(new Bid(Integer.parseInt(bidInput.getText()), singletonPerson.getInstance(), singletonPerson.getInstance().getName()));
+            System.out.println(Integer.parseInt(bidInput.getText()) + " " + singletonPerson.getInstance().getName());
             System.out.println(productTable.getSelectionModel().getSelectedItem().getBids());
 
             System.out.println("Bid placed");
