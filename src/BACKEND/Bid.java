@@ -3,12 +3,12 @@ package BACKEND;
 public class Bid {
     private Integer price;
     private Person person;
-    private String personName;
+    private String name;
 
-    public Bid(Integer price, Person person, String personName) {
+    public Bid(Integer price, Person person, String name) {
         this.price = price;
         this.person = person;
-        this.personName = personName;
+        this.name = name;
     }
 
     public Integer getPrice() {
@@ -19,5 +19,5 @@ public class Bid {
         return person;
     }
 
-    public String getName() { return personName; }
+    public String getName() { return name; }
 }
