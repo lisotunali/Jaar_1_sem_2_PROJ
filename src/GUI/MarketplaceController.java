@@ -32,7 +32,7 @@ public class MarketplaceController {
 
     public void bidButtonAction() {
         //Product product = productTable.getSelectionModel().getSelectedItem();
-
+        //if (bidInput.getText() > productTable.getSelectionModel().getSelectedItem().getPrice()){}
     }
 
     public void mainScreen() throws IOException {
