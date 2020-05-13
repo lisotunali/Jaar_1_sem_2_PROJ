@@ -69,11 +69,13 @@ public class contactsController {
 
     public void contactsRemoveButtonClicked() throws IOException {
         Contact contactToBeDeleted = tableView.getSelectionModel().getSelectedItem();
-        for (Contact contact : singletonPerson.getInstance().getAddressBook()) {
-            if (contact.getName().equals(contactToBeDeleted.getName())) {
-                singletonPerson.getInstance().removeContact(contact);
-                Main.switchSceneTo("contacts");
-                return;
+        if (contactToBeDeleted != null) {
+            for (Contact contact : singletonPerson.getInstance().getAddressBook()) {
+                if (contact.getName().equals(contactToBeDeleted.getName())) {
+                    singletonPerson.getInstance().removeContact(contact);
+                    Main.switchSceneTo("contacts");
+                    return;
+                }
             }
         }
 
@@ -81,10 +83,12 @@ public class contactsController {
 
     public void contactsEditButtonClicked() throws IOException {
         Contact contact = tableView.getSelectionModel().getSelectedItem();
-        contact.setName(nameTextField.getText());
-        contact.setPhoneNumber(phoneTextField.getText());
-        contact.setEmail(emailTextField.getText());
-        contact.setAddress(addressTextField.getText());
-        Main.switchSceneTo("contacts");
+        if (contact != null) {
+            contact.setName(nameTextField.getText());
+            contact.setPhoneNumber(phoneTextField.getText());
+            contact.setEmail(emailTextField.getText());
+            contact.setAddress(addressTextField.getText());
+            Main.switchSceneTo("contacts");
+        }
     }
 }
