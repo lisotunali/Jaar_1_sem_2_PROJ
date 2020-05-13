@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +25,13 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(Main.class.getResource(templateName + ".fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+    }
+
+    public static void showAlert(Alert.AlertType type, String text) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+        alert.showAndWait();
     }
 
     public static void main(String[] args) {
