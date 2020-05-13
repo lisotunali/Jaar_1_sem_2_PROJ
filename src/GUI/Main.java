@@ -2,6 +2,7 @@ package GUI;
 
 import BACKEND.Contact;
 import BACKEND.Person;
+import BACKEND.Product;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -55,5 +56,7 @@ public class Main extends Application {
         fakeDatabase.getUserDatabase().add(testperson);
         Contact testContact1 = new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool");
         testperson.addContact(testContact1);
+        singletonMarketplace.getInstance().addProduct(new Product(25, "Test Product", "Dit is een testproduct voor de marketplace", 999, 10, testperson));
+        singletonMarketplace.getInstance().addProduct(new Product(6, "New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson));
     }
 }
