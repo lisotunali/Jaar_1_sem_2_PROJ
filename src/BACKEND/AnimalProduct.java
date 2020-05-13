@@ -4,8 +4,8 @@ public class AnimalProduct extends Product {
 
     private Animal animal;
 
-    public AnimalProduct(Integer ID, String advertTitle, String advertDescription, Integer price, Integer amount, Animal animal, Person person) {
-        super(ID, advertTitle, advertDescription, price, amount, person);
+    public AnimalProduct(String advertTitle, String advertDescription, Integer price, Integer amount, Animal animal, Person person) {
+        super(advertTitle, advertDescription, price, amount, person);
         this.animal = animal;
     }
 
