@@ -29,4 +29,7 @@ public class mainUiController {
         Main.switchSceneTo("marketplace");
 
     }
+    public void LivestockButtonclicked() throws IOException {
+        Main.switchSceneTo("livestock");
+    }
 }

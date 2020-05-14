@@ -12,7 +12,6 @@ import java.io.IOException;
 public class MarketplaceController {
     public Button backButton;
     public Button bidButton;
-    //public Button refreshBidButton;
     public TextField bidInput;
 
     public TableView<Product> productTable;

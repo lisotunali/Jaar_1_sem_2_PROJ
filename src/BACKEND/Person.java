@@ -32,16 +32,23 @@ public class Person {
         this.password = password;
     }
 
-    public void addAnimal(Animal animal) {
+     public void addAnimal(String type, Integer amount) {
+            hasLivestock.add(new Animal(type,amount));
     }
-
+     public void removeAnimal(String type) {
+        for (Animal animal:hasLivestock) {
+            if(type.equals(animal.getType())){
+                hasLivestock.remove(animal);
+            }
+        }
+    }
     public Long getPersonID() {
         return personID;
     }
 
-    public Animal getAnimal(LivestockType type) {
+    public Animal getAnimal(String type) {
         for (Animal animal : hasLivestock) {
-            if (animal.getType() == type)
+            if (animal.getType().equals(type))
                 return animal;
         }
 
