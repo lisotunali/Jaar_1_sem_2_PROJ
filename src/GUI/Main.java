@@ -2,6 +2,7 @@ package GUI;
 
 import BACKEND.Contact;
 import BACKEND.Person;
+import BACKEND.Product;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,5 +58,7 @@ public class Main extends Application {
         testperson.addContact(testContact1);
         testperson.addAnimal("Goat",500);
         testperson.addAnimal("Sheep",30);
+        singletonMarketplace.getInstance().addProduct(new Product("Test Product", "Dit is een testproduct voor de marketplace", 999, 10, testperson));
+        singletonMarketplace.getInstance().addProduct(new Product("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson));
     }
 }
