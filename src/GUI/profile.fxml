@@ -21,6 +21,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
                         <TextField fx:id="nameInput" editable="false" GridPane.columnIndex="1">
@@ -28,23 +29,28 @@
                                 <Insets left="10.0"/>
                             </GridPane.margin>
                         </TextField>
-                        <PasswordField fx:id="passwordInput" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <PasswordField fx:id="passwordInput" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <GridPane.margin>
                                 <Insets left="10.0"/>
                             </GridPane.margin>
                         </PasswordField>
-                        <PasswordField fx:id="passwordConfirmInput" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <PasswordField fx:id="passwordConfirmInput" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <GridPane.margin>
                                 <Insets left="10.0"/>
                             </GridPane.margin>
                         </PasswordField>
                         <Label text="Name:"/>
-                        <Label text="Password:" GridPane.rowIndex="1"/>
-                        <Label text="Confirm password:" GridPane.rowIndex="2"/>
+                        <Label text="Password:" GridPane.rowIndex="2"/>
+                        <Label text="Confirm password:" GridPane.rowIndex="3"/>
+                        <Label text="Change password:" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <GridPane.margin>
+                                <Insets left="10.0"/>
+                            </GridPane.margin>
+                        </Label>
                     </children>
                 </GridPane>
                 <Label text="Personal data:"/>
-                <TextArea prefHeight="158.0" prefWidth="440.0"/>
+                <TextArea fx:id="personalData" prefHeight="158.0" prefWidth="440.0"/>
             </children>
             <BorderPane.margin>
                 <Insets left="30.0" right="30.0"/>
