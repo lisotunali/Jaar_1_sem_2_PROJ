@@ -21,6 +21,7 @@ public class LoginController {
             if (person.getName().equals(nameInput.getText()) && person.getPassword().equals(passwordInput.getText())) {
                 singletonPerson.setPerson(person);
                 Main.switchSceneTo("mainUi");
+                return;
             }
         }
 
