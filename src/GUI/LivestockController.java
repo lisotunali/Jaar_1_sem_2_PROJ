@@ -97,7 +97,7 @@ public class LivestockController{
         }
         else{
             singletonPerson.getInstance().removeAnimal(animalDelete.getType());
-            Main.switchSceneTo("livestock1");
+            Main.switchSceneTo("livestock");
         }
     }
 }

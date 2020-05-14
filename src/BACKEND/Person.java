@@ -46,9 +46,9 @@ public class Person {
         return personID;
     }
 
-    public Animal getAnimal(LivestockType type) {
+    public Animal getAnimal(String type) {
         for (Animal animal : hasLivestock) {
-            if (animal.getType() == type)
+            if (animal.getType().equals(type))
                 return animal;
         }
 

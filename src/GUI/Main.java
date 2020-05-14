@@ -52,9 +52,11 @@ public class Main extends Application {
     }
 
     public void setUpTestInstances() {
-        Person testperson = new Person("test", "test123");
+        Person testperson = new Person("1", "1");
         fakeDatabase.getUserDatabase().add(testperson);
         Contact testContact1 = new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool");
         testperson.addContact(testContact1);
+        testperson.addAnimal("Goat",500);
+        testperson.addAnimal("Sheep",30);
     }
 }
