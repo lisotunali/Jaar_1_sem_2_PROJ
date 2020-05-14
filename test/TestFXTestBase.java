@@ -8,7 +8,10 @@ import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.*;
 import org.testfx.api.FxToolkit;
+
+import java.io.IOException;
 import java.util.concurrent.TimeoutException;
+
 
 public class TestFXTestBase extends ApplicationTest {
 
@@ -24,9 +27,9 @@ public class TestFXTestBase extends ApplicationTest {
         release(new MouseButton[]{});
     }
 
+
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException {
         stage.show();
     }
-
 }

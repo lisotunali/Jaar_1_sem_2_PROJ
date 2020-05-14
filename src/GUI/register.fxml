@@ -49,6 +49,7 @@
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
             <children>
                 <Button mnemonicParsing="false" onAction="#registerButtonClicked" text="Register"/>
+                <Button mnemonicParsing="false" onAction="#backButtonClicked" text="Back"/>
             </children>
             <BorderPane.margin>
                 <Insets/>
