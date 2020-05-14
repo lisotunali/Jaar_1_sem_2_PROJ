@@ -36,11 +36,13 @@ public class Person {
             hasLivestock.add(new Animal(type,amount));
     }
      public void removeAnimal(String type) {
+        Animal toBeRemoved = null;
         for (Animal animal:hasLivestock) {
             if(type.equals(animal.getType())){
-                hasLivestock.remove(animal);
+                toBeRemoved = animal;
             }
         }
+         hasLivestock.remove(toBeRemoved);
     }
     public Long getPersonID() {
         return personID;

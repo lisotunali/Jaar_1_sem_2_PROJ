@@ -3,6 +3,7 @@ import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,6 +15,7 @@ import org.hamcrest.Matcher;
 import org.testfx.api.FxAssert;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.function.Function;
 
 public class LoginControllerTest extends TestFXTestBase {
@@ -40,8 +42,8 @@ public class LoginControllerTest extends TestFXTestBase {
     public void loginSuccesful() {
         String nameInputID = "#nameInput";
         String passwordInputID = "#passwordInput";
-        String name = "test";
-        String password = "test123";
+        String name = "1";
+        String password = "1";
         clickOn(nameInputID);
         write(name);
         clickOn(passwordInputID);
@@ -49,4 +51,5 @@ public class LoginControllerTest extends TestFXTestBase {
         clickOn("#loginButton");
         assertEquals(name, singletonPerson.getInstance().getName());
     }
+
 }

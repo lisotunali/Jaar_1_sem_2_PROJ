@@ -42,7 +42,6 @@ public class Main extends Application {
         // Add fake persons
 
         setUpTestInstances();
-
         Main.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("Kumbaya 5a");
