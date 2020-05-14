@@ -28,7 +28,7 @@ public class Main extends Application {
         // Add fake persons
 
         setUpTestInstances();
-        SceneController.primaryStage = primaryStage;
+        SceneController.setPrimaryStage(primaryStage);
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("Kumbaya 5a");
         Scene scene = new Scene(root, 800, 600);

@@ -7,10 +7,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SceneController {
-    static Stage primaryStage;
+    private static Stage primaryStage;
 
     public static Stage getPrimaryStage() {
         return primaryStage;
+    }
+
+    public static void setPrimaryStage(Stage primaryStage) {
+        SceneController.primaryStage = primaryStage;
     }
 
     // Changes the current scene to the given template name
