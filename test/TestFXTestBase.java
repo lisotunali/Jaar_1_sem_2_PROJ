@@ -13,9 +13,6 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 
-
-
-
 public class TestFXTestBase extends ApplicationTest {
 
     @BeforeEach
@@ -35,5 +32,4 @@ public class TestFXTestBase extends ApplicationTest {
     public void start(Stage stage) throws IOException {
         stage.show();
     }
-
 }
