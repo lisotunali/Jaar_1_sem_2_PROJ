@@ -12,7 +12,6 @@ import java.io.IOException;
 public class MarketplaceController {
     public Button backButton;
     public Button bidButton;
-    //public Button refreshBidButton;
     public TextField bidInput;
 
     public TableView<Product> productTable;
@@ -42,22 +41,28 @@ public class MarketplaceController {
             Main.showAlert(Alert.AlertType.WARNING, "Please select a product before trying to bid.");
         }
 
+        //If seller tries to bid on their own product
+        if (singletonPerson.getInstance().equals(productTable.getSelectionModel().getSelectedItem().getPerson())){
+            Main.showAlert(Alert.AlertType.ERROR, "You can't place a bid on your own product.");
+        }
+
         //If bid is lower than current highest price
-        if (Integer.parseInt(bidInput.getText()) <= productTable.getSelectionModel().getSelectedItem().getPrice()){
+        if (!(singletonPerson.getInstance().equals(productTable.getSelectionModel().getSelectedItem().getPerson())) && Integer.parseInt(bidInput.getText()) <= productTable.getSelectionModel().getSelectedItem().getPrice()){
             System.out.println("Bid is lower than current highest.");
             Main.showAlert(Alert.AlertType.ERROR, "Your bid is not higher than current highest bid.");
         }
 
         //If bid is valid
-        if (Integer.parseInt(bidInput.getText()) > productTable.getSelectionModel().getSelectedItem().getPrice()){
+        if (!(singletonPerson.getInstance().equals(productTable.getSelectionModel().getSelectedItem().getPerson())) && Integer.parseInt(bidInput.getText()) > productTable.getSelectionModel().getSelectedItem().getPrice()){
             productTable.getSelectionModel().getSelectedItem().setPrice(Integer.parseInt(bidInput.getText()));
 
             productTable.getSelectionModel().getSelectedItem().addBid(new Bid(Integer.parseInt(bidInput.getText()), singletonPerson.getInstance(), singletonPerson.getInstance().getName()));
-            System.out.println(Integer.parseInt(bidInput.getText()) + " " + singletonPerson.getInstance().getName());
+            System.out.println("Price: €" + Integer.parseInt(bidInput.getText()) + " " + "Bid from: " + singletonPerson.getInstance().getName());
             System.out.println(productTable.getSelectionModel().getSelectedItem().getBids());
 
             System.out.println("Bid placed");
             productTable.refresh();
+            refreshBids();
             Main.showAlert(Alert.AlertType.CONFIRMATION, "Bid placed");
         }
     }
