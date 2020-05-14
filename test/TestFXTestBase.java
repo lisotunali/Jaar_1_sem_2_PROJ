@@ -10,6 +10,10 @@ import org.junit.jupiter.api.*;
 import org.testfx.api.FxToolkit;
 import java.util.concurrent.TimeoutException;
 
+
+
+
+
 public class TestFXTestBase extends ApplicationTest {
 
     @BeforeEach
@@ -23,6 +27,7 @@ public class TestFXTestBase extends ApplicationTest {
         release(new KeyCode[]{});
         release(new MouseButton[]{});
     }
+
 
     @Override
     public void start(Stage stage) {
