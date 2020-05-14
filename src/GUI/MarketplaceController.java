@@ -12,12 +12,13 @@ import java.io.IOException;
 public class MarketplaceController {
     public Button backButton;
     public Button bidButton;
-    public Button refreshBidButton;
+    //public Button refreshBidButton;
     public TextField bidInput;
 
     public TableView<Product> productTable;
     public TableColumn<Product, String> titleColumn;
     public TableColumn<Product, Integer> amountColumn;
+    public TableColumn<Product, String> sellerColumn;
     public TableColumn<Product, Integer> priceColumn;
 
     public TableView<Bid> bidTable;
@@ -30,6 +31,7 @@ public class MarketplaceController {
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("advertTitle"));
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        sellerColumn.setCellValueFactory(new PropertyValueFactory<>("PersonName"));
         productTable.setItems(products);
     }
 
@@ -61,16 +63,18 @@ public class MarketplaceController {
     }
 
     public void refreshBids(){
-
+        /*
         if (productTable.getSelectionModel().getSelectedItem().getBids().isEmpty()){
             bidTable.setItems(null);
             Main.showAlert(Alert.AlertType.ERROR, "No bids have been made on this product yet.");
         }
+         */
 
-        if (!(productTable.getSelectionModel().getSelectedItem().getBids().isEmpty())){
+        Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null){
 
-            ObservableList<Bid> bids = FXCollections.observableArrayList(productTable.getSelectionModel().getSelectedItem().getBids());
-            buyerColumn.setCellValueFactory(new PropertyValueFactory<>("personName"));
+            ObservableList<Bid> bids = FXCollections.observableArrayList(selectedProduct.getBids());
+            buyerColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
             bidColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
             bidTable.setItems(bids);
             bidTable.getSortOrder().add(bidColumn);

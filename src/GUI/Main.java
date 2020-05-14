@@ -24,7 +24,7 @@ public class Main extends Application {
     public static void switchSceneTo(String templateName) throws IOException {
         Stage primaryStage = Main.getPrimaryStage();
         Parent root = FXMLLoader.load(Main.class.getResource(templateName + ".fxml"));
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root, primaryStage.getWidth(), primaryStage.getHeight()));
         primaryStage.show();
     }
 

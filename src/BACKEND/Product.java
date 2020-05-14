@@ -27,6 +27,8 @@ public class Product {
         return person;
     }
 
+    public String getPersonName() { return this.person.getName(); }
+
     public void setPerson(Person person) {
         this.person = person;
     }
