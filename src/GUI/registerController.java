@@ -34,10 +34,10 @@ public class registerController {
         fakeDatabase.getUserDatabase().add(person);
         singletonPerson.setPerson(person);
 
-        Main.switchSceneTo("mainUi");
+        SceneController.switchTo("mainUi");
     }
 
     public void backButtonClicked() throws IOException {
-        Main.switchSceneTo("login");
+        SceneController.switchTo("login");
     }
 }

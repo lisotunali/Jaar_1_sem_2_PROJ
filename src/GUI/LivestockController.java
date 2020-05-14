@@ -1,9 +1,9 @@
 package GUI;
-import BACKEND.*;
+
+import BACKEND.Animal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -32,7 +32,7 @@ public class LivestockController{
             for (Animal animal : singletonPerson.getInstance().getAnimals()) {
                 if (animal.getType().equalsIgnoreCase(animalEdit.getType())) {
                     singletonPerson.getInstance().getAnimal(animalEdit.getType()).addAmount(amountAdded);
-                    Main.switchSceneTo("livestock");
+                    SceneController.switchTo("livestock");
                 }
             }
         }
@@ -50,7 +50,7 @@ public class LivestockController{
             for (Animal animal: singletonPerson.getInstance().getAnimals()) {
                 if(animal.getType().equalsIgnoreCase(animalEdit.getType())){
                     singletonPerson.getInstance().getAnimal(animalEdit.getType()).removeAmount(amountremoved);
-                   Main.switchSceneTo("livestock");
+                    SceneController.switchTo("livestock");
                     return;
                 }
             }
@@ -61,7 +61,7 @@ public class LivestockController{
         }
     }
     public void backButtonclicked(ActionEvent actionEvent) throws IOException {
-        Main.switchSceneTo("mainUI");
+        SceneController.switchTo("mainUI");
     }
     public void newButtonclicked(ActionEvent actionEvent) throws IOException {
 
@@ -76,10 +76,10 @@ public class LivestockController{
             alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
                 singletonPerson.getInstance().addAnimal(textFtype.getText(), Integer.parseInt(textFamount.getText()));
-                Main.switchSceneTo("livestock");
+                SceneController.switchTo("livestock");
             }
             else{
-                Main.switchSceneTo("livestock");
+                SceneController.switchTo("livestock");
             }
         }
     }
@@ -92,7 +92,7 @@ public class LivestockController{
         }
         else{
             singletonPerson.getInstance().removeAnimal(animalDelete.getType());
-            Main.switchSceneTo("livestock");
+            SceneController.switchTo("livestock");
         }
     }
 }

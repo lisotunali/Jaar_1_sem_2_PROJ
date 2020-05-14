@@ -1,11 +1,8 @@
-import GUI.Main;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import BACKEND.Person;
+import GUI.SceneController;
+import GUI.fakeDatabase;
+import GUI.singletonPerson;
 import org.junit.jupiter.api.Test;
-import BACKEND.*;
-import GUI.*;
 
 import java.io.IOException;
 
@@ -72,6 +69,6 @@ public class LivestockControllerTest extends TestFXTestBase {
         fakeDatabase.getUserDatabase().add(testperson);
         singletonPerson.setPerson(testperson);
         singletonPerson.getInstance().addAnimal("testanimal", 100);
-        Main.switchSceneTo("livestock");
+        SceneController.switchTo("livestock");
     }
 }

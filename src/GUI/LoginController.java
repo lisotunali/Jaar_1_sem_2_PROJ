@@ -20,7 +20,7 @@ public class LoginController {
         for (Person person : fakeDatabase.getUserDatabase()) {
             if (person.getName().equals(nameInput.getText()) && person.getPassword().equals(passwordInput.getText())) {
                 singletonPerson.setPerson(person);
-                Main.switchSceneTo("mainUi");
+                SceneController.switchTo("mainUi");
                 return;
             }
         }
@@ -29,6 +29,6 @@ public class LoginController {
     }
 
     public void registerButtonClicked() throws IOException {
-        Main.switchSceneTo("register");
+        SceneController.switchTo("register");
     }
 }
