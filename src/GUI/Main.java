@@ -24,9 +24,7 @@ public class Main extends Application {
     public static void switchSceneTo(String templateName) throws IOException {
         Stage primaryStage = Main.getPrimaryStage();
         Parent root = FXMLLoader.load(Main.class.getResource(templateName + ".fxml"));
-        //primaryStage.setScene(new Scene(root, primaryStage.getWidth(), primaryStage.getHeight()));
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        primaryStage.getScene().setRoot(root);
     }
 
     public static void showAlert(Alert.AlertType type, String text) {
@@ -42,7 +40,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Set up instances for testing
+        // Add fake persons
+
         setUpTestInstances();
 
         Main.primaryStage = primaryStage;
