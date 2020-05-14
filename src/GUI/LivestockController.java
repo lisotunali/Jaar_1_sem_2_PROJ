@@ -10,11 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 
 public class LivestockController{
-    @FXML
     public TableView<Animal> tableView;
-    @FXML
     public TableColumn<Animal, String> typeCol;
-    @FXML
     public TableColumn<Animal, Integer> amountCol;
     public TextField textFtype;
     public TextField textFamount;
@@ -29,12 +26,12 @@ public class LivestockController{
 
     }
     public void addButtonclicked(ActionEvent actionEvent) throws IOException {
-        Integer getal = Integer.parseInt(textFamount.getText());
+        Integer amountAdded = Integer.parseInt(textFamount.getText());
         Animal animalEdit = tableView.getSelectionModel().getSelectedItem();
         if(animalEdit != null) {
             for (Animal animal : singletonPerson.getInstance().getAnimals()) {
                 if (animal.getType().equalsIgnoreCase(animalEdit.getType())) {
-                    singletonPerson.getInstance().getAnimal(animalEdit.getType()).addAmount(getal);
+                    singletonPerson.getInstance().getAnimal(animalEdit.getType()).addAmount(amountAdded);
                     Main.switchSceneTo("livestock");
                 }
             }
@@ -46,15 +43,13 @@ public class LivestockController{
         }
     }
     public void removeButtonclicked(ActionEvent actionEvent) throws IOException {
-        int getal = Integer.parseInt(textFamount.getText());
+        int amountremoved = Integer.parseInt(textFamount.getText());
         Animal animalEdit = tableView.getSelectionModel().getSelectedItem();
-//       if(animalEdit == null){ singletonPerson.getInstance().removeAnimal(textFtype.getText());
-        //    initialize();}
 
         if(animalEdit != null){
             for (Animal animal: singletonPerson.getInstance().getAnimals()) {
                 if(animal.getType().equalsIgnoreCase(animalEdit.getType())){
-                    singletonPerson.getInstance().getAnimal(animalEdit.getType()).removeAmount(getal);
+                    singletonPerson.getInstance().getAnimal(animalEdit.getType()).removeAmount(amountremoved);
                    Main.switchSceneTo("livestock");
                     return;
                 }
@@ -101,6 +96,3 @@ public class LivestockController{
         }
     }
 }
-
-
-
