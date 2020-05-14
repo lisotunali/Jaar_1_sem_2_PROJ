@@ -9,12 +9,12 @@ public class Product {
     private String advertDescription;
     private Integer price;
     private Integer amount;
-    private ArrayList<Bid> hasBid;
+    private ArrayList<Bid> hasBid = new ArrayList<>();
     private Integer ID;
     private Person person;
     private static Integer uniqueID = 0;
 
-    public Product(Integer ID, String advertTitle, String advertDescription, Integer price, Integer amount, Person person) {
+    public Product(String advertTitle, String advertDescription, Integer price, Integer amount, Person person) {
         this.advertTitle = advertTitle;
         this.advertDescription = advertDescription;
         this.price = price;
@@ -26,6 +26,8 @@ public class Product {
     public Person getPerson() {
         return person;
     }
+
+    public String getPersonName() { return this.person.getName(); }
 
     public void setPerson(Person person) {
         this.person = person;
