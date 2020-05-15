@@ -29,9 +29,9 @@ public class profileController {
             Person currentPerson = singletonPerson.getInstance();
             currentPerson.setPassword(password);
             fakeDatabase.updatePerson(currentPerson);
-            Main.showAlert(Alert.AlertType.INFORMATION, "Profile has been updated");
+            AlertClass.showAlert(Alert.AlertType.INFORMATION, "Profile has been updated");
         } else {
-            Main.showAlert(Alert.AlertType.ERROR, "Error updating profile, password is not the same");
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Error updating profile, password is not the same");
         }
     }
 

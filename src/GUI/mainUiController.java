@@ -4,8 +4,6 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-import java.io.IOException;
-
 public class mainUiController {
     public Text currentUserLabel;
 

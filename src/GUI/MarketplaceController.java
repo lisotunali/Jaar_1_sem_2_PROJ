@@ -12,6 +12,7 @@ import java.io.IOException;
 public class MarketplaceController {
     public Button backButton;
     public Button bidButton;
+    public Button sellPageButton;
     public TextField bidInput;
 
     public TableView<Product> productTable;
@@ -34,49 +35,57 @@ public class MarketplaceController {
         productTable.setItems(products);
     }
 
+    public void sellPage() throws IOException {
+        Main.switchSceneTo("sell");
+    }
+
     public void bidButtonAction() {
         System.out.println("Trying to place bid...");
         //If no product is selected
-        if (productTable.getSelectionModel().getSelectedItem() == null){
-            Main.showAlert(Alert.AlertType.WARNING, "Please select a product before trying to bid.");
+        if (productTable.getSelectionModel().getSelectedItem() == null) {
+            AlertClass.showAlert(Alert.AlertType.WARNING, "Please select a product before trying to bid.");
+            return;
         }
 
         //If seller tries to bid on their own product
-        if (singletonPerson.getInstance().equals(productTable.getSelectionModel().getSelectedItem().getPerson())){
-            Main.showAlert(Alert.AlertType.ERROR, "You can't place a bid on your own product.");
+        if (singletonPerson.getInstance().equals(productTable.getSelectionModel().getSelectedItem().getPerson())) {
+            AlertClass.showAlert(Alert.AlertType.ERROR, "You can't place a bid on your own product.");
+            return;
         }
 
+
+        Integer bidInput = Main.convertToInt(this.bidInput.getText());
+        //If bid is empty, popup alert
+        if (bidInput == null) {
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Your bid is invalid.");
+            return;
+        }
         //If bid is lower than current highest price
-        if (!(singletonPerson.getInstance().equals(productTable.getSelectionModel().getSelectedItem().getPerson())) && Integer.parseInt(bidInput.getText()) <= productTable.getSelectionModel().getSelectedItem().getPrice()){
+        if (!(singletonPerson.getInstance().equals(productTable.getSelectionModel().getSelectedItem().getPerson())) && bidInput <= productTable.getSelectionModel().getSelectedItem().getPrice()) {
             System.out.println("Bid is lower than current highest.");
-            Main.showAlert(Alert.AlertType.ERROR, "Your bid is not higher than current highest bid.");
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Your bid is not higher than current highest bid.");
+            return;
         }
 
         //If bid is valid
-        if (!(singletonPerson.getInstance().equals(productTable.getSelectionModel().getSelectedItem().getPerson())) && Integer.parseInt(bidInput.getText()) > productTable.getSelectionModel().getSelectedItem().getPrice()){
-            productTable.getSelectionModel().getSelectedItem().setPrice(Integer.parseInt(bidInput.getText()));
+        if (!(singletonPerson.getInstance().equals(productTable.getSelectionModel().getSelectedItem().getPerson())) && bidInput > productTable.getSelectionModel().getSelectedItem().getPrice()) {
+            productTable.getSelectionModel().getSelectedItem().setPrice(bidInput);
 
-            productTable.getSelectionModel().getSelectedItem().addBid(new Bid(Integer.parseInt(bidInput.getText()), singletonPerson.getInstance(), singletonPerson.getInstance().getName()));
-            System.out.println("Price: €" + Integer.parseInt(bidInput.getText()) + " " + "Bid from: " + singletonPerson.getInstance().getName());
+            productTable.getSelectionModel().getSelectedItem().addBid(new Bid(bidInput, singletonPerson.getInstance(), productTable.getSelectionModel().getSelectedItem().getPerson(), singletonPerson.getInstance().getName(), productTable.getSelectionModel().getSelectedItem().getAdvertTitle()));
+            System.out.println("Price: €" + bidInput + " " + "Bid from: " + singletonPerson.getInstance().getName());
             System.out.println(productTable.getSelectionModel().getSelectedItem().getBids());
 
             System.out.println("Bid placed");
             productTable.refresh();
             refreshBids();
-            Main.showAlert(Alert.AlertType.CONFIRMATION, "Bid placed");
+            AlertClass.showAlert(Alert.AlertType.CONFIRMATION, "Bid placed");
         }
     }
 
-    public void refreshBids(){
-        /*
-        if (productTable.getSelectionModel().getSelectedItem().getBids().isEmpty()){
-            bidTable.setItems(null);
-            Main.showAlert(Alert.AlertType.ERROR, "No bids have been made on this product yet.");
-        }
-         */
+    public void refreshBids() {
 
         Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
-        if (selectedProduct != null){
+        if (selectedProduct != null) {
 
             ObservableList<Bid> bids = FXCollections.observableArrayList(selectedProduct.getBids());
             buyerColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
