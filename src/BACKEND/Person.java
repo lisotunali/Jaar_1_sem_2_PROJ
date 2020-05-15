@@ -9,11 +9,13 @@ public class Person {
     private ArrayList<Contact> addressBook = new ArrayList<>();
     private ArrayList<Animal> hasLivestock = new ArrayList<>();
     private Long personID;
+    private String personalData;
 
     public Person(String name, String password) {
         this.name = name;
         this.password = password;
         this.personID = uniquePersonID++;
+        this.personalData = "";
     }
 
     public String getName() {
@@ -32,16 +34,20 @@ public class Person {
         this.password = password;
     }
 
-     public void addAnimal(String type, Integer amount) {
-            hasLivestock.add(new Animal(type,amount));
+    public void addAnimal(String type, Integer amount) {
+        hasLivestock.add(new Animal(type, amount));
     }
-     public void removeAnimal(String type) {
-        for (Animal animal:hasLivestock) {
-            if(type.equals(animal.getType())){
-                hasLivestock.remove(animal);
+
+    public void removeAnimal(String type) {
+        Animal toBeRemoved = null;
+        for (Animal animal : hasLivestock) {
+            if (type.equals(animal.getType())) {
+                toBeRemoved = animal;
             }
         }
+        hasLivestock.remove(toBeRemoved);
     }
+
     public Long getPersonID() {
         return personID;
     }
@@ -70,4 +76,13 @@ public class Person {
     public void removeContact(Contact contact) {
         addressBook.remove(contact);
     }
+
+    public String getPersonalData() {
+        return personalData;
+    }
+
+    public void setPersonalData(String text) {
+        this.personalData = text;
+    }
+
 }

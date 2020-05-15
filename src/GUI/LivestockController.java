@@ -1,20 +1,17 @@
 package GUI;
-import BACKEND.*;
+
+import BACKEND.Animal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 
 public class LivestockController{
-    @FXML
     public TableView<Animal> tableView;
-    @FXML
     public TableColumn<Animal, String> typeCol;
-    @FXML
     public TableColumn<Animal, Integer> amountCol;
     public TextField textFtype;
     public TextField textFamount;
@@ -29,13 +26,13 @@ public class LivestockController{
 
     }
     public void addButtonclicked(ActionEvent actionEvent) throws IOException {
-        Integer getal = Integer.parseInt(textFamount.getText());
+        Integer amountAdded = Integer.parseInt(textFamount.getText());
         Animal animalEdit = tableView.getSelectionModel().getSelectedItem();
         if(animalEdit != null) {
             for (Animal animal : singletonPerson.getInstance().getAnimals()) {
                 if (animal.getType().equalsIgnoreCase(animalEdit.getType())) {
-                    singletonPerson.getInstance().getAnimal(animalEdit.getType()).addAmount(getal);
-                    Main.switchSceneTo("livestock");
+                    singletonPerson.getInstance().getAnimal(animalEdit.getType()).addAmount(amountAdded);
+                    SceneController.switchTo("livestock");
                 }
             }
         }
@@ -46,16 +43,14 @@ public class LivestockController{
         }
     }
     public void removeButtonclicked(ActionEvent actionEvent) throws IOException {
-        int getal = Integer.parseInt(textFamount.getText());
+        int amountremoved = Integer.parseInt(textFamount.getText());
         Animal animalEdit = tableView.getSelectionModel().getSelectedItem();
-//       if(animalEdit == null){ singletonPerson.getInstance().removeAnimal(textFtype.getText());
-        //    initialize();}
 
         if(animalEdit != null){
             for (Animal animal: singletonPerson.getInstance().getAnimals()) {
                 if(animal.getType().equalsIgnoreCase(animalEdit.getType())){
-                    singletonPerson.getInstance().getAnimal(animalEdit.getType()).removeAmount(getal);
-                   Main.switchSceneTo("livestock");
+                    singletonPerson.getInstance().getAnimal(animalEdit.getType()).removeAmount(amountremoved);
+                    SceneController.switchTo("livestock");
                     return;
                 }
             }
@@ -66,7 +61,7 @@ public class LivestockController{
         }
     }
     public void backButtonclicked(ActionEvent actionEvent) throws IOException {
-        Main.switchSceneTo("mainUI");
+        SceneController.switchTo("mainUI");
     }
     public void newButtonclicked(ActionEvent actionEvent) throws IOException {
 
@@ -81,10 +76,10 @@ public class LivestockController{
             alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
                 singletonPerson.getInstance().addAnimal(textFtype.getText(), Integer.parseInt(textFamount.getText()));
-                Main.switchSceneTo("livestock");
+                SceneController.switchTo("livestock");
             }
             else{
-                Main.switchSceneTo("livestock");
+                SceneController.switchTo("livestock");
             }
         }
     }
@@ -97,10 +92,7 @@ public class LivestockController{
         }
         else{
             singletonPerson.getInstance().removeAnimal(animalDelete.getType());
-            Main.switchSceneTo("livestock");
+            SceneController.switchTo("livestock");
         }
     }
 }
-
-
-

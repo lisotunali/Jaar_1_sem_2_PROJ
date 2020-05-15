@@ -10,21 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class Main extends Application {
-    private static Stage primaryStage;
-
-    public static Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
-    // Changes the current scene to the given template name
-    public static void switchSceneTo(String templateName) throws IOException {
-        Stage primaryStage = Main.getPrimaryStage();
-        Parent root = FXMLLoader.load(Main.class.getResource(templateName + ".fxml"));
-        primaryStage.getScene().setRoot(root);
-    }
 
     public static void showAlert(Alert.AlertType type, String text) {
         Alert alert = new Alert(type);
@@ -42,8 +28,7 @@ public class Main extends Application {
         // Add fake persons
 
         setUpTestInstances();
-
-        Main.primaryStage = primaryStage;
+        SceneController.setPrimaryStage(primaryStage);
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("Kumbaya 5a");
         Scene scene = new Scene(root, 800, 600);
