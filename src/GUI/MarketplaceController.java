@@ -98,6 +98,6 @@ public class MarketplaceController {
     }
 
     public void mainScreen() throws IOException {
-        Main.switchSceneTo("mainUi");
+        SceneController.switchTo("mainUi");
     }
 }

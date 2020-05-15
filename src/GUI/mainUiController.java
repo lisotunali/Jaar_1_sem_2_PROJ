@@ -12,22 +12,22 @@ public class mainUiController {
     }
 
     public void contactsButtonClicked() throws IOException {
-        Main.switchSceneTo("contacts");
+        SceneController.switchTo("contacts");
     }
 
     public void profileButtonClicked() throws IOException {
-        Main.switchSceneTo("profile");
+        SceneController.switchTo("profile");
     }
 
     public void logoutButtonClicked() throws IOException {
-        Main.switchSceneTo("login");
+        SceneController.switchTo("login");
     }
 
     public void pressMarketplace() throws IOException {
-        Main.switchSceneTo("marketplace");
+        SceneController.switchTo("marketplace");
 
     }
     public void LivestockButtonclicked() throws IOException {
-        Main.switchSceneTo("livestock");
+        SceneController.switchTo("livestock");
     }
 }
