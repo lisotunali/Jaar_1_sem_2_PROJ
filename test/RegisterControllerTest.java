@@ -104,7 +104,6 @@ public class RegisterControllerTest  extends TestFXTestBase {
         clickOn(passwordConfirmFieldID);
         write(password);
         clickOn(registerButtonID);
-        sleep(2000);
         boolean flag = false;
         for (Person person : fakeDatabase.getUserDatabase()) {
             if (person.getName().equals(name)) {
