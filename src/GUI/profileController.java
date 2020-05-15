@@ -29,7 +29,7 @@ public class profileController {
 
         // If the password confirm input is set check if the passwords are equal
         if ((!password.isEmpty() || !passwordConfirm.isEmpty()) && !password.equals(passwordConfirm)) {
-            Main.showAlert(Alert.AlertType.ERROR, "Error updating profile, password is not the same");
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Error updating profile, password is not the same");
             return;
         }
 
@@ -38,7 +38,7 @@ public class profileController {
 
         currentPerson.setPersonalData(personalData.getText());
         fakeDatabase.updatePerson(currentPerson);
-        Main.showAlert(Alert.AlertType.INFORMATION, "Profile has been updated");
+        AlertClass.showAlert(Alert.AlertType.INFORMATION, "Profile has been updated");
     }
 
     public void onBackClicked() throws IOException {

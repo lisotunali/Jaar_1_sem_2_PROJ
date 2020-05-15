@@ -8,6 +8,7 @@ public class Product {
     private String advertTitle;
     private String advertDescription;
     private Integer price;
+    private Integer intialPrice;
     private Integer amount;
     private ArrayList<Bid> hasBid = new ArrayList<>();
     private Integer ID;
@@ -18,6 +19,7 @@ public class Product {
         this.advertTitle = advertTitle;
         this.advertDescription = advertDescription;
         this.price = price;
+        this.intialPrice = price;
         this.amount = amount;
         this.person = person;
         this.ID = uniqueID++;
@@ -67,6 +69,10 @@ public class Product {
 
     public Integer getPrice() {
         return price;
+    }
+
+    public Integer getIntialPrice() {
+        return intialPrice;
     }
 
     public void setPrice(Integer price) {
