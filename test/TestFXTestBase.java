@@ -32,4 +32,5 @@ public class TestFXTestBase extends ApplicationTest {
     public void start(Stage stage) throws IOException {
         stage.show();
     }
+
 }
