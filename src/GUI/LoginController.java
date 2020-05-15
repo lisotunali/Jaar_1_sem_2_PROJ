@@ -25,7 +25,7 @@ public class LoginController {
             }
         }
 
-        Main.showAlert(Alert.AlertType.ERROR, "Invalid credentials");
+        AlertClass.showAlert(Alert.AlertType.ERROR, "Invalid credentials");
     }
 
     public void registerButtonClicked() throws IOException {

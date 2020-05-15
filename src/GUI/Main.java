@@ -29,14 +29,6 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static Integer convertToInt(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (Exception NumberFormatException) {
-            return null;
-        }
-    }
-
     public void setUpTestInstances() {
         Person testperson = new Person("test", "test123");
         fakeDatabase.getUserDatabase().add(testperson);

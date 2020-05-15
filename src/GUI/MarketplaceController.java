@@ -36,7 +36,7 @@ public class MarketplaceController {
     }
 
     public void sellPage() throws IOException {
-        Main.switchSceneTo("sell");
+        SceneController.switchTo("sell");
     }
 
     public void bidButtonAction() {
@@ -54,7 +54,7 @@ public class MarketplaceController {
         }
 
 
-        Integer bidInput = Main.convertToInt(this.bidInput.getText());
+        Integer bidInput = ConvertClass.convertToInt(this.bidInput.getText());
         //If bid is empty, popup alert
         if (bidInput == null) {
             AlertClass.showAlert(Alert.AlertType.ERROR, "Your bid is invalid.");

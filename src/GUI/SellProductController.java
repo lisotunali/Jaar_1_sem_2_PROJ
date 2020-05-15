@@ -55,8 +55,8 @@ public class SellProductController {
             System.out.println("Product selected");
             String tempTitle = AlertClass.showText("New Product", "Product Name", "Choose a name.", "This will be displayed on the marketplace.", "Name chosen: ");
             String tempDesc = AlertClass.showText("Description", "Product Description", "Choose a description.", "Describe your product in a few words.", "Description chosen: ");
-            Integer tempAmount = Main.convertToInt(AlertClass.showText("0", "Product amount", "Choose an amount.", "Choose a how many you'll sell at once.", "Amount chosen: "));
-            Integer tempPrice = Main.convertToInt(AlertClass.showText("0", "Product price", "Choose a price.", "Choose a starting price.", "Price chosen: "));
+            Integer tempAmount = ConvertClass.convertToInt(AlertClass.showText("0", "Product amount", "Choose an amount.", "Choose a how many you'll sell at once.", "Amount chosen: "));
+            Integer tempPrice = ConvertClass.convertToInt(AlertClass.showText("0", "Product price", "Choose a price.", "Choose a starting price.", "Price chosen: "));
             if (tempTitle.isEmpty() || tempDesc.isEmpty() || tempAmount <= 0 || tempPrice < 0) {
                 System.out.println("Invalid field detected");
                 AlertClass.showAlert(Alert.AlertType.ERROR, "One or more fields contain invalid data.");
@@ -87,6 +87,6 @@ public class SellProductController {
     }
 
     public void prevScreen() throws IOException {
-        Main.switchSceneTo("marketplace");
+        SceneController.switchTo("marketplace");
     }
 }
