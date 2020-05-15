@@ -25,8 +25,11 @@ public class LivestockController{
         tableView.setItems(livestock);
 
     }
-    public void addButtonclicked(ActionEvent actionEvent) throws IOException {
-        Integer amountAdded = Integer.parseInt(textFamount.getText());
+    public void addButtonclicked() throws IOException {
+        Integer amountAdded = ConvertClass.convertToInt(textFamount.getText());
+        if(amountAdded == null){
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Please insert a amount", "OK");
+            return; }
         Animal animalEdit = tableView.getSelectionModel().getSelectedItem();
         if(animalEdit != null) {
             for (Animal animal : singletonPerson.getInstance().getAnimals()) {
@@ -37,14 +40,16 @@ public class LivestockController{
             }
         }
         else{
-           // TODO: Change to method used in dev Branch
             AlertClass.showAlert(Alert.AlertType.ERROR, "Please select an animaltype", "OK");
         }
     }
-    public void removeButtonclicked(ActionEvent actionEvent) throws IOException {
-        int amountremoved = Integer.parseInt(textFamount.getText());
-        Animal animalEdit = tableView.getSelectionModel().getSelectedItem();
+    public void removeButtonclicked() throws IOException {
+        Integer amountremoved = ConvertClass.convertToInt(textFamount.getText());
+        if(amountremoved == null){
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Please insert a amount", "OK");
+            return; }
 
+        Animal animalEdit = tableView.getSelectionModel().getSelectedItem();
         if(animalEdit != null){
             for (Animal animal: singletonPerson.getInstance().getAnimals()) {
                 if(animal.getType().equalsIgnoreCase(animalEdit.getType())){
@@ -55,26 +60,22 @@ public class LivestockController{
             }
         }
         else{
-            Alert alert =  new Alert(Alert.AlertType.ERROR,"Please select an animal type", ButtonType.OK);
-            alert.showAndWait();
+           AlertClass.showAlert(Alert.AlertType.ERROR,"Please select an animal type", "OK");
         }
     }
-    public void backButtonclicked(ActionEvent actionEvent) throws IOException {
+    public void backButtonclicked() throws IOException {
         SceneController.switchTo("mainUI");
     }
-    public void newButtonclicked(ActionEvent actionEvent) throws IOException {
-
+    public void newButtonclicked() throws IOException {
+        Integer newAmount = ConvertClass.convertToInt(textFamount.getText());
         if(textFamount.getText().isEmpty()|| textFtype.getText().isBlank()){
-            // TODO: Change to method used in dev Branch
-            Alert alert =  new Alert(Alert.AlertType.ERROR,"Please insert an animal type and amount", ButtonType.OK);
-            alert.showAndWait();
+            AlertClass.showAlert(Alert.AlertType.ERROR,"Please insert an animal type and amount", "OK");
         }
         else{
-            // TODO: Change to method used in dev Branch
             Alert alert =  new Alert(Alert.AlertType.CONFIRMATION,"Are you sure you want to add the animal type "+textFtype.getText(), ButtonType.YES,ButtonType.NO);
             alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
-                singletonPerson.getInstance().addAnimal(textFtype.getText(), Integer.parseInt(textFamount.getText()));
+                singletonPerson.getInstance().addAnimal(textFtype.getText(),newAmount);
                 SceneController.switchTo("livestock");
             }
             else{
@@ -82,16 +83,21 @@ public class LivestockController{
             }
         }
     }
-    public void deleteButtonclicked(ActionEvent actionEvent) throws IOException {
+    public void deleteButtonclicked() throws IOException {
         Animal animalDelete = tableView.getSelectionModel().getSelectedItem();
         if(animalDelete == null){
-            // TODO: Change to method used in dev Branch
-            Alert alert =  new Alert(Alert.AlertType.ERROR,"Please select an animal type", ButtonType.OK);
-            alert.showAndWait();
+            AlertClass.showAlert(Alert.AlertType.ERROR,"Please select an animal type","OK");
         }
         else{
-            singletonPerson.getInstance().removeAnimal(animalDelete.getType());
-            SceneController.switchTo("livestock");
+            Alert alert =  new Alert(Alert.AlertType.CONFIRMATION,"Are you sure you want to delete the selected animal type ", ButtonType.YES,ButtonType.NO);
+            alert.showAndWait();
+            if(alert.getResult() == ButtonType.YES){
+                singletonPerson.getInstance().removeAnimal(animalDelete.getType());
+                SceneController.switchTo("livestock");
+            }
+            else{
+                SceneController.switchTo("livestock");
+            }
         }
     }
 }
