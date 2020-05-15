@@ -64,13 +64,20 @@ public class ViewProductController {
 
 
     public void acceptBid() throws Exception {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to accept this bid?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-        if (alert.getResult() == ButtonType.YES) {
-            currentProduct.acceptBid(sellTable.getSelectionModel().getSelectedItem().getBuyer());
-            singletonMarketplace.getInstance().removeProduct(currentProduct);
-            AlertClass.showAlert(Alert.AlertType.INFORMATION, "Product sold.");
-            SceneController.switchTo("sell");
+        if (sellTable.getSelectionModel().getSelectedItem() == null) {
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Please select a bid.");
+            return;
+        }
+
+        if (sellTable.getSelectionModel().getSelectedItem() != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to accept this bid?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                currentProduct.acceptBid(sellTable.getSelectionModel().getSelectedItem().getBuyer());
+                singletonMarketplace.getInstance().removeProduct(currentProduct);
+                AlertClass.showAlert(Alert.AlertType.INFORMATION, "Product sold.");
+                SceneController.switchTo("sell");
+            }
         }
     }
 }
