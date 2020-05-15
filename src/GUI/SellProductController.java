@@ -22,6 +22,7 @@ public class SellProductController {
 
     public TableView<Product> productTableView;
     public TableColumn<Product, String> productTitleColumn;
+    public TableColumn<Product, String> productDescColumn;
     public TableColumn<Product, Integer> initialPriceColumn;
     public TableColumn<Product, Integer> currentPriceColumn;
 
@@ -98,24 +99,22 @@ public class SellProductController {
         productTableView.refresh();
     }
 
-    public void getProductBids() {
-
-    }
-
     public void viewOffer() throws IOException {
         if (productTableView.getSelectionModel().getSelectedItem() == null) {
             AlertClass.showAlert(Alert.AlertType.ERROR, "Please select an offer.");
         }
 
         if (productTableView.getSelectionModel().getSelectedItem() != null) {
+            System.out.println("Attempting...");
             SceneController.switchTo("sellproduct");
+
             ObservableList<Product> selectedProduct = FXCollections.observableArrayList(productTableView.getSelectionModel().getSelectedItem());
             thisTitleColumn.setCellValueFactory(new PropertyValueFactory<>("advertTitle"));
             thisDescColumn.setCellValueFactory(new PropertyValueFactory<>("advertDescription"));
             thisInitialPriceColumn.setCellValueFactory(new PropertyValueFactory<>("initialPrice"));
             thisAmountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
             thisProductTableView.setItems(selectedProduct);
-            thisProductTableView.getSortOrder().add(currentPriceColumn);
+            thisProductTableView.getSortOrder().add(thisTitleColumn);
             thisProductTableView.refresh();
 
             ObservableList<Bid> bids = FXCollections.observableArrayList(productTableView.getSelectionModel().getSelectedItem().getBids());
