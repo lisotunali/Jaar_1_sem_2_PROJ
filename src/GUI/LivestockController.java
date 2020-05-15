@@ -38,8 +38,7 @@ public class LivestockController{
         }
         else{
            // TODO: Change to method used in dev Branch
-            Alert alert =  new Alert(Alert.AlertType.ERROR,"Please select an animaltype", ButtonType.OK);
-            alert.showAndWait();
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Please select an animaltype", "OK");
         }
     }
     public void removeButtonclicked(ActionEvent actionEvent) throws IOException {

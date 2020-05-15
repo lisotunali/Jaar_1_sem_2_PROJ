@@ -77,6 +77,16 @@ public class Person {
         addressBook.remove(contact);
     }
 
+    public Contact getContact(String name){
+        Contact toBeReturned = null;
+        for ( Contact contact: addressBook) {
+            if (contact.getName().equals(name)){
+               toBeReturned = contact;
+            }
+        }
+        return toBeReturned;
+    }
+
     public String getPersonalData() {
         return personalData;
     }

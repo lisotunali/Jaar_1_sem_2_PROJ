@@ -14,18 +14,18 @@ public class registerController {
 
     public void registerButtonClicked() throws IOException {
         if (nameInput.getText().isEmpty() || passwordInput.getText().isEmpty()) {
-            Main.showAlert(Alert.AlertType.ERROR, "Please fill in all fields");
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Please fill in all fields");
             return;
         }
 
         if (!passwordInput.getText().equals(passwordConfirmInput.getText())) {
-            Main.showAlert(Alert.AlertType.ERROR, "Password is not equal");
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Password is not equal");
             return;
         }
 
         for (Person person : fakeDatabase.getUserDatabase()) {
             if (person.getName().equals(nameInput.getText())) {
-                Main.showAlert(Alert.AlertType.ERROR, "Username already taken");
+                AlertClass.showAlert(Alert.AlertType.ERROR, "Username already taken");
                 return;
             }
         }
