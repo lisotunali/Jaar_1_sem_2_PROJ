@@ -70,16 +70,15 @@ public class SellProductController {
             String tempDesc = AlertClass.showText("Description", "Product Description", "Choose a description.", "Describe your product in a few words.", "Description chosen: ");
             Integer tempAmount = ConvertClass.convertToInt(AlertClass.showText("0", "Product amount", "Choose an amount.", "Choose a how many you'll sell at once.", "Amount chosen: "));
             Integer tempPrice = ConvertClass.convertToInt(AlertClass.showText("0", "Product price", "Choose a price.", "Choose a starting price.", "Price chosen: "));
-            if (tempTitle.isEmpty() || tempDesc.isEmpty() || tempAmount <= 0 || tempPrice < 0) {
+            if (tempTitle.isEmpty() || tempDesc.isEmpty() || tempAmount == null || tempAmount <= 0 || tempPrice == null || tempPrice < 0 || tempAmount > livestockTable.getSelectionModel().getSelectedItem().getAmount()) {
                 System.out.println("Invalid field detected");
                 AlertClass.showAlert(Alert.AlertType.ERROR, "One or more fields contain invalid data.");
                 return;
             }
-            if (tempTitle != null && tempDesc != null && tempAmount > 0 && tempPrice >= 0) {
-                singletonMarketplace.getInstance().addProduct(new AnimalProduct(tempTitle, tempDesc, tempPrice, tempAmount, livestockTable.getSelectionModel().getSelectedItem(), singletonPerson.getInstance()));
-                System.out.println("Product added to marketplace.");
-                refreshUserProducts();
-            }
+            singletonMarketplace.getInstance().addProduct(new AnimalProduct(tempTitle, tempDesc, tempPrice, tempAmount, livestockTable.getSelectionModel().getSelectedItem(), singletonPerson.getInstance()));
+            System.out.println("Product added to marketplace.");
+            livestockTable.refresh();
+            refreshUserProducts();
         }
     }
 
@@ -104,8 +103,9 @@ public class SellProductController {
         productTableView.refresh();
     }
 
-    public void removeOffer() {
+    public void removeOffer() throws Exception {
         singletonMarketplace.getInstance().removeProduct(productTableView.getSelectionModel().getSelectedItem());
+        productTableView.getSelectionModel().getSelectedItem().cancelOffer();
         refreshUserProducts();
     }
 

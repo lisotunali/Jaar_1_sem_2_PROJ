@@ -35,6 +35,12 @@ public class Person {
     }
 
     public void addAnimal(String type, Integer amount) {
+        for (Animal animalsInLivestock : hasLivestock) {
+            if (animalsInLivestock.getType() == type) {
+                animalsInLivestock.addAmount(amount);
+                return;
+            }
+        }
         hasLivestock.add(new Animal(type, amount));
     }
 

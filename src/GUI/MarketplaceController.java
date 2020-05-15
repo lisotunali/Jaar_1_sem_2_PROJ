@@ -69,16 +69,20 @@ public class MarketplaceController {
 
         //If bid is valid
         if (!(singletonPerson.getInstance().equals(productTable.getSelectionModel().getSelectedItem().getPerson())) && bidInput > productTable.getSelectionModel().getSelectedItem().getPrice()) {
-            productTable.getSelectionModel().getSelectedItem().setPrice(bidInput);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to place this bid?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                productTable.getSelectionModel().getSelectedItem().setPrice(bidInput);
 
-            productTable.getSelectionModel().getSelectedItem().addBid(new Bid(bidInput, singletonPerson.getInstance(), productTable.getSelectionModel().getSelectedItem().getPerson(), singletonPerson.getInstance().getName(), productTable.getSelectionModel().getSelectedItem().getAdvertTitle()));
-            System.out.println("Price: €" + bidInput + " " + "Bid from: " + singletonPerson.getInstance().getName());
-            System.out.println(productTable.getSelectionModel().getSelectedItem().getBids());
+                productTable.getSelectionModel().getSelectedItem().addBid(new Bid(bidInput, singletonPerson.getInstance(), productTable.getSelectionModel().getSelectedItem().getPerson(), singletonPerson.getInstance().getName(), productTable.getSelectionModel().getSelectedItem().getAdvertTitle()));
+                System.out.println("Price: €" + bidInput + " " + "Bid from: " + singletonPerson.getInstance().getName());
+                System.out.println(productTable.getSelectionModel().getSelectedItem().getBids());
 
-            System.out.println("Bid placed");
-            productTable.refresh();
-            refreshBids();
-            AlertClass.showAlert(Alert.AlertType.CONFIRMATION, "Bid placed");
+                System.out.println("Bid placed");
+                productTable.refresh();
+                refreshBids();
+                AlertClass.showAlert(Alert.AlertType.CONFIRMATION, "Bid placed");
+            }
         }
     }
 

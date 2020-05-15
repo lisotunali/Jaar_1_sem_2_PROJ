@@ -43,6 +43,10 @@ public class Product {
         hasBid.add(bid);
     }
 
+    public void getBid(Integer id) {
+        hasBid.get(id);
+    }
+
     public void setID(Integer ID) {
         this.ID = ID;
     }
@@ -87,7 +91,15 @@ public class Product {
         this.amount = amount;
     }
 
-    public Integer getID(){
+    public Integer getID() {
         return this.ID;
+    }
+
+    public void acceptBid(Person buyer) throws Exception {
+        throw new Exception("Work in Progress");
+    }
+
+    public void cancelOffer() throws Exception {
+        throw new Exception("Work in Progress");
     }
 }

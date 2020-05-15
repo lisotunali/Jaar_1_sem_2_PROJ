@@ -4,9 +4,7 @@ import BACKEND.Bid;
 import BACKEND.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
@@ -45,7 +43,7 @@ public class ViewProductController {
     }
 
     public void initData(Product selectedProduct) {
-
+        currentProduct = selectedProduct;
         System.out.println(selectedProduct);
         ObservableList<Product> thisProduct = FXCollections.observableArrayList(selectedProduct);
         thisTitleColumn.setCellValueFactory(new PropertyValueFactory<>("advertTitle"));
@@ -64,13 +62,15 @@ public class ViewProductController {
         //sellTable.refresh();
     }
 
-    /*
-    public void acceptBid(){
-        if (thisProductTableView.getSelectionModel().getSelectedItem().)
-        sellTable.getSelectionModel().getSelectedItem().
-        if (singletonPerson.getInstance().getAnimal().getAmount() - thisProductTableView.getSelectionModel().getSelectedItem().getAmount()){
 
+    public void acceptBid() throws Exception {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to accept this bid?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.YES) {
+            currentProduct.acceptBid(sellTable.getSelectionModel().getSelectedItem().getBuyer());
+            singletonMarketplace.getInstance().removeProduct(currentProduct);
+            AlertClass.showAlert(Alert.AlertType.INFORMATION, "Product sold.");
+            SceneController.switchTo("sell");
         }
     }
-     */
 }

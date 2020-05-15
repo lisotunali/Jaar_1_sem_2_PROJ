@@ -78,8 +78,8 @@
                                                 vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <Button fx:id="acceptButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0"
-                                        text="Accept bid" GridPane.rowIndex="1"/>
+                                <Button fx:id="acceptButton" mnemonicParsing="false" onAction="#acceptBid"
+                                        prefHeight="40.0" prefWidth="400.0" text="Accept bid" GridPane.rowIndex="1"/>
                             </children>
                         </GridPane>
                     </children>
