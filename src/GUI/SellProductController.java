@@ -13,11 +13,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SellProductController {
     public TableView<Animal> livestockTable;
     public TableColumn<Animal, String> animalColumn;
     public TableColumn<Animal, Integer> amountColumn;
+
+    public TableView<Product> productTableView;
+    public TableColumn<Product, String> productTitle;
+    public TableColumn<Product, Integer> initialPriceColumn;
+    public TableColumn<Product, Integer> currentPriceColumn;
 
     public TableView<Bid> sellTable;
     public TableColumn<Product, String> titleColumn;
@@ -63,23 +69,21 @@ public class SellProductController {
         }
     }
 
-    public void refreshBids() {
-        /*
-        ArrayList<Bid> tempBids = new ArrayList<>();
+    public void productsFromCurrentUser() {
+        ArrayList<Product> tempProducts = new ArrayList<>();
 
-        for (Product product : singletonMarketplace.getInstance().getAllProducts()){
-            if (product.getPerson() == singletonPerson.getInstance()){
-
+        for (Product product : singletonMarketplace.getInstance().getAllProducts()) {
+            if (product.getPerson() == singletonPerson.getInstance()) {
+                tempProducts.add(product);
             }
         }
-            ObservableList<Bid> bids = FXCollections.observableArrayList(singletonMarketplace.getInstance().getAllProducts());
-            buyerColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-            bidColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-            sellTable.setItems(bids);
-            sellTable.getSortOrder().add(bidColumn);
-            sellTable.refresh();
-         */
-
+        ObservableList<Product> products = FXCollections.observableArrayList(tempProducts);
+        productTitle.setCellValueFactory(new PropertyValueFactory<>("name"));
+        initialPriceColumn.setCellValueFactory(new PropertyValueFactory<>("intialPrice"));
+        currentPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        productTableView.setItems(products);
+        productTableView.getSortOrder().add(currentPriceColumn);
+        productTableView.refresh();
     }
 
     public void prevScreen() throws IOException {
