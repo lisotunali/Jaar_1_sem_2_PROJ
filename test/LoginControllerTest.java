@@ -48,8 +48,8 @@ public class LoginControllerTest extends TestFXTestBase {
     public void loginButtonClickedTest() throws TimeoutException {
         String nameInputID = "#nameInput";
         String passwordInputID = "#passwordInput";
-        String name = "1";
-        String password = "1";
+        String name = "test";
+        String password = "test123";
         clickOn(nameInputID);
         write(name);
         clickOn(passwordInputID);
