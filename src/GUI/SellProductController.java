@@ -6,14 +6,19 @@ import BACKEND.Bid;
 import BACKEND.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static GUI.SceneController.getPrimaryStage;
 
 public class SellProductController {
     public TableView<Animal> livestockTable;
@@ -99,15 +104,27 @@ public class SellProductController {
         productTableView.refresh();
     }
 
+    public void removeOffer() {
+        singletonMarketplace.getInstance().removeProduct(productTableView.getSelectionModel().getSelectedItem());
+        refreshUserProducts();
+    }
+
     public void viewOffer() throws IOException {
         if (productTableView.getSelectionModel().getSelectedItem() == null) {
             AlertClass.showAlert(Alert.AlertType.ERROR, "Please select an offer.");
         }
 
         if (productTableView.getSelectionModel().getSelectedItem() != null) {
+            Product selectedProduct = productTableView.getSelectionModel().getSelectedItem();
             System.out.println("Attempting...");
-            SceneController.switchTo("sellproduct");
-
+            //SceneController.switchTo("sellproduct");
+            Stage primaryStage = getPrimaryStage();
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("sellproduct.fxml"));
+            Parent parent = loader.load();
+            ViewProductController controller = loader.getController();
+            controller.initData(selectedProduct);
+            primaryStage.getScene().setRoot(parent);
+            /*
             ObservableList<Product> selectedProduct = FXCollections.observableArrayList(productTableView.getSelectionModel().getSelectedItem());
             thisTitleColumn.setCellValueFactory(new PropertyValueFactory<>("advertTitle"));
             thisDescColumn.setCellValueFactory(new PropertyValueFactory<>("advertDescription"));
@@ -123,6 +140,7 @@ public class SellProductController {
             sellTable.setItems(bids);
             sellTable.getSortOrder().add(bidColumn);
             sellTable.refresh();
+             */
         }
     }
 

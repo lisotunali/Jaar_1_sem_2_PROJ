@@ -85,8 +85,9 @@
                             <children>
                                 <Button fx:id="viewButton" mnemonicParsing="false" onAction="#viewOffer"
                                         prefHeight="40.0" prefWidth="400.0" text="View offer" GridPane.rowIndex="1"/>
-                                <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0"
-                                        text="Cancel offer" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#removeOffer"
+                                        prefHeight="40.0" prefWidth="400.0" text="Cancel offer" GridPane.columnIndex="1"
+                                        GridPane.rowIndex="1"/>
                             </children>
                         </GridPane>
                     </children>

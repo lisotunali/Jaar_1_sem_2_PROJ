@@ -88,7 +88,7 @@ public class MarketplaceController {
         if (selectedProduct != null) {
 
             ObservableList<Bid> bids = FXCollections.observableArrayList(selectedProduct.getBids());
-            buyerColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+            buyerColumn.setCellValueFactory(new PropertyValueFactory<>("buyerName"));
             bidColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
             bidTable.setItems(bids);
             bidTable.getSortOrder().add(bidColumn);

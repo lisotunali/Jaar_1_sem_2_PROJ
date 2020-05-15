@@ -31,21 +31,32 @@ public class ViewProductController {
     public TableColumn<Bid, Integer> bidColumn;
 
     public Button backButton;
-
     public Button acceptButton;
+
+    private Product currentProduct;
 
 
     public void initialize() {
-        ObservableList<Product> selectedProduct = FXCollections.observableArrayList(productTableView.getSelectionModel().getSelectedItem());
+
+    }
+
+    public void prevScreen() throws IOException {
+        SceneController.switchTo("sell");
+    }
+
+    public void initData(Product selectedProduct) {
+
+        System.out.println(selectedProduct);
+        ObservableList<Product> thisProduct = FXCollections.observableArrayList(selectedProduct);
         thisTitleColumn.setCellValueFactory(new PropertyValueFactory<>("advertTitle"));
         thisDescColumn.setCellValueFactory(new PropertyValueFactory<>("advertDescription"));
         thisInitialPriceColumn.setCellValueFactory(new PropertyValueFactory<>("initialPrice"));
         thisAmountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        thisProductTableView.setItems(selectedProduct);
+        thisProductTableView.setItems(thisProduct);
         thisProductTableView.getSortOrder().add(thisTitleColumn);
         //thisProductTableView.refresh();
 
-        ObservableList<Bid> bids = FXCollections.observableArrayList(productTableView.getSelectionModel().getSelectedItem().getBids());
+        ObservableList<Bid> bids = FXCollections.observableArrayList(selectedProduct.getBids());
         buyerColumn.setCellValueFactory(new PropertyValueFactory<>("buyerName"));
         bidColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         sellTable.setItems(bids);
@@ -53,8 +64,13 @@ public class ViewProductController {
         //sellTable.refresh();
     }
 
+    /*
+    public void acceptBid(){
+        if (thisProductTableView.getSelectionModel().getSelectedItem().)
+        sellTable.getSelectionModel().getSelectedItem().
+        if (singletonPerson.getInstance().getAnimal().getAmount() - thisProductTableView.getSelectionModel().getSelectedItem().getAmount()){
 
-    public void prevScreen() throws IOException {
-        SceneController.switchTo("sell");
+        }
     }
+     */
 }
