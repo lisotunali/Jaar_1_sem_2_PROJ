@@ -16,6 +16,7 @@ public class profileControllerTest extends TestFXTestBase {
         fakeDatabase.getUserDatabase().add(testperson);
         singletonPerson.setPerson(testperson);
         SceneController.switchTo("profile");
+        sleep(100);
         String passwordID = "#passwordInput";
         String passwordConfirmID = "#passwordConfirmInput";
         String updateButtonID = "#loginButton";
@@ -36,6 +37,7 @@ public class profileControllerTest extends TestFXTestBase {
         fakeDatabase.getUserDatabase().add(testperson);
         singletonPerson.setPerson(testperson);
         SceneController.switchTo("profile");
+        sleep(100);
         String passwordID = "#passwordInput";
         String passwordConfirmID = "#passwordConfirmInput";
         String updateButtonID = "#loginButton";
