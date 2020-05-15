@@ -61,6 +61,7 @@ public class LivestockControllerTest extends TestFXTestBase {
         clickOn(tableViewID);
         clickOn("testanimal");
         clickOn(deleteButtonID);
+        clickOn("Yes");
         assertNull(singletonPerson.getInstance().getAnimal("testanimal"));
     }
 
