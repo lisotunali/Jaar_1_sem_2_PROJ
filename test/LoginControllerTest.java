@@ -39,8 +39,8 @@ public class LoginControllerTest extends TestFXTestBase {
         //verifyThat(nameInputID, hasText(name));
         PasswordField pwField = lookup("#passwordInput").query();
         TextField nameField = lookup("#nameInput").query();
-        assertEquals(pwField.getText(), password);
-        assertEquals(nameField.getText(), name);
+        assertEquals(pwField.getText(), password, "User input should be correctly reflected in password field.");
+        assertEquals(nameField.getText(), name, "User input should be correctly reflected in name field.");
     }
 
     @Test //Testing whether the system gives access to correct login credentials
@@ -55,7 +55,7 @@ public class LoginControllerTest extends TestFXTestBase {
         clickOn(passwordInputID);
         write(password);
         clickOn("#loginButton");
-        assertEquals(name, singletonPerson.getInstance().getName());
+        assertEquals(name, singletonPerson.getInstance().getName(), "User not logged in with correct credentials.");
 
     }
 
@@ -63,7 +63,7 @@ public class LoginControllerTest extends TestFXTestBase {
 
     public void sendToRegisterOnClick(){
         clickOn("#registerButton");
-        assertNotNull(lookup("#passwordConfirmInput").query());
+        assertNotNull(lookup("#passwordConfirmInput").query(), "User should be sent to register screen.");
     }
 
 }
