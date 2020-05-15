@@ -21,19 +21,24 @@ public class SellProductController {
     public TableColumn<Animal, Integer> amountColumn;
 
     public TableView<Product> productTableView;
-    public TableColumn<Product, String> productTitle;
+    public TableColumn<Product, String> productTitleColumn;
     public TableColumn<Product, Integer> initialPriceColumn;
     public TableColumn<Product, Integer> currentPriceColumn;
 
+    public TableView<Product> thisProductTableView;
+    public TableColumn<Product, String> thisTitleColumn;
+    public TableColumn<Product, String> thisDescColumn;
+    public TableColumn<Product, Integer> thisInitialPriceColumn;
+    public TableColumn<Product, Integer> thisAmountColumn;
+
     public TableView<Bid> sellTable;
-    public TableColumn<Product, String> titleColumn;
     public TableColumn<Bid, String> buyerColumn;
     public TableColumn<Bid, Integer> bidColumn;
 
     public Button backButton;
     public Button offerButton;
 
-    public Button acceptButton;
+    public Button viewButton;
     public Button cancelButton;
 
 
@@ -42,6 +47,8 @@ public class SellProductController {
         animalColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         livestockTable.setItems(livestock);
+
+        refreshUserProducts();
     }
 
     public void offerItem() {
@@ -63,27 +70,61 @@ public class SellProductController {
                 return;
             }
             if (tempTitle != null && tempDesc != null && tempAmount > 0 && tempPrice >= 0) {
-                System.out.println("Product added to marketplace.");
                 singletonMarketplace.getInstance().addProduct(new AnimalProduct(tempTitle, tempDesc, tempPrice, tempAmount, livestockTable.getSelectionModel().getSelectedItem(), singletonPerson.getInstance()));
+                System.out.println("Product added to marketplace.");
+                refreshUserProducts();
             }
         }
     }
 
-    public void productsFromCurrentUser() {
+    public void refreshUserProducts() {
         ArrayList<Product> tempProducts = new ArrayList<>();
 
         for (Product product : singletonMarketplace.getInstance().getAllProducts()) {
             if (product.getPerson() == singletonPerson.getInstance()) {
                 tempProducts.add(product);
+                System.out.println(product.getPerson() + " " + singletonPerson.getInstance());
             }
         }
+
+        System.out.println("ArrayList empty: " + tempProducts.isEmpty());
+
         ObservableList<Product> products = FXCollections.observableArrayList(tempProducts);
-        productTitle.setCellValueFactory(new PropertyValueFactory<>("name"));
-        initialPriceColumn.setCellValueFactory(new PropertyValueFactory<>("intialPrice"));
+        productTitleColumn.setCellValueFactory(new PropertyValueFactory<>("advertTitle"));
+        initialPriceColumn.setCellValueFactory(new PropertyValueFactory<>("initialPrice"));
         currentPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         productTableView.setItems(products);
         productTableView.getSortOrder().add(currentPriceColumn);
         productTableView.refresh();
+    }
+
+    public void getProductBids() {
+
+    }
+
+    public void viewOffer() throws IOException {
+        if (productTableView.getSelectionModel().getSelectedItem() == null) {
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Please select an offer.");
+        }
+
+        if (productTableView.getSelectionModel().getSelectedItem() != null) {
+            SceneController.switchTo("sellproduct");
+            ObservableList<Product> selectedProduct = FXCollections.observableArrayList(productTableView.getSelectionModel().getSelectedItem());
+            thisTitleColumn.setCellValueFactory(new PropertyValueFactory<>("advertTitle"));
+            thisDescColumn.setCellValueFactory(new PropertyValueFactory<>("advertDescription"));
+            thisInitialPriceColumn.setCellValueFactory(new PropertyValueFactory<>("initialPrice"));
+            thisAmountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+            thisProductTableView.setItems(selectedProduct);
+            thisProductTableView.getSortOrder().add(currentPriceColumn);
+            thisProductTableView.refresh();
+
+            ObservableList<Bid> bids = FXCollections.observableArrayList(productTableView.getSelectionModel().getSelectedItem().getBids());
+            buyerColumn.setCellValueFactory(new PropertyValueFactory<>("buyerName"));
+            bidColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+            sellTable.setItems(bids);
+            sellTable.getSortOrder().add(bidColumn);
+            sellTable.refresh();
+        }
     }
 
     public void prevScreen() throws IOException {

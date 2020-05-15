@@ -31,7 +31,9 @@ public class Main extends Application {
 
     public void setUpTestInstances() {
         Person testperson = new Person("test", "test123");
+        Person testperson1 = new Person("Rishwan", "test123");
         fakeDatabase.getUserDatabase().add(testperson);
+        fakeDatabase.getUserDatabase().add(testperson1);
         Contact testContact1 = new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool");
         testperson.addContact(testContact1);
         testperson.addAnimal("Goat", 500);

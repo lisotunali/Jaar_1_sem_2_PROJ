@@ -4,14 +4,14 @@ public class Bid {
     private Integer price;
     private Person buyer;
     private Person seller;
-    private String name;
+    private String buyerName;
     private String productName;
 
-    public Bid(Integer price, Person buyer, Person seller, String name, String productName) {
+    public Bid(Integer price, Person buyer, Person seller, String buyerName, String productName) {
         this.price = price;
         this.buyer = buyer;
         this.seller = seller;
-        this.name = name;
+        this.buyerName = buyerName;
         this.productName = productName;
     }
 
@@ -27,8 +27,8 @@ public class Bid {
         return seller;
     }
 
-    public String getName() {
-        return name;
+    public String getBuyerName() {
+        return buyerName;
     }
 
     public String getProductName() {

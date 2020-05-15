@@ -62,11 +62,12 @@
                                         GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                             </children>
                         </GridPane>
-                        <TableView fx:id="sellTable" prefWidth="343.0" GridPane.columnIndex="2">
+                        <TableView fx:id="productTableView" prefWidth="343.0" GridPane.columnIndex="2">
                             <columns>
-                                <TableColumn fx:id="titleColumn" prefWidth="100.0" text="Product"/>
-                                <TableColumn fx:id="buyerColumn" prefWidth="125.0" text="Highest bidder"/>
-                                <TableColumn fx:id="bidColumn" prefWidth="125.0" sortType="DESCENDING" text="Bid (€)"/>
+                                <TableColumn fx:id="productTitleColumn" prefWidth="100.0" text="Product"/>
+                                <TableColumn fx:id="initialPriceColumn" prefWidth="125.0" text="Initial Price"/>
+                                <TableColumn fx:id="currentPriceColumn" prefWidth="125.0" sortType="DESCENDING"
+                                             text="Highest bid"/>
                             </columns>
                         </TableView>
                         <GridPane alignment="BOTTOM_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -82,8 +83,8 @@
                                                 vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <Button fx:id="acceptButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0"
-                                        text="View offer" GridPane.rowIndex="1"/>
+                                <Button fx:id="viewButton" mnemonicParsing="false" onAction="#viewOffer"
+                                        prefHeight="40.0" prefWidth="400.0" text="View offer" GridPane.rowIndex="1"/>
                                 <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="400.0"
                                         text="Cancel offer" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                             </children>
