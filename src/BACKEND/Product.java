@@ -95,11 +95,11 @@ public class Product {
         return this.ID;
     }
 
-    public void acceptBid(Person buyer) throws Exception {
-        throw new Exception("Work in Progress");
+    public void acceptBid(Person buyer) {
+
     }
 
-    public void cancelOffer() throws Exception {
-        throw new Exception("Work in Progress");
+    public void cancelOffer() {
+
     }
 }
