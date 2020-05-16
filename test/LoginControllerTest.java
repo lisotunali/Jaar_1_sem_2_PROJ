@@ -4,6 +4,8 @@ import javafx.scene.control.TextField;
 
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeoutException;
@@ -59,8 +61,8 @@ public class LoginControllerTest extends TestFXTestBase {
     }
 
     @Test // Testing whether the system denies access to non-existing login credentials.
-
     public void wrongLoginTest(){
+        singletonPerson.setPerson(null); //reset singletonPerson
         String nameInputID = "#nameInput";
         String passwordInputID = "#passwordInput";
         String name = "hacker";
@@ -73,7 +75,7 @@ public class LoginControllerTest extends TestFXTestBase {
         //verifyThat(nameInputID, hasText(name));
         PasswordField pwField = lookup("#passwordInput").query();
         TextField nameField = lookup("#nameInput").query();
-        assertNotNull(lookup("Invalid credentials").query(), "User should receive 'invalid credentials' alert.");
+        Assertions.assertFalse(lookup("Invalid credentials").tryQuery().isEmpty(), "User should receive 'invalid credentials' alert.");
         assertNull(singletonPerson.getInstance(), "User should not be logged in. singletonPerson should not be instantiated.");
     }
 
@@ -81,7 +83,7 @@ public class LoginControllerTest extends TestFXTestBase {
 
     public void sendToRegisterOnClick(){
         clickOn("#registerButton");
-        assertNotNull(lookup("#passwordConfirmInput").query(), "User should be sent to register screen.");
+        assertFalse(lookup("#passwordConfirmInput").tryQuery().isEmpty(), "User should be sent to register screen.");
     }
 
 }

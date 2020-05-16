@@ -63,7 +63,7 @@ public class RegisterControllerTest  extends TestFXTestBase {
         clickOn(passwordConfirmFieldID);
         write(password);
         clickOn(registerButtonID);
-        assertNotNull(lookup("Username already taken").query(), "Message 'Username already taken' should appear.");
+        assertFalse(lookup("Username already taken").tryQuery().isEmpty(), "Message 'Username already taken' should appear.");
     }
 
     @Test //Testing whether the system doesnt allow registering with a typo in the password confirm field
@@ -85,7 +85,7 @@ public class RegisterControllerTest  extends TestFXTestBase {
         write(passwordTypo);
         clickOn(registerButtonID);
 
-        assertNotNull(lookup("Password is not equal").query(), "Message 'Password is not equal' should appear.");
+        assertFalse(lookup("Password is not equal").tryQuery().isEmpty(), "Message 'Password is not equal' should appear.");
     }
 
     @Test
@@ -116,8 +116,8 @@ public class RegisterControllerTest  extends TestFXTestBase {
 
         assertTrue(flag, "User credentials not correctly added to database.");
         assertEquals(name, singletonPerson.getInstance().getName(), "Username should be registered as" + name);
-        assertNotNull(lookup("Main menu").query(), "Main menu should appear.");
-        assertNotNull(lookup("Logout").query(), "Main menu elements should appear.");
+        assertFalse(lookup("Main menu").tryQuery().isEmpty(), "Main menu should appear.");
+        assertFalse(lookup("Logout").tryQuery().isEmpty(), "Main menu elements should appear.");
 
     }
 

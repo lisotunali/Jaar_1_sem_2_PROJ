@@ -5,10 +5,14 @@ import GUI.SceneController;
 import GUI.fakeDatabase;
 import GUI.singletonMarketplace;
 import GUI.singletonPerson;
+import javafx.scene.Scene;
 import javafx.scene.control.TableView;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -34,16 +38,28 @@ class MarketplaceControllerTest extends TestFXTestBase {
     public TableColumn<Bid, Integer> bidColumn;
 
  */
-    @Test
-    void bidButtonAction() throws IOException {
+    @Test //Test whether products from marketplace are correctly listed in the product table
+    void displayProductsTest() throws IOException {
+        getToCorrectScene();
+        clickOn("#productTable");
+        ArrayList<Product> products = singletonMarketplace.getInstance().getAllProducts();
+        for(int i = 0; i < products.size() && i < 5; i++){
+            String product = products.get(i).getAdvertTitle();
+            Assertions.assertFalse(lookup(product).tryQuery().isEmpty(), "Products from marketplace should be correctly displayed in the table.");
+        }
+
+    }
+
+    @Test //Test that bids cant be placed without selecting a bid
+    void bidButtonActionBidNotSelected() throws IOException {
         getToCorrectScene();
         Integer arrayListSize = animalTestProduct.getBids().size();
-        TableView<Product> tableView = lookup("#productTable").query();
         clickOn("#bidButton");
+        Assertions.assertFalse(lookup("Please select a product before trying to bid.").tryQuery().isEmpty(), "Message 'Please select a product before trying to bid.' should appear");
         clickOn("OK");
-        assertEquals(arrayListSize, animalTestProduct.getBids().size());
-        sleep(2000);
+        assertEquals(arrayListSize, animalTestProduct.getBids().size(), "No bids should be added to the animalTestProduct.");
     }
+
 
     void getToCorrectScene() throws IOException {
         testperson = new Person("testperson", "test");
