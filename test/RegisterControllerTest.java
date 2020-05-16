@@ -48,7 +48,7 @@ public class RegisterControllerTest  extends TestFXTestBase {
     }
 
     @Test //Testing whether the system doesnt allow registering with an already existing username
-    public void registerExistingUsername() throws IOException {
+    public void registerExistingUsernameAlert() throws IOException {
         SceneController.switchTo("register");
         String nameFieldID = "#nameInput";
         String passwordFieldID = "#passwordInput";
@@ -68,7 +68,7 @@ public class RegisterControllerTest  extends TestFXTestBase {
 
     @Test //Testing whether the system doesnt allow registering with a typo in the password confirm field
 
-    public void registerPasswordTypo() throws IOException {
+    public void registerPasswordTypoAlert() throws IOException {
         SceneController.switchTo("register");
         String nameFieldID = "#nameInput";
         String passwordFieldID = "#passwordInput";

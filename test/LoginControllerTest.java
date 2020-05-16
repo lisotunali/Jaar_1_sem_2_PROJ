@@ -35,7 +35,6 @@ public class LoginControllerTest extends TestFXTestBase {
         write(name);
         clickOn(passwordInputID);
         write(password);
-        clickOn("#loginButton");
         //verifyThat(nameInputID, hasText(name));
         PasswordField pwField = lookup("#passwordInput").query();
         TextField nameField = lookup("#nameInput").query();
@@ -45,7 +44,7 @@ public class LoginControllerTest extends TestFXTestBase {
 
     @Test //Testing whether the system gives access to correct login credentials
 
-    public void loginButtonClickedTest() throws TimeoutException {
+    public void loginButtonClickedSuccesfulTest() throws TimeoutException {
         String nameInputID = "#nameInput";
         String passwordInputID = "#passwordInput";
         String name = "test";
@@ -57,6 +56,25 @@ public class LoginControllerTest extends TestFXTestBase {
         clickOn("#loginButton");
         assertEquals(name, singletonPerson.getInstance().getName(), "User not logged in with correct credentials.");
 
+    }
+
+    @Test // Testing whether the system denies access to non-existing login credentials.
+
+    public void wrongLoginTest(){
+        String nameInputID = "#nameInput";
+        String passwordInputID = "#passwordInput";
+        String name = "hacker";
+        String password = "imin";
+        clickOn(nameInputID);
+        write(name);
+        clickOn(passwordInputID);
+        write(password);
+        clickOn("#loginButton");
+        //verifyThat(nameInputID, hasText(name));
+        PasswordField pwField = lookup("#passwordInput").query();
+        TextField nameField = lookup("#nameInput").query();
+        assertNotNull(lookup("Invalid credentials").query(), "User should receive 'invalid credentials' alert.");
+        assertNull(singletonPerson.getInstance(), "User should not be logged in. singletonPerson should not be instantiated.");
     }
 
     @Test //Testing whether the user is sent to the register scene on clicking the register button
