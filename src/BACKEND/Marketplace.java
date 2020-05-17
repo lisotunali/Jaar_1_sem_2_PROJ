@@ -19,6 +19,15 @@ public class Marketplace {
         return null;
     }
 
+    public Product getProductByAdvertTitle(String advertTitle) {
+        for (Product products : hasProducts) {
+            if (products.getAdvertTitle().equals(advertTitle)) {
+                return products;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Product> getAllProducts() {
         return hasProducts;
     }
