@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class MarketplaceControllerTest extends TestFXTestBase {
 
@@ -57,19 +58,19 @@ class MarketplaceControllerTest extends TestFXTestBase {
         Person testBuyer = new Person("testBuyer", "easypassword");
         Bid testBid = new Bid(98, testBuyer, singletonPerson.getInstance(), "testBuyer", "big papa");
         Bid testBid2 = new Bid(23, testBuyer, singletonPerson.getInstance(), "testBuyer", "big papa");
-        //Product product = singletonMarketplace.getInstance().getAllProducts().get(0);
-        for(Product product : singletonMarketplace.getInstance().getAllProducts()) {
-            product.addBid(testBid);
-            product.addBid(testBid2);
-            clickOn("#productTable");
-            clickOn(product.getAdvertTitle());
-            for (Bid bid : product.getBids()) {
-                String buyer = bid.getBuyerName();
-                Integer price = bid.getPrice();
-                Assertions.assertFalse(lookup(buyer).tryQuery().isEmpty(), "Bids on product should be correctly displayed in the table.");
-                Assertions.assertFalse(lookup(Integer.toString(price)).tryQuery().isEmpty(), "Bids on product should be correctly displayed in the table.");
-            }
+        ArrayList<Product> products = singletonMarketplace.getInstance().getAllProducts();
+        Product product = singletonMarketplace.getInstance().getAllProducts().get(2);
+        product.addBid(testBid);
+        product.addBid(testBid2);
+        clickOn("#productTable");
+        clickOn(product.getAdvertTitle());
+        for (Bid bid : product.getBids()) {
+            String buyer = bid.getBuyerName();
+            Integer price = bid.getPrice();
+            Assertions.assertFalse(lookup(buyer).tryQuery().isEmpty(), "Bids on product should be correctly displayed in the table.");
+            Assertions.assertFalse(lookup(Integer.toString(price)).tryQuery().isEmpty(), "Bids on product should be correctly displayed in the table.");
         }
+
 
     }
 
@@ -81,6 +82,14 @@ class MarketplaceControllerTest extends TestFXTestBase {
         Assertions.assertFalse(lookup("Please select a product before trying to bid.").tryQuery().isEmpty(), "Message 'Please select a product before trying to bid.' should appear");
         clickOn("OK");
         assertEquals(arrayListSize, animalTestProduct.getBids().size(), "No bids should be added to the animalTestProduct.");
+    }
+
+    @Test //Test that user is sent to selling screen on clicking sell
+    void sendToSellPageTest() throws IOException {
+        getToCorrectScene();
+        clickOn("#sellPageButton");
+        assertFalse(lookup("Sell products").tryQuery().isEmpty(), "User should be sent to sell page on clicking sell.");
+        assertFalse(lookup("#offerButton").tryQuery().isEmpty(), "User should be sent to sell page on clicking sell.");
     }
 
 
