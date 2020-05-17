@@ -6,8 +6,6 @@ public class Marketplace {
 
     private ArrayList<Product> hasProducts = new ArrayList<>();
 
-    private Product specifiedProduct;
-
     public void addProduct(Product product) {
         hasProducts.add(product);
     }
