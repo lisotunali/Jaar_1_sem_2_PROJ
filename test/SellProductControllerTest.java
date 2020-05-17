@@ -118,9 +118,7 @@ public TableView<Animal> livestockTable;
         SceneController.switchTo("sell");
         clickOn("#productTableView");
         clickOn("testtitle");
-        sleep(100);
         clickOn("#viewButton");
-        sleep(100);
         assertFalse(lookup("Your offers").tryQuery().isEmpty());
 
     }
