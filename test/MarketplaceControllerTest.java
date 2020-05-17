@@ -47,7 +47,7 @@ class MarketplaceControllerTest extends TestFXTestBase {
  */
     @Test //Test whether products from marketplace are correctly listed in the product table
     void displayProductsTest() throws IOException {
-        addTestAnimals();
+        SceneController.switchTo("marketplace");
         clickOn("#productTable");
         ArrayList<Product> products = singletonMarketplace.getInstance().getAllProducts();
         for(int i = 0; i < products.size() && i < 5; i++){
@@ -109,10 +109,9 @@ class MarketplaceControllerTest extends TestFXTestBase {
     void sendToSellPageTest() throws IOException {
         SceneController.switchTo("marketplace");
         singletonPerson.setPerson(new Person("seller", "password"));
-        clickOn("Sell");
-        //assertFalse(lookup("Sell products").tryQuery().isEmpty(), "User should be sent to sell page on clicking sell.");
-        //assertFalse(lookup("#offerButton").tryQuery().isEmpty(), "User should be sent to sell page on clicking sell.");
-        assertFalse(false);
+        clickOn("#sellPageButton");
+        assertFalse(lookup("Sell products").tryQuery().isEmpty(), "User should be sent to sell page on clicking sell.");
+        assertFalse(lookup("#offerButton").tryQuery().isEmpty(), "User should be sent to sell page on clicking sell.");
     }
 
 
