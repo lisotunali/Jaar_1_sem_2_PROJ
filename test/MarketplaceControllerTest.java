@@ -81,7 +81,6 @@ class MarketplaceControllerTest extends TestFXTestBase {
         product.addBid(testBid2);
         clickOn("#productTable");
         clickOn(product.getAdvertTitle());
-        sleep(5000);
         for (Bid bid : product.getBids()) {
             String buyer = bid.getBuyerName();
             Integer price = bid.getPrice();
