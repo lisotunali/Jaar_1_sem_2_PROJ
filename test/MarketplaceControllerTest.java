@@ -1,4 +1,5 @@
 import BACKEND.AnimalProduct;
+import BACKEND.Bid;
 import BACKEND.Person;
 import BACKEND.Product;
 import GUI.SceneController;
@@ -50,6 +51,28 @@ class MarketplaceControllerTest extends TestFXTestBase {
 
     }
 
+    @Test //Test whether bids on product are correctly listed in the product table
+    void refreshBidsTest() throws IOException {
+        getToCorrectScene();
+        Person testBuyer = new Person("testBuyer", "easypassword");
+        Bid testBid = new Bid(98, testBuyer, singletonPerson.getInstance(), "testBuyer", "big papa");
+        Bid testBid2 = new Bid(23, testBuyer, singletonPerson.getInstance(), "testBuyer", "big papa");
+        //Product product = singletonMarketplace.getInstance().getAllProducts().get(0);
+        for(Product product : singletonMarketplace.getInstance().getAllProducts()) {
+            product.addBid(testBid);
+            product.addBid(testBid2);
+            clickOn("#productTable");
+            clickOn(product.getAdvertTitle());
+            for (Bid bid : product.getBids()) {
+                String buyer = bid.getBuyerName();
+                Integer price = bid.getPrice();
+                Assertions.assertFalse(lookup(buyer).tryQuery().isEmpty(), "Bids on product should be correctly displayed in the table.");
+                Assertions.assertFalse(lookup(Integer.toString(price)).tryQuery().isEmpty(), "Bids on product should be correctly displayed in the table.");
+            }
+        }
+
+    }
+
     @Test //Test that bids cant be placed without selecting a bid
     void bidButtonActionBidNotSelected() throws IOException {
         getToCorrectScene();
@@ -66,8 +89,8 @@ class MarketplaceControllerTest extends TestFXTestBase {
         fakeDatabase.getUserDatabase().add(testperson);
         testperson.addAnimal("testanimal1", 100);
         singletonPerson.setPerson(testperson);
-        animalTestProduct = new AnimalProduct("test", "testerino", 100, 100, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
-        animalTestProduct2 = new AnimalProduct("test2", "testeroni", 50, 200, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
+        animalTestProduct = new AnimalProduct("testKoe", "testerino", 100, 100, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
+        animalTestProduct2 = new AnimalProduct("testGeit", "testeroni", 50, 200, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
         singletonMarketplace.getInstance().addProduct(animalTestProduct);
         singletonMarketplace.getInstance().addProduct(animalTestProduct2);
         SceneController.switchTo("marketplace");
