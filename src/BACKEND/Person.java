@@ -9,11 +9,13 @@ public class Person {
     private ArrayList<Contact> addressBook = new ArrayList<>();
     private ArrayList<Animal> hasLivestock = new ArrayList<>();
     private Long personID;
+    private String personalData;
 
     public Person(String name, String password) {
         this.name = name;
         this.password = password;
         this.personID = uniquePersonID++;
+        this.personalData = "";
     }
 
     public String getName() {
@@ -32,16 +34,33 @@ public class Person {
         this.password = password;
     }
 
-    public void addAnimal(Animal animal) {
+    public void addAnimal(String type, Integer amount) {
+        for (Animal animalsInLivestock : hasLivestock) {
+            if (animalsInLivestock.getType() == type) {
+                animalsInLivestock.addAmount(amount);
+                return;
+            }
+        }
+        hasLivestock.add(new Animal(type, amount));
+    }
+
+    public void removeAnimal(String type) {
+        Animal toBeRemoved = null;
+        for (Animal animal : hasLivestock) {
+            if (type.equals(animal.getType())) {
+                toBeRemoved = animal;
+            }
+        }
+        hasLivestock.remove(toBeRemoved);
     }
 
     public Long getPersonID() {
         return personID;
     }
 
-    public Animal getAnimal(LivestockType type) {
+    public Animal getAnimal(String type) {
         for (Animal animal : hasLivestock) {
-            if (animal.getType() == type)
+            if (animal.getType().equals(type))
                 return animal;
         }
 
@@ -63,4 +82,23 @@ public class Person {
     public void removeContact(Contact contact) {
         addressBook.remove(contact);
     }
+
+    public Contact getContact(String name){
+        Contact toBeReturned = null;
+        for ( Contact contact: addressBook) {
+            if (contact.getName().equals(name)){
+               toBeReturned = contact;
+            }
+        }
+        return toBeReturned;
+    }
+
+    public String getPersonalData() {
+        return personalData;
+    }
+
+    public void setPersonalData(String text) {
+        this.personalData = text;
+    }
+
 }

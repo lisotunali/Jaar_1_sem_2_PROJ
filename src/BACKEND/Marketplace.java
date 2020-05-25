@@ -6,8 +6,6 @@ public class Marketplace {
 
     private ArrayList<Product> hasProducts = new ArrayList<>();
 
-    private Product specifiedProduct;
-
     public void addProduct(Product product) {
         hasProducts.add(product);
     }
@@ -15,6 +13,15 @@ public class Marketplace {
     public Product getProduct(Integer id) {
         for (Product products : hasProducts) {
             if (products.getID().equals(id)) {
+                return products;
+            }
+        }
+        return null;
+    }
+
+    public Product getProductByAdvertTitle(String advertTitle) {
+        for (Product products : hasProducts) {
+            if (products.getAdvertTitle().equals(advertTitle)) {
                 return products;
             }
         }

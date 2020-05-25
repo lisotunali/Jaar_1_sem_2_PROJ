@@ -8,16 +8,18 @@ public class Product {
     private String advertTitle;
     private String advertDescription;
     private Integer price;
+    private Integer initialPrice;
     private Integer amount;
-    private ArrayList<Bid> hasBid;
+    private ArrayList<Bid> hasBid = new ArrayList<>();
     private Integer ID;
     private Person person;
     private static Integer uniqueID = 0;
 
-    public Product(Integer ID, String advertTitle, String advertDescription, Integer price, Integer amount, Person person) {
+    public Product(String advertTitle, String advertDescription, Integer price, Integer amount, Person person) {
         this.advertTitle = advertTitle;
         this.advertDescription = advertDescription;
         this.price = price;
+        this.initialPrice = price;
         this.amount = amount;
         this.person = person;
         this.ID = uniqueID++;
@@ -26,6 +28,8 @@ public class Product {
     public Person getPerson() {
         return person;
     }
+
+    public String getPersonName() { return this.person.getName(); }
 
     public void setPerson(Person person) {
         this.person = person;
@@ -37,6 +41,10 @@ public class Product {
 
     public void addBid(Bid bid) {
         hasBid.add(bid);
+    }
+
+    public void getBid(Integer id) {
+        hasBid.get(id);
     }
 
     public void setID(Integer ID) {
@@ -67,6 +75,10 @@ public class Product {
         return price;
     }
 
+    public Integer getInitialPrice() {
+        return initialPrice;
+    }
+
     public void setPrice(Integer price) {
         this.price = price;
     }
@@ -79,7 +91,15 @@ public class Product {
         this.amount = amount;
     }
 
-    public Integer getID(){
+    public Integer getID() {
         return this.ID;
+    }
+
+    public void acceptBid(Person buyer) {
+
+    }
+
+    public void cancelOffer() {
+
     }
 }

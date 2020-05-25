@@ -2,9 +2,9 @@ package BACKEND;
 
 public class Animal {
     private Integer amountInStock;
-    private LivestockType type;
+    private String type;
 
-    public Animal (LivestockType type, Integer amountInStock){
+    public Animal (String type, Integer amountInStock){
         this.type = type ;
         this.amountInStock = amountInStock;
     }
@@ -13,13 +13,21 @@ public class Animal {
         return amountInStock;
     }
 
-    public LivestockType getType() {
+    public String getType() {
         return type;
     }
 
+    public void addAmount(Integer amount){
+        amountInStock += amount;
+    }
+    public void removeAmount(Integer amount){
+        amountInStock -= amount;
+    }
     public void setAmount(Integer amount){
         amountInStock = amount;
     }
 
+    public String toString(){
+        return type+","+ amountInStock;
+    }
 }
-

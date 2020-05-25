@@ -2,8 +2,8 @@ package GUI;
 
 import BACKEND.Person;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -12,30 +12,36 @@ public class profileController {
     public TextField nameInput;
     public PasswordField passwordInput;
     public PasswordField passwordConfirmInput;
-    public Label errorLabel;
+    public TextArea personalData;
 
     // Initialize with current user data
     public void initialize() {
         Person current = singletonPerson.getInstance();
         nameInput.setText(current.getName());
-        passwordInput.setText(current.getPassword());
+        personalData.setText(current.getPersonalData());
     }
 
     // Updates the user in the database with the new values
     public void onUpdateClicked() {
+        Person currentPerson = singletonPerson.getInstance();
         String password = passwordInput.getText();
+        String passwordConfirm = passwordConfirmInput.getText();
 
-        if (password.equals(passwordConfirmInput.getText())) {
-            Person currentPerson = singletonPerson.getInstance();
-            currentPerson.setPassword(password);
-            fakeDatabase.updatePerson(currentPerson);
-            Main.showAlert(Alert.AlertType.INFORMATION, "Profile has been updated");
-        } else {
-            Main.showAlert(Alert.AlertType.ERROR, "Error updating profile, password is not the same");
+        // If the password confirm input is set check if the passwords are equal
+        if ((!password.isEmpty() || !passwordConfirm.isEmpty()) && !password.equals(passwordConfirm)) {
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Error updating profile, password is not the same");
+            return;
         }
+
+        // Just check if they want to update their password
+        if (!password.isEmpty()) currentPerson.setPassword(password);
+
+        currentPerson.setPersonalData(personalData.getText());
+        fakeDatabase.updatePerson(currentPerson);
+        AlertClass.showAlert(Alert.AlertType.INFORMATION, "Profile has been updated");
     }
 
     public void onBackClicked() throws IOException {
-        Main.switchSceneTo("mainUi");
+        SceneController.switchTo("mainUi");
     }
 }

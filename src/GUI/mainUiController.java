@@ -4,8 +4,6 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-import java.io.IOException;
-
 public class mainUiController {
     public Text currentUserLabel;
 
@@ -14,19 +12,22 @@ public class mainUiController {
     }
 
     public void contactsButtonClicked() throws IOException {
-        Main.switchSceneTo("contacts");
+        SceneController.switchTo("contacts");
     }
 
     public void profileButtonClicked() throws IOException {
-        Main.switchSceneTo("profile");
+        SceneController.switchTo("profile");
     }
 
     public void logoutButtonClicked() throws IOException {
-        Main.switchSceneTo("login");
+        SceneController.switchTo("login");
     }
 
     public void pressMarketplace() throws IOException {
-        Main.switchSceneTo("marketplace");
+        SceneController.switchTo("marketplace");
 
+    }
+    public void LivestockButtonclicked() throws IOException {
+        SceneController.switchTo("livestock");
     }
 }

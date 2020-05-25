@@ -1,6 +1,7 @@
 package GUI;
 
 import BACKEND.Person;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -12,23 +13,31 @@ public class registerController {
     public PasswordField passwordConfirmInput;
 
     public void registerButtonClicked() throws IOException {
+        if (nameInput.getText().isEmpty() || passwordInput.getText().isEmpty()) {
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Please fill in all fields");
+            return;
+        }
+
+        if (!passwordInput.getText().equals(passwordConfirmInput.getText())) {
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Password is not equal");
+            return;
+        }
+
         for (Person person : fakeDatabase.getUserDatabase()) {
             if (person.getName().equals(nameInput.getText())) {
-                // Dit moet natuurlijk in de GUI komen.
-                System.out.println("User already exists");
+                AlertClass.showAlert(Alert.AlertType.ERROR, "Username already taken");
                 return;
             }
         }
 
-        if (passwordInput.getText().equals(passwordConfirmInput.getText())) {
-            Person person = new Person(nameInput.getText(), passwordInput.getText());
-            fakeDatabase.getUserDatabase().add(person);
-            singletonPerson.setPerson(person);
+        Person person = new Person(nameInput.getText(), passwordInput.getText());
+        fakeDatabase.getUserDatabase().add(person);
+        singletonPerson.setPerson(person);
 
-            Main.switchSceneTo("mainUi");
-        } else {
-            // Dit moet natuurlijk in de GUI komen.
-            System.out.println("Password is not equal");
-        }
+        SceneController.switchTo("mainUi");
+    }
+
+    public void backButtonClicked() throws IOException {
+        SceneController.switchTo("login");
     }
 }
