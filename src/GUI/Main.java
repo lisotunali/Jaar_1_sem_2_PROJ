@@ -1,6 +1,9 @@
 package GUI;
 
-import BACKEND.*;
+import BACKEND.AnimalProduct;
+import BACKEND.Contact;
+import BACKEND.Doctor;
+import BACKEND.Person;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,13 +32,18 @@ public class Main extends Application {
 
     public void setUpTestInstances() {
         Person testperson = new Person("test", "test123");
-        Person testperson1 = new Person("Rishwan", "test123");
-        fakeDatabase.getUserDatabase().add(testperson);
-        fakeDatabase.getUserDatabase().add(testperson1);
-        Contact testContact1 = new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool");
-        testperson.addContact(testContact1);
         testperson.addAnimal("Goat", 500);
         testperson.addAnimal("Sheep", 30);
+        fakeDatabase.getUserDatabase().add(testperson);
+
+        Person testperson1 = new Person("Rishwan", "test123");
+        fakeDatabase.getUserDatabase().add(testperson1);
+
+        Doctor testDoctor = new Doctor("doctor", "test123");
+        fakeDatabase.getUserDatabase().add(testDoctor);
+
+        testperson.addContact(new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool"));
+
         singletonMarketplace.getInstance().addProduct(new AnimalProduct("Test Product", "Dit is een testproduct voor de marketplace", 999, 10, testperson.getAnimal("Goat"), testperson));
         singletonMarketplace.getInstance().addProduct(new AnimalProduct("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson.getAnimal("Sheep"), testperson));
     }
