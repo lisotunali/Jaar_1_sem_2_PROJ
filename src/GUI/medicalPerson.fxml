@@ -60,7 +60,7 @@
                         <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#mainScreen"
                                 prefHeight="30.0" prefWidth="150.0" text="Back"/>
                         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0"
-                                text="Button" GridPane.columnIndex="1"/>
+                                text="Request appointment" GridPane.columnIndex="1"/>
                     </children>
                 </GridPane>
             </children>

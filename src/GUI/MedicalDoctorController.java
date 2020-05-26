@@ -2,7 +2,7 @@ package GUI;
 
 import java.io.IOException;
 
-public class MedicalController {
+public class MedicalDoctorController {
 
     public void initialize() {
 

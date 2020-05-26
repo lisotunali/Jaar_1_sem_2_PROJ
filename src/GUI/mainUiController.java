@@ -1,7 +1,6 @@
 package GUI;
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
+import BACKEND.Doctor;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -35,8 +34,13 @@ public class mainUiController {
     }
 
     public void medicalButtonClicked() throws IOException {
-        SceneController.switchTo("medicalBase");
+        if (singletonPerson.getInstance() instanceof Doctor) {
+            SceneController.switchTo("medicalDoctor");
+        } else {
+            SceneController.switchTo("medicalPerson");
+        }
     }
+
     public void educationalButtonClicked() throws IOException {
         SceneController.switchTo("educational");
     }

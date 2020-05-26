@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0"
-            minWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.MedicalController">
+            minWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.MedicalDoctorController">
     <children>
         <VBox prefHeight="74.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -15,7 +15,7 @@
                         <Insets/>
                     </VBox.margin>
                     <children>
-                        <Label text="Medical">
+                        <Label text="Medical (Doctor)">
                             <font>
                                 <Font size="40.0"/>
                             </font>
@@ -59,8 +59,8 @@
                     <children>
                         <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#mainScreen"
                                 prefHeight="30.0" prefWidth="150.0" text="Back"/>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0"
-                                text="Button" GridPane.columnIndex="1"/>
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0"
+                                text="View appointment requests" GridPane.columnIndex="1"/>
                     </children>
                 </GridPane>
             </children>

@@ -36,7 +36,7 @@ public class Main extends Application {
         testperson.addAnimal("Sheep", 30);
         fakeDatabase.getUserDatabase().add(testperson);
 
-        Person testperson1 = new Person("Rishwan", "test123");
+        Person testperson1 = new Person("Test2", "test123");
         fakeDatabase.getUserDatabase().add(testperson1);
 
         Doctor testDoctor = new Doctor("doctor", "test123");
