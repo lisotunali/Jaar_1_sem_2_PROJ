@@ -33,12 +33,15 @@
         <rowConstraints>
           <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="120.0" minHeight="0.0" prefHeight="120.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#profileButtonClicked" prefHeight="76.0" prefWidth="125.0" style="-fx-background-color: orange;" text="Profile" />
                   <Button fx:id="contactsButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#contactsButtonClicked" prefHeight="120.0" prefWidth="400.0" style="-fx-background-color: pink;" text="Contacts" GridPane.rowIndex="1" />
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#LivestockButtonclicked" prefHeight="120.0" prefWidth="400.0" style="-fx-background-color: lightgreen;" text="Livestock " GridPane.columnIndex="1" />
                   <Button fx:id="marketplaceButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressMarketplace" prefHeight="120.0" prefWidth="400.0" style="-fx-background-color: lightblue;" text="Marketplace" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="medicalButton" layoutX="10.0" layoutY="130.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#medicalButtonClicked" prefHeight="120.0" prefWidth="400.0" style="-fx-background-color: turquoise;" text="Medical" GridPane.rowIndex="2" />
+            <Button fx:id="educationalButton" layoutX="10.0" layoutY="130.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#educationalButtonClicked" prefHeight="120.0" prefWidth="400.0" style="-fx-background-color: #EE4540;" text="Educational" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <GridPane layoutX="600.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
