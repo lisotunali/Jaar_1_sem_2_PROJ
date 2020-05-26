@@ -26,6 +26,7 @@ public class MarketplaceController {
     public TableColumn<Bid, String> buyerColumn;
     public TableColumn<Bid, Integer> bidColumn;
 
+    private ObservableList<Bid> bids = FXCollections.observableArrayList();
 
     public void initialize() {
         ObservableList<Product> products = FXCollections.observableArrayList(singletonMarketplace.getInstance().getAllProducts());
@@ -34,6 +35,10 @@ public class MarketplaceController {
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         sellerColumn.setCellValueFactory(new PropertyValueFactory<>("PersonName"));
         productTable.setItems(products);
+
+        buyerColumn.setCellValueFactory(new PropertyValueFactory<>("buyerName"));
+        bidColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        bidTable.setItems(bids);
     }
 
     public void sellPage() throws IOException {
@@ -77,13 +82,15 @@ public class MarketplaceController {
             if (alert.getResult() == ButtonType.YES) {
                 selectedItem.setPrice(bidInput);
 
-                selectedItem.addBid(new Bid(bidInput, currentUser, selectedItem.getPerson(), currentUser.getName(), selectedItem.getAdvertTitle()));
+                Bid newBid = new Bid(bidInput, currentUser, selectedItem.getPerson(), currentUser.getName(), selectedItem.getAdvertTitle());
+                selectedItem.addBid(newBid);
                 System.out.println("Price: €" + bidInput + " " + "Bid from: " + currentUser.getName());
                 System.out.println(selectedItem.getBids());
 
                 System.out.println("Bid placed");
-                productTable.refresh();
-                refreshBids();
+                bids.add(newBid);
+//                productTable.refresh();
+//                refreshBids();
                 AlertClass.showAlert(Alert.AlertType.CONFIRMATION, "Bid placed");
             }
         }
@@ -93,14 +100,7 @@ public class MarketplaceController {
 
         Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
         if (selectedProduct != null) {
-
-            ObservableList<Bid> bids = FXCollections.observableArrayList(selectedProduct.getBids());
-            buyerColumn.setCellValueFactory(new PropertyValueFactory<>("buyerName"));
-            bidColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-            bidTable.setItems(bids);
-            bidTable.getSortOrder().add(bidColumn);
-            bidTable.refresh();
-
+            bids.setAll(selectedProduct.getBids());
         }
     }
 

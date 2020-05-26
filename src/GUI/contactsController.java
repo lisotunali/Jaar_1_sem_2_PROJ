@@ -63,8 +63,9 @@ public class contactsController {
                 return;
             }
         }
-        singletonPerson.getInstance().addContact(new Contact(nameTextField.getText(), phoneTextField.getText(), emailTextField.getText(), addressTextField.getText()));
-        SceneController.switchTo("contacts");
+        Contact newContact = new Contact(nameTextField.getText(), phoneTextField.getText(), emailTextField.getText(), addressTextField.getText());
+        singletonPerson.getInstance().addContact(newContact);
+        contacts.add(newContact);
     }
 
     public void contactsRemoveButtonClicked() throws IOException {
@@ -73,7 +74,7 @@ public class contactsController {
             for (Contact contact : singletonPerson.getInstance().getAddressBook()) {
                 if (contact.getName().equals(contactToBeDeleted.getName())) {
                     singletonPerson.getInstance().removeContact(contact);
-                    SceneController.switchTo("contacts");
+                    contacts.remove(contact);
                     return;
                 }
             }
@@ -88,7 +89,7 @@ public class contactsController {
             contact.setPhoneNumber(phoneTextField.getText());
             contact.setEmail(emailTextField.getText());
             contact.setAddress(addressTextField.getText());
-            SceneController.switchTo("contacts");
+            tableView.refresh();
         }
     }
 }
