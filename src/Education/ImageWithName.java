@@ -1,19 +1,21 @@
 package Education;
 
-import javafx.scene.image.*;
+import javafx.scene.image.Image;
 
 public class ImageWithName {
     private String name;
     private Image image;
 
-    public ImageWithName(String name, Image image){
+    public ImageWithName(String name, Image image) {
         this.name = name;
         this.image = image;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    public Image getImage(){
+
+    public Image getImage() {
         return image;
     }
 }
