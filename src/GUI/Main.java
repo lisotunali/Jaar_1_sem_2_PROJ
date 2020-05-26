@@ -45,15 +45,15 @@ public class Main extends Application {
     }
 
     public void createImagewithNames(){
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("bee", new Image(getClass().getResourceAsStream("Education/Images/bee.png"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("doctor", new Image(getClass().getResourceAsStream("Education/Images/doctor.png"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("dog", new Image(getClass().getResourceAsStream("Education/Images/dog.png"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("elephant", new Image(getClass().getResourceAsStream("Education/Images/elephant.png"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("fish", new Image(getClass().getResourceAsStream("Education/Images/fish.png"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("giraffe", new Image(getClass().getResourceAsStream("Education/Images/giraffe.png"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("rat", new Image(getClass().getResourceAsStream("Education/Images/rat.png"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("sheep", new Image(getClass().getResourceAsStream("Education/Images/sheep.png"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("turtle", new Image(getClass().getResourceAsStream("Education/Images/turtle.png"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("zebra", new Image(getClass().getResourceAsStream("Education/Images/zebra.png"))));
+        fakeDatabase.getImagesDatabase().add( new ImageWithName("bee", new Image(getClass().getResourceAsStream("/Education/Images/bee.png"))));
+        fakeDatabase.getImagesDatabase().add( new ImageWithName("doctor", new Image(getClass().getResourceAsStream("/Education/Images/doctor.jpg"))));
+        fakeDatabase.getImagesDatabase().add( new ImageWithName("dog", new Image(getClass().getResourceAsStream("/Education/Images/dog.jpg"))));
+        fakeDatabase.getImagesDatabase().add( new ImageWithName("elephant", new Image(getClass().getResourceAsStream("/Education/Images/elephant.png"))));
+        fakeDatabase.getImagesDatabase().add( new ImageWithName("fish", new Image(getClass().getResourceAsStream("/Education/Images/fish.png"))));
+        fakeDatabase.getImagesDatabase().add( new ImageWithName("giraffe", new Image(getClass().getResourceAsStream("/Education/Images/giraffe.png"))));
+        fakeDatabase.getImagesDatabase().add( new ImageWithName("rat", new Image(getClass().getResourceAsStream("/Education/Images/rat.png"))));
+        fakeDatabase.getImagesDatabase().add( new ImageWithName("sheep", new Image(getClass().getResourceAsStream("/Education/Images/sheep.png"))));
+        fakeDatabase.getImagesDatabase().add( new ImageWithName("turtle", new Image(getClass().getResourceAsStream("/Education/Images/turtle.png"))));
+        fakeDatabase.getImagesDatabase().add( new ImageWithName("zebra", new Image(getClass().getResourceAsStream("/Education/Images/zebra.png"))));
     }
 }
