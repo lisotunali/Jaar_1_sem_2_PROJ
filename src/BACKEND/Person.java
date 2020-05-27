@@ -101,4 +101,8 @@ public class Person {
         this.personalData = text;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -2,14 +2,17 @@ package BACKEND;
 
 public class Appointment {
     private Doctor doctor;
+
     private Person patient;
     private Boolean done;
+    private String doneAsString;
     private String condition;
 
     public Appointment(Person patient, Doctor doctor) {
         this.doctor = doctor;
         this.patient = patient;
         this.done = false;
+        this.doneAsString = doneToString();
         this.condition = "";
     }
 
@@ -35,6 +38,14 @@ public class Appointment {
 
     public Person getPatient() {
         return patient;
+    }
+
+    public String doneToString() {
+        if (!done) {
+            return "No";
+        } else {
+            return "Yes";
+        }
     }
 
     @Override
