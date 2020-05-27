@@ -17,7 +17,11 @@ public class mainUiController {
     }
 
     public void profileButtonClicked() throws IOException {
-        SceneController.switchTo("profile");
+        if (singletonPerson.getInstance() instanceof Doctor) {
+            SceneController.switchTo("profileDoctor");
+        } else {
+            SceneController.switchTo("profile");
+        }
     }
 
     public void logoutButtonClicked() throws IOException {
