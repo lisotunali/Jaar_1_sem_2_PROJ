@@ -5,6 +5,7 @@ import Education.ImageWithName;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class fakeDatabase {
     private static ArrayList<Person> userDatabase = new ArrayList<>();
@@ -19,6 +20,11 @@ public class fakeDatabase {
         return imagesDatabase;
     }
 
+    public static ImageWithName getRandomImageWithName(){
+        Random ran = new Random();
+        int randomIndex = ran.nextInt(imagesDatabase.size());
+        return imagesDatabase.get(randomIndex);
+    }
 
     // Find given person in the database and update it
     public static void updatePerson(Person person) {

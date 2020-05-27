@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.edumainUIController">
+   <children>
+      <GridPane layoutX="501.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="backButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="33.0" prefWidth="101.0" style="-fx-background-color: black;" text="Back" textFill="WHITE" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+      <HBox layoutX="-6.0" layoutY="213.0" prefHeight="164.0" prefWidth="711.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button fx:id="mathButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#mathButtonclicked" prefHeight="165.0" prefWidth="268.0" style="-fx-background-color: lightblue;" text="Math" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Gill Sans MT" size="35.0" />
+               </font>
+            </Button>
+            <Button fx:id="writingButton" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#writingButtonclicked" prefHeight="165.0" prefWidth="268.0" style="-fx-background-color: pink;" text="Writing" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Gill Sans MT" size="35.0" />
+               </font>
+            </Button>
+            <Button fx:id="readingButton" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#readingButtonclicked" prefHeight="165.0" prefWidth="268.0" style="-fx-background-color: orange;" text="Reading" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Gill Sans MT" size="35.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="506.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="198.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Learning is fun!" textAlignment="CENTER" wrappingWidth="506.6953125" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Gill Sans MT" size="48.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <GridPane layoutX="235.0" layoutY="422.0" prefHeight="100.0" prefWidth="235.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="234.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints />
+        </rowConstraints>
+         <children>
+            <Button fx:id="highscoreButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#highscoreButtonclicked" prefHeight="127.0" prefWidth="235.0" style="-fx-background-color: lightgreen;" text="Highscores">
+               <font>
+                  <Font name="Gill Sans MT" size="35.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

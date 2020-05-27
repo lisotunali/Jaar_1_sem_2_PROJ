@@ -37,6 +37,6 @@ public class mainUiController {
         SceneController.switchTo("medical");
     }
     public void educationalButtonClicked() throws IOException {
-        SceneController.switchTo("educational");
+        SceneController.switchTo("education");
     }
 }
