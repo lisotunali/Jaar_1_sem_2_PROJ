@@ -2,15 +2,16 @@ package BACKEND;
 
 public class Appointment {
     private Doctor doctor;
-
     private Person patient;
     private Boolean done;
     private String doneAsString;
     private String condition;
+    private SpecializationType appointmentType;
 
-    public Appointment(Person patient, Doctor doctor) {
+    public Appointment(Person patient, Doctor doctor, SpecializationType appointmentType) {
         this.doctor = doctor;
         this.patient = patient;
+        this.appointmentType = appointmentType;
         this.done = false;
         this.doneAsString = doneToString();
         this.condition = "";
@@ -38,6 +39,10 @@ public class Appointment {
 
     public Person getPatient() {
         return patient;
+    }
+
+    public SpecializationType getAppointmentType() {
+        return appointmentType;
     }
 
     public String doneToString() {

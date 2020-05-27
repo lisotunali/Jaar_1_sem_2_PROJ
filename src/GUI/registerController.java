@@ -2,6 +2,7 @@ package GUI;
 
 import BACKEND.Doctor;
 import BACKEND.Person;
+import BACKEND.SpecializationType;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
@@ -36,7 +37,8 @@ public class registerController {
         Person person;
 
         if (isDoctor.isSelected()) {
-            person = new Doctor(nameInput.getText(), passwordInput.getText());
+            // TODO: Specialization from GUI?
+            person = new Doctor(nameInput.getText(), passwordInput.getText(), SpecializationType.GENERAL);
         } else {
             person = new Person(nameInput.getText(), passwordInput.getText());
         }

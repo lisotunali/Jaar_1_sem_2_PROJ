@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Arrays;
+
 public class Main extends Application {
 
 
@@ -36,10 +38,10 @@ public class Main extends Application {
         Person testperson1 = new Person("Test2", "test123");
         fakeDatabase.getUserDatabase().add(testperson1);
 
-        Doctor testDoctor = new Doctor("doctor", "test123");
+        Doctor testDoctor = new Doctor("doctor", "test123", SpecializationType.EAR);
         fakeDatabase.getUserDatabase().add(testDoctor);
 
-        Doctor testDoctor2 = new Doctor("doctor2", "test123");
+        Doctor testDoctor2 = new Doctor("doctor2", "test123", Arrays.asList(SpecializationType.EAR, SpecializationType.GENERAL));
         fakeDatabase.getUserDatabase().add(testDoctor2);
 
         testperson.addContact(new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool"));
@@ -48,8 +50,8 @@ public class Main extends Application {
         singletonMarketplace.getInstance().addProduct(new AnimalProduct("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson.getAnimal("Sheep"), testperson));
 
         Appointments instanceAppointments = SingletonAppointments.getInstance();
-        instanceAppointments.addAppointment(new Appointment(testperson, testDoctor));
-        instanceAppointments.addAppointment(new Appointment(testperson, testDoctor2));
-        instanceAppointments.addAppointment(new Appointment(testperson1, testDoctor));
+        instanceAppointments.addAppointment(new Appointment(testperson, testDoctor, SpecializationType.EAR));
+        instanceAppointments.addAppointment(new Appointment(testperson, testDoctor2, SpecializationType.GENERAL));
+        instanceAppointments.addAppointment(new Appointment(testperson1, testDoctor, SpecializationType.EAR));
     }
 }
