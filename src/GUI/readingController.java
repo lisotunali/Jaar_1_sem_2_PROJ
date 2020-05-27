@@ -1,4 +1,5 @@
 package GUI;
+import Education.Game;
 import Education.ImageWithName;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -7,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 
 public class readingController {
@@ -16,36 +19,45 @@ public class readingController {
     public ImageView rImage3;
     public ImageView rImage4;
     public Label readingWord;
-    public ImageWithName ok;
 
     public Button ImageButton1;
     public Button ImageButton2;
     public Button ImageButton3;
     public Button ImageButton4;
 
-    public void initialize(){
+    public Game game = new Game();
 
-        rImage1.setImage(fakeDatabase.getRandomImageWithName().getImage());
-        rImage2.setImage(fakeDatabase.getRandomImageWithName().getImage());
-        rImage3.setImage(fakeDatabase.getRandomImageWithName().getImage());
-        rImage4.setImage(fakeDatabase.getRandomImageWithName().getImage());
-        readingWord.setText(fakeDatabase.getRandomImageWithName().getName());
+    public void initialize(){
+        nextQuestion();
     }
 
-    public void ImageButton4Clicked() throws IOException {
-        System.out.println("Button 4");
+    public void nextQuestion(){
+        game.initialize();
+        rImage1.setImage(game.getTemp1().getImage());
+        rImage2.setImage(game.getTemp2().getImage());
+        rImage3.setImage(game.getTemp3().getImage());
+        rImage4.setImage(game.getTemp4().getImage());
+        readingWord.setText(game.getRandomTemp().getName());
+    }
+
+    public void ImageButton4Clicked() {
+        game.checkAnswer(3);
+        nextQuestion();
     }
 
     public void ImageButton2Clicked() {
-        System.out.println("Button 2");
+        game.checkAnswer(1);
+        nextQuestion();
     }
 
     public void ImageButton3Clicked() {
-        System.out.println("Button 3");
+        game.checkAnswer(2);
+        nextQuestion();
     }
 
     public void ImageButton1Clicked() {
-        System.out.println("Button 1");
+        game.checkAnswer(0);
+        nextQuestion();
     }
 
     public void backButtonClicked() throws IOException {
