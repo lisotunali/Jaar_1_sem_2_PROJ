@@ -5,10 +5,12 @@ public class Appointment {
     private Person patient;
     private Boolean done;
     private String condition;
+    private SpecializationType appointmentType;
 
-    public Appointment(Person patient, Doctor doctor) {
+    public Appointment(Person patient, Doctor doctor, SpecializationType appointmentType) {
         this.doctor = doctor;
         this.patient = patient;
+        this.appointmentType = appointmentType;
         this.done = false;
         this.condition = "";
     }
@@ -35,6 +37,10 @@ public class Appointment {
 
     public Person getPatient() {
         return patient;
+    }
+
+    public SpecializationType getAppointmentType() {
+        return appointmentType;
     }
 
     @Override
