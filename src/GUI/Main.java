@@ -50,8 +50,8 @@ public class Main extends Application {
         singletonMarketplace.getInstance().addProduct(new AnimalProduct("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson.getAnimal("Sheep"), testperson));
 
         Appointments instanceAppointments = SingletonAppointments.getInstance();
-        instanceAppointments.addAppointment(new Appointment(testperson, testDoctor));
-        instanceAppointments.addAppointment(new Appointment(testperson, testDoctor2));
-        instanceAppointments.addAppointment(new Appointment(testperson1, testDoctor));
+        instanceAppointments.addAppointment(new Appointment(testperson, testDoctor, SpecializationType.EAR));
+        instanceAppointments.addAppointment(new Appointment(testperson, testDoctor2, SpecializationType.GENERAL));
+        instanceAppointments.addAppointment(new Appointment(testperson1, testDoctor, SpecializationType.EAR));
     }
 }
