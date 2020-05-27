@@ -4,6 +4,7 @@ public class Appointment {
     private Doctor doctor;
     private Person patient;
     private Boolean done;
+    private String doneAsString;
     private String condition;
     private SpecializationType appointmentType;
 
@@ -12,6 +13,7 @@ public class Appointment {
         this.patient = patient;
         this.appointmentType = appointmentType;
         this.done = false;
+        this.doneAsString = doneToString();
         this.condition = "";
     }
 
@@ -41,6 +43,14 @@ public class Appointment {
 
     public SpecializationType getAppointmentType() {
         return appointmentType;
+    }
+
+    public String doneToString() {
+        if (!done) {
+            return "No";
+        } else {
+            return "Yes";
+        }
     }
 
     @Override
