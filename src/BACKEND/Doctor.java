@@ -28,6 +28,10 @@ public class Doctor extends Person {
         specializations.addAll(specialities);
     }
 
+    public void setSpecializations(HashSet<SpecializationType> specializations) {
+        this.specializations = specializations;
+    }
+
     public void removeSpecialization(SpecializationType specializationType) {
         specializations.remove(specializationType);
     }
