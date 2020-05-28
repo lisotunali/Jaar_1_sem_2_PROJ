@@ -1,11 +1,13 @@
 package GUI;
 import Education.Game;
 import Education.ImageWithName;
+import Education.Reading;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.*;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,43 +22,50 @@ public class readingController {
     public ImageView rImage4;
     public Label readingWord;
 
-    public Button ImageButton1;
-    public Button ImageButton2;
-    public Button ImageButton3;
-    public Button ImageButton4;
+    public Button button1;
 
-    public Game game = new Game();
+    private ArrayList<ImageWithName> temps = new ArrayList<>();
+
+    public Reading game = new Reading();
 
     public void initialize(){
         nextQuestion();
     }
 
     public void nextQuestion(){
-        game.initialize();
-        rImage1.setImage(game.getTemp1().getImage());
-        rImage2.setImage(game.getTemp2().getImage());
-        rImage3.setImage(game.getTemp3().getImage());
-        rImage4.setImage(game.getTemp4().getImage());
-        readingWord.setText(game.getRandomTemp().getName());
+        //clears out the temporary ImageWithName's that were in temps from the last round
+        temps.clear();
+
+        // reset the game questions so that all questions can appear again (ImageWithName objects)
+        game.saveQuestionsLocally();
+
+        // put 4 random images on the screen...
+        createRandomImageOnScreen(rImage1);
+        createRandomImageOnScreen(rImage2);
+        createRandomImageOnScreen(rImage3);
+        createRandomImageOnScreen(rImage4);
+
+        // pick one of those as the correct answer
+        game.setRandomIndex(game.getRan().nextInt(4));
+        readingWord.setText(temps.get(game.getRandomIndex()).getName());
     }
 
-    public void ImageButton4Clicked() {
-        game.checkAnswer(3);
-        nextQuestion();
+    public void createRandomImageOnScreen(ImageView imageView){
+        // set the randomIndex to a new random value
+        game.setRandomIndex(game.getRan().nextInt(game.getCurrentGameQuestions().size()));
+
+        // set the image in the actual on screen imageView
+        imageView.setImage(game.getCurrentGameQuestions().get(game.getRandomIndex()).getImage());
+
+        // add the ImageWithName to the temps arrayList so that we can pick one of 4 as the correct answer later
+        temps.add(game.getCurrentGameQuestions().get(game.getRandomIndex()));
+
+        //remove it from the current set of available ImageWithNames so that we dont get duplicates (will later be reset by saveQuestionsLocally())
+        game.getCurrentGameQuestions().remove(game.getRandomIndex());
     }
 
-    public void ImageButton2Clicked() {
-        game.checkAnswer(1);
-        nextQuestion();
-    }
-
-    public void ImageButton3Clicked() {
-        game.checkAnswer(2);
-        nextQuestion();
-    }
-
-    public void ImageButton1Clicked() {
-        game.checkAnswer(0);
+    public void buttonClicked(MouseEvent mouseEvent){
+        game.checkAnswer(mouseEvent.getPickResult().getIntersectedNode().getAccessibleText());
         nextQuestion();
     }
 
