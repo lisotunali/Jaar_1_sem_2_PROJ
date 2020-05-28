@@ -1,7 +1,9 @@
-package GUI;
+package Education;
 import Education.Game;
 import Education.ImageWithName;
 import Education.Reading;
+import GUI.SceneController;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,15 +14,17 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.TimerTask;
 
 
-public class readingController {
+public class readingController extends GameController {
 
     public ImageView rImage1;
     public ImageView rImage2;
     public ImageView rImage3;
     public ImageView rImage4;
     public Label readingWord;
+    public Label timerLabel;
 
     public Button button1;
 
@@ -29,6 +33,8 @@ public class readingController {
     public Reading game = new Reading();
 
     public void initialize(){
+        game.initialize();
+        startTimer();
         nextQuestion();
     }
 
@@ -71,6 +77,16 @@ public class readingController {
 
     public void backButtonClicked() throws IOException {
         SceneController.switchTo("education");
+    }
 
+    @Override
+    public void startTimer() {
+        getTimer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                setSecondsLeft(getSecondsLeft()-1, game);
+                Platform.runLater(() ->  timerLabel.setText(getSecondsLeft().toString()));
+            }
+        }, 0, 1000);
     }
 }
