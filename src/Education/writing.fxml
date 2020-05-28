@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Education.Writing">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Education.Writing">
    <children>
-      <VBox layoutY="100.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <VBox layoutX="25.0" layoutY="63.0" prefHeight="400.0" prefWidth="750.0" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
          <children>
-            <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="285.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="695.0" minWidth="10.0" prefWidth="400.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="400.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="465.0" minHeight="10.0" prefHeight="251.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="249.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <ImageView fx:id="writingImage1" fitHeight="250.0" fitWidth="400.0" pickOnBounds="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <ImageView fx:id="writingImage2" fitHeight="250.0" fitWidth="400.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <ImageView fx:id="writingImage4" fitHeight="197.0" fitWidth="398.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <ImageView fx:id="writingImage3" fitHeight="200.0" fitWidth="400.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-               </children>
-            </GridPane>
+            <ImageView fx:id="imageView" fitHeight="400.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </VBox>
-      <HBox layoutX="-2.0" prefHeight="100.0" prefWidth="800.0" />
+      <HBox layoutX="-2.0" prefHeight="55.0" prefWidth="800.0">
+         <children>
+            <Text fill="#08004d" strokeType="OUTSIDE" strokeWidth="0.0" text="GUESS THE WORD" textAlignment="CENTER" wrappingWidth="800.0">
+               <font>
+                  <Font name="Gigi" size="56.0" />
+               </font>
+            </Text>
+         </children></HBox>
+      <HBox layoutX="25.0" layoutY="500.0" prefHeight="75.0" prefWidth="750.0">
+         <children>
+            <TextField fx:id="guessField" prefHeight="75.0" prefWidth="750.0">
+               <font>
+                  <Font name="Arial Black" size="36.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
