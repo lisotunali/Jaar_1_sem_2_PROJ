@@ -1,5 +1,4 @@
-package BACKEND;
-
+import BACKEND.*;
 import GUI.SingletonAppointments;
 import GUI.fakeDatabase;
 import org.junit.jupiter.api.Test;
