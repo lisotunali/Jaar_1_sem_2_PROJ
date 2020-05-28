@@ -1,5 +1,7 @@
 package BACKEND;
 
+import java.time.LocalDateTime;
+
 public class Appointment {
     private Doctor doctor;
     private Person patient;
@@ -7,14 +9,16 @@ public class Appointment {
     private String doneAsString;
     private String condition;
     private SpecializationType appointmentType;
+    private LocalDateTime appointmentDate;
 
-    public Appointment(Person patient, Doctor doctor, SpecializationType appointmentType) {
+    public Appointment(Person patient, Doctor doctor, SpecializationType appointmentType, LocalDateTime appointmentDate) {
         this.doctor = doctor;
         this.patient = patient;
         this.appointmentType = appointmentType;
         this.done = false;
         this.doneAsString = doneToString();
         this.condition = "";
+        this.appointmentDate = appointmentDate;
     }
 
     public Boolean getDone() {
@@ -43,6 +47,14 @@ public class Appointment {
 
     public SpecializationType getAppointmentType() {
         return appointmentType;
+    }
+
+    public LocalDateTime getAppointmentDate() {
+        return appointmentDate;
+    }
+
+    public void setAppointmentDate(LocalDateTime appointmentDate) {
+        this.appointmentDate = appointmentDate;
     }
 
     public String doneToString() {

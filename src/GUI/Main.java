@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 
 public class Main extends Application {
@@ -50,8 +51,6 @@ public class Main extends Application {
         singletonMarketplace.getInstance().addProduct(new AnimalProduct("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson.getAnimal("Sheep"), testperson));
 
         Appointments instanceAppointments = SingletonAppointments.getInstance();
-        instanceAppointments.addAppointment(new Appointment(testperson, testDoctor, SpecializationType.EAR));
-        instanceAppointments.addAppointment(new Appointment(testperson, testDoctor2, SpecializationType.GENERAL));
-        instanceAppointments.addAppointment(new Appointment(testperson1, testDoctor, SpecializationType.EAR));
+        instanceAppointments.planAppointment(LocalDate.of(2022, 2, 13), SpecializationType.GENERAL, testperson);
     }
 }
