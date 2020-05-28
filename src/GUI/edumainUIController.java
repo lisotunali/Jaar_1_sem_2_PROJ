@@ -7,20 +7,22 @@ import java.io.IOException;
 public class edumainUIController {
 
 
-    public void backButtonClicked(ActionEvent actionEvent) {
+    public void backButtonClicked() throws IOException {
+        SceneController.switchTo("mainUi");
     }
 
-    public void mathButtonclicked(ActionEvent actionEvent) {
+    public void mathButtonclicked() {
     }
 
-    public void writingButtonclicked(ActionEvent actionEvent) throws IOException {
+    public void writingButtonclicked() throws IOException {
         SceneController.switchTo("writing");
     }
 
-    public void readingButtonclicked(ActionEvent actionEvent) throws IOException {
+    public void readingButtonclicked() throws IOException {
         SceneController.switchTo("reading");
     }
 
-    public void highscoreButtonclicked(ActionEvent actionEvent) {
+    public void highscoreButtonclicked() {
     }
+
 }

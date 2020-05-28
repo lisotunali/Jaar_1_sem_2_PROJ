@@ -25,10 +25,10 @@
                         <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="249.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <ImageView fx:id="rImage4" fitHeight="250.0" fitWidth="400.0" layoutX="10.0" layoutY="9.0" onMouseClicked="#ImageButton4Clicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                        <ImageView fx:id="rImage3" fitHeight="250.0" fitWidth="400.0" layoutX="10.0" layoutY="9.0" onMouseClicked="#ImageButton3Clicked" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-                  <ImageView fx:id="rImage2" fitHeight="250.0" fitWidth="400.0" layoutX="10.0" layoutY="11.0" onMouseClicked="#ImageButton2Clicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-                        <ImageView fx:id="rImage1" fitHeight="250.0" fitWidth="400.0" onMouseClicked="#ImageButton1Clicked" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <ImageView fx:id="rImage4" accessibleText="3" fitHeight="250.0" fitWidth="400.0" layoutX="10.0" layoutY="9.0" onMouseClicked="#buttonClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <ImageView fx:id="rImage3" accessibleText="2" fitHeight="250.0" fitWidth="400.0" layoutX="10.0" layoutY="9.0" onMouseClicked="#buttonClicked" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                  <ImageView fx:id="rImage2" accessibleText="1" fitHeight="250.0" fitWidth="400.0" layoutX="10.0" layoutY="11.0" onMouseClicked="#buttonClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                        <ImageView fx:id="rImage1" accessibleText="0" fitHeight="250.0" fitWidth="400.0" onMouseClicked="#buttonClicked" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
                     </children>
                 </GridPane>
             </children>
