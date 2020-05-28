@@ -29,6 +29,10 @@ public class Appointments {
         return hasAppointments.stream().filter(p -> p.getDoctor() == doctor).collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public ArrayList<Appointment> getAllOpenAppointments(Person patient) {
+        return getAllAppointments(patient).stream().filter(appointment -> !appointment.getDone()).collect(Collectors.toCollection(ArrayList::new));
+    }
+
     // Automatically plan an appointment. Date should just be a date without time.
     public Appointment planAppointment(LocalDate date, SpecializationType specialtyType, Person patient) {
         // Assuming normal day is between 09:00 and 17:00

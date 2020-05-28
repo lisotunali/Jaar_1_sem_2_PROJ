@@ -1,15 +1,39 @@
 package GUI;
 
+import BACKEND.Appointment;
 import BACKEND.Doctor;
+import BACKEND.Person;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class mainUiController {
     public Text currentUserLabel;
+    public TableView<Appointment> userAppointments;
+    public TableColumn<Appointment, String> appointmentDate;
+    public TableColumn<Appointment, String> appointmentDoctor;
 
     public void initialize() {
-        currentUserLabel.setText("Current user: " + singletonPerson.getInstance().getName());
+        Person currentUser = singletonPerson.getInstance();
+        currentUserLabel.setText("Current user: " + currentUser.getName());
+        setAppointments(currentUser);
+    }
+
+    private void setAppointments(Person currentUser) {
+        ArrayList<Appointment> allOpenAppointments = SingletonAppointments.getInstance().getAllOpenAppointments(currentUser);
+
+        ObservableList<Appointment> appointments = FXCollections.observableArrayList(allOpenAppointments);
+        appointmentDate.setCellValueFactory(new PropertyValueFactory<>("appointmentDateString"));
+        appointmentDoctor.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+        userAppointments.setItems(appointments);
+
+        userAppointments.getSortOrder().add(appointmentDate);
     }
 
     public void contactsButtonClicked() throws IOException {

@@ -1,6 +1,7 @@
 package BACKEND;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Appointment {
     private Doctor doctor;
@@ -57,6 +58,14 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
     }
 
+    public String getDoctorName() {
+        return getDoctor().getName();
+    }
+
+    public String getAppointmentDateString() {
+        return appointmentDate.format(DateTimeFormatter.ofPattern("EEEE, d MMM yyyy, HH:mm"));
+    }
+
     public String doneToString() {
         if (!done) {
             return "No";
@@ -71,7 +80,10 @@ public class Appointment {
                 "doctor=" + doctor +
                 ", patient=" + patient +
                 ", done=" + done +
+                ", doneAsString='" + doneAsString + '\'' +
                 ", condition='" + condition + '\'' +
+                ", appointmentType=" + appointmentType +
+                ", appointmentDate=" + appointmentDate +
                 '}';
     }
 }
