@@ -19,6 +19,7 @@ public class Doctor extends Person {
     public Doctor(String name, String password, Collection<SpecializationType> specialities) {
         super(name, password);
         addSpecializations(specialities);
+        setDefaultAvailability();
     }
 
     public HashSet<SpecializationType> getSpecializations() {
