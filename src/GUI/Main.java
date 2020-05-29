@@ -51,6 +51,6 @@ public class Main extends Application {
         singletonMarketplace.getInstance().addProduct(new AnimalProduct("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson.getAnimal("Sheep"), testperson));
 
         Appointments instanceAppointments = SingletonAppointments.getInstance();
-        instanceAppointments.planAppointment(LocalDate.of(2022, 2, 13), SpecializationType.GENERAL, testperson);
+        instanceAppointments.planAppointment(LocalDate.of(2022, 2, 13), "test condition", SpecializationType.GENERAL, testperson);
     }
 }

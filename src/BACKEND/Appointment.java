@@ -7,18 +7,16 @@ public class Appointment {
     private Doctor doctor;
     private Person patient;
     private Boolean done;
-    private String doneAsString;
     private String condition;
     private SpecializationType appointmentType;
     private LocalDateTime appointmentDate;
 
-    public Appointment(Person patient, Doctor doctor, SpecializationType appointmentType, LocalDateTime appointmentDate) {
+    public Appointment(Person patient, Doctor doctor, String condition, SpecializationType appointmentType, LocalDateTime appointmentDate) {
         this.doctor = doctor;
         this.patient = patient;
         this.appointmentType = appointmentType;
         this.done = false;
-        this.doneAsString = doneToString();
-        this.condition = "";
+        this.condition = condition;
         this.appointmentDate = appointmentDate;
     }
 
@@ -66,7 +64,8 @@ public class Appointment {
         return appointmentDate.format(DateTimeFormatter.ofPattern("EEEE, d MMM yyyy, HH:mm"));
     }
 
-    public String doneToString() {
+
+    public String getDoneToString() {
         if (!done) {
             return "No";
         } else {
@@ -80,7 +79,7 @@ public class Appointment {
                 "doctor=" + doctor +
                 ", patient=" + patient +
                 ", done=" + done +
-                ", doneAsString='" + doneAsString + '\'' +
+                ", doneAsString='" + getDoneToString() + '\'' +
                 ", condition='" + condition + '\'' +
                 ", appointmentType=" + appointmentType +
                 ", appointmentDate=" + appointmentDate +

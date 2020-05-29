@@ -26,7 +26,7 @@ class AppointmentsTest {
 
         Appointments instanceAppointments = SingletonAppointments.getInstance();
         LocalDate yesterday = LocalDate.now().minusDays(1);
-        Appointment appointment = instanceAppointments.planAppointment(yesterday, SpecializationType.GENERAL, testPerson);
+        Appointment appointment = instanceAppointments.planAppointment(yesterday, "test condition1", SpecializationType.GENERAL, testPerson);
 
         assertNull(appointment);
     }
@@ -36,10 +36,10 @@ class AppointmentsTest {
         init();
 
         Appointments instanceAppointments = SingletonAppointments.getInstance();
-        Appointment testAppointmentInDb = new Appointment(testPerson, testDoc, SpecializationType.EAR, LocalDateTime.of(2021, 2, 13, 9, 00));
+        Appointment testAppointmentInDb = new Appointment(testPerson, testDoc, "test", SpecializationType.EAR, LocalDateTime.of(2021, 2, 13, 9, 00));
         instanceAppointments.addAppointment(testAppointmentInDb);
 
-        Appointment appointment = instanceAppointments.planAppointment(LocalDate.of(2021, 2, 13), SpecializationType.EAR, testPerson);
+        Appointment appointment = instanceAppointments.planAppointment(LocalDate.of(2021, 2, 13), "test", SpecializationType.EAR, testPerson);
 
         assertNotEquals(null, appointment);
     }
@@ -49,14 +49,14 @@ class AppointmentsTest {
         init();
 
         Appointments instanceAppointments = SingletonAppointments.getInstance();
-        Appointment testAppointmentInDb = new Appointment(testPerson, testDoc, SpecializationType.EAR, LocalDateTime.of(2021, 2, 13, 9, 00));
+        Appointment testAppointmentInDb = new Appointment(testPerson, testDoc, "test", SpecializationType.EAR, LocalDateTime.of(2021, 2, 13, 9, 00));
         instanceAppointments.addAppointment(testAppointmentInDb);
 
         for (int i = 0; i < 100000; i++) {
-            instanceAppointments.planAppointment(LocalDate.of(2021, 2, 13), SpecializationType.EAR, testPerson);
+            instanceAppointments.planAppointment(LocalDate.of(2021, 2, 13), "test", SpecializationType.EAR, testPerson);
         }
 
-        Appointment appointment = instanceAppointments.planAppointment(LocalDate.of(2021, 2, 13), SpecializationType.EAR, testPerson);
+        Appointment appointment = instanceAppointments.planAppointment(LocalDate.of(2021, 2, 13), "test", SpecializationType.EAR, testPerson);
 
         assertNull(appointment);
     }

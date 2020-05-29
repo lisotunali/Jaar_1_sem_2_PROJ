@@ -33,8 +33,12 @@ public class Appointments {
         return getAllAppointments(patient).stream().filter(appointment -> !appointment.getDone()).collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public ArrayList<Appointment> getAllOpenAppointments(Doctor doctor) {
+        return getAllAppointments(doctor).stream().filter(appointment -> !appointment.getDone()).collect(Collectors.toCollection(ArrayList::new));
+    }
+
     // Automatically plan an appointment. Date should just be a date without time.
-    public Appointment planAppointment(LocalDate date, SpecializationType specialtyType, Person patient) {
+    public Appointment planAppointment(LocalDate date, String condition, SpecializationType specialtyType, Person patient) {
         // Assuming normal day is between 09:00 and 17:00
         LocalTime open = LocalTime.parse("09:00:00");
         LocalTime closed = LocalTime.parse("17:00:00");
@@ -89,7 +93,7 @@ public class Appointments {
 
         System.out.format("Created appointment with doctor: %s at: %s%n", availableDoc.getName(), appointmentTime);
 
-        Appointment appointment = new Appointment(patient, availableDoc, specialtyType, appointmentTime);
+        Appointment appointment = new Appointment(patient, availableDoc, condition, specialtyType, appointmentTime);
         addAppointment(appointment);
 
         return appointment;
