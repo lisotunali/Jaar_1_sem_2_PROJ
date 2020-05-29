@@ -28,73 +28,36 @@ public class writingController extends GameController{
     @FXML
     private Label timerLabel;
 
-    private ArrayList<ImageWithName> newQuestions = new ArrayList<ImageWithName>(fakeDatabase.getImagesDatabase());
-    private Writing game;
-    private Integer currentQuestion = 0;
-
     public void initialize() throws IOException {
-        game = new Writing();
+        game = new Game();
+        game.saveQuestionsLocally();
         shuffleQuestions();
         nextQuestion();
-        startTimer();
-        currentQuestion = 0;
+        startTimer(timerLabel);
     }
 
-
     public void nextQuestion() throws IOException {
-        if (newQuestions.size() -1 == currentQuestion){
+        game.setCurrentQuestion(game.getCurrentQuestion()+1);
+        if (game.getCurrentGameQuestions().size() -1 == game.getCurrentQuestion()){
             endGame(game);
             System.out.println("Game ended");
             return;
         }
         else {
-            /* if (currentQuestion < newQuestions.size()) {
-                imageView.setImage(newQuestions.get(currentQuestion).getImage());
-                System.out.println("image set");
-            } */
-            imageView.setImage(newQuestions.get(currentQuestion).getImage()); System.out.println("image set - index" + currentQuestion);
+            imageView.setImage(game.getCurrentGameQuestions().get(game.getCurrentQuestion()).getImage());
+            System.out.println("image set - index" + game.getCurrentQuestion());
         }
 
     }
 
     public void shuffleQuestions(){
-        Collections.shuffle(newQuestions);
+        Collections.shuffle(game.getCurrentGameQuestions());
     }
 
     public void doneClicked() throws IOException {
-        checkAnswer(guessField.getText());
+        checkAnswer(guessField.getText(), game.getCurrentGameQuestions().get(game.getCurrentQuestion()).getName());
         guessField.clear();
         nextQuestion();
     }
 
-    public void checkAnswer(String input){
-        if(newQuestions.get(currentQuestion).getName().equals(input)){
-            game.setCurrentscore(game.getCurrentscore() + 1);
-            System.out.println("+1 score");
-        }
-        else{
-            setSecondsLeft(getSecondsLeft() - 10, game);
-        }
-        currentQuestion++;
-    }
-
-    @Override
-    public void startTimer() {
-        setSecondsLeft(60, game);
-        getTimer().scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                setSecondsLeft(getSecondsLeft()-1, game);
-                Platform.runLater(() ->  timerLabel.setText(getSecondsLeft().toString()));
-                if(getSecondsLeft() <= 0){
-                    stopTimer();
-                    try {
-                        endGame(game);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }, 0, 1000);
-    }
 }

@@ -5,19 +5,11 @@ import GUI.fakeDatabase;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Game {
+public class Game {
 
     protected ArrayList<ImageWithName> currentGameQuestions = new ArrayList<>();
-    private Random ran = new Random();
-    protected int randomIndex = 0;
-
     private Integer currentscore = 0;
-
-
-    public abstract void checkAnswer(String input);
-
-    public void initialize() {
-    }
+    private Integer currentQuestion = -1;
 
     public void saveQuestionsLocally() {
         currentGameQuestions.clear();
@@ -30,18 +22,6 @@ public abstract class Game {
         return currentGameQuestions;
     }
 
-    public int getRandomIndex() {
-        return randomIndex;
-    }
-
-    public void setRandomIndex(int randomIndex) {
-        this.randomIndex = randomIndex;
-    }
-
-    public Random getRan() {
-        return ran;
-    }
-
     public Integer getCurrentscore(){
         return currentscore;
     }
@@ -50,4 +30,11 @@ public abstract class Game {
         this.currentscore = currentscore;
     }
 
+    public Integer getCurrentQuestion() {
+        return currentQuestion;
+    }
+
+    public void setCurrentQuestion(Integer currentQuestion) {
+        this.currentQuestion = currentQuestion;
+    }
 }
