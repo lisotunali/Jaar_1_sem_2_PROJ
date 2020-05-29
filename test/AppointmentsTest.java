@@ -26,7 +26,7 @@ class AppointmentsTest {
 
         Appointments instanceAppointments = SingletonAppointments.getInstance();
         LocalDate yesterday = LocalDate.now().minusDays(1);
-        Appointment appointment = instanceAppointments.planAppointment(yesterday, "test condition1", SpecializationType.GENERAL, testPerson);
+        Appointment appointment = instanceAppointments.createAppointment(yesterday, "test condition1", SpecializationType.GENERAL, testPerson);
 
         assertNull(appointment);
     }
@@ -39,7 +39,7 @@ class AppointmentsTest {
         Appointment testAppointmentInDb = new Appointment(testPerson, testDoc, "test", SpecializationType.EAR, LocalDateTime.of(2021, 2, 13, 9, 00));
         instanceAppointments.addAppointment(testAppointmentInDb);
 
-        Appointment appointment = instanceAppointments.planAppointment(LocalDate.of(2021, 2, 13), "test", SpecializationType.EAR, testPerson);
+        Appointment appointment = instanceAppointments.createAppointment(LocalDate.of(2021, 2, 13), "test", SpecializationType.EAR, testPerson);
 
         assertNotEquals(null, appointment);
     }
@@ -53,10 +53,10 @@ class AppointmentsTest {
         instanceAppointments.addAppointment(testAppointmentInDb);
 
         for (int i = 0; i < 100000; i++) {
-            instanceAppointments.planAppointment(LocalDate.of(2021, 2, 13), "test", SpecializationType.EAR, testPerson);
+            instanceAppointments.createAppointment(LocalDate.of(2021, 2, 13), "test", SpecializationType.EAR, testPerson);
         }
 
-        Appointment appointment = instanceAppointments.planAppointment(LocalDate.of(2021, 2, 13), "test", SpecializationType.EAR, testPerson);
+        Appointment appointment = instanceAppointments.createAppointment(LocalDate.of(2021, 2, 13), "test", SpecializationType.EAR, testPerson);
 
         assertNull(appointment);
     }

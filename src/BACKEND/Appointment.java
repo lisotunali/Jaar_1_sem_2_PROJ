@@ -64,6 +64,9 @@ public class Appointment {
         return appointmentDate.format(DateTimeFormatter.ofPattern("EEEE, d MMM yyyy, HH:mm"));
     }
 
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     public String getDoneToString() {
         if (!done) {

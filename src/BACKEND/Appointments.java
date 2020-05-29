@@ -37,8 +37,34 @@ public class Appointments {
         return getAllAppointments(doctor).stream().filter(appointment -> !appointment.getDone()).collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public Appointment createAppointment(LocalDate date, String condition, SpecializationType specialtyType, Person patient) {
+        AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, specialtyType);
+
+        if (availableTimeAndDoctor == null) return null;
+
+        System.out.format("Created appointment with doctor: %s at: %s%n", availableTimeAndDoctor.getDoctor(), availableTimeAndDoctor.getAppointmentTime());
+        Appointment appointment = new Appointment(patient, availableTimeAndDoctor.getDoctor(), condition, specialtyType, availableTimeAndDoctor.getAppointmentTime());
+        addAppointment(appointment);
+
+        return appointment;
+    }
+
+    public Appointment updateAppointment(Appointment appointment, LocalDate date) {
+        AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, appointment.getAppointmentType());
+
+        if (availableTimeAndDoctor == null) return null;
+
+        System.out.format("Updated appointment with doctor: %s at: %s%n to doctor: %s at: %s%n", appointment.getDoctor(), appointment.getAppointmentDate(), availableTimeAndDoctor.getDoctor(), availableTimeAndDoctor.getAppointmentTime());
+        appointment.setAppointmentDate(availableTimeAndDoctor.getAppointmentTime());
+        appointment.setDoctor(availableTimeAndDoctor.getDoctor());
+
+        return appointment;
+    }
+
     // Automatically plan an appointment. Date should just be a date without time.
-    public Appointment planAppointment(LocalDate date, String condition, SpecializationType specialtyType, Person patient) {
+    // FIXME: Also check if another doctor is available at an earlier time
+    // FIXME: What happens if patient wants to create another appointment on the same day?
+    private AppointmentResult findAvailableTimeAndDoctor(LocalDate date, SpecializationType specialtyType) {
         // Assuming normal day is between 09:00 and 17:00
         LocalTime open = LocalTime.parse("09:00:00");
         LocalTime closed = LocalTime.parse("17:00:00");
@@ -91,11 +117,6 @@ public class Appointments {
 
         if (availableDoc == null) return null;
 
-        System.out.format("Created appointment with doctor: %s at: %s%n", availableDoc.getName(), appointmentTime);
-
-        Appointment appointment = new Appointment(patient, availableDoc, condition, specialtyType, appointmentTime);
-        addAppointment(appointment);
-
-        return appointment;
+        return new AppointmentResult(availableDoc, appointmentTime);
     }
 }

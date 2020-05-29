@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -40,6 +41,7 @@ public class Main extends Application {
         fakeDatabase.getUserDatabase().add(testperson1);
 
         Doctor testDoctor = new Doctor("doctor", "test123", SpecializationType.EAR);
+        testDoctor.setAvailableDay(DayOfWeek.SATURDAY, false);
         fakeDatabase.getUserDatabase().add(testDoctor);
 
         Doctor testDoctor2 = new Doctor("doctor2", "test123", Arrays.asList(SpecializationType.EAR, SpecializationType.GENERAL));
@@ -51,6 +53,6 @@ public class Main extends Application {
         singletonMarketplace.getInstance().addProduct(new AnimalProduct("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson.getAnimal("Sheep"), testperson));
 
         Appointments instanceAppointments = SingletonAppointments.getInstance();
-        instanceAppointments.planAppointment(LocalDate.of(2022, 2, 13), "test condition", SpecializationType.GENERAL, testperson);
+        instanceAppointments.createAppointment(LocalDate.of(2022, 2, 13), "test condition", SpecializationType.GENERAL, testperson);
     }
 }
