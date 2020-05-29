@@ -1,12 +1,13 @@
 package Education;
 
+import GUI.*;
 import GUI.fakeDatabase;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.TimerTask;
 
-public class Reading extends Game {
+public class Reading extends Education.Game {
 
     @Override
     public void checkAnswer(String buttonClicked) {

@@ -3,7 +3,6 @@ package GUI;
 import BACKEND.Person;
 import Education.ImageWithName;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 

@@ -3,7 +3,6 @@ package Education;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ImageWithName{
     private String name;

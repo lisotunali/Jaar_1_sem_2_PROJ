@@ -1,11 +1,6 @@
 package Education;
-import Education.Game;
-import Education.ImageWithName;
-import Education.Reading;
 import GUI.SceneController;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.*;
@@ -13,7 +8,6 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.TimerTask;
 
 
