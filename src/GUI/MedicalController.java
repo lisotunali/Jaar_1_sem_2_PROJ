@@ -9,7 +9,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class MedicalController {
@@ -20,13 +19,14 @@ public class MedicalController {
     public TableColumn<Appointment, String> doctorNameColumn;
     public TableColumn<Appointment, String> conditionColumn;
     public TableColumn<Appointment, Date> dateColumn;
-    public TableColumn<Appointment, Boolean> doneColumn;
+    public TableColumn<Appointment, String> doneColumn;
 
     public void initialize() {
         refreshUserAppointments();
     }
 
     public void refreshUserAppointments() {
+        /*
         ArrayList<Appointment> tempAppointments = new ArrayList<>();
 
         for (Appointment appointment : SingletonAppointments.getInstance().getAllAppointments()) {
@@ -37,11 +37,13 @@ public class MedicalController {
         }
 
         System.out.println("ArrayList empty: " + tempAppointments.isEmpty());
+        */
 
-        ObservableList<Appointment> appointments = FXCollections.observableArrayList(tempAppointments);
+        ObservableList<Appointment> appointments = FXCollections.observableArrayList(SingletonAppointments.getInstance().getAllAppointments(singletonPerson.getInstance()));
         doctorNameColumn.setCellValueFactory(new PropertyValueFactory<>("doctor"));
         conditionColumn.setCellValueFactory(new PropertyValueFactory<>("condition"));
-        doneColumn.setCellValueFactory(new PropertyValueFactory<>("done"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentDateString"));
+        doneColumn.setCellValueFactory(new PropertyValueFactory<>("doneToString"));
         appointmentTableView.setItems(appointments);
         appointmentTableView.refresh();
     }

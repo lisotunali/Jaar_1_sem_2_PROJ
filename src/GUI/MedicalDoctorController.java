@@ -1,19 +1,25 @@
 package GUI;
 
 import BACKEND.Appointment;
+import BACKEND.Doctor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
+
+import static GUI.SceneController.getPrimaryStage;
 
 public class MedicalDoctorController {
 
-    public TableView<Appointment> appointmentTableView;
+    public TableView<Appointment> appointmentTableView = new TableView<>();
     public TableColumn<Appointment, String> patientNameColumn;
     public TableColumn<Appointment, String> conditionColumn;
     public TableColumn<Appointment, Date> dateColumn;
@@ -24,21 +30,11 @@ public class MedicalDoctorController {
     }
 
     public void refreshUserAppointments() {
-        ArrayList<Appointment> tempAppointments = new ArrayList<>();
-
-        for (Appointment appointment : SingletonAppointments.getInstance().getAllAppointments()) {
-            if (appointment.getDoctor() == singletonPerson.getInstance()) {
-                tempAppointments.add(appointment);
-                System.out.println(appointment.getDoctor() + " " + singletonPerson.getInstance());
-            }
-        }
-
-        System.out.println("ArrayList empty: " + tempAppointments.isEmpty());
-
-        ObservableList<Appointment> appointments = FXCollections.observableArrayList(tempAppointments);
+        ObservableList<Appointment> appointments = FXCollections.observableArrayList(SingletonAppointments.getInstance().getAllAppointments((Doctor) singletonPerson.getInstance()));
         patientNameColumn.setCellValueFactory(new PropertyValueFactory<>("patient"));
         conditionColumn.setCellValueFactory(new PropertyValueFactory<>("condition"));
-        doneColumn.setCellValueFactory(new PropertyValueFactory<>("done"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentDateString"));
+        doneColumn.setCellValueFactory(new PropertyValueFactory<>("doneToString"));
         appointmentTableView.setItems(appointments);
         appointmentTableView.refresh();
     }
@@ -47,4 +43,20 @@ public class MedicalDoctorController {
         SceneController.switchTo("mainUi");
     }
 
+    public void pressViewAppointment() throws IOException {
+        if (appointmentTableView.getSelectionModel().getSelectedItem() == null) {
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Please select an appointment.");
+        }
+
+        if (appointmentTableView.getSelectionModel().getSelectedItem() != null) {
+            Appointment selectedItem = appointmentTableView.getSelectionModel().getSelectedItem();
+
+            Stage primaryStage = getPrimaryStage();
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("viewselectedappointment.fxml"));
+            Parent parent = loader.load();
+            ViewSelectedAppointmentController controller = loader.getController();
+            controller.initData(selectedItem);
+            primaryStage.getScene().setRoot(parent);
+        }
+    }
 }

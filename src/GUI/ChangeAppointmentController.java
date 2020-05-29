@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class RequestController {
+public class ChangeAppointmentController {
 
     public ComboBox<SpecializationType> specializationTypeComboBox = new ComboBox<>();
     public DatePicker datePicker;
