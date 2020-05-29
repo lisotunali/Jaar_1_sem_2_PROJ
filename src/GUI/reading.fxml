@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.readingController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Education.readingController">
     <children>
         <VBox layoutY="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
@@ -35,12 +35,17 @@
         </VBox>
         <HBox layoutX="-2.0" prefHeight="100.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label fx:id="readingWord" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="736.0" text="Label" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+            <Label fx:id="timerLabel" prefHeight="1000.0" prefWidth="1250.0" text="Label">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Label fx:id="readingWord" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="1500.0" text="Label" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Gill Sans MT" size="63.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="74.0" prefWidth="118.0" text="Back" />
+            <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="74.0" prefWidth="1100.0" text="Back" />
          </children></HBox>
     </children>
 </AnchorPane>

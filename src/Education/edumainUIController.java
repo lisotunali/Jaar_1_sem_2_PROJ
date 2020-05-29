@@ -1,5 +1,6 @@
-package GUI;
+package Education;
 
+import GUI.SceneController;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;

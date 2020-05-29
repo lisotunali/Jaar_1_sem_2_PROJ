@@ -10,12 +10,13 @@ public abstract class Game {
     protected ArrayList<ImageWithName> currentGameQuestions = new ArrayList<>();
     private Random ran = new Random();
     protected int randomIndex = 0;
-    protected Integer currentscore = 0;
+
+    private Integer currentscore = 0;
+
 
     public abstract void checkAnswer(String input);
 
-    public void initialize(){
-        saveQuestionsLocally();
+    public void initialize() {
     }
 
     public void saveQuestionsLocally() {
@@ -25,7 +26,7 @@ public abstract class Game {
         }
     }
 
-    public ArrayList<ImageWithName> getCurrentGameQuestions(){
+    public ArrayList<ImageWithName> getCurrentGameQuestions() {
         return currentGameQuestions;
     }
 
@@ -39,6 +40,14 @@ public abstract class Game {
 
     public Random getRan() {
         return ran;
+    }
+
+    public Integer getCurrentscore(){
+        return currentscore;
+    }
+
+    public void setCurrentscore(Integer currentscore) {
+        this.currentscore = currentscore;
     }
 
 }
