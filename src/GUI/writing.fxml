@@ -34,7 +34,7 @@
          <children>
             <TextField fx:id="guessField" prefHeight="75.0" prefWidth="625.0">
                <font>
-                  <Font name="Arial Black" size="36.0" />
+                  <Font name="Bodoni MT" size="48.0" />
                </font>
             </TextField>
          </children>
@@ -48,5 +48,10 @@
             </Button>
          </children>
       </HBox>
+      <Text fx:id="letterText" fill="#03b92a" layoutX="99.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="    letters" wrappingWidth="625.13671875" AnchorPane.leftAnchor="120.0">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
