@@ -30,7 +30,6 @@ public class readingController extends GameController {
     public void initialize(){
         putImageViewsInArray();
         game = new Game();
-        game.initialize();
         startTimer(timerLabel);
         nextQuestion();
     }
