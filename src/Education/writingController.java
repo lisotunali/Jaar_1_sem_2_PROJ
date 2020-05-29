@@ -2,16 +2,19 @@ package Education;
 
 import GUI.SceneController;
 import GUI.fakeDatabase;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.TimerTask;
 
-public class writingController {
+public class writingController extends GameController{
 
     @FXML
     private ImageView imageView;
@@ -22,62 +25,76 @@ public class writingController {
     @FXML
     private Button guessButton;
 
+    @FXML
+    private Label timerLabel;
+
     private ArrayList<ImageWithName> newQuestions = new ArrayList<ImageWithName>(fakeDatabase.getImagesDatabase());
-    private Writing writing;
+    private Writing game;
     private Integer currentQuestion = 0;
 
     public void initialize() throws IOException {
-        writing = new Writing();
+        game = new Writing();
         shuffleQuestions();
         nextQuestion();
+        startTimer();
         currentQuestion = 0;
     }
 
 
     public void nextQuestion() throws IOException {
-        if (newQuestions.isEmpty()){
-            endAndSaveGame();
+        if (newQuestions.size() -1 == currentQuestion){
+            endGame(game);
+            System.out.println("Game ended");
             return;
         }
         else {
-            if (currentQuestion < newQuestions.size()) {
+            /* if (currentQuestion < newQuestions.size()) {
                 imageView.setImage(newQuestions.get(currentQuestion).getImage());
-            }
-            while (!newQuestions.isEmpty() && currentQuestion >= newQuestions.size()) {
-                currentQuestion--;
-            }
+                System.out.println("image set");
+            } */
+            imageView.setImage(newQuestions.get(currentQuestion).getImage()); System.out.println("image set - index" + currentQuestion);
         }
 
-    }
-
-    public void endAndSaveGame() throws IOException {
-        SceneController.switchTo("edu_UI");
     }
 
     public void shuffleQuestions(){
         Collections.shuffle(newQuestions);
-        newQuestions.remove(newQuestions.size()-1);
-        newQuestions.remove(newQuestions.size()-1);
-        newQuestions.remove(newQuestions.size()-1);
-        newQuestions.remove(newQuestions.size()-1);
     }
 
     public void doneClicked() throws IOException {
         checkAnswer(guessField.getText());
+        guessField.clear();
         nextQuestion();
     }
 
     public void checkAnswer(String input){
         if(newQuestions.get(currentQuestion).getName().equals(input)){
-            writing.setCurrentscore(writing.getCurrentscore()+1);
+            game.setCurrentscore(game.getCurrentscore() + 1);
             System.out.println("+1 score");
         }
         else{
-            ImageWithName addAtEnd = newQuestions.get(currentQuestion);
-            newQuestions.add(addAtEnd);
+            setSecondsLeft(getSecondsLeft() - 10, game);
         }
-        newQuestions.remove(currentQuestion);
         currentQuestion++;
     }
 
+    @Override
+    public void startTimer() {
+        setSecondsLeft(60, game);
+        getTimer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                setSecondsLeft(getSecondsLeft()-1, game);
+                Platform.runLater(() ->  timerLabel.setText(getSecondsLeft().toString()));
+                if(getSecondsLeft() <= 0){
+                    stopTimer();
+                    try {
+                        endGame(game);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, 0, 1000);
+    }
 }
