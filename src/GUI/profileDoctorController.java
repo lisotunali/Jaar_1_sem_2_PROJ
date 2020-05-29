@@ -3,34 +3,46 @@ package GUI;
 import BACKEND.Doctor;
 import BACKEND.SpecializationType;
 import javafx.scene.control.CheckBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.HashSet;
+import java.time.DayOfWeek;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class profileDoctorController extends profileController {
     public VBox doctorTypes;
+    public VBox doctorAvailability;
 
     //FiXME: We know it's safe to cast to a doctor but is it possible to remove the cast?
     private Doctor currentUser = (Doctor) singletonPerson.getInstance();
     private ArrayList<CheckBox> specializationsCheckbox = new ArrayList<>();
+    private ArrayList<CheckBox> availabilityCheckbox = new ArrayList<>();
 
     @Override
     public void initialize() {
         super.initialize();
-        ArrayList<SpecializationType> allTypes = new ArrayList<>(EnumSet.allOf(SpecializationType.class));
+        createCheckboxesFromEnum(SpecializationType.class, specializationsCheckbox, doctorTypes, currentUser.getSpecializations().stream().map(Enum::toString).collect(Collectors.toList()));
+        createCheckboxesFromEnum(DayOfWeek.class, availabilityCheckbox, doctorAvailability, currentUser.getAvailableDays().entrySet().stream().filter(Map.Entry::getValue).map(Map.Entry::getKey).map(Enum::toString).collect(Collectors.toList()));
+    }
 
-        allTypes.forEach(type -> {
-            CheckBox cb1 = new CheckBox();
-            cb1.setText(String.valueOf(type));
-            cb1.setSelected(currentUser.getSpecializations().contains(type));
+    // Enable all checkbox of values given in array if text match
+    private void setSelectedCheckboxes(ArrayList<CheckBox> array, List<String> enableList) {
+        array.stream().filter(checkBox -> enableList.contains(checkBox.getText())).forEach(checkBox -> checkBox.setSelected(true));
+    }
 
-            specializationsCheckbox.add(cb1);
+    // Generic method to create checkboxes from enum with selected boxes
+    private <E extends Enum<E>> void createCheckboxesFromEnum(Class<E> elementType, ArrayList<CheckBox> checkboxArray, Pane pane, List<String> setSelected) {
+        ArrayList<E> allTypes = new ArrayList<>(EnumSet.allOf(elementType));
+
+        allTypes.stream().map(String::valueOf).forEach(o -> {
+            CheckBox cb = new CheckBox();
+            cb.setText(o);
+            cb.setSelected(setSelected.contains(o));
+            checkboxArray.add(cb);
         });
 
-        doctorTypes.getChildren().addAll(specializationsCheckbox);
+        pane.getChildren().addAll(checkboxArray);
     }
 
     @Override
@@ -41,6 +53,12 @@ public class profileDoctorController extends profileController {
                 .collect(Collectors.toCollection(HashSet::new));
 
         currentUser.setSpecializations(specializations);
+
+        HashMap<DayOfWeek, Boolean> availabilities = availabilityCheckbox.stream()
+                .filter(CheckBox::isSelected)
+                .collect(Collectors.toMap(checkBox -> DayOfWeek.valueOf(checkBox.getText()), CheckBox::isSelected, (a, b) -> b, HashMap::new));
+
+        currentUser.setAvailableDays(availabilities);
 
         super.onUpdateClicked();
     }

@@ -87,13 +87,35 @@
         </HBox>
     </bottom>
     <right>
-        <VBox fx:id="doctorTypes" prefHeight="297.0" prefWidth="146.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="297.0" prefWidth="146.0" BorderPane.alignment="CENTER">
             <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor specializations">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor settings">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Text>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Specializations">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="15.0"/>
+                    </VBox.margin>
+                </Text>
+                <ScrollPane prefHeight="200.0" prefWidth="146.0" style="-fx-background-color: transparant;">
+                    <content>
+                        <VBox fx:id="doctorTypes" prefWidth="100.0"/>
+                    </content>
+                </ScrollPane>
+                <Text layoutX="10.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Availability">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="5.0"/>
+                    </VBox.margin>
+                </Text>
+                <VBox fx:id="doctorAvailability" prefHeight="200.0" prefWidth="100.0"/>
             </children>
             <BorderPane.margin>
                 <Insets right="20.0"/>
