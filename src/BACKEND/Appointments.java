@@ -76,20 +76,13 @@ public class Appointments {
         // Check if date is before current time
         if (date.isBefore(currentDate)) return null;
 
-        // Grab all doctors available at date and has specified type
-        ArrayList<Doctor> doctors = fakeDatabase.getUserDatabase()
-                .stream()
-                .filter(Doctor.class::isInstance)
-                .map(Doctor.class::cast)
-                .filter(doctor -> doctor.isAvailableOn(date.getDayOfWeek()) && doctor.getSpecializations().contains(specialtyType))
-                .collect(Collectors.toCollection(ArrayList::new));
+        // Grab all doctors available at date with specified type
+        ArrayList<Doctor> doctors = getDoctorsAvailableAtDateWithType(date, specialtyType);
 
         if (doctors.size() == 0) return null;
 
         // Grab all appointments on given date
-        ArrayList<Appointment> appointments = allAppointments.stream()
-                .filter(appointment -> appointment.getAppointmentDate().toLocalDate().equals(date))
-                .collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<Appointment> appointments = getAllAppointmentsOnDate(date, allAppointments);
 
         // Check for each available doctor if they have time on day
         Doctor availableDoc = null;
@@ -118,5 +111,20 @@ public class Appointments {
         if (availableDoc == null) return null;
 
         return new AppointmentResult(availableDoc, appointmentTime);
+    }
+
+    private ArrayList<Appointment> getAllAppointmentsOnDate(LocalDate date, ArrayList<Appointment> allAppointments) {
+        return allAppointments.stream()
+                .filter(appointment -> appointment.getAppointmentDate().toLocalDate().equals(date))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    private ArrayList<Doctor> getDoctorsAvailableAtDateWithType(LocalDate date, SpecializationType specialtyType) {
+        return fakeDatabase.getUserDatabase()
+                .stream()
+                .filter(Doctor.class::isInstance)
+                .map(Doctor.class::cast)
+                .filter(doctor -> doctor.isAvailableOn(date.getDayOfWeek()) && doctor.getSpecializations().contains(specialtyType))
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }
