@@ -55,7 +55,6 @@ public class profileDoctorController extends profileController {
         currentUser.setSpecializations(specializations);
 
         HashMap<DayOfWeek, Boolean> availabilities = availabilityCheckbox.stream()
-                .filter(CheckBox::isSelected)
                 .collect(Collectors.toMap(checkBox -> DayOfWeek.valueOf(checkBox.getText()), CheckBox::isSelected, (a, b) -> b, HashMap::new));
 
         currentUser.setAvailableDays(availabilities);
