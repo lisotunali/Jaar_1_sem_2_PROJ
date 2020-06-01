@@ -38,7 +38,7 @@ public class Appointments {
     }
 
     public Appointment createAppointment(LocalDate date, String condition, SpecializationType specialtyType, Person patient) {
-        AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, specialtyType);
+        AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, specialtyType, patient);
 
         if (availableTimeAndDoctor == null) return null;
 
@@ -50,7 +50,7 @@ public class Appointments {
     }
 
     public Appointment updateAppointment(Appointment appointment, LocalDate date) {
-        AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, appointment.getAppointmentType());
+        AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, appointment.getAppointmentType(), appointment.getPatient());
 
         if (availableTimeAndDoctor == null) return null;
 
@@ -61,20 +61,18 @@ public class Appointments {
         return appointment;
     }
 
-    // Automatically plan an appointment. Date should just be a date without time.
-    // FIXME: Also check if another doctor is available at an earlier time
-    // FIXME: What happens if patient wants to create another appointment on the same day?
-    private AppointmentResult findAvailableTimeAndDoctor(LocalDate date, SpecializationType specialtyType) {
+    // Automatically plan an appointment with the earliest available doctor.
+    // If a patient already has an appointment on specified date we'll deny it.
+    private AppointmentResult findAvailableTimeAndDoctor(LocalDate date, SpecializationType specialtyType, Person patient) {
         // Assuming normal day is between 09:00 and 17:00
         LocalTime open = LocalTime.parse("09:00:00");
         LocalTime closed = LocalTime.parse("17:00:00");
         int appointmentMinutes = 15;
         LocalDate currentDate = LocalDate.now();
 
-        ArrayList<Appointment> allAppointments = SingletonAppointments.getInstance().getAllAppointments();
-
-        // Check if date is before current time
-        if (date.isBefore(currentDate)) return null;
+        // Check if date is before current time or patient already has appointment
+        if (date.isBefore(currentDate) || getAllOpenAppointments(patient).stream().anyMatch(appointment -> appointment.getAppointmentDate().toLocalDate().equals(date)))
+            return null;
 
         // Grab all doctors available at date with specified type
         ArrayList<Doctor> doctors = getDoctorsAvailableAtDateWithType(date, specialtyType);
@@ -82,39 +80,48 @@ public class Appointments {
         if (doctors.size() == 0) return null;
 
         // Grab all appointments on given date
-        ArrayList<Appointment> appointments = getAllAppointmentsOnDate(date, allAppointments);
+        ArrayList<Appointment> appointments = getAllAppointmentsOnDate(date);
 
         // Check for each available doctor if they have time on day
-        Doctor availableDoc = null;
-        LocalDateTime appointmentTime = LocalDateTime.of(date, open);
+        ArrayList<AppointmentResult> availableDoctors = new ArrayList<>();
 
+        // Need to check if a doctor is available at time, check if there's another doctor available before that.
+        // If there is, just assign that doctor to the appointment.
         for (Doctor doc : doctors) {
-            ArrayList<Appointment> appointmentsDoc = appointments.stream()
-                    .filter(appointment -> appointment.getDoctor().equals(doc))
-                    .sorted(Comparator.comparing(Appointment::getAppointmentDate))
-                    .collect(Collectors.toCollection(ArrayList::new));
+            ArrayList<Appointment> appointmentsDoc = getAppointmentsDoctorInAppointment(appointments, doc);
 
+            // Doctor has no appointments on day
             if (appointmentsDoc.size() == 0) {
-                availableDoc = doc;
+                availableDoctors.add(new AppointmentResult(doc, LocalDateTime.of(date, open)));
                 break;
             }
 
+            // Actually just need to check the last appointment
             LocalDateTime currentAppointmentTime = appointmentsDoc.get(appointmentsDoc.size() - 1).getAppointmentDate().plusMinutes(appointmentMinutes + 1);
 
-            if (!currentAppointmentTime.toLocalTime().isAfter(closed)) {
-                availableDoc = doc;
-                appointmentTime = currentAppointmentTime;
-                break;
+            // Found a doctor available
+            if (currentAppointmentTime.toLocalTime().isBefore(closed.minusMinutes(appointmentMinutes))) {
+                availableDoctors.add(new AppointmentResult(doc, currentAppointmentTime));
             }
         }
 
-        if (availableDoc == null) return null;
+        availableDoctors.sort(Comparator.comparing(AppointmentResult::getAppointmentTime));
 
-        return new AppointmentResult(availableDoc, appointmentTime);
+        if (availableDoctors.isEmpty()) return null;
+
+        // Return the first in the array since that doctor is available at the earliest time
+        return availableDoctors.get(0);
     }
 
-    private ArrayList<Appointment> getAllAppointmentsOnDate(LocalDate date, ArrayList<Appointment> allAppointments) {
-        return allAppointments.stream()
+    // Get all appointments that the doctor has in given appointments array list
+    private ArrayList<Appointment> getAppointmentsDoctorInAppointment(ArrayList<Appointment> appointments, Doctor doc) {
+        return appointments.stream()
+                .filter(appointment -> appointment.getDoctor().equals(doc))
+                .sorted(Comparator.comparing(Appointment::getAppointmentDate)).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    private ArrayList<Appointment> getAllAppointmentsOnDate(LocalDate date) {
+        return SingletonAppointments.getInstance().getAllAppointments().stream()
                 .filter(appointment -> appointment.getAppointmentDate().toLocalDate().equals(date))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
