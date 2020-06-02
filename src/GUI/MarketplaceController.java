@@ -89,8 +89,6 @@ public class MarketplaceController {
 
                 System.out.println("Bid placed");
                 bids.add(newBid);
-//                productTable.refresh();
-//                refreshBids();
                 AlertClass.showAlert(Alert.AlertType.CONFIRMATION, "Bid placed");
             }
         }
