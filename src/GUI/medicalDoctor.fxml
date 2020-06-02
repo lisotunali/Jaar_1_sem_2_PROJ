@@ -59,8 +59,7 @@
                         <TableView fx:id="appointmentTableView" prefHeight="200.0" prefWidth="350.0"
                                    BorderPane.alignment="CENTER">
                             <columns>
-                                <TableColumn fx:id="patientNameColumn" minWidth="118.0" prefWidth="-1.0"
-                                             text="Patient"/>
+                                <TableColumn fx:id="NameColumn" minWidth="118.0" prefWidth="-1.0" text="Patient"/>
                                 <TableColumn fx:id="conditionColumn" minWidth="181.0" prefWidth="-1.0"
                                              text="About appointment"/>
                                 <TableColumn fx:id="dateColumn" minWidth="180.0" prefWidth="-1.0" text="Date"/>

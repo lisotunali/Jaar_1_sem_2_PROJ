@@ -17,7 +17,7 @@ public class mainUiController {
     public Text currentUserLabel;
     public TableView<Appointment> userAppointments;
     public TableColumn<Appointment, String> appointmentDate;
-    public TableColumn<Appointment, String> appointmentDoctor;
+    public TableColumn<Appointment, String> appointmentCondition;
 
     public void initialize() {
         Person currentUser = singletonPerson.getInstance();
@@ -35,7 +35,7 @@ public class mainUiController {
 
         ObservableList<Appointment> appointments = FXCollections.observableArrayList(allOpenAppointments);
         appointmentDate.setCellValueFactory(new PropertyValueFactory<>("appointmentDateString"));
-        appointmentDoctor.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+        appointmentCondition.setCellValueFactory(new PropertyValueFactory<>("condition"));
         userAppointments.setItems(appointments);
 
         userAppointments.getSortOrder().add(appointmentDate);
