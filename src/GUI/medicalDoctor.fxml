@@ -75,12 +75,14 @@
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="125.0"
                               BorderPane.alignment="CENTER">
                             <children>
-                                <CheckBox mnemonicParsing="false" text="Show done">
+                                <CheckBox fx:id="showDoneCheck" mnemonicParsing="false" onAction="#filterAppointments"
+                                          selected="true" text="Show done">
                                     <VBox.margin>
                                         <Insets/>
                                     </VBox.margin>
                                 </CheckBox>
-                                <CheckBox mnemonicParsing="false" text="Show not done">
+                                <CheckBox fx:id="showNotDoneCheck" mnemonicParsing="false"
+                                          onAction="#filterAppointments" selected="true" text="Show not done">
                                     <VBox.margin>
                                         <Insets/>
                                     </VBox.margin>

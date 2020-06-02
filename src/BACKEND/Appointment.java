@@ -20,6 +20,10 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
     }
 
+    public void setAppointmentType(SpecializationType appointmentType) {
+        this.appointmentType = appointmentType;
+    }
+
     public Boolean getDone() {
         return done;
     }

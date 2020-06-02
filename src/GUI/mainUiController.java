@@ -26,7 +26,12 @@ public class mainUiController {
     }
 
     private void setAppointments(Person currentUser) {
-        ArrayList<Appointment> allOpenAppointments = SingletonAppointments.getInstance().getAllOpenAppointments(currentUser);
+        ArrayList<Appointment> allOpenAppointments = new ArrayList<>();
+        if (currentUser instanceof Doctor) {
+            allOpenAppointments = SingletonAppointments.getInstance().getAllOpenAppointments((Doctor) currentUser);
+        } else {
+            allOpenAppointments = SingletonAppointments.getInstance().getAllOpenAppointments(currentUser);
+        }
 
         ObservableList<Appointment> appointments = FXCollections.observableArrayList(allOpenAppointments);
         appointmentDate.setCellValueFactory(new PropertyValueFactory<>("appointmentDateString"));

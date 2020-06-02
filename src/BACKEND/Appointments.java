@@ -37,6 +37,14 @@ public class Appointments {
         return getAllAppointments(doctor).stream().filter(appointment -> !appointment.getDone()).collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public ArrayList<Appointment> getDoneAppointments(Person person) {
+        return getAllAppointments(person).stream().filter(Appointment::getDone).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public ArrayList<Appointment> getDoneAppointments(Doctor doctor) {
+        return getAllAppointments(doctor).stream().filter(Appointment::getDone).collect(Collectors.toCollection(ArrayList::new));
+    }
+
     public Appointment createAppointment(LocalDate date, String condition, SpecializationType specialtyType, Person patient) {
         AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, specialtyType, patient);
 
@@ -133,5 +141,9 @@ public class Appointments {
                 .map(Doctor.class::cast)
                 .filter(doctor -> doctor.isAvailableOn(date.getDayOfWeek()) && doctor.getSpecializations().contains(specialtyType))
                 .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public void removeAppointment(Appointment toBeRemoved) {
+        hasAppointments.remove(toBeRemoved);
     }
 }

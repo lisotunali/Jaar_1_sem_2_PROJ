@@ -93,8 +93,8 @@
                                             GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                                 <CheckBox fx:id="doneCheck" mnemonicParsing="false" GridPane.columnIndex="1"
                                           GridPane.rowIndex="5"/>
-                                <ComboBox prefHeight="25.0" prefWidth="213.0" GridPane.columnIndex="1"
-                                          GridPane.rowIndex="2"/>
+                                <ComboBox fx:id="specialties" prefHeight="25.0" prefWidth="213.0"
+                                          GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                                 <TextField fx:id="timeField" editable="false" GridPane.columnIndex="1"
                                            GridPane.rowIndex="4"/>
                             </children>
@@ -113,10 +113,10 @@
                     <children>
                         <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#mainScreen"
                                 prefHeight="30.0" prefWidth="150.0" text="Back"/>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0"
-                                text="Change appointment" GridPane.columnIndex="2"/>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0"
-                                text="Delete appointment" GridPane.columnIndex="1"/>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#changeAppointment"
+                                prefHeight="30.0" prefWidth="175.0" text="Change appointment" GridPane.columnIndex="2"/>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#deleteAppointment"
+                                prefHeight="30.0" prefWidth="175.0" text="Cancel appointment" GridPane.columnIndex="1"/>
                     </children>
                 </GridPane>
             </children>

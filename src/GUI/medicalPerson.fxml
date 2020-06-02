@@ -57,8 +57,10 @@
                                 <Insets left="10.0"/>
                             </padding>
                             <children>
-                                <CheckBox mnemonicParsing="false" text="Show done"/>
-                                <CheckBox mnemonicParsing="false" text="Show not done"/>
+                                <CheckBox fx:id="showDoneCheck" mnemonicParsing="false" onAction="#filterAppointments"
+                                          selected="true" text="Show done"/>
+                                <CheckBox fx:id="showNotDoneCheck" mnemonicParsing="false"
+                                          onAction="#filterAppointments" selected="true" text="Show not done"/>
                             </children>
                         </VBox>
                     </left>
