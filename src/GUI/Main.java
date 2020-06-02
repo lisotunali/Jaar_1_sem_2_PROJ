@@ -7,6 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.Arrays;
+
 public class Main extends Application {
 
 
@@ -29,14 +33,27 @@ public class Main extends Application {
 
     public void setUpTestInstances() {
         Person testperson = new Person("test", "test123");
-        Person testperson1 = new Person("Rishwan", "test123");
-        fakeDatabase.getUserDatabase().add(testperson);
-        fakeDatabase.getUserDatabase().add(testperson1);
-        Contact testContact1 = new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool");
-        testperson.addContact(testContact1);
         testperson.addAnimal("Goat", 500);
         testperson.addAnimal("Sheep", 30);
+        fakeDatabase.getUserDatabase().add(testperson);
+
+        Person testperson1 = new Person("Test2", "test123");
+        fakeDatabase.getUserDatabase().add(testperson1);
+
+        Doctor testDoctor = new Doctor("doctor", "test123", SpecializationType.EAR);
+        testDoctor.setAvailableDay(DayOfWeek.SATURDAY, false);
+        fakeDatabase.getUserDatabase().add(testDoctor);
+
+        Doctor testDoctor2 = new Doctor("doctor2", "test123", Arrays.asList(SpecializationType.EAR, SpecializationType.GENERAL));
+        fakeDatabase.getUserDatabase().add(testDoctor2);
+
+        testperson.addContact(new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool"));
+
         singletonMarketplace.getInstance().addProduct(new AnimalProduct("Test Product", "Dit is een testproduct voor de marketplace", 999, 10, testperson.getAnimal("Goat"), testperson));
         singletonMarketplace.getInstance().addProduct(new AnimalProduct("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson.getAnimal("Sheep"), testperson));
+
+        Appointments instanceAppointments = SingletonAppointments.getInstance();
+        instanceAppointments.createAppointment(LocalDate.of(2020, 6, 2), "test condition for a test appointment", SpecializationType.EAR, testperson1);
+        instanceAppointments.createAppointment(LocalDate.of(2022, 2, 13), "test condition", SpecializationType.GENERAL, testperson);
     }
 }
