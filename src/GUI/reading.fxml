@@ -49,7 +49,7 @@
                   <Font name="Arial Rounded MT Bold" size="63.0" />
                </font>
             </Label>
-            <Button id="redsale" fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="74.0" prefWidth="125.0" stylesheets="@../stylesheet.css" text="Back">
+            <Button id="redsale" fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="74.0" prefWidth="125.0" stylesheets="@../buttonsheet.css" text="Back">
                <padding>
                   <Insets right="5.0" top="5.0" />
                </padding></Button>

@@ -36,7 +36,7 @@ public class writingController extends GameController{
 
     public void initialize() throws IOException {
         game = new Game();
-        game.saveQuestionsLocally();
+        game.saveQuestionsLocally(fakeDatabase.getImagesDatabase());
         questions = game.getCurrentGameQuestions();
         shuffleQuestions();
         nextQuestion();
@@ -44,13 +44,13 @@ public class writingController extends GameController{
     }
 
     public void nextQuestion() throws IOException {
-        game.setCurrentQuestion(game.getCurrentQuestion()+1);
-        if (questions.size() -1 == game.getCurrentQuestion()){
+        if (game.getCurrentQuestion()+1 == questions.size()){
             endGame(game);
             System.out.println("Game ended");
             return;
         }
         else {
+            game.setCurrentQuestion(game.getCurrentQuestion()+1);
             imageView.setImage(questions.get(game.getCurrentQuestion()).getImage());
             StringBuilder dashes = new StringBuilder();
             for(int i = 0; i < questions.get(game.getCurrentQuestion()).getName().length(); i++){
@@ -71,6 +71,10 @@ public class writingController extends GameController{
         checkAnswer(guessField.getText(), questions.get(game.getCurrentQuestion()).getName());
         guessField.clear();
         nextQuestion();
+    }
+
+    public void backButtonClicked() throws IOException {
+        SceneController.switchTo("education");
     }
 
 }

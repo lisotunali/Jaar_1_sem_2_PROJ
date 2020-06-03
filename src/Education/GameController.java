@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
+import javax.script.ScriptException;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,7 +27,7 @@ public abstract class GameController {
         }, 0, 1000);
     }
 
-    public abstract void nextQuestion() throws IOException;
+    public abstract void nextQuestion() throws IOException, ScriptException;
 
     public void stopTimer(){
         timer.cancel();

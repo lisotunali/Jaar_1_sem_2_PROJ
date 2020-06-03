@@ -7,18 +7,18 @@ import java.util.Random;
 
 public class Game {
 
-    protected ArrayList<ImageWithName> currentGameQuestions = new ArrayList<>();
+    protected ArrayList currentGameQuestions = new ArrayList<>();
     private Integer currentscore = 0;
     private Integer currentQuestion = -1;
 
-    public void saveQuestionsLocally() {
+    public void saveQuestionsLocally(ArrayList source) {
         currentGameQuestions.clear();
-        for (int i = 0; i < fakeDatabase.getImagesDatabase().size(); i++) {
-            currentGameQuestions.add(i, fakeDatabase.getImagesDatabase().get(i));
+        for (int i = 0; i < source.size(); i++) {
+            currentGameQuestions.add(i, source.get(i));
         }
     }
 
-    public ArrayList<ImageWithName> getCurrentGameQuestions() {
+    public ArrayList getCurrentGameQuestions() {
         return currentGameQuestions;
     }
 

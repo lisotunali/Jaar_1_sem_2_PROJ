@@ -1,6 +1,7 @@
 package Education;
 import GUI.ConvertClass;
 import GUI.SceneController;
+import GUI.fakeDatabase;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,6 +25,7 @@ public class readingController extends GameController {
 
     private ArrayList<ImageView> imageViews = new ArrayList<>();
     private ArrayList<ImageWithName> temps = new ArrayList<>();
+    private ArrayList<ImageWithName> questions = new ArrayList<>();
 
     private ImageWithName correctAnswer;
 
@@ -37,15 +39,16 @@ public class readingController extends GameController {
     public void nextQuestion(){
         game.setCurrentQuestion(game.getCurrentQuestion()+1);
         temps.clear();
-        game.saveQuestionsLocally();
+        game.saveQuestionsLocally(fakeDatabase.getImagesDatabase());
+        questions = game.getCurrentGameQuestions();
         print4RandomTemps();
         setCorrectAnswer();
     }
 
     public void print4RandomTemps(){
-        Collections.shuffle(game.getCurrentGameQuestions());
+        Collections.shuffle(questions);
         for (int i = 0; i<4; i++){
-            temps.add(game.getCurrentGameQuestions().get(i));
+            temps.add(questions.get(i));
             imageViews.get(i).setImage(temps.get(i).getImage());
         }
     }

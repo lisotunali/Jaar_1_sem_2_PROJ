@@ -21,7 +21,7 @@ public class Main extends Application {
         // Add fake persons
 
         setUpTestInstances();
-        createImagewithNames();
+        setUpGameData();
 
         SceneController.setPrimaryStage(primaryStage);
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
@@ -44,7 +44,7 @@ public class Main extends Application {
         singletonMarketplace.getInstance().addProduct(new AnimalProduct("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson.getAnimal("Sheep"), testperson));
     }
 
-    public void createImagewithNames(){
+    public void setUpGameData(){
         fakeDatabase.getImagesDatabase().add( new ImageWithName("bee", new Image(getClass().getResourceAsStream("/Education/Images/bee.png"))));
         fakeDatabase.getImagesDatabase().add( new ImageWithName("doctor", new Image(getClass().getResourceAsStream("/Education/Images/doctor.jpg"))));
         fakeDatabase.getImagesDatabase().add( new ImageWithName("dog", new Image(getClass().getResourceAsStream("/Education/Images/dog.jpg"))));

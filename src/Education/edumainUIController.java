@@ -12,7 +12,8 @@ public class edumainUIController {
         SceneController.switchTo("mainUi");
     }
 
-    public void mathButtonclicked() {
+    public void mathButtonclicked() throws IOException {
+        SceneController.switchTo("math");
     }
 
     public void writingButtonclicked() throws IOException {
