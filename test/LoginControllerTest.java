@@ -1,28 +1,12 @@
 import GUI.singletonPerson;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.*;
-/*
-import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.matcher.control.LabeledMatchers.hasText;
-import org.testfx.matcher.base.NodeMatchers;
-import org.junit.jupiter.api.*;
-import org.hamcrest.Matcher;
-import org.testfx.api.FxAssert;
-
-import java.awt.*;
-import java.io.IOException;
-import java.util.function.Function;
- */
 
 public class LoginControllerTest extends TestFXTestBase {
 
@@ -37,7 +21,6 @@ public class LoginControllerTest extends TestFXTestBase {
         write(name);
         clickOn(passwordInputID);
         write(password);
-        //verifyThat(nameInputID, hasText(name));
         PasswordField pwField = lookup("#passwordInput").query();
         TextField nameField = lookup("#nameInput").query();
         assertEquals(pwField.getText(), password, "User input should be correctly reflected in password field.");

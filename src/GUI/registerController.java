@@ -1,7 +1,10 @@
 package GUI;
 
+import BACKEND.Doctor;
 import BACKEND.Person;
+import BACKEND.SpecializationType;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -11,6 +14,7 @@ public class registerController {
     public TextField nameInput;
     public PasswordField passwordInput;
     public PasswordField passwordConfirmInput;
+    public CheckBox isDoctor;
 
     public void registerButtonClicked() throws IOException {
         if (nameInput.getText().isEmpty() || passwordInput.getText().isEmpty()) {
@@ -30,7 +34,15 @@ public class registerController {
             }
         }
 
-        Person person = new Person(nameInput.getText(), passwordInput.getText());
+        Person person;
+
+        if (isDoctor.isSelected()) {
+            // TODO: Specialization from GUI?
+            person = new Doctor(nameInput.getText(), passwordInput.getText(), SpecializationType.GENERAL);
+        } else {
+            person = new Person(nameInput.getText(), passwordInput.getText());
+        }
+
         fakeDatabase.getUserDatabase().add(person);
         singletonPerson.setPerson(person);
 
