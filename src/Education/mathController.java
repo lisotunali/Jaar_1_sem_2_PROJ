@@ -18,10 +18,10 @@ import java.util.Collections;
 public class mathController extends GameController {
 
     @FXML
-    private Button guessButton;
+    private Label exerciseLabel;
 
     @FXML
-    private Label exerciseLabel;
+    private Label timerLabel;
 
     @FXML
     private TextField guessField;
@@ -30,13 +30,15 @@ public class mathController extends GameController {
 
     private ArrayList<String> operators = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
 
-    private Integer correctAnswer;
+    private String correctAnswerString;
 
-    public void intialize() throws IOException, ScriptException {
+    public void initialize() throws IOException, ScriptException {
         System.out.println("Initializing..");
-        Game game = new Game();
+        game = new Game();
+        game.setCurrentscore(0);
         game.saveQuestionsLocally(fakeDatabase.getNumbersDatabase());
         numbers = game.getCurrentGameQuestions();
+        startTimer(timerLabel);
         nextQuestion();
     }
 
@@ -46,9 +48,14 @@ public class mathController extends GameController {
         //game.setCurrentQuestion(game.getCurrentQuestion() + 1);
         Collections.shuffle(numbers);
         Integer a = numbers.get(0);
-        Integer b = numbers.get(1);
+        Integer b = numbers.get(0);
         Collections.shuffle(operators);
         String operator = operators.get(0);
+        for(Integer number : numbers){
+            if(checkEasySum(a, number, operator)){
+                b = number;
+            }
+        }
 
         String question = a + operator + b;
         exerciseLabel.setText(question);
@@ -57,7 +64,26 @@ public class mathController extends GameController {
         ScriptEngine engine = manager.getEngineByName("js");
         Object result = engine.eval(question);
         Integer res = (Integer) result;
-        System.out.println(a + "   " + b + "    " +  res + "   " + result);
+        correctAnswerString = res.toString();
+    }
+
+    public Boolean checkEasySum (Integer leftNumber, Integer rightNumber, String operator) {
+        if("*".equals(operator)){
+            return leftNumber * rightNumber <= 40;
+        }
+        if("/".equals(operator)){
+            return leftNumber % rightNumber == 0;
+        }
+        if("-".equals(operator)){
+            return leftNumber - rightNumber >= 0;
+        }
+        return true;
+    }
+
+    public void doneClicked() throws IOException, ScriptException {
+        checkAnswer(guessField.getText(), correctAnswerString);
+        guessField.clear();
+        nextQuestion();
     }
 
     public void backButtonClicked() throws IOException {
