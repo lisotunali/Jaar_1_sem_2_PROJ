@@ -52,14 +52,12 @@ public class ViewProductController {
         thisAmountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         thisProductTableView.setItems(thisProduct);
         thisProductTableView.getSortOrder().add(thisTitleColumn);
-        //thisProductTableView.refresh();
 
         ObservableList<Bid> bids = FXCollections.observableArrayList(selectedProduct.getBids());
         buyerColumn.setCellValueFactory(new PropertyValueFactory<>("buyerName"));
         bidColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         sellTable.setItems(bids);
         sellTable.getSortOrder().add(bidColumn);
-        //sellTable.refresh();
     }
 
 

@@ -3,19 +3,12 @@ import BACKEND.Bid;
 import BACKEND.Person;
 import BACKEND.Product;
 import GUI.SceneController;
-import GUI.fakeDatabase;
 import GUI.singletonMarketplace;
 import GUI.singletonPerson;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Scene;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableView;
-import javafx.scene.input.MouseButton;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,26 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class  MarketplaceControllerTest extends TestFXTestBase {
 
-    //Person testperson;
-    //AnimalProduct animalTestProduct;
-    //AnimalProduct animalTestProduct2;
-/*
-    public Button backButton;
-    public Button bidButton;
-    public Button sellPageButton;
-    public TextField bidInput;
-
-    public TableView<Product> productTable;
-    public TableColumn<Product, String> titleColumn;
-    public TableColumn<Product, Integer> amountColumn;
-    public TableColumn<Product, String> sellerColumn;
-    public TableColumn<Product, Integer> priceColumn;
-
-    public TableView<Bid> bidTable;
-    public TableColumn<Bid, String> buyerColumn;
-    public TableColumn<Bid, Integer> bidColumn;
-
- */
     @Test //Test whether products from marketplace are correctly listed in the product table
     void displayProductsTest() throws IOException {
         SceneController.switchTo("marketplace");
@@ -93,10 +66,6 @@ class  MarketplaceControllerTest extends TestFXTestBase {
 
     @Test //Test that bids cant be placed without selecting a bid
     void bidButtonActionBidNotSelected() throws IOException {
-        //animalTestProduct = new AnimalProduct("TESTKOE!!!!!!!!! ", "testerino", 100, 100, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
-        //animalTestProduct2 = new AnimalProduct("TEST GEIT!!!!!!!!!!", "testeroni", 50, 200, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
-        //singletonMarketplace.getInstance().addProduct(animalTestProduct);
-        //singletonMarketplace.getInstance().addProduct(animalTestProduct2);
         addTestAnimals();
         Integer arrayListSize = singletonMarketplace.getInstance().getProduct(0).getBids().size();
         clickOn("#bidButton");

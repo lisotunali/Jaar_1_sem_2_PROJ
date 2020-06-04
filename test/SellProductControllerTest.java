@@ -1,11 +1,9 @@
-import BACKEND.Animal;
 import BACKEND.AnimalProduct;
 import BACKEND.Person;
 import GUI.SceneController;
 import GUI.fakeDatabase;
 import GUI.singletonMarketplace;
 import GUI.singletonPerson;
-import javafx.scene.control.TableView;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -18,35 +16,6 @@ class SellProductControllerTest extends TestFXTestBase {
     Person testperson;
     AnimalProduct animalTestProduct;
     AnimalProduct animalTestProduct2;
-
-/*
-public TableView<Animal> livestockTable;
-    public TableColumn<Animal, String> animalColumn;
-    public TableColumn<Animal, Integer> amountColumn;
-
-    public TableView<Product> productTableView;
-    public TableColumn<Product, String> productTitleColumn;
-    public TableColumn<Product, String> productDescColumn;
-    public TableColumn<Product, Integer> initialPriceColumn;
-    public TableColumn<Product, Integer> currentPriceColumn;
-
-    public TableView<Product> thisProductTableView;
-    public TableColumn<Product, String> thisTitleColumn;
-    public TableColumn<Product, String> thisDescColumn;
-    public TableColumn<Product, Integer> thisInitialPriceColumn;
-    public TableColumn<Product, Integer> thisAmountColumn;
-
-    public TableView<Bid> sellTable;
-    public TableColumn<Bid, String> buyerColumn;
-    public TableColumn<Bid, Integer> bidColumn;
-
-    public Button backButton;
-    public Button offerButton;
-
-    public Button viewButton;
-    public Button cancelButton;
-
- */
 
     @Test
     void offerItemWithNoItemSelected() throws IOException {
