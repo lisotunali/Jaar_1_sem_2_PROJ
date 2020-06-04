@@ -33,6 +33,7 @@ public class mathController extends GameController {
     private Integer correctAnswer;
 
     public void intialize() throws IOException, ScriptException {
+        System.out.println("Initializing..");
         Game game = new Game();
         game.saveQuestionsLocally(fakeDatabase.getNumbersDatabase());
         numbers = game.getCurrentGameQuestions();
@@ -42,7 +43,7 @@ public class mathController extends GameController {
 
     @Override
     public void nextQuestion() throws IOException, ScriptException {
-        game.setCurrentQuestion(game.getCurrentQuestion() + 1);
+        //game.setCurrentQuestion(game.getCurrentQuestion() + 1);
         Collections.shuffle(numbers);
         Integer a = numbers.get(0);
         Integer b = numbers.get(1);
