@@ -1,6 +1,7 @@
 package GUI;
 
 import BACKEND.Person;
+import Education.Highscores;
 import Education.ImageWithName;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Random;
 
 public class fakeDatabase {
     private static ArrayList<Person> userDatabase = new ArrayList<>();
-
+    private static ArrayList <Highscores>readingHSList = new ArrayList<>();
     private static ArrayList<ImageWithName> imagesDatabase = new ArrayList<>();
 
     private static ArrayList<Integer> numbersDatabase = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11));
@@ -23,6 +24,12 @@ public class fakeDatabase {
     }
 
     public static ArrayList<Integer> getNumbersDatabase() { return numbersDatabase; }
+
+    public static ArrayList<Highscores> getReadingHSList(){ return readingHSList;}
+
+    public static void addReadingHS(Highscores highscores, String gameType){
+
+    }
 
     public static ImageWithName getRandomImageWithName(){
         Random ran = new Random();

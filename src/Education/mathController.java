@@ -35,6 +35,7 @@ public class mathController extends GameController {
     public void initialize() throws IOException, ScriptException {
         System.out.println("Initializing..");
         game = new Game();
+        game.setCurrentGameType("math");
         game.setCurrentscore(0);
         game.saveQuestionsLocally(fakeDatabase.getNumbersDatabase());
         numbers = game.getCurrentGameQuestions();

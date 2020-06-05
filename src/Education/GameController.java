@@ -1,7 +1,7 @@
 package Education;
 
 import GUI.AlertClass;
-import GUI.SceneController;
+import GUI.*;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -49,12 +49,19 @@ public abstract class GameController {
         stopTimer();
         Platform.runLater(() ->  showFinalScore(game));
         SceneController.switchTo("education");
+        saveNewHS();
     }
 
     public void showFinalScore(Game game){
         AlertClass.showAlert(Alert.AlertType.INFORMATION, "Your score was: " + game.getCurrentscore()+"!");
     }
-
+    public void saveNewHS(){
+        if (game.getCurrentscore() > singletonPerson.getInstance().getHS(game.GetCurrentGameType()).getHighScore()){
+            singletonPerson.getInstance().getHS(game.GetCurrentGameType()).setHighscore(game.getCurrentscore());
+            AlertClass.showAlert(Alert.AlertType.INFORMATION, "You reached a new highscore!");
+            //fakeDatabase.addReadingHS(new Highscores(game.GetCurrentGameType(),game.getCurrentscore(),singletonPerson.getInstance().getName()), game.GetCurrentGameType());
+        }
+    }
     public Integer getSecondsLeft(){
         return secondsLeft;
     }

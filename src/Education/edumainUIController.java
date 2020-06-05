@@ -24,7 +24,8 @@ public class edumainUIController {
         SceneController.switchTo("reading");
     }
 
-    public void highscoreButtonclicked() {
+    public void highscoreButtonclicked() throws IOException {
+        SceneController.switchTo("highscores");
     }
 
 }

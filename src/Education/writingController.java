@@ -36,6 +36,7 @@ public class writingController extends GameController{
 
     public void initialize() throws IOException {
         game = new Game();
+        game.setCurrentGameType("writing");
         game.saveQuestionsLocally(fakeDatabase.getImagesDatabase());
         questions = game.getCurrentGameQuestions();
         shuffleQuestions();

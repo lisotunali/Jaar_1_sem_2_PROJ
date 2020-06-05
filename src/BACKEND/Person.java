@@ -1,5 +1,8 @@
 package BACKEND;
 
+import Education.Highscores;
+import GUI.*;
+
 import java.util.ArrayList;
 
 public class Person {
@@ -8,8 +11,12 @@ public class Person {
     private String password;
     private ArrayList<Contact> addressBook = new ArrayList<>();
     private ArrayList<Animal> hasLivestock = new ArrayList<>();
+    private ArrayList<Highscores> highscoresList =  new ArrayList<>();
     private Long personID;
     private String personalData;
+    private Highscores math =  new Highscores("math",0, null);
+    private Highscores writing =  new Highscores("writing",0, null);
+    private Highscores reading =  new Highscores("reading",0, null);
 
     public Person(String name, String password) {
         this.name = name;
@@ -83,11 +90,11 @@ public class Person {
         addressBook.remove(contact);
     }
 
-    public Contact getContact(String name){
+    public Contact getContact(String name) {
         Contact toBeReturned = null;
-        for ( Contact contact: addressBook) {
-            if (contact.getName().equals(name)){
-               toBeReturned = contact;
+        for (Contact contact : addressBook) {
+            if (contact.getName().equals(name)) {
+                toBeReturned = contact;
             }
         }
         return toBeReturned;
@@ -101,4 +108,18 @@ public class Person {
         this.personalData = text;
     }
 
+    public Highscores getHS(String gameType){
+       if(gameType.equals(math.getGameName())){
+           return math;
+       }
+        if(gameType.equals(writing.getGameName())){
+            return writing;
+        }
+        if(gameType.equals(reading.getGameName())){
+            return reading;
+        }
+        return null;
+    }
+
 }
+

@@ -32,6 +32,7 @@ public class readingController extends GameController {
     public void initialize(){
         putImageViewsInArray();
         game = new Game();
+        game.setCurrentGameType("reading");
         startTimer(timerLabel);
         nextQuestion();
     }
@@ -74,4 +75,5 @@ public class readingController extends GameController {
     public void backButtonClicked() throws IOException {
         SceneController.switchTo("education");
     }
+
 }

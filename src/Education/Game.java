@@ -10,6 +10,7 @@ public class Game {
     protected ArrayList currentGameQuestions = new ArrayList<>();
     private Integer currentscore = 0;
     private Integer currentQuestion = -1;
+    private String  currentGameType;
 
     public void saveQuestionsLocally(ArrayList source) {
         currentGameQuestions.clear();
@@ -37,4 +38,8 @@ public class Game {
     public void setCurrentQuestion(Integer currentQuestion) {
         this.currentQuestion = currentQuestion;
     }
+
+    public String GetCurrentGameType(){ return currentGameType;}
+
+    public void setCurrentGameType(String currentGameType ){ this.currentGameType = currentGameType; }
 }
