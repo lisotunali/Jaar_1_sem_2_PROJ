@@ -38,21 +38,17 @@ public class Main extends Application {
     public void setUpTestInstances() {
         Person testperson = new Person("1", "1");
         Person testperson2 = new Person("2", "2");
-        Person testperson1 = new Person("Rishwan", "test123");
+        Person testperson1 = new Person("Test2", "test123");
         fakeDatabase.getUserDatabase().add(testperson);
         fakeDatabase.getUserDatabase().add(testperson1);
         fakeDatabase.getUserDatabase().add(testperson2);
         Contact testContact1 = new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool");
         testperson.addContact(testContact1);
-
-        Person testperson = new Person("test", "test123");
+        
 
         testperson.addAnimal("Goat", 500);
         testperson.addAnimal("Sheep", 30);
         fakeDatabase.getUserDatabase().add(testperson);
-
-        Person testperson1 = new Person("Test2", "test123");
-        fakeDatabase.getUserDatabase().add(testperson1);
 
         Doctor testDoctor = new Doctor("doctor", "test123", SpecializationType.EAR);
         testDoctor.setAvailableDay(DayOfWeek.SATURDAY, false);

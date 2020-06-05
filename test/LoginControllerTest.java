@@ -8,6 +8,7 @@ import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 public class LoginControllerTest extends TestFXTestBase {
 
     @Test //Testing whether the user input is reflected correctly in the text fields.
@@ -21,6 +22,7 @@ public class LoginControllerTest extends TestFXTestBase {
         write(name);
         clickOn(passwordInputID);
         write(password);
+
         PasswordField pwField = lookup("#passwordInput").query();
         TextField nameField = lookup("#nameInput").query();
         assertEquals(pwField.getText(), password, "User input should be correctly reflected in password field.");
@@ -55,7 +57,6 @@ public class LoginControllerTest extends TestFXTestBase {
         clickOn(passwordInputID);
         write(password);
         clickOn("#loginButton");
-        //verifyThat(nameInputID, hasText(name));
         PasswordField pwField = lookup("#passwordInput").query();
         TextField nameField = lookup("#nameInput").query();
         Assertions.assertFalse(lookup("Invalid credentials").tryQuery().isEmpty(), "User should receive 'invalid credentials' alert.");

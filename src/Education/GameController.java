@@ -1,7 +1,8 @@
 package Education;
 
 import GUI.AlertClass;
-import GUI.*;
+import GUI.SceneController;
+import GUI.singletonPerson;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -71,11 +72,10 @@ public abstract class GameController {
     }
 
     public void checkAnswer(String input, String expected){
-        if(expected.equals(input)){
+        if (expected.equalsIgnoreCase(input)) {
             game.setCurrentscore(game.getCurrentscore() + 1);
             System.out.println("+1 score");
-        }
-        else{
+        } else {
             setSecondsLeft(getSecondsLeft() - 10, game);
         }
     }
