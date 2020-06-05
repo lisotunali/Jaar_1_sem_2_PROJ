@@ -117,30 +117,13 @@ public class SellProductController {
         if (productTableView.getSelectionModel().getSelectedItem() != null) {
             Product selectedProduct = productTableView.getSelectionModel().getSelectedItem();
             System.out.println("Attempting...");
-            //SceneController.switchTo("sellproduct");
+
             Stage primaryStage = getPrimaryStage();
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("sellproduct.fxml"));
             Parent parent = loader.load();
             ViewProductController controller = loader.getController();
             controller.initData(selectedProduct);
             primaryStage.getScene().setRoot(parent);
-            /*
-            ObservableList<Product> selectedProduct = FXCollections.observableArrayList(productTableView.getSelectionModel().getSelectedItem());
-            thisTitleColumn.setCellValueFactory(new PropertyValueFactory<>("advertTitle"));
-            thisDescColumn.setCellValueFactory(new PropertyValueFactory<>("advertDescription"));
-            thisInitialPriceColumn.setCellValueFactory(new PropertyValueFactory<>("initialPrice"));
-            thisAmountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
-            thisProductTableView.setItems(selectedProduct);
-            thisProductTableView.getSortOrder().add(thisTitleColumn);
-            thisProductTableView.refresh();
-
-            ObservableList<Bid> bids = FXCollections.observableArrayList(productTableView.getSelectionModel().getSelectedItem().getBids());
-            buyerColumn.setCellValueFactory(new PropertyValueFactory<>("buyerName"));
-            bidColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-            sellTable.setItems(bids);
-            sellTable.getSortOrder().add(bidColumn);
-            sellTable.refresh();
-             */
         }
     }
 

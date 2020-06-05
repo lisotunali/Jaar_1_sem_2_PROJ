@@ -108,6 +108,7 @@ public class Person {
         this.personalData = text;
     }
 
+
     public Highscores getHS(String gameType){
        if(gameType.equals(math.getGameName())){
            return math;
@@ -121,5 +122,9 @@ public class Person {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }
 
