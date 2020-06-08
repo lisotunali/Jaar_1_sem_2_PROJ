@@ -1,5 +1,8 @@
 package GUI;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+
 import BACKEND.Appointment;
 import BACKEND.Doctor;
 import BACKEND.Person;
@@ -8,7 +11,9 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 import javafx.scene.text.Text;
+import Education.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -75,6 +80,6 @@ public class mainUiController {
     }
 
     public void educationalButtonClicked() throws IOException {
-        SceneController.switchTo("educational");
+        SceneController.switchTo("education");
     }
 }
