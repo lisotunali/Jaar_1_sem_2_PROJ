@@ -1,1 +1,7 @@
 component_depth: 2
+
+languages:
+- java
+
+exclude:
+- .src/GUI/*Controller.java
