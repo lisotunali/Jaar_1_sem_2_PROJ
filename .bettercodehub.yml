@@ -3,5 +3,4 @@ component_depth: 2
 languages:
 - java
 
-exclude:
-- .*/ViewProductController\.java
+
