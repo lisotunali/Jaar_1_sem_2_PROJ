@@ -4,4 +4,4 @@ languages:
 - java
 
 exclude:
-- .*/ViewProductControl\.java
+- .*/ViewProductController\.java
