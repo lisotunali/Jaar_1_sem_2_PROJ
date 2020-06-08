@@ -4,18 +4,4 @@ languages:
 - java
 
 exclude:
-- .*/ViewProductController\.java
-- .*/LivestockController\.java
-- .*/SellProductController\.java
-- .*/MedicalDoctorController\.java
-- .*/MedicalBaseController\.java
-- .*/LoginController\.java
-- .*/contactsController\.java
-- .*/mainUiController\.java
-- .*/MarketplaceController\.java
-- .*/FILE\.java
-- .*/FILE\.java
-- .*/FILE\.java
-- .*/FILE\.java
-- .*/FILE\.java
-- .*/FILE\.java
+- .*/*Controller\.java
