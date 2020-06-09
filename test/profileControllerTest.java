@@ -2,6 +2,7 @@ import BACKEND.Person;
 import GUI.SceneController;
 import GUI.fakeDatabase;
 import GUI.singletonPerson;
+import TestFXBase.TestFXTestBase;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

@@ -1,17 +1,11 @@
 import BACKEND.Person;
-import GUI.Main;
 import GUI.SceneController;
 import GUI.fakeDatabase;
 import GUI.singletonPerson;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import TestFXBase.TestFXTestBase;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.*;
-import org.testfx.service.query.EmptyNodeQueryException;
 
 import java.io.IOException;
 

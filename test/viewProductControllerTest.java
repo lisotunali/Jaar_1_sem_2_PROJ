@@ -1,11 +1,11 @@
 import BACKEND.*;
 import GUI.singletonMarketplace;
+import TestFXBase.TestFXTestBase;
 import javafx.scene.control.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import GUI.SceneController;
-import GUI.fakeDatabase;
 import GUI.singletonPerson;
 
 import java.io.IOException;
