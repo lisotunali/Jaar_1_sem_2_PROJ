@@ -1,5 +1,6 @@
 package GUI;
 
+import BACKEND.Doctor;
 import BACKEND.Person;
 
 public class singletonPerson {

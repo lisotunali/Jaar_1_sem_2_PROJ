@@ -17,7 +17,7 @@ public class TestFXTestBase extends ApplicationTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        //Platform.setImplicitExit(false);
+        Platform.setImplicitExit(false);
         ApplicationTest.launch(Main.class);
     }
 
