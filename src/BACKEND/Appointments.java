@@ -57,6 +57,10 @@ public class Appointments {
         return appointment;
     }
 
+    public void resetArrayList(){
+        hasAppointments.clear();
+    }
+
     public Appointment updateAppointment(Appointment appointment, LocalDate date) {
         AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, appointment.getAppointmentType(), appointment.getPatient());
 

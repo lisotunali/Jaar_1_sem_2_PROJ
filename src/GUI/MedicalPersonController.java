@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 
 import java.io.IOException;
 
-public class MedicalController extends MedicalBaseController {
+public class MedicalPersonController extends MedicalBaseController {
 
     public void initialize() {
         appointments = FXCollections.observableArrayList(SingletonAppointments.getInstance().getAllAppointments(getPerson()));
