@@ -3,7 +3,6 @@ package Education;
 import GUI.SceneController;
 import GUI.fakeDatabase;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -21,9 +20,6 @@ public class mathController extends GameController {
     private Label exerciseLabel;
 
     @FXML
-    private Label timerLabel;
-
-    @FXML
     private TextField guessField;
 
     private ArrayList<Integer> numbers = new ArrayList();
@@ -34,12 +30,11 @@ public class mathController extends GameController {
 
     public void initialize() throws IOException, ScriptException {
         System.out.println("Initializing..");
-        game = new Game();
         game.setCurrentGameType("math");
         game.setCurrentscore(0);
         game.saveQuestionsLocally(fakeDatabase.getNumbersDatabase());
         numbers = game.getCurrentGameQuestions();
-        startTimer(timerLabel);
+        game.startTimer(timerLabel);
         nextQuestion();
     }
 

@@ -1,17 +1,15 @@
 package Education;
+
 import GUI.ConvertClass;
 import GUI.SceneController;
 import GUI.fakeDatabase;
-import javafx.application.Platform;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.TimerTask;
 
 
 public class readingController extends GameController {
@@ -21,7 +19,6 @@ public class readingController extends GameController {
     public ImageView rImage3;
     public ImageView rImage4;
     public Label readingWord;
-    public Label timerLabel;
 
     private ArrayList<ImageView> imageViews = new ArrayList<>();
     private ArrayList<ImageWithName> temps = new ArrayList<>();
@@ -31,9 +28,8 @@ public class readingController extends GameController {
 
     public void initialize(){
         putImageViewsInArray();
-        game = new Game();
         game.setCurrentGameType("reading");
-        startTimer(timerLabel);
+        game.startTimer(timerLabel);
         nextQuestion();
     }
 

@@ -2,10 +2,8 @@ package Education;
 
 import GUI.SceneController;
 import GUI.fakeDatabase;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -13,7 +11,6 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.TimerTask;
 
 public class writingController extends GameController{
 
@@ -27,26 +24,22 @@ public class writingController extends GameController{
     private Button guessButton;
 
     @FXML
-    private Label timerLabel;
-
-    @FXML
     private Text letterText;
 
     private ArrayList<ImageWithName> questions = new ArrayList<>();
 
     public void initialize() throws IOException {
-        game = new Game();
         game.setCurrentGameType("writing");
         game.saveQuestionsLocally(fakeDatabase.getImagesDatabase());
         questions = game.getCurrentGameQuestions();
         shuffleQuestions();
         nextQuestion();
-        startTimer(timerLabel);
+        game.startTimer(timerLabel);
     }
 
     public void nextQuestion() throws IOException {
         if (game.getCurrentQuestion()+1 == questions.size()){
-            endGame(game);
+            game.endGame();
             System.out.println("Game ended");
             return;
         }
