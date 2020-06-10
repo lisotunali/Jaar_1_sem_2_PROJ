@@ -6,37 +6,36 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
-import javax.script.ScriptException;
 import java.io.IOException;
 
 public abstract class GameController implements Observer {
     public Label timerLabel;
+    private Game game;
 
-//    protected Game game = new Game();
+    public void init(Game game) {
+        this.game = game;
 
-    public GameController() {
+        nextQuestion();
+        game.startTimer();
+
         ObservableWithTypes events = game.getEvents();
         events.subscribe("timer", this);
         events.subscribe("endGame", this);
         events.subscribe("newHighScore", this);
     }
 
-    public abstract void nextQuestion() throws IOException, ScriptException;
+    public abstract void nextQuestion();
 
-    public void updateTimer(Game game) {
+    private void updateTimer(Game game) {
         Platform.runLater(() -> timerLabel.setText(game.getSecondsLeft().toString()));
     }
 
-    public void showFinalScore(Game game) throws IOException {
+    private void showFinalScore(Game game) throws IOException {
         Platform.runLater(() -> AlertClass.showAlert(Alert.AlertType.INFORMATION, "Your score was: " + game.getCurrentscore() + "!"));
-        SceneController.switchTo("education");
+        backButtonClicked();
     }
 
-    public void checkAnswer(String input, String expected) {
-        game.checkAnswer(input, expected);
-    }
-
-    public void newHighscore() {
+    private void newHighscore() {
         Platform.runLater(() -> AlertClass.showAlert(Alert.AlertType.INFORMATION, "You reached a new highscore!"));
     }
 
@@ -48,7 +47,6 @@ public abstract class GameController implements Observer {
                 break;
             case "endGame":
                 try {
-                    System.out.println("Hello??");
                     showFinalScore(game);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -58,5 +56,10 @@ public abstract class GameController implements Observer {
                 newHighscore();
                 break;
         }
+    }
+
+    public void backButtonClicked() throws IOException {
+        game.stopTimer();
+        SceneController.switchTo("education");
     }
 }

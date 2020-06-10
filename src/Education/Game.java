@@ -1,8 +1,6 @@
 package Education;
 
-import GUI.fakeDatabase;
 import GUI.singletonPerson;
-import javafx.scene.control.Label;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -16,6 +14,7 @@ public abstract class Game {
     private Integer currentscore = 0;
     private Integer currentQuestion = -1;
     private Integer secondsLeft = 60;
+    private String correctAnswer;
 
     private ObservableWithTypes events = new ObservableWithTypes("timer", "endGame", "newHighScore");
 
@@ -69,10 +68,20 @@ public abstract class Game {
         return events;
     }
 
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
     //    --------- END GETTERS/SETTERS ---------
 
-    public void checkAnswer(String input, String expected) {
-        if (expected.equalsIgnoreCase(input)) {
+    public abstract void nextQuestion();
+
+    public void checkAnswer(String input) {
+        if (correctAnswer.equalsIgnoreCase(input)) {
             currentscore++;
             System.out.println("+1 score, total = " + currentscore);
         } else {
@@ -81,7 +90,7 @@ public abstract class Game {
         }
     }
 
-    public void startTimer(Label timerLabel) {
+    public void startTimer() {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -105,9 +114,11 @@ public abstract class Game {
     }
 
     public void saveNewHS() {
-        if (getCurrentscore() > singletonPerson.getInstance().getHS(GetCurrentGameType()).getHighScore()) {
-            singletonPerson.getInstance().getHS(GetCurrentGameType()).setHighscore(getCurrentscore());
-            fakeDatabase.addReadingHS(new Highscores(GetCurrentGameType(), getCurrentscore(), singletonPerson.getInstance().getName()), GetCurrentGameType());
+        Highscores hsCurrentPerson = singletonPerson.getInstance().getHS(GetCurrentGameType());
+
+        if (getCurrentscore() > hsCurrentPerson.getHighScore()) {
+            hsCurrentPerson.setHighscore(getCurrentscore());
+//            fakeDatabase.addReadingHS(new Highscores(GetCurrentGameType(), getCurrentscore(), singletonPerson.getInstance().getName()), GetCurrentGameType());
             events.notify("newHighScore", this);
         }
     }
