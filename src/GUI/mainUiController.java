@@ -1,7 +1,5 @@
 package GUI;
 
-import BACKEND.SpecializationType;
-import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
@@ -18,7 +16,6 @@ import javafx.scene.text.Text;
 import Education.*;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class mainUiController {
@@ -42,18 +39,6 @@ public class mainUiController {
         }
 
         ObservableList<Appointment> appointments = FXCollections.observableArrayList(allOpenAppointments);
-        /* appointments.addListener((ListChangeListener.Change<? extends Appointment> c) -> {
-            while (c.next()) {
-                System.out.println("Listening...");
-                if (c.wasUpdated()) {
-                    int start = c.getFrom() ;
-                    int end = c.getTo() ;
-                    for (int i = start ; i < end ; i++) {
-                        System.out.println("Element at position "+i+" was updated to: " +c.getList().get(i).getCondition());
-                    }
-                }
-            }
-        }); */
         appointmentDate.setCellValueFactory(new PropertyValueFactory<>("appointmentDateString"));
         appointmentCondition.setCellValueFactory(new PropertyValueFactory<>("condition"));
         userAppointments.setItems(appointments);

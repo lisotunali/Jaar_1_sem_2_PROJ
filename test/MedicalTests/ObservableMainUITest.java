@@ -25,7 +25,7 @@ public class ObservableMainUITest extends TestFXTestBase {
         singletonPerson.setPerson(new Person("test instance", "123"));
         SceneController.switchTo("mainUI");
         fakeDatabase.getUserDatabase().add(new Doctor("Teendokter", "123", SpecializationType.GENERAL));
-        assertNotNull(SingletonAppointments.getInstance().createAppointment(LocalDate.of(2020, 6, 23), "Teenvocht onsteking", SpecializationType.GENERAL, singletonPerson.getInstance()));
+        assertNotNull(SingletonAppointments.getInstance().createAppointment(LocalDate.of(2020, 6, 23), "Teenvocht onsteking", SpecializationType.GENERAL, singletonPerson.getInstance()), "Afspraak niet aangemaakt.");
         System.out.println(SingletonAppointments.getInstance().getAllAppointments(singletonPerson.getInstance()));
         clickOn("#userAppointments");
         try {
