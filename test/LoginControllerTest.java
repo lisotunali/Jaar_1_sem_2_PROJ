@@ -1,4 +1,5 @@
 import GUI.singletonPerson;
+import TestFXBase.TestFXTestBase;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.junit.jupiter.api.Assertions;

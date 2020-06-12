@@ -5,6 +5,7 @@ import BACKEND.Product;
 import GUI.SceneController;
 import GUI.singletonMarketplace;
 import GUI.singletonPerson;
+import TestFXBase.TestFXTestBase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Assertions;
