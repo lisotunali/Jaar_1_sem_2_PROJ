@@ -118,7 +118,6 @@ public abstract class Game {
 
         if (getCurrentscore() > hsCurrentPerson.getHighScore()) {
             hsCurrentPerson.setHighscore(getCurrentscore());
-//            fakeDatabase.addReadingHS(new Highscores(GetCurrentGameType(), getCurrentscore(), singletonPerson.getInstance().getName()), GetCurrentGameType());
             events.notify("newHighScore", this);
         }
     }
