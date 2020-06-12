@@ -1,6 +1,7 @@
 package TestFXBase;
 
 import GUI.Main;
+import GUI.singletonPerson;
 import javafx.application.Platform;
 import org.testfx.framework.junit5.ApplicationTest;
 import javafx.scene.input.KeyCode;
@@ -26,6 +27,7 @@ public class TestFXTestBase extends ApplicationTest {
         FxToolkit.hideStage();
         release(new KeyCode[]{});
         release(new MouseButton[]{});
+        singletonPerson.setPerson(null);
     }
 
 
