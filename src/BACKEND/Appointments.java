@@ -37,8 +37,8 @@ public class Appointments {
         return getAllAppointments(doctor).stream().filter(appointment -> !appointment.getDone()).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ArrayList<Appointment> getDoneAppointments(Person person) {
-        return getAllAppointments(person).stream().filter(Appointment::getDone).collect(Collectors.toCollection(ArrayList::new));
+    public ArrayList<Appointment> getDoneAppointments(Person patient) {
+        return getAllAppointments(patient).stream().filter(Appointment::getDone).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ArrayList<Appointment> getDoneAppointments(Doctor doctor) {

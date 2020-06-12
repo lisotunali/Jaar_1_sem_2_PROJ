@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class dayAvailabilityTest {
 
 
+
     @Test
     public void availableDayBeforeToday() {
         SingletonAppointments.getInstance().resetArrayList();
