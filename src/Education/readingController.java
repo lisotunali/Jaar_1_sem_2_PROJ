@@ -15,7 +15,7 @@ public class readingController extends GameController {
     public Label readingWord;
 
     private ArrayList<ImageView> imageViews = new ArrayList<>();
-    private Reading game = new Reading();
+    public Reading game = new Reading();
 
     public void initialize() {
         putImageViewsInArray();
