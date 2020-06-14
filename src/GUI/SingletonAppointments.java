@@ -11,4 +11,5 @@ public class SingletonAppointments {
     public static Appointments getInstance() {
         return appointments;
     }
+
 }

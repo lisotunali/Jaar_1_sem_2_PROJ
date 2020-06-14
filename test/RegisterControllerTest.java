@@ -48,8 +48,8 @@ public class RegisterControllerTest  extends TestFXTestBase {
         String passwordFieldID = "#passwordInput";
         String passwordConfirmFieldID = "#passwordConfirmInput";
         String registerButtonID = "#registerButton";
-        String name = "test";
-        String password = "123";
+        String name = "1";
+        String password = "1";
         clickOn(nameFieldID);
         write(name);
         clickOn(passwordFieldID);
