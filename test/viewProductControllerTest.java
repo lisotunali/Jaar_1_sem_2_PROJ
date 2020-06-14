@@ -1,16 +1,18 @@
-import BACKEND.*;
+import BACKEND.Bid;
+import BACKEND.Person;
+import BACKEND.Product;
+import GUI.SceneController;
 import GUI.singletonMarketplace;
+import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
-import javafx.scene.control.*;
-
+import javafx.scene.control.TableView;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import GUI.SceneController;
-import GUI.singletonPerson;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class viewProductControllerTest extends TestFXTestBase {
 

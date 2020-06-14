@@ -2,82 +2,64 @@ package Education;
 
 import GUI.AlertClass;
 import GUI.SceneController;
-import GUI.singletonPerson;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
-import javax.script.ScriptException;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public abstract class GameController {
+public abstract class GameController implements Observer {
+    public Label timerLabel;
+    private Game game;
 
-    private Timer timer = new Timer();
-    private Integer secondsLeft = 60;
-    protected Game game;
+    public void init(Game game) {
+        this.game = game;
 
-    public void startTimer(Label timerLabel) {
-        getTimer().scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                setSecondsLeft(getSecondsLeft()-1, game);
-                Platform.runLater(() ->  timerLabel.setText(getSecondsLeft().toString()));
-            }
-        }, 0, 1000);
+        nextQuestion();
+        game.startTimer();
+
+        ObservableWithTypes events = game.getEvents();
+        events.subscribe("timer", this);
+        events.subscribe("endGame", this);
+        events.subscribe("newHighScore", this);
     }
 
-    public abstract void nextQuestion() throws IOException, ScriptException;
+    public abstract void nextQuestion();
 
-    public void stopTimer(){
-        timer.cancel();
-        timer.purge();
+    private void updateTimer(Game game) {
+        Platform.runLater(() -> timerLabel.setText(game.getSecondsLeft().toString()));
     }
 
-    public void setSecondsLeft(Integer secondsLeft, Game game) {
-        this.secondsLeft = secondsLeft;
-        if (secondsLeft <= 0){
-            try {
-                endGame(game);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    private void showFinalScore(Game game) throws IOException {
+        Platform.runLater(() -> AlertClass.showAlert(Alert.AlertType.INFORMATION, "Your score was: " + game.getCurrentscore() + "!"));
+        backButtonClicked();
+    }
+
+    private void newHighscore() {
+        Platform.runLater(() -> AlertClass.showAlert(Alert.AlertType.INFORMATION, "You reached a new highscore!"));
+    }
+
+    @Override
+    public void update(String eventType, Game game) {
+        switch (eventType) {
+            case "timer":
+                updateTimer(game);
+                break;
+            case "endGame":
+                try {
+                    showFinalScore(game);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "newHighScore":
+                newHighscore();
+                break;
         }
     }
 
-    public void endGame(Game game) throws IOException {
-        stopTimer();
-        Platform.runLater(() ->  showFinalScore(game));
+    public void backButtonClicked() throws IOException {
+        game.stopTimer();
         SceneController.switchTo("education");
-        saveNewHS();
     }
-
-    public void showFinalScore(Game game){
-        AlertClass.showAlert(Alert.AlertType.INFORMATION, "Your score was: " + game.getCurrentscore()+"!");
-    }
-    public void saveNewHS(){
-        if (game.getCurrentscore() > singletonPerson.getInstance().getHS(game.GetCurrentGameType()).getHighScore()){
-            singletonPerson.getInstance().getHS(game.GetCurrentGameType()).setHighscore(game.getCurrentscore());
-            AlertClass.showAlert(Alert.AlertType.INFORMATION, "You reached a new highscore!");
-            //fakeDatabase.addReadingHS(new Highscores(game.GetCurrentGameType(),game.getCurrentscore(),singletonPerson.getInstance().getName()), game.GetCurrentGameType());
-        }
-    }
-    public Integer getSecondsLeft(){
-        return secondsLeft;
-    }
-
-    public Timer getTimer(){
-        return timer;
-    }
-
-    public void checkAnswer(String input, String expected){
-        if (expected.equalsIgnoreCase(input)) {
-            game.setCurrentscore(game.getCurrentscore() + 1);
-            System.out.println("+1 score");
-        } else {
-            setSecondsLeft(getSecondsLeft() - 10, game);
-        }
-    }
-
 }

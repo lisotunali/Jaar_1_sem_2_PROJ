@@ -1,14 +1,13 @@
 package TestFXBase;
 
 import GUI.Main;
-import GUI.singletonPerson;
-import javafx.application.Platform;
-import org.testfx.framework.junit5.ApplicationTest;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.testfx.api.FxToolkit;
+import org.testfx.framework.junit5.ApplicationTest;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -18,7 +17,6 @@ public class TestFXTestBase extends ApplicationTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        Platform.setImplicitExit(false);
         ApplicationTest.launch(Main.class);
     }
 
@@ -27,7 +25,6 @@ public class TestFXTestBase extends ApplicationTest {
         FxToolkit.hideStage();
         release(new KeyCode[]{});
         release(new MouseButton[]{});
-        singletonPerson.setPerson(null);
     }
 
 

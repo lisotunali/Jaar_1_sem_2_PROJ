@@ -1,16 +1,22 @@
 package Education;
 
-import GUI.fakeDatabase;
+import GUI.singletonPerson;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class Game {
+public abstract class Game {
 
-    protected ArrayList currentGameQuestions = new ArrayList<>();
+    private String currentGameType;
+    private ArrayList currentGameQuestions = new ArrayList<>();
+    private Timer timer = new Timer();
     private Integer currentscore = 0;
     private Integer currentQuestion = -1;
-    private String  currentGameType;
+    private Integer secondsLeft = 60;
+    private String correctAnswer;
+
+    private ObservableWithTypes events = new ObservableWithTypes("timer", "endGame", "newHighScore");
 
     public void saveQuestionsLocally(ArrayList source) {
         currentGameQuestions.clear();
@@ -23,7 +29,7 @@ public class Game {
         return currentGameQuestions;
     }
 
-    public Integer getCurrentscore(){
+    public Integer getCurrentscore() {
         return currentscore;
     }
 
@@ -39,7 +45,80 @@ public class Game {
         this.currentQuestion = currentQuestion;
     }
 
-    public String GetCurrentGameType(){ return currentGameType;}
+    public String GetCurrentGameType() {
+        return currentGameType;
+    }
 
-    public void setCurrentGameType(String currentGameType ){ this.currentGameType = currentGameType; }
+    public void setCurrentGameType(String currentGameType) {
+        this.currentGameType = currentGameType;
+    }
+
+    public Integer getSecondsLeft() {
+        return secondsLeft;
+    }
+
+    public void setSecondsLeft(Integer secondsLeft) {
+        this.secondsLeft = secondsLeft;
+        if (secondsLeft <= 0) {
+            endGame();
+        }
+    }
+
+    public ObservableWithTypes getEvents() {
+        return events;
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    //    --------- END GETTERS/SETTERS ---------
+
+    public abstract void nextQuestion();
+
+    public void checkAnswer(String input) {
+        if (correctAnswer.equalsIgnoreCase(input)) {
+            currentscore++;
+            System.out.println("+1 score, total = " + currentscore);
+        } else {
+            setSecondsLeft(secondsLeft - 10);
+            events.notify("timer", Game.this);
+        }
+    }
+
+    public void startTimer() {
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                setSecondsLeft(secondsLeft - 1);
+                System.out.println(secondsLeft);
+                events.notify("timer", Game.this);
+            }
+        }, 0, 1000);
+    }
+
+    public void stopTimer() {
+        timer.cancel();
+        timer.purge();
+    }
+
+    public void endGame() {
+        stopTimer();
+        saveNewHS();
+        System.out.println("game has ended");
+        events.notify("endGame", this);
+    }
+
+    public void saveNewHS() {
+        Highscores hsCurrentPerson = singletonPerson.getInstance().getHS(GetCurrentGameType());
+
+        if (getCurrentscore() > hsCurrentPerson.getHighScore()) {
+            hsCurrentPerson.setHighscore(getCurrentscore());
+            events.notify("newHighScore", this);
+        }
+    }
 }
