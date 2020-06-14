@@ -1,4 +1,7 @@
-# Welkom bij de repository PROJ1 van groep 5A. [![BCH compliance](https://bettercodehub.com/edge/badge/RuggeDX/PROJ1?branch=master&token=0d0d2e6e6de6c4ebe9957fd0462cc17f821035a4)](https://bettercodehub.com/)
+# Welkom bij de Project repository van groep 5A. [![BCH compliance](https://bettercodehub.com/edge/badge/RuggeDX/PROJ-Groep5A?branch=master&token=0c556e706bc2955aa6f38d730ef02487d1b5a5b3)](https://bettercodehub.com/)
+
+
+In deze repo kun je PROJ1 en PROJ2 terugvinden.
 
 Groepsleden:
 
