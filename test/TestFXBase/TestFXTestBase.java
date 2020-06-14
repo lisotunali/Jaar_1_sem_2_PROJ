@@ -1,8 +1,9 @@
+package TestFXBase;
+
 import GUI.Main;
+import GUI.singletonPerson;
+import javafx.application.Platform;
 import org.testfx.framework.junit5.ApplicationTest;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
@@ -17,6 +18,7 @@ public class TestFXTestBase extends ApplicationTest {
 
     @BeforeEach
     public void setUp() throws Exception {
+        Platform.setImplicitExit(false);
         ApplicationTest.launch(Main.class);
     }
 
@@ -25,6 +27,7 @@ public class TestFXTestBase extends ApplicationTest {
         FxToolkit.hideStage();
         release(new KeyCode[]{});
         release(new MouseButton[]{});
+        singletonPerson.setPerson(null);
     }
 
 

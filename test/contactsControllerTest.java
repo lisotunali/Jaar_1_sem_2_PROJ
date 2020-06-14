@@ -3,6 +3,7 @@ import BACKEND.Person;
 import GUI.SceneController;
 import GUI.fakeDatabase;
 import GUI.singletonPerson;
+import TestFXBase.TestFXTestBase;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import org.junit.jupiter.api.Test;
