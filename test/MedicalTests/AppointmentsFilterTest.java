@@ -1,3 +1,5 @@
+package MedicalTests;
+
 import BACKEND.Appointment;
 import BACKEND.Doctor;
 import BACKEND.Person;

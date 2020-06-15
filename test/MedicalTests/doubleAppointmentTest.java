@@ -1,4 +1,4 @@
-//Testen of je een afspraak kan maken bij een doctor als deze (g)een afspraak heeft staan op deze tijd. (Equivalence + Randvoorwaarden) Liso (0 doctors, 1 doctor, multiple doctors
+package MedicalTests;//Testen of je een afspraak kan maken bij een doctor als deze (g)een afspraak heeft staan op deze tijd. (Equivalence + Randvoorwaarden) Liso (0 doctors, 1 doctor, multiple doctors
 
 import BACKEND.Doctor;
 import BACKEND.Person;

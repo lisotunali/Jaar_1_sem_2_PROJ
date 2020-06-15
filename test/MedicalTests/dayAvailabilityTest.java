@@ -1,3 +1,5 @@
+package MedicalTests;
+
 import BACKEND.*;
 import GUI.*;
 import org.junit.jupiter.api.Assertions;

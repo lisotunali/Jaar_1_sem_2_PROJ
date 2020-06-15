@@ -1,3 +1,5 @@
+package MedicalTests;
+
 import BACKEND.*;
 import GUI.SingletonAppointments;
 import GUI.fakeDatabase;
@@ -7,7 +9,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppointmentsTest {
+class AppointmentsTest2 {
     private Person testPerson = new Person("appointmentTester", "iAmTesting");
     private Person testPerson2 = new Person("appointmentTester2", "iAmTesting");
     private Doctor testDoc = new Doctor("docTester", "iAmStillTesting", SpecializationType.EAR);
