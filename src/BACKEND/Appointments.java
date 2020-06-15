@@ -1,6 +1,5 @@
 package BACKEND;
 
-import GUI.SingletonAppointments;
 import GUI.fakeDatabase;
 
 import java.time.LocalDate;
@@ -10,42 +9,41 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
-public class Appointments {
-    private ArrayList<Appointment> hasAppointments = new ArrayList<>();
+public interface Appointments {
 
-    public void addAppointment(Appointment appointment) {
-        hasAppointments.add(appointment);
+    static void addAppointment(Appointment appointment) {
+        fakeDatabase.getAppointments().add(appointment);
     }
 
-    public ArrayList<Appointment> getAllAppointments() {
-        return hasAppointments;
+    static ArrayList<Appointment> getAllAppointments() {
+        return fakeDatabase.getAppointments();
     }
 
-    public ArrayList<Appointment> getAllAppointments(Person patient) {
-        return hasAppointments.stream().filter(p -> p.getPatient() == patient).collect(Collectors.toCollection(ArrayList::new));
+    static ArrayList<Appointment> getAllAppointments(Person patient) {
+        return fakeDatabase.getAppointments().stream().filter(p -> p.getPatient() == patient).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ArrayList<Appointment> getAllAppointments(Doctor doctor) {
-        return hasAppointments.stream().filter(p -> p.getDoctor() == doctor).collect(Collectors.toCollection(ArrayList::new));
+    static ArrayList<Appointment> getAllAppointments(Doctor doctor) {
+        return fakeDatabase.getAppointments().stream().filter(p -> p.getDoctor() == doctor).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ArrayList<Appointment> getAllOpenAppointments(Person patient) {
+    static ArrayList<Appointment> getAllOpenAppointments(Person patient) {
         return getAllAppointments(patient).stream().filter(appointment -> !appointment.getDone()).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ArrayList<Appointment> getAllOpenAppointments(Doctor doctor) {
+    static ArrayList<Appointment> getAllOpenAppointments(Doctor doctor) {
         return getAllAppointments(doctor).stream().filter(appointment -> !appointment.getDone()).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ArrayList<Appointment> getDoneAppointments(Person patient) {
+    static ArrayList<Appointment> getDoneAppointments(Person patient) {
         return getAllAppointments(patient).stream().filter(Appointment::getDone).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public ArrayList<Appointment> getDoneAppointments(Doctor doctor) {
+    static ArrayList<Appointment> getDoneAppointments(Doctor doctor) {
         return getAllAppointments(doctor).stream().filter(Appointment::getDone).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public Appointment createAppointment(LocalDate date, String condition, SpecializationType specialtyType, Person patient) {
+    static Appointment createAppointment(LocalDate date, String condition, SpecializationType specialtyType, Person patient) {
         AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, specialtyType, patient);
 
         if (availableTimeAndDoctor == null) return null;
@@ -57,11 +55,11 @@ public class Appointments {
         return appointment;
     }
 
-    public void resetArrayList(){
-        hasAppointments.clear();
+    static void resetArrayList(){
+        fakeDatabase.getAppointments().clear();
     }
 
-    public Appointment updateAppointment(Appointment appointment, LocalDate date) {
+    static Appointment updateAppointment(Appointment appointment, LocalDate date) {
         AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, appointment.getAppointmentType(), appointment.getPatient());
 
         if (availableTimeAndDoctor == null) return null;
@@ -75,7 +73,7 @@ public class Appointments {
 
     // Automatically plan an appointment with the earliest available doctor.
     // If a patient already has an appointment on specified date we'll deny it.
-    private AppointmentResult findAvailableTimeAndDoctor(LocalDate date, SpecializationType specialtyType, Person patient) {
+    private static AppointmentResult findAvailableTimeAndDoctor(LocalDate date, SpecializationType specialtyType, Person patient) {
         // Assuming normal day is between 09:00 and 17:00
         LocalTime open = LocalTime.parse("09:00:00");
         LocalTime closed = LocalTime.parse("17:00:00");
@@ -126,19 +124,19 @@ public class Appointments {
     }
 
     // Get all appointments that the doctor has in given appointments array list
-    private ArrayList<Appointment> getAppointmentsDoctorInAppointment(ArrayList<Appointment> appointments, Doctor doc) {
+    private static ArrayList<Appointment> getAppointmentsDoctorInAppointment(ArrayList<Appointment> appointments, Doctor doc) {
         return appointments.stream()
                 .filter(appointment -> appointment.getDoctor().equals(doc))
                 .sorted(Comparator.comparing(Appointment::getAppointmentDate)).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private ArrayList<Appointment> getAllAppointmentsOnDate(LocalDate date) {
-        return SingletonAppointments.getInstance().getAllAppointments().stream()
+    private static ArrayList<Appointment> getAllAppointmentsOnDate(LocalDate date) {
+        return getAllAppointments().stream()
                 .filter(appointment -> appointment.getAppointmentDate().toLocalDate().equals(date))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private ArrayList<Doctor> getDoctorsAvailableAtDateWithType(LocalDate date, SpecializationType specialtyType) {
+    private static ArrayList<Doctor> getDoctorsAvailableAtDateWithType(LocalDate date, SpecializationType specialtyType) {
         return fakeDatabase.getUserDatabase()
                 .stream()
                 .filter(Doctor.class::isInstance)
@@ -147,7 +145,7 @@ public class Appointments {
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public void removeAppointment(Appointment toBeRemoved) {
-        hasAppointments.remove(toBeRemoved);
+    static void removeAppointment(Appointment toBeRemoved) {
+        fakeDatabase.getAppointments().remove(toBeRemoved);
     }
 }

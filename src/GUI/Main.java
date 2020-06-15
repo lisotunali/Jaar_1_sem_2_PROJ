@@ -59,12 +59,11 @@ public class Main extends Application {
 
         testperson.addContact(new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool"));
 
-        singletonMarketplace.getInstance().addProduct(new AnimalProduct("Test Product", "Dit is een testproduct voor de marketplace", 999, 10, testperson.getAnimal("Goat"), testperson));
-        singletonMarketplace.getInstance().addProduct(new AnimalProduct("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson.getAnimal("Sheep"), testperson));
+        fakeDatabase.addProduct(new AnimalProduct("Test Product", "Dit is een testproduct voor de marketplace", 999, 10, testperson.getAnimal("Goat"), testperson));
+        fakeDatabase.addProduct(new AnimalProduct("New Product", "Nieuwe testproduct voor de marketplace", 50, 2, testperson.getAnimal("Sheep"), testperson));
 
-        Appointments instanceAppointments = SingletonAppointments.getInstance();
-        instanceAppointments.createAppointment(LocalDate.of(2020, 6, 2), "test condition for a test appointment", SpecializationType.EAR, testperson1);
-        instanceAppointments.createAppointment(LocalDate.of(2022, 2, 13), "test condition", SpecializationType.GENERAL, testperson);
+        Appointments.createAppointment(LocalDate.of(2020, 6, 2), "test condition for a test appointment", SpecializationType.EAR, testperson1);
+        Appointments.createAppointment(LocalDate.of(2022, 2, 13), "test condition", SpecializationType.GENERAL, testperson);
     }
 
     public void setUpGameData(){

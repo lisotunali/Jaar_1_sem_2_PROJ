@@ -1,7 +1,6 @@
 package GUI;
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
+import BACKEND.Appointments;
 
 import BACKEND.Appointment;
 import BACKEND.Doctor;
@@ -13,7 +12,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.scene.text.Text;
-import Education.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,9 +31,9 @@ public class mainUiController {
     private void setAppointments(Person currentUser) {
         ArrayList<Appointment> allOpenAppointments = new ArrayList<>();
         if (currentUser instanceof Doctor) {
-            allOpenAppointments = SingletonAppointments.getInstance().getAllOpenAppointments((Doctor) currentUser);
+            allOpenAppointments = Appointments.getAllOpenAppointments((Doctor) currentUser);
         } else {
-            allOpenAppointments = SingletonAppointments.getInstance().getAllOpenAppointments(currentUser);
+            allOpenAppointments = Appointments.getAllOpenAppointments(currentUser);
         }
 
         ObservableList<Appointment> appointments = FXCollections.observableArrayList(allOpenAppointments);

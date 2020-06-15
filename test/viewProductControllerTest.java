@@ -2,7 +2,7 @@ import BACKEND.Bid;
 import BACKEND.Person;
 import BACKEND.Product;
 import GUI.SceneController;
-import GUI.singletonMarketplace;
+import GUI.fakeDatabase;
 import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import javafx.scene.control.TableView;
@@ -25,7 +25,7 @@ public class viewProductControllerTest extends TestFXTestBase {
         Bid bid2 = new Bid(120, new Person("Winner", "passw"), singletonPerson.getInstance(), "BillGates", "KIPPIES MET KORTING");
         product.addBid(bid1);
         product.addBid(bid2);
-        singletonMarketplace.getInstance().addProduct(product);
+        fakeDatabase.addProduct(product);
         SceneController.switchTo("sell");
         TableView productTable = lookup("#productTableView").queryTableView();
         clickOn("#productTableView");
@@ -51,7 +51,7 @@ public class viewProductControllerTest extends TestFXTestBase {
         singletonPerson.setPerson(new Person("testinstance", "pass"));
         singletonPerson.getInstance().addAnimal("KIPPIES", 150);
         Product product = new Product("KIPPIES MET KORTING", "20% korting op deze mooie meiden", 100, 5, singletonPerson.getInstance());
-        singletonMarketplace.getInstance().addProduct(product);
+        fakeDatabase.addProduct(product);
         SceneController.switchTo("sell");
         clickOn("#productTableView");
         clickOn("KIPPIES MET KORTING");
@@ -69,7 +69,7 @@ public class viewProductControllerTest extends TestFXTestBase {
         Bid bid2 = new Bid(120, new Person("Winner", "passw"), singletonPerson.getInstance(), "BillGates", "KIPPIES MET KORTING");
         product.addBid(bid1);
         product.addBid(bid2);
-        singletonMarketplace.getInstance().addProduct(product);
+        fakeDatabase.addProduct(product);
         SceneController.switchTo("sell");
         clickOn("#productTableView");
         clickOn("KIPPIES MET KORTING");
@@ -79,7 +79,7 @@ public class viewProductControllerTest extends TestFXTestBase {
         clickOn("#acceptButton");
         clickOn("Yes");
 
-        assertNotEquals(singletonMarketplace.getInstance().getProduct(0).getAdvertTitle(), product.getAdvertTitle(), "Product should be removed from marketplace.");
+        assertNotEquals(fakeDatabase.getProduct(0).getAdvertTitle(), product.getAdvertTitle(), "Product should be removed from marketplace.");
         assertFalse(lookup("Product sold.").tryQuery().isEmpty(), "'Product sold' message should be shown.");
         clickOn("OK");
         assertFalse(lookup("Sell products").tryQuery().isEmpty(), "User should be sent back to sell page.");

@@ -3,7 +3,7 @@ import BACKEND.Bid;
 import BACKEND.Person;
 import BACKEND.Product;
 import GUI.SceneController;
-import GUI.singletonMarketplace;
+import GUI.fakeDatabase;
 import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import javafx.collections.FXCollections;
@@ -23,10 +23,10 @@ class  MarketplaceControllerTest extends TestFXTestBase {
     void displayProductsTest() throws IOException {
         SceneController.switchTo("marketplace");
         clickOn("#productTable");
-        ArrayList<Product> products = singletonMarketplace.getInstance().getAllProducts();
+        ArrayList<Product> products = fakeDatabase.getAllProducts();
         for(int i = 0; i < products.size() && i < 5; i++){
             String product = products.get(i).getAdvertTitle();
-            Assertions.assertFalse(lookup(product).tryQuery().isEmpty(), "Products from marketplace should be correctly displayed in the table.");
+            assertFalse(lookup(product).tryQuery().isEmpty(), "Products from marketplace should be correctly displayed in the table.");
         }
 
     }
@@ -37,8 +37,8 @@ class  MarketplaceControllerTest extends TestFXTestBase {
         singletonPerson.setPerson(testperson);
         AnimalProduct animalTestProduct = new AnimalProduct("testKoe", "testerino", 100, 100, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
         AnimalProduct animalTestProduct2 = new AnimalProduct("testGeit", "testeroni", 50, 200, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
-        singletonMarketplace.getInstance().addProduct(animalTestProduct);
-        singletonMarketplace.getInstance().addProduct(animalTestProduct2);
+        fakeDatabase.addProduct(animalTestProduct);
+        fakeDatabase.addProduct(animalTestProduct2);
         SceneController.switchTo("marketplace");
     }
 
@@ -48,9 +48,9 @@ class  MarketplaceControllerTest extends TestFXTestBase {
         Person testBuyer = new Person("testBuyer", "easypassword");
         Bid testBid = new Bid(98, testBuyer, singletonPerson.getInstance(), "testBuyer", "big papa");
         Bid testBid2 = new Bid(23, testBuyer, singletonPerson.getInstance(), "testBuyer", "big papa");
-        ArrayList<Product> products = singletonMarketplace.getInstance().getAllProducts();
-        ObservableList<Product> productsList = FXCollections.observableArrayList(singletonMarketplace.getInstance().getAllProducts());
-        Product product = singletonMarketplace.getInstance().getAllProducts().get(0);
+        ArrayList<Product> products = fakeDatabase.getAllProducts();
+        ObservableList<Product> productsList = FXCollections.observableArrayList(fakeDatabase.getAllProducts());
+        Product product = fakeDatabase.getAllProducts().get(0);
         product.addBid(testBid);
         product.addBid(testBid2);
         clickOn("#productTable");
@@ -68,11 +68,11 @@ class  MarketplaceControllerTest extends TestFXTestBase {
     @Test //Test that bids cant be placed without selecting a bid
     void bidButtonActionBidNotSelected() throws IOException {
         addTestAnimals();
-        Integer arrayListSize = singletonMarketplace.getInstance().getProduct(0).getBids().size();
+        Integer arrayListSize = fakeDatabase.getProduct(0).getBids().size();
         clickOn("#bidButton");
         Assertions.assertFalse(lookup("Please select a product before trying to bid.").tryQuery().isEmpty(), "Message 'Please select a product before trying to bid.' should appear");
         clickOn("OK");
-        assertEquals(arrayListSize, singletonMarketplace.getInstance().getProduct(0).getBids().size(), "No bids should be added to the animalTestProduct.");
+        assertEquals(arrayListSize, fakeDatabase.getProduct(0).getBids().size(), "No bids should be added to the animalTestProduct.");
     }
 
     @Test //Test that user is sent to selling screen on clicking sell

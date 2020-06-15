@@ -2,13 +2,10 @@ package MedicalTests;
 
 import BACKEND.*;
 import GUI.SceneController;
-import GUI.SingletonAppointments;
 import GUI.fakeDatabase;
 import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.notification.RunListener;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -22,10 +19,13 @@ public class changeAppointmentTest extends TestFXTestBase {
     private Doctor testDoc2 = new Doctor("docTester2", "iAmStillTesting", SpecializationType.SKIN);
 
     public void init() {
+        fakeDatabase.getUserDatabase().clear();
         fakeDatabase.getUserDatabase().add(testDoc);
         fakeDatabase.getUserDatabase().add(testDoc2);
         fakeDatabase.getUserDatabase().add(testPerson);
         fakeDatabase.getUserDatabase().add(testPerson2);
+        singletonPerson.setPerson(testDoc);
+        Appointments.getAllAppointments().clear();
     }
 
     /*
@@ -35,13 +35,12 @@ This test checks if the doctor can change the condition of the patient in the ap
     @Test
     void doctorChangeCondition() throws IOException {
         init();
-        singletonPerson.setPerson(testDoc);
-        Appointments instanceApp = SingletonAppointments.getInstance();
-        Appointment app = instanceApp.createAppointment(LocalDate.of(2020, 9,5 ), "testCondition", SpecializationType.EAR, testPerson);
+        Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9,5 ), "testCondition", SpecializationType.EAR, testPerson);
         SceneController.switchTo("medicalDoctor");
         String TableviewID = "#appointmentTableView";
         String viewButton = "#viewAppointmentButton";
         clickOn(TableviewID);
+        sleep(500);
         clickOn("appointmentTester");
         clickOn(viewButton);
         String conditionAreaID = "#conditionArea";
@@ -58,9 +57,7 @@ This test checks if the doctor can change the condition of the patient in the ap
     @Test
     void specializationChangeTest() throws IOException {
         init();
-        singletonPerson.setPerson(testDoc);
-        Appointments instanceApp = SingletonAppointments.getInstance();
-        Appointment app = instanceApp.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testPerson);
+        Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testPerson);
         SceneController.switchTo("medicalDoctor");
         String TableviewID = "#appointmentTableView";
         String viewButton = "#viewAppointmentButton";
@@ -81,9 +78,7 @@ This test checks if the doctor can change the condition of the patient in the ap
 @Test
     void setAppointmentOnDoneTest() throws IOException {
         init();
-        singletonPerson.setPerson(testDoc);
-        Appointments instanceApp = SingletonAppointments.getInstance();
-        Appointment app = instanceApp.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testPerson);
+        Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testPerson);
         SceneController.switchTo("medicalDoctor");
         String TableviewID = "#appointmentTableView";
         String viewButton = "#viewAppointmentButton";
@@ -104,9 +99,7 @@ This test checks if the doctor can change the condition of the patient in the ap
     @Test
     void cancelAppointmentTest() throws IOException {
         init();
-        singletonPerson.setPerson(testDoc);
-        Appointments instanceApp = SingletonAppointments.getInstance();
-        instanceApp.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testPerson);
+        Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testPerson);
         SceneController.switchTo("medicalDoctor");
         String TableviewID = "#appointmentTableView";
         String viewButton = "#viewAppointmentButton";

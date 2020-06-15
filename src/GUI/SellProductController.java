@@ -75,7 +75,7 @@ public class SellProductController {
                 AlertClass.showAlert(Alert.AlertType.ERROR, "One or more fields contain invalid data.");
                 return;
             }
-            singletonMarketplace.getInstance().addProduct(new AnimalProduct(tempTitle, tempDesc, tempPrice, tempAmount, livestockTable.getSelectionModel().getSelectedItem(), singletonPerson.getInstance()));
+            fakeDatabase.addProduct(new AnimalProduct(tempTitle, tempDesc, tempPrice, tempAmount, livestockTable.getSelectionModel().getSelectedItem(), singletonPerson.getInstance()));
             System.out.println("Product added to marketplace.");
             livestockTable.refresh();
             refreshUserProducts();
@@ -85,7 +85,7 @@ public class SellProductController {
     public void refreshUserProducts() {
         ArrayList<Product> tempProducts = new ArrayList<>();
 
-        for (Product product : singletonMarketplace.getInstance().getAllProducts()) {
+        for (Product product : fakeDatabase.getAllProducts()) {
             if (product.getPerson() == singletonPerson.getInstance()) {
                 tempProducts.add(product);
                 System.out.println(product.getPerson() + " " + singletonPerson.getInstance());
@@ -104,7 +104,7 @@ public class SellProductController {
     }
 
     public void removeOffer() throws Exception {
-        singletonMarketplace.getInstance().removeProduct(productTableView.getSelectionModel().getSelectedItem());
+        fakeDatabase.removeProduct(productTableView.getSelectionModel().getSelectedItem());
         productTableView.getSelectionModel().getSelectedItem().cancelOffer();
         refreshUserProducts();
     }

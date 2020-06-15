@@ -1,6 +1,7 @@
 package GUI;
 
 import BACKEND.Appointment;
+import BACKEND.Appointments;
 import BACKEND.Doctor;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,7 @@ import static GUI.SceneController.getPrimaryStage;
 public class MedicalDoctorController extends MedicalBaseController {
 
     public void initialize() {
-        appointments = FXCollections.observableArrayList(SingletonAppointments.getInstance().getAllAppointments(getPerson()));
+        appointments = FXCollections.observableArrayList(Appointments.getAllAppointments(getPerson()));
         super.refreshUserAppointments("patient");
     }
 
@@ -27,12 +28,12 @@ public class MedicalDoctorController extends MedicalBaseController {
 
     @Override
     public ArrayList<Appointment> getOpen() {
-        return SingletonAppointments.getInstance().getAllOpenAppointments(getPerson());
+        return Appointments.getAllOpenAppointments(getPerson());
     }
 
     @Override
     public ArrayList<Appointment> getClosed() {
-        return SingletonAppointments.getInstance().getDoneAppointments(getPerson());
+        return Appointments.getDoneAppointments(getPerson());
     }
 
     public void pressViewAppointment() throws IOException {

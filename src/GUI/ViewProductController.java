@@ -72,7 +72,7 @@ public class ViewProductController {
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
                 currentProduct.acceptBid(sellTable.getSelectionModel().getSelectedItem().getBuyer());
-                singletonMarketplace.getInstance().removeProduct(currentProduct);
+                fakeDatabase.removeProduct(currentProduct);
                 AlertClass.showAlert(Alert.AlertType.INFORMATION, "Product sold.");
                 SceneController.switchTo("sell");
             }

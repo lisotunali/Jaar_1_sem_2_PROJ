@@ -8,7 +8,6 @@ import TestFXBase.TestFXTestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.EnumSet;

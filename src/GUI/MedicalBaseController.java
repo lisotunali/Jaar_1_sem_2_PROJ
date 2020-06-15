@@ -1,6 +1,7 @@
 package GUI;
 
 import BACKEND.Appointment;
+import BACKEND.Appointments;
 import BACKEND.Person;
 import javafx.collections.ObservableList;
 import javafx.scene.control.CheckBox;
@@ -53,11 +54,11 @@ public abstract class MedicalBaseController {
     }
 
     public ArrayList<Appointment> getOpen() {
-        return SingletonAppointments.getInstance().getAllOpenAppointments(getPerson());
+        return Appointments.getAllOpenAppointments(getPerson());
     }
 
     public ArrayList<Appointment> getClosed() {
-        return SingletonAppointments.getInstance().getDoneAppointments(getPerson());
+        return Appointments.getDoneAppointments(getPerson());
     }
 
     //  Returns to the previous scene.

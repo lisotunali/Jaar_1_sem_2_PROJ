@@ -1,6 +1,9 @@
 package GUI;
 
+import BACKEND.Appointment;
+import BACKEND.Appointments;
 import BACKEND.Person;
+import BACKEND.Product;
 import Education.Highscores;
 import Education.ImageWithName;
 
@@ -13,6 +16,12 @@ public class fakeDatabase {
     private static ArrayList <Highscores>readingHSList = new ArrayList<>();
     private static ArrayList<ImageWithName> imagesDatabase = new ArrayList<>();
     private static ArrayList<Integer> numbersDatabase = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11));
+    private static ArrayList<Product> marketplace = new ArrayList<Product>();
+    private static ArrayList<Appointment> appointments = new ArrayList<>();
+
+    public static ArrayList<Appointment> getAppointments() {
+        return appointments;
+    }
 
     public static ArrayList<Person> getUserDatabase() {
         return userDatabase;
@@ -25,6 +34,8 @@ public class fakeDatabase {
     public static ArrayList<Integer> getNumbersDatabase() { return numbersDatabase; }
 
     public static ArrayList<Highscores> getReadingHSList(){ return readingHSList;}
+
+
 
     public static void addReadingHS(Highscores highscores, String gameType){
 
@@ -44,4 +55,43 @@ public class fakeDatabase {
             }
         }
     }
+
+    //All the marketplace methods
+    public static ArrayList<Product> getMarketplace() {
+        return marketplace;
+    }
+
+    public static void addProduct(Product product) {
+        marketplace.add(product);
+    }
+
+    public static Product getProduct(Integer id) {
+        for (Product products : marketplace) {
+            if (products.getID().equals(id)) {
+                return products;
+            }
+        }
+        return null;
+    }
+
+    public static Product getProductByAdvertTitle(String advertTitle) {
+        for (Product products : marketplace) {
+            if (products.getAdvertTitle().equals(advertTitle)) {
+                return products;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<Product> getAllProducts() {
+        return marketplace;
+    }
+
+    public static void removeProduct(Product product) {
+        marketplace.remove(product);
+    }
+
+
+
+
 }

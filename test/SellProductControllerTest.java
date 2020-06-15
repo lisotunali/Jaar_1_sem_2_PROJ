@@ -2,7 +2,6 @@ import BACKEND.AnimalProduct;
 import BACKEND.Person;
 import GUI.SceneController;
 import GUI.fakeDatabase;
-import GUI.singletonMarketplace;
 import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import org.junit.jupiter.api.Assertions;
@@ -42,7 +41,7 @@ class SellProductControllerTest extends TestFXTestBase {
         write("100");
         clickOn("OK");
         assertEquals(testperson.getAnimal("testanimal1").getAmount(), 0);
-        assertEquals(singletonMarketplace.getInstance().getProductByAdvertTitle("testname").getAmount(), 100);
+        assertEquals(fakeDatabase.getProductByAdvertTitle("testname").getAmount(), 100);
     }
 
     @Test
@@ -60,14 +59,14 @@ class SellProductControllerTest extends TestFXTestBase {
         write("100");
         clickOn("OK");
         assertEquals(testperson.getAnimal("testanimal1").getAmount(), 100);
-        assertNull((singletonMarketplace.getInstance().getProductByAdvertTitle("testname")));
+        assertNull((fakeDatabase.getProductByAdvertTitle("testname")));
     }
 
     @Test
     void removeOffer() throws IOException {
         getToCorrectScene();
         singletonPerson.getInstance().addAnimal("testanimal2", 100);
-        singletonMarketplace.getInstance().addProduct(new AnimalProduct("testtitleblablabla", "testdesc", 100, 100, singletonPerson.getInstance().getAnimal("testanimal2"), singletonPerson.getInstance()));
+        fakeDatabase.addProduct(new AnimalProduct("testtitleblablabla", "testdesc", 100, 100, singletonPerson.getInstance().getAnimal("testanimal2"), singletonPerson.getInstance()));
         //sleep(100);
         SceneController.switchTo("sell");
         //sleep(100);
@@ -75,7 +74,7 @@ class SellProductControllerTest extends TestFXTestBase {
         //sleep(100);
         clickOn("testtitleblablabla");
         clickOn("#cancelButton");
-        assertNull(singletonMarketplace.getInstance().getProductByAdvertTitle("testtitleblablabla"));
+        assertNull(fakeDatabase.getProductByAdvertTitle("testtitleblablabla"));
         assertEquals((singletonPerson.getInstance().getAnimal("testanimal2").getAmount()), 100);
 
     }
@@ -84,7 +83,7 @@ class SellProductControllerTest extends TestFXTestBase {
     void viewOffer() throws IOException {
         getToCorrectScene();
         singletonPerson.getInstance().addAnimal("testanimal2", 100);
-        singletonMarketplace.getInstance().addProduct(new AnimalProduct("testtitle", "testdesc", 100, 100, singletonPerson.getInstance().getAnimal("testanimal2"), singletonPerson.getInstance()));
+        fakeDatabase.addProduct(new AnimalProduct("testtitle", "testdesc", 100, 100, singletonPerson.getInstance().getAnimal("testanimal2"), singletonPerson.getInstance()));
         SceneController.switchTo("sell");
         clickOn("#productTableView");
         clickOn("testtitle");

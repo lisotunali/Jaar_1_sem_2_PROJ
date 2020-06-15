@@ -29,7 +29,7 @@ public class MarketplaceController {
     private ObservableList<Bid> bids = FXCollections.observableArrayList();
 
     public void initialize() {
-        ObservableList<Product> products = FXCollections.observableArrayList(singletonMarketplace.getInstance().getAllProducts());
+        ObservableList<Product> products = FXCollections.observableArrayList(fakeDatabase.getAllProducts());
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("advertTitle"));
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));

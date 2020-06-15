@@ -1,6 +1,7 @@
 package GUI;
 
 import BACKEND.Appointment;
+import BACKEND.Appointments;
 import BACKEND.SpecializationType;
 import javafx.scene.control.*;
 
@@ -23,14 +24,14 @@ public class RequestController {
         if (!validateInput()) {
             return;
         }
-        Appointment appointment = SingletonAppointments.getInstance().createAppointment(datePicker.getValue(), conditionField.getText(), specializationTypeComboBox.getSelectionModel().getSelectedItem(), singletonPerson.getInstance());
+        Appointment appointment = Appointments.createAppointment(datePicker.getValue(), conditionField.getText(), specializationTypeComboBox.getSelectionModel().getSelectedItem(), singletonPerson.getInstance());
         if (appointment == null) {
             AlertClass.showAlert(Alert.AlertType.ERROR, "Unable to create appointment.\n\nNo doctors are available.");
         } else {
             AlertClass.showAlert(Alert.AlertType.INFORMATION, "Appointment created.");
             mainScreen();
         }
-        System.out.println(SingletonAppointments.getInstance().getAllAppointments());
+        System.out.println(Appointments.getAllAppointments());
     }
 
     private Boolean validateInput() {

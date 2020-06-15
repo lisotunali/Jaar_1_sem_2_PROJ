@@ -1,6 +1,7 @@
 package GUI;
 
 import BACKEND.Appointment;
+import BACKEND.Appointments;
 import BACKEND.SpecializationType;
 import javafx.scene.control.*;
 
@@ -42,14 +43,14 @@ public class ViewSelectedAppointmentController {
                 changed = true;
             }
             if (!(dateText.getValue().equals(currentAppointment.getAppointmentDate().toLocalDate()) || dateText.getValue().isBefore(LocalDate.now()))) {
-                SingletonAppointments.getInstance().updateAppointment(currentAppointment, dateText.getValue());
+                Appointments.updateAppointment(currentAppointment, dateText.getValue());
                 changed = true;
             }
             if (!(specialties.getSelectionModel().getSelectedItem().equals(currentAppointment.getAppointmentType()))) {
                 currentAppointment.setAppointmentType(specialties.getValue());
-                SingletonAppointments.getInstance().updateAppointment(currentAppointment, currentAppointment.getAppointmentDate().toLocalDate());
+                Appointments.updateAppointment(currentAppointment, currentAppointment.getAppointmentDate().toLocalDate());
                 if (!(dateText.getValue().equals(currentAppointment.getAppointmentDate().toLocalDate()))) {
-                    SingletonAppointments.getInstance().updateAppointment(currentAppointment, dateText.getValue());
+                    Appointments.updateAppointment(currentAppointment, dateText.getValue());
                     changed = true;
                 }
             }
@@ -71,7 +72,7 @@ public class ViewSelectedAppointmentController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to cancel this appointment?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
-            SingletonAppointments.getInstance().removeAppointment(currentAppointment);
+            Appointments.removeAppointment(currentAppointment);
             AlertClass.showAlert(Alert.AlertType.INFORMATION, "Appointment has been cancelled.");
             mainScreen();
         }
