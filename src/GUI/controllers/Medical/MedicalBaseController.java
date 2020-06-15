@@ -1,8 +1,10 @@
-package GUI;
+package GUI.controllers.Medical;
 
 import BACKEND.Appointment;
 import BACKEND.Appointments;
 import BACKEND.Person;
+import GUI.SceneController;
+import GUI.singletonPerson;
 import javafx.collections.ObservableList;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;

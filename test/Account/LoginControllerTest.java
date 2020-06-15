@@ -1,3 +1,5 @@
+package Account;
+
 import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import javafx.scene.control.PasswordField;

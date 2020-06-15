@@ -1,6 +1,8 @@
-package GUI;
+package GUI.controllers.Contacts;
 
 import BACKEND.Contact;
+import GUI.SceneController;
+import GUI.singletonPerson;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;

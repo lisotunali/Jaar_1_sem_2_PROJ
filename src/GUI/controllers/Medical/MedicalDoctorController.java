@@ -1,8 +1,10 @@
-package GUI;
+package GUI.controllers.Medical;
 
 import BACKEND.Appointment;
 import BACKEND.Appointments;
 import BACKEND.Doctor;
+import GUI.Main;
+import GUI.controllers.Utility.AlertClass;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

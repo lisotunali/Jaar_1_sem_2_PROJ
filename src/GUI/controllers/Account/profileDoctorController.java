@@ -1,7 +1,8 @@
-package GUI;
+package GUI.controllers.Account;
 
 import BACKEND.Doctor;
 import BACKEND.SpecializationType;
+import GUI.singletonPerson;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;

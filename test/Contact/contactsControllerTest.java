@@ -1,3 +1,5 @@
+package Contact;
+
 import BACKEND.Contact;
 import BACKEND.Person;
 import GUI.SceneController;

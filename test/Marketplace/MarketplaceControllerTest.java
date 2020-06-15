@@ -1,3 +1,5 @@
+package Marketplace;
+
 import BACKEND.AnimalProduct;
 import BACKEND.Bid;
 import BACKEND.Person;
@@ -31,7 +33,7 @@ class  MarketplaceControllerTest extends TestFXTestBase {
 
     }
 
-        static void addTestAnimals() throws IOException {
+    static void addTestAnimals() throws IOException {
         Person testperson = new Person("testperson", "test");
         testperson.addAnimal("testanimal1", 100);
         singletonPerson.setPerson(testperson);

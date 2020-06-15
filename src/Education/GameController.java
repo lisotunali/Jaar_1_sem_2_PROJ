@@ -1,7 +1,7 @@
 package Education;
 
-import GUI.AlertClass;
 import GUI.SceneController;
+import GUI.controllers.Utility.AlertClass;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;

@@ -1,6 +1,7 @@
-package GUI;
+package GUI.controllers.Medical;
 
 import BACKEND.Appointments;
+import GUI.SceneController;
 import javafx.collections.FXCollections;
 
 import java.io.IOException;

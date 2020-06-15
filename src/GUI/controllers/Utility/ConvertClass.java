@@ -1,4 +1,4 @@
-package GUI;
+package GUI.controllers.Utility;
 
 public class ConvertClass {
 

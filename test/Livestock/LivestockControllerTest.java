@@ -1,3 +1,5 @@
+package Livestock;
+
 import BACKEND.Person;
 import GUI.SceneController;
 import GUI.fakeDatabase;

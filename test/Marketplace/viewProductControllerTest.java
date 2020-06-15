@@ -1,3 +1,5 @@
+package Marketplace;
+
 import BACKEND.Bid;
 import BACKEND.Person;
 import BACKEND.Product;

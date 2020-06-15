@@ -1,3 +1,5 @@
+package Account;
+
 import BACKEND.Person;
 import GUI.SceneController;
 import GUI.fakeDatabase;
@@ -11,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class profileControllerTest extends TestFXTestBase {
 
-   @Test
+    @Test
     void onUpdateClickedCorrect() throws IOException {
         Person testperson = new Person("testprofile", "test");
         fakeDatabase.getUserDatabase().add(testperson);

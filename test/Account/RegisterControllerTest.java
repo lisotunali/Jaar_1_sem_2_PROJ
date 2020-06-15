@@ -1,3 +1,5 @@
+package Account;
+
 import BACKEND.Person;
 import GUI.SceneController;
 import GUI.fakeDatabase;
@@ -114,7 +116,6 @@ public class RegisterControllerTest  extends TestFXTestBase {
         assertFalse(lookup("Logout").tryQuery().isEmpty(), "Main menu elements should appear.");
 
     }
-
 
 
 }

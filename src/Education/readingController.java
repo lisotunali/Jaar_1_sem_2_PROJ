@@ -1,6 +1,6 @@
 package Education;
 
-import GUI.ConvertClass;
+import GUI.controllers.Utility.ConvertClass;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;

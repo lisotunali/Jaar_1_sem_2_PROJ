@@ -1,6 +1,10 @@
-package GUI;
+package GUI.controllers.Livestock;
 
 import BACKEND.Animal;
+import GUI.SceneController;
+import GUI.controllers.Utility.AlertClass;
+import GUI.controllers.Utility.ConvertClass;
+import GUI.singletonPerson;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;

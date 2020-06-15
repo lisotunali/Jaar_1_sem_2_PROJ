@@ -1,9 +1,15 @@
-package GUI;
+package GUI.controllers.Marketplace;
 
 import BACKEND.Animal;
 import BACKEND.AnimalProduct;
 import BACKEND.Bid;
 import BACKEND.Product;
+import GUI.Main;
+import GUI.SceneController;
+import GUI.controllers.Utility.AlertClass;
+import GUI.controllers.Utility.ConvertClass;
+import GUI.fakeDatabase;
+import GUI.singletonPerson;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;

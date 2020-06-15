@@ -1,8 +1,10 @@
-package GUI;
+package GUI.controllers.Medical;
 
 import BACKEND.Appointment;
 import BACKEND.Appointments;
 import BACKEND.SpecializationType;
+import GUI.SceneController;
+import GUI.controllers.Utility.AlertClass;
 import javafx.scene.control.*;
 
 import java.io.IOException;

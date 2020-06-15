@@ -7,17 +7,17 @@
 <?import javafx.scene.text.Text?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="GUI.LoginController">
-   <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="nameInput"/>
-            <PasswordField fx:id="passwordInput"/>
-         </children>
-         <BorderPane.margin>
-            <Insets right="30.0"/>
-         </BorderPane.margin>
-      </VBox>
+            fx:controller="GUI.controllers.Account.LoginController">
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="nameInput"/>
+                <PasswordField fx:id="passwordInput"/>
+            </children>
+            <BorderPane.margin>
+                <Insets right="30.0"/>
+            </BorderPane.margin>
+        </VBox>
    </center>
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">

@@ -1,6 +1,10 @@
-package GUI;
+package GUI.controllers.Account;
 
 import BACKEND.Person;
+import GUI.SceneController;
+import GUI.controllers.Utility.AlertClass;
+import GUI.fakeDatabase;
+import GUI.singletonPerson;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
