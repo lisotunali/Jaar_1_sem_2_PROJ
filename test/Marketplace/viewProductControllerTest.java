@@ -28,7 +28,7 @@ public class viewProductControllerTest extends TestFXTestBase {
         product.addBid(bid1);
         product.addBid(bid2);
         fakeDatabase.addProduct(product);
-        SceneController.switchTo("sell");
+        SceneController.switchTo("Marketplace/sell");
         TableView productTable = lookup("#productTableView").queryTableView();
         clickOn("#productTableView");
         clickOn("KIPPIES MET KORTING");
@@ -54,7 +54,7 @@ public class viewProductControllerTest extends TestFXTestBase {
         singletonPerson.getInstance().addAnimal("KIPPIES", 150);
         Product product = new Product("KIPPIES MET KORTING", "20% korting op deze mooie meiden", 100, 5, singletonPerson.getInstance());
         fakeDatabase.addProduct(product);
-        SceneController.switchTo("sell");
+        SceneController.switchTo("Marketplace/sell");
         clickOn("#productTableView");
         clickOn("KIPPIES MET KORTING");
         clickOn("#viewButton");
@@ -72,7 +72,7 @@ public class viewProductControllerTest extends TestFXTestBase {
         product.addBid(bid1);
         product.addBid(bid2);
         fakeDatabase.addProduct(product);
-        SceneController.switchTo("sell");
+        SceneController.switchTo("Marketplace/sell");
         clickOn("#productTableView");
         clickOn("KIPPIES MET KORTING");
         clickOn("#viewButton");

@@ -23,7 +23,7 @@ import static GUI.SceneController.getPrimaryStage;
 public class GuiTest extends TestFXTestBase {
     @Test
     public void timerTest() throws IOException {
-        SceneController.switchTo("reading");
+        SceneController.switchTo("Educational/reading");
 
         for (int i = 59; i > 50; i--) {
             FxAssert.verifyThat("#timerLabel", LabeledMatchers.hasText(Integer.toString(i)));
@@ -34,7 +34,7 @@ public class GuiTest extends TestFXTestBase {
     @Test
     public void textShouldChangeWhenClickedOnImage() throws IOException {
         Stage primaryStage = getPrimaryStage();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("reading.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("Views/Educational/reading.fxml"));
         Parent parent = loader.load();
         readingController controller = loader.getController();
         primaryStage.getScene().setRoot(parent);
@@ -53,7 +53,7 @@ public class GuiTest extends TestFXTestBase {
         singletonPerson.setPerson(testPerson);
 
         Stage primaryStage = getPrimaryStage();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("reading.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("Views/Educational/reading.fxml"));
         Parent parent = loader.load();
         readingController controller = loader.getController();
         primaryStage.getScene().setRoot(parent);

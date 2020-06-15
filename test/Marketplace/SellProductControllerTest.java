@@ -70,7 +70,7 @@ class SellProductControllerTest extends TestFXTestBase {
         singletonPerson.getInstance().addAnimal("testanimal2", 100);
         fakeDatabase.addProduct(new AnimalProduct("testtitleblablabla", "testdesc", 100, 100, singletonPerson.getInstance().getAnimal("testanimal2"), singletonPerson.getInstance()));
         //sleep(100);
-        SceneController.switchTo("sell");
+        SceneController.switchTo("Marketplace/sell");
         //sleep(100);
         clickOn("#productTableView");
         //sleep(100);
@@ -86,7 +86,7 @@ class SellProductControllerTest extends TestFXTestBase {
         getToCorrectScene();
         singletonPerson.getInstance().addAnimal("testanimal2", 100);
         fakeDatabase.addProduct(new AnimalProduct("testtitle", "testdesc", 100, 100, singletonPerson.getInstance().getAnimal("testanimal2"), singletonPerson.getInstance()));
-        SceneController.switchTo("sell");
+        SceneController.switchTo("Marketplace/sell");
         clickOn("#productTableView");
         clickOn("testtitle");
         clickOn("#viewButton");
@@ -99,6 +99,6 @@ class SellProductControllerTest extends TestFXTestBase {
         fakeDatabase.getUserDatabase().add(testperson);
         testperson.addAnimal("testanimal1", 100);
         singletonPerson.setPerson(testperson);
-        SceneController.switchTo("sell");
+        SceneController.switchTo("Marketplace/sell");
     }
 }

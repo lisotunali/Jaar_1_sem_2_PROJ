@@ -18,7 +18,7 @@ public class RegisterControllerTest  extends TestFXTestBase {
     @Test //Testing whether the user input is reflected correctly in the text fields.
 
     public void credentialsInput() throws IOException {
-        SceneController.switchTo("register");
+        SceneController.switchTo("Account/register");
 
         String nameFieldID = "#nameInput";
         String passwordFieldID = "#passwordInput";
@@ -45,7 +45,7 @@ public class RegisterControllerTest  extends TestFXTestBase {
 
     @Test //Testing whether the system doesnt allow registering with an already existing username
     public void registerExistingUsernameAlert() throws IOException {
-        SceneController.switchTo("register");
+        SceneController.switchTo("Account/register");
         String nameFieldID = "#nameInput";
         String passwordFieldID = "#passwordInput";
         String passwordConfirmFieldID = "#passwordConfirmInput";
@@ -65,7 +65,7 @@ public class RegisterControllerTest  extends TestFXTestBase {
     @Test //Testing whether the system doesnt allow registering with a typo in the password confirm field
 
     public void registerPasswordTypoAlert() throws IOException {
-        SceneController.switchTo("register");
+        SceneController.switchTo("Account/register");
         String nameFieldID = "#nameInput";
         String passwordFieldID = "#passwordInput";
         String passwordConfirmFieldID = "#passwordConfirmInput";
@@ -86,7 +86,7 @@ public class RegisterControllerTest  extends TestFXTestBase {
 
     @Test
     public void registerSuccessful() throws IOException {
-        SceneController.switchTo("register");
+        SceneController.switchTo("Account/register");
         String nameFieldID = "#nameInput";
         String passwordFieldID = "#passwordInput";
         String passwordConfirmFieldID = "#passwordConfirmInput";

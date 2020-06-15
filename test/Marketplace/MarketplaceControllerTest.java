@@ -23,7 +23,7 @@ class  MarketplaceControllerTest extends TestFXTestBase {
 
     @Test //Test whether products from marketplace are correctly listed in the product table
     void displayProductsTest() throws IOException {
-        SceneController.switchTo("marketplace");
+        SceneController.switchTo("Marketplace/marketplace");
         clickOn("#productTable");
         ArrayList<Product> products = fakeDatabase.getAllProducts();
         for(int i = 0; i < products.size() && i < 5; i++){
@@ -41,7 +41,7 @@ class  MarketplaceControllerTest extends TestFXTestBase {
         AnimalProduct animalTestProduct2 = new AnimalProduct("testGeit", "testeroni", 50, 200, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
         fakeDatabase.addProduct(animalTestProduct);
         fakeDatabase.addProduct(animalTestProduct2);
-        SceneController.switchTo("marketplace");
+        SceneController.switchTo("Marketplace/marketplace");
     }
 
     @Test //Test whether bids on product are correctly listed in the product table
@@ -79,7 +79,7 @@ class  MarketplaceControllerTest extends TestFXTestBase {
 
     @Test //Test that user is sent to selling screen on clicking sell
     void sendToSellPageTest() throws IOException {
-        SceneController.switchTo("marketplace");
+        SceneController.switchTo("Marketplace/marketplace");
         singletonPerson.setPerson(new Person("seller", "password"));
         clickOn("#sellPageButton");
         assertFalse(lookup("Sell products").tryQuery().isEmpty(), "User should be sent to sell page on clicking sell.");

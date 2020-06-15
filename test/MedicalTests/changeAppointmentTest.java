@@ -41,7 +41,7 @@ This test checks if the doctor can change the condition of the patient in the ap
     void doctorChangeCondition() throws IOException {
         init();
         Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9,5 ), "testCondition", SpecializationType.EAR, testPerson);
-        SceneController.switchTo("medicalDoctor");
+        SceneController.switchTo("Medical/medicalDoctor");
         String TableviewID = "#appointmentTableView";
         String viewButton = "#viewAppointmentButton";
         clickOn(TableviewID);
@@ -63,7 +63,7 @@ This test checks if the doctor can change the condition of the patient in the ap
     void specializationChangeTest() throws IOException {
         init();
         Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testPerson);
-        SceneController.switchTo("medicalDoctor");
+        SceneController.switchTo("Medical/medicalDoctor");
         String TableviewID = "#appointmentTableView";
         String viewButton = "#viewAppointmentButton";
         String specialtiesID = "#specialties";
@@ -84,7 +84,7 @@ This test checks if the doctor can change the condition of the patient in the ap
     void setAppointmentOnDoneTest() throws IOException {
         init();
         Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testPerson);
-        SceneController.switchTo("medicalDoctor");
+        SceneController.switchTo("Medical/medicalDoctor");
         String TableviewID = "#appointmentTableView";
         String viewButton = "#viewAppointmentButton";
         String changeAppButton = "#changeAppointment";
@@ -105,7 +105,7 @@ This test checks if the doctor can change the condition of the patient in the ap
     void cancelAppointmentTest() throws IOException {
         init();
         Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testPerson);
-        SceneController.switchTo("medicalDoctor");
+        SceneController.switchTo("Medical/medicalDoctor");
         String TableviewID = "#appointmentTableView";
         String viewButton = "#viewAppointmentButton";
         String deleteAppButton = "#deleteAppointment";

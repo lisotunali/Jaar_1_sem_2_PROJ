@@ -73,6 +73,6 @@ public class LivestockControllerTest extends TestFXTestBase {
         fakeDatabase.getUserDatabase().add(testperson);
         singletonPerson.setPerson(testperson);
         singletonPerson.getInstance().addAnimal("testanimal", 100);
-        SceneController.switchTo("livestock");
+        SceneController.switchTo("Livestock/livestock");
     }
 }

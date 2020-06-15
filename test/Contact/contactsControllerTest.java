@@ -98,6 +98,6 @@ class contactsControllerTest extends TestFXTestBase {
         singletonPerson.setPerson(testperson);
         Contact contact = new Contact("testcontact", "0612345676", "nonsense@nonsensemail.com", "doesnotexiststreet");
         singletonPerson.getInstance().addContact(contact);
-        SceneController.switchTo("contacts");
+        SceneController.switchTo("Contacts/contacts");
     }
 }
