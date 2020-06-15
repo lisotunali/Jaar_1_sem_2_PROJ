@@ -1,11 +1,11 @@
 package Educational.Reading;
 
-import BACKEND.Person;
-import Education.Highscores;
-import Education.ImageWithName;
-import Education.Reading;
-import GUI.fakeDatabase;
-import GUI.singletonPerson;
+import BACKEND.Education.Highscores;
+import BACKEND.Education.ImageWithName;
+import BACKEND.Education.Reading;
+import BACKEND.Person.Person;
+import BACKEND.fakeDatabase;
+import GUI.Controllers.Utility.singletonPerson;
 import javafx.scene.image.Image;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,10 +15,10 @@ public class HighscoreTest {
         Person testPerson = new Person("gameTester", "iAmTesting");
         singletonPerson.setPerson(testPerson);
 
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("bee", new Image(getClass().getResourceAsStream("/Education/Images/bee.png"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("doctor", new Image(getClass().getResourceAsStream("/Education/Images/doctor.jpg"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("dog", new Image(getClass().getResourceAsStream("/Education/Images/dog.jpg"))));
-        fakeDatabase.getImagesDatabase().add( new ImageWithName("elephant", new Image(getClass().getResourceAsStream("/Education/Images/elephant.png"))));
+        fakeDatabase.getImagesDatabase().add(new ImageWithName("bee", new Image(getClass().getResourceAsStream("/BACKEND/Education/Images/bee.png"))));
+        fakeDatabase.getImagesDatabase().add(new ImageWithName("doctor", new Image(getClass().getResourceAsStream("/BACKEND/Education/Images/doctor.jpg"))));
+        fakeDatabase.getImagesDatabase().add(new ImageWithName("dog", new Image(getClass().getResourceAsStream("/BACKEND/Education/Images/dog.jpg"))));
+        fakeDatabase.getImagesDatabase().add(new ImageWithName("elephant", new Image(getClass().getResourceAsStream("/BACKEND/Education/Images/elephant.png"))));
     }
 
     @Test

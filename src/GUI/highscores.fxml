@@ -3,14 +3,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Education.highscoresController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="GUI.Controllers.Educational.highscoresController">
    <children>
-      <HBox prefHeight="96.0" prefWidth="697.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="96.0" prefWidth="697.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="103.0"
+            AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" prefHeight="105.0" prefWidth="754.0" text="Highscores" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Gill Sans MT" size="50.0" />
+                  <Font name="Gill Sans MT" size="50.0"/>
                </font>
             </Label>
          </children>

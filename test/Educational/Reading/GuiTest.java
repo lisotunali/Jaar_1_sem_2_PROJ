@@ -1,11 +1,11 @@
 package Educational.Reading;
 
-import BACKEND.Person;
-import Education.ImageWithName;
-import Education.readingController;
+import BACKEND.Education.ImageWithName;
+import BACKEND.Person.Person;
+import GUI.Controllers.Educational.readingController;
+import GUI.Controllers.Utility.singletonPerson;
 import GUI.Main;
 import GUI.SceneController;
-import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

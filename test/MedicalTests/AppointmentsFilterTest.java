@@ -1,10 +1,10 @@
 package MedicalTests;
 
-import BACKEND.Appointments;
-import BACKEND.Doctor;
-import BACKEND.Person;
-import BACKEND.SpecializationType;
-import GUI.fakeDatabase;
+import BACKEND.Medical.Appointments;
+import BACKEND.Person.Doctor;
+import BACKEND.Person.Person;
+import BACKEND.Person.SpecializationType;
+import BACKEND.fakeDatabase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

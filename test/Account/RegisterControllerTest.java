@@ -1,9 +1,9 @@
 package Account;
 
-import BACKEND.Person;
+import BACKEND.Person.Person;
+import BACKEND.fakeDatabase;
+import GUI.Controllers.Utility.singletonPerson;
 import GUI.SceneController;
-import GUI.fakeDatabase;
-import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;

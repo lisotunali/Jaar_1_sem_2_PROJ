@@ -1,9 +1,9 @@
 package MedicalTests;
 
-import BACKEND.Doctor;
-import BACKEND.SpecializationType;
+import BACKEND.Person.Doctor;
+import BACKEND.Person.SpecializationType;
+import GUI.Controllers.Utility.singletonPerson;
 import GUI.SceneController;
-import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

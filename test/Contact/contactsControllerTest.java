@@ -1,10 +1,10 @@
 package Contact;
 
-import BACKEND.Contact;
-import BACKEND.Person;
+import BACKEND.Contact.Contact;
+import BACKEND.Person.Person;
+import BACKEND.fakeDatabase;
+import GUI.Controllers.Utility.singletonPerson;
 import GUI.SceneController;
-import GUI.fakeDatabase;
-import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;

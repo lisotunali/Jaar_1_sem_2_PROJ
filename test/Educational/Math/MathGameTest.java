@@ -1,9 +1,9 @@
 package Educational.Math;
 
-import BACKEND.Person;
-import Education.Game;
-import Education.Math;
-import GUI.singletonPerson;
+import BACKEND.Education.Game;
+import BACKEND.Education.Math;
+import BACKEND.Person.Person;
+import GUI.Controllers.Utility.singletonPerson;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

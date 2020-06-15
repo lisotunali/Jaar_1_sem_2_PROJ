@@ -1,10 +1,10 @@
 package Marketplace;
 
-import BACKEND.AnimalProduct;
-import BACKEND.Person;
+import BACKEND.Marketplace.AnimalProduct;
+import BACKEND.Person.Person;
+import BACKEND.fakeDatabase;
+import GUI.Controllers.Utility.singletonPerson;
 import GUI.SceneController;
-import GUI.fakeDatabase;
-import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

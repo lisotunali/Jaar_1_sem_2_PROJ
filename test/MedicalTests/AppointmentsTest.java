@@ -1,7 +1,11 @@
 package MedicalTests;
 
-import BACKEND.*;
-import GUI.fakeDatabase;
+import BACKEND.Medical.Appointment;
+import BACKEND.Medical.Appointments;
+import BACKEND.Person.Doctor;
+import BACKEND.Person.Person;
+import BACKEND.Person.SpecializationType;
+import BACKEND.fakeDatabase;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

@@ -1,14 +1,16 @@
 package MedicalTests;
 
-import BACKEND.*;
-import GUI.*;
+import BACKEND.Medical.Appointments;
+import BACKEND.Person.Doctor;
+import BACKEND.Person.Person;
+import BACKEND.Person.SpecializationType;
+import BACKEND.fakeDatabase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.EnumSet;
-import java.util.HashMap;
 
 
 public class dayAvailabilityTest {

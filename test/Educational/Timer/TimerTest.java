@@ -1,11 +1,11 @@
 package Educational.Timer;
 
-import BACKEND.Person;
-import Education.Game;
-import Education.Math;
-import Education.Reading;
-import Education.Writing;
-import GUI.singletonPerson;
+import BACKEND.Education.Game;
+import BACKEND.Education.Math;
+import BACKEND.Education.Reading;
+import BACKEND.Education.Writing;
+import BACKEND.Person.Person;
+import GUI.Controllers.Utility.singletonPerson;
 import org.junit.jupiter.api.Test;
 
 import static java.lang.Thread.sleep;
@@ -22,6 +22,7 @@ public class TimerTest {
         mathGame.setSecondsLeft(3);
         mathGame.startTimer();
         sleep(3000);
+        mathGame.stopTimer();
         assertEquals(0, mathGame.getSecondsLeft());
     }
 
@@ -33,6 +34,7 @@ public class TimerTest {
         readingGame.setSecondsLeft(3);
         readingGame.startTimer();
         sleep(3000);
+        readingGame.stopTimer();
         assertEquals(0, readingGame.getSecondsLeft());
     }
 
@@ -44,6 +46,7 @@ public class TimerTest {
         writingGame.setSecondsLeft(3);
         writingGame.startTimer();
         sleep(3000);
+        writingGame.stopTimer();
         assertEquals(0, writingGame.getSecondsLeft());
     }
 }

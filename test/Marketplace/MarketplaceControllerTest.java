@@ -1,12 +1,12 @@
 package Marketplace;
 
-import BACKEND.AnimalProduct;
-import BACKEND.Bid;
-import BACKEND.Person;
-import BACKEND.Product;
+import BACKEND.Marketplace.AnimalProduct;
+import BACKEND.Marketplace.Bid;
+import BACKEND.Marketplace.Product;
+import BACKEND.Person.Person;
+import BACKEND.fakeDatabase;
+import GUI.Controllers.Utility.singletonPerson;
 import GUI.SceneController;
-import GUI.fakeDatabase;
-import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

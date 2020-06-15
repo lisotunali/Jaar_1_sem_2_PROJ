@@ -1,16 +1,15 @@
 package GUI;
 
-import BACKEND.Appointments;
-
-import BACKEND.Appointment;
-import BACKEND.Doctor;
-import BACKEND.Person;
+import BACKEND.Medical.Appointment;
+import BACKEND.Medical.Appointments;
+import BACKEND.Person.Doctor;
+import BACKEND.Person.Person;
+import GUI.Controllers.Utility.singletonPerson;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import javafx.scene.text.Text;
 
 import java.io.IOException;
