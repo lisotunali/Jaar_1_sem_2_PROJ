@@ -65,6 +65,6 @@ public abstract class MedicalBaseController {
 
     //  Returns to the previous scene.
     public void mainScreen() throws IOException {
-        SceneController.switchTo("mainUi");
+        SceneController.switchTo("Main/mainUi");
     }
 }

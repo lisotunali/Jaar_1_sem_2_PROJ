@@ -63,6 +63,6 @@ public abstract class GameController implements Observer {
 
     public void backButtonClicked() throws IOException {
         game.stopTimer();
-        SceneController.switchTo("education");
+        SceneController.switchTo("Educational/education");
     }
 }

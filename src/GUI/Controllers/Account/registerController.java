@@ -50,10 +50,10 @@ public class registerController {
         fakeDatabase.getUserDatabase().add(person);
         singletonPerson.setPerson(person);
 
-        SceneController.switchTo("mainUi");
+        SceneController.switchTo("Main/mainUi");
     }
 
     public void backButtonClicked() throws IOException {
-        SceneController.switchTo("login");
+        SceneController.switchTo("Account/login");
     }
 }

@@ -47,7 +47,7 @@ public class MarketplaceController {
     }
 
     public void sellPage() throws IOException {
-        SceneController.switchTo("sell");
+        SceneController.switchTo("Marketplace/sell");
     }
 
     public void bidButtonAction() {
@@ -108,6 +108,6 @@ public class MarketplaceController {
     }
 
     public void mainScreen() throws IOException {
-        SceneController.switchTo("mainUi");
+        SceneController.switchTo("Main/mainUi");
     }
 }

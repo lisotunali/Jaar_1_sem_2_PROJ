@@ -38,7 +38,7 @@ public class LivestockController{
             for (Animal animal : singletonPerson.getInstance().getAnimals()) {
                 if (animal.getType().equalsIgnoreCase(animalEdit.getType())) {
                     singletonPerson.getInstance().getAnimal(animalEdit.getType()).addAmount(amountAdded);
-                    SceneController.switchTo("livestock");
+                    SceneController.switchTo("Livestock/livestock");
                 }
             }
         }
@@ -57,7 +57,7 @@ public class LivestockController{
             for (Animal animal: singletonPerson.getInstance().getAnimals()) {
                 if(animal.getType().equalsIgnoreCase(animalEdit.getType())){
                     singletonPerson.getInstance().getAnimal(animalEdit.getType()).removeAmount(amountremoved);
-                    SceneController.switchTo("livestock");
+                    SceneController.switchTo("Livestock/livestock");
                     return;
                 }
             }
@@ -67,7 +67,7 @@ public class LivestockController{
         }
     }
     public void backButtonclicked() throws IOException {
-        SceneController.switchTo("mainUI");
+        SceneController.switchTo("Main/mainUi");
     }
     public void newButtonclicked() throws IOException {
         Integer newAmount = ConvertClass.convertToInt(textFamount.getText());
@@ -79,10 +79,10 @@ public class LivestockController{
             alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
                 singletonPerson.getInstance().addAnimal(textFtype.getText(),newAmount);
-                SceneController.switchTo("livestock");
+                SceneController.switchTo("Livestock/livestock");
             }
             else{
-                SceneController.switchTo("livestock");
+                SceneController.switchTo("Livestock/livestock");
             }
         }
     }
@@ -96,10 +96,10 @@ public class LivestockController{
             alert.showAndWait();
             if(alert.getResult() == ButtonType.YES){
                 singletonPerson.getInstance().removeAnimal(animalDelete.getType());
-                SceneController.switchTo("livestock");
+                SceneController.switchTo("Livestock/livestock");
             }
             else{
-                SceneController.switchTo("livestock");
+                SceneController.switchTo("Livestock/livestock");
             }
         }
     }

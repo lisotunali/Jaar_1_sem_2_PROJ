@@ -125,7 +125,7 @@ public class SellProductController {
             System.out.println("Attempting...");
 
             Stage primaryStage = getPrimaryStage();
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("sellproduct.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("Views/Marketplace/sellproduct.fxml"));
             Parent parent = loader.load();
             ViewProductController controller = loader.getController();
             controller.initData(selectedProduct);
@@ -134,6 +134,6 @@ public class SellProductController {
     }
 
     public void prevScreen() throws IOException {
-        SceneController.switchTo("marketplace");
+        SceneController.switchTo("Marketplace/marketplace");
     }
 }

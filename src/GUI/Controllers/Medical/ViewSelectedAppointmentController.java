@@ -81,6 +81,6 @@ public class ViewSelectedAppointmentController {
     }
 
     public void mainScreen() throws IOException {
-        SceneController.switchTo("medicalDoctor");
+        SceneController.switchTo("Medical/medicalDoctor");
     }
 }

@@ -50,6 +50,6 @@ public class RequestController {
     }
 
     public void mainScreen() throws IOException {
-        SceneController.switchTo("medicalPerson");
+        SceneController.switchTo("Medical/medicalPerson");
     }
 }

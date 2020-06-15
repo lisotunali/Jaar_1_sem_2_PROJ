@@ -36,7 +36,7 @@ public class contactsController {
     }
 
     public void contactsBackButtonClicked() throws IOException {
-        SceneController.switchTo("mainUI");
+        SceneController.switchTo("Main/mainUi");
     }
 
     public void nameClicked() {

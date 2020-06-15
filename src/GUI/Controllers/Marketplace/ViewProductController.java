@@ -42,7 +42,7 @@ public class ViewProductController {
     }
 
     public void prevScreen() throws IOException {
-        SceneController.switchTo("sell");
+        SceneController.switchTo("Marketplace/sell");
     }
 
     public void initData(Product selectedProduct) {
@@ -77,7 +77,7 @@ public class ViewProductController {
                 currentProduct.acceptBid(sellTable.getSelectionModel().getSelectedItem().getBuyer());
                 fakeDatabase.removeProduct(currentProduct);
                 AlertClass.showAlert(Alert.AlertType.INFORMATION, "Product sold.");
-                SceneController.switchTo("sell");
+                prevScreen();
             }
         }
     }

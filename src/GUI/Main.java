@@ -34,7 +34,7 @@ public class Main extends Application {
         setUpGameData();
 
         SceneController.setPrimaryStage(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Views/Account/login.fxml"));
         primaryStage.setTitle("Kumbaya 5a");
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);

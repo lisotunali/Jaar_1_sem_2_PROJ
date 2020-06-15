@@ -20,6 +20,6 @@ public class highscoresController {
     }
 
     public void backButtonClicked(ActionEvent actionEvent) throws IOException {
-        SceneController.switchTo("education");
+        SceneController.switchTo("Educational/education");
     }
 }

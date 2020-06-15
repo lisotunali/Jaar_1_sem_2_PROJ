@@ -1,10 +1,11 @@
-package GUI;
+package GUI.Views.Main;
 
 import BACKEND.Medical.Appointment;
 import BACKEND.Medical.Appointments;
 import BACKEND.Person.Doctor;
 import BACKEND.Person.Person;
 import GUI.Controllers.Utility.singletonPerson;
+import GUI.SceneController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -44,39 +45,39 @@ public class mainUiController {
     }
 
     public void contactsButtonClicked() throws IOException {
-        SceneController.switchTo("contacts");
+        SceneController.switchTo("Contacts/contacts");
     }
 
     public void profileButtonClicked() throws IOException {
         if (singletonPerson.getInstance() instanceof Doctor) {
-            SceneController.switchTo("profileDoctor");
+            SceneController.switchTo("Profile/profileDoctor");
         } else {
-            SceneController.switchTo("profile");
+            SceneController.switchTo("Profile/profile");
         }
     }
 
     public void logoutButtonClicked() throws IOException {
-        SceneController.switchTo("login");
+        SceneController.switchTo("Account/login");
     }
 
     public void pressMarketplace() throws IOException {
-        SceneController.switchTo("marketplace");
+        SceneController.switchTo("Marketplace/marketplace");
 
     }
 
     public void LivestockButtonclicked() throws IOException {
-        SceneController.switchTo("livestock");
+        SceneController.switchTo("Livestock/livestock");
     }
 
     public void medicalButtonClicked() throws IOException {
         if (singletonPerson.getInstance() instanceof Doctor) {
-            SceneController.switchTo("medicalDoctor");
+            SceneController.switchTo("Medical/medicalDoctor");
         } else {
-            SceneController.switchTo("medicalPerson");
+            SceneController.switchTo("Medical/medicalPerson");
         }
     }
 
     public void educationalButtonClicked() throws IOException {
-        SceneController.switchTo("education");
+        SceneController.switchTo("Educational/education");
     }
 }

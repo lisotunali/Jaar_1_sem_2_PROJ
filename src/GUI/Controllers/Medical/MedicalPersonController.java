@@ -14,6 +14,6 @@ public class MedicalPersonController extends MedicalBaseController {
     }
 
     public void requestButtonPressed() throws IOException {
-        SceneController.switchTo("request");
+        SceneController.switchTo("Medical/request");
     }
 }

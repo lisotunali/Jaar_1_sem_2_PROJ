@@ -47,7 +47,7 @@ public class MedicalDoctorController extends MedicalBaseController {
             Appointment selectedItem = appointmentTableView.getSelectionModel().getSelectedItem();
 
             Stage primaryStage = getPrimaryStage();
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("viewselectedappointment.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("Views/Medical/viewselectedappointment.fxml"));
             Parent parent = loader.load();
             ViewSelectedAppointmentController controller = loader.getController();
             controller.initData(selectedItem);

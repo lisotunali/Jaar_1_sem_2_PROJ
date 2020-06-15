@@ -46,6 +46,6 @@ public class profileController {
     }
 
     public void onBackClicked() throws IOException {
-        SceneController.switchTo("mainUi");
+        SceneController.switchTo("Main/mainUi");
     }
 }
