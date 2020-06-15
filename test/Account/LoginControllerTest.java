@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class LoginControllerTest extends TestFXTestBase {
-    //test voor pushen
 
     @Test //Testing whether the user input is reflected correctly in the text fields.
 
