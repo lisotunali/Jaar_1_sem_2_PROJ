@@ -1,13 +1,13 @@
+package TestFXBase;
+
 import GUI.Main;
-import org.testfx.framework.junit5.ApplicationTest;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.testfx.api.FxToolkit;
+import org.testfx.framework.junit5.ApplicationTest;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;

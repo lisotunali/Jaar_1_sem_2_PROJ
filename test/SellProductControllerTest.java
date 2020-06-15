@@ -4,6 +4,7 @@ import GUI.SceneController;
 import GUI.fakeDatabase;
 import GUI.singletonMarketplace;
 import GUI.singletonPerson;
+import TestFXBase.TestFXTestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

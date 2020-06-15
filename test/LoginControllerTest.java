@@ -1,4 +1,5 @@
 import GUI.singletonPerson;
+import TestFXBase.TestFXTestBase;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.junit.jupiter.api.Assertions;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 public class LoginControllerTest extends TestFXTestBase {
 
@@ -21,6 +23,7 @@ public class LoginControllerTest extends TestFXTestBase {
         write(name);
         clickOn(passwordInputID);
         write(password);
+
         PasswordField pwField = lookup("#passwordInput").query();
         TextField nameField = lookup("#nameInput").query();
         assertEquals(pwField.getText(), password, "User input should be correctly reflected in password field.");
@@ -32,8 +35,8 @@ public class LoginControllerTest extends TestFXTestBase {
     public void loginButtonClickedSuccesfulTest() throws TimeoutException {
         String nameInputID = "#nameInput";
         String passwordInputID = "#passwordInput";
-        String name = "test";
-        String password = "test123";
+        String name = "1";
+        String password = "1";
         clickOn(nameInputID);
         write(name);
         clickOn(passwordInputID);
@@ -55,7 +58,6 @@ public class LoginControllerTest extends TestFXTestBase {
         clickOn(passwordInputID);
         write(password);
         clickOn("#loginButton");
-        //verifyThat(nameInputID, hasText(name));
         PasswordField pwField = lookup("#passwordInput").query();
         TextField nameField = lookup("#nameInput").query();
         Assertions.assertFalse(lookup("Invalid credentials").tryQuery().isEmpty(), "User should receive 'invalid credentials' alert.");

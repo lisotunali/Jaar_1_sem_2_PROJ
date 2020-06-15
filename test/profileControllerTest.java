@@ -2,11 +2,12 @@ import BACKEND.Person;
 import GUI.SceneController;
 import GUI.fakeDatabase;
 import GUI.singletonPerson;
+import TestFXBase.TestFXTestBase;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class profileControllerTest extends TestFXTestBase {
 
