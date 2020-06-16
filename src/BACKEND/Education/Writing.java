@@ -5,7 +5,7 @@ import BACKEND.fakeDatabase;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Writing extends Game {
+public class Writing extends BaseGame {
     public Writing() {
         setCurrentGameType("writing");
 

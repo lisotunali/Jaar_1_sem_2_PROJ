@@ -1,6 +1,6 @@
 package Educational.Math;
 
-import BACKEND.Education.Game;
+import BACKEND.Education.BaseGame;
 import BACKEND.Education.Math;
 import BACKEND.Person.Person;
 import GUI.Controllers.Utility.singletonPerson;
@@ -16,7 +16,7 @@ public class MathGameTest {
     //Test if a point is awarded after the user answered correctly.
     @Test
     public void AddPointTest1() {
-        Game mathGame = new Math();
+        BaseGame mathGame = new Math();
         mathGame.nextQuestion();
         System.out.println("Current answer: " + mathGame.getCorrectAnswer());
         mathGame.checkAnswer(mathGame.getCorrectAnswer());
@@ -27,7 +27,7 @@ public class MathGameTest {
     //Test if a point is awarded after the user answered incorrectly.
     @Test
     public void AddPointTest2() {
-        Game mathGame = new Math();
+        BaseGame mathGame = new Math();
         mathGame.nextQuestion();
         System.out.println("Current answer: " + mathGame.getCorrectAnswer());
         String wrongAnswer = mathGame.getCorrectAnswer() + 1;
@@ -39,7 +39,7 @@ public class MathGameTest {
     //Test if a point is awarded after the user answered incorrectly.
     @Test
     public void AddPointTest3() {
-        Game mathGame = new Math();
+        BaseGame mathGame = new Math();
         mathGame.nextQuestion();
         System.out.println("Current answer: " + mathGame.getCorrectAnswer());
         String wrongAnswer = mathGame.getCorrectAnswer() + 1;
@@ -54,7 +54,7 @@ public class MathGameTest {
     public void ChangeScoreTest1() {
         Person testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
-        Game mathGame = new Math();
+        BaseGame mathGame = new Math();
         for (int i = 0; i < 10; i++) {
             mathGame.nextQuestion();
             System.out.println("Current answer: " + mathGame.getCorrectAnswer());
@@ -70,7 +70,7 @@ public class MathGameTest {
     public void ChangeScoreTest2() {
         Person testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
-        Game mathGame1 = new Math();
+        BaseGame mathGame1 = new Math();
         for (int i = 0; i < 10; i++) {
             mathGame1.nextQuestion();
             System.out.println("Current answer: " + mathGame1.getCorrectAnswer());
@@ -81,7 +81,7 @@ public class MathGameTest {
         mathGame1.endGame();
         //After we've saved a new Highscore, let's make sure it doesn't get overwritten by a lower score. The score should still be 10.
         System.out.println("Highscore: " + singletonPerson.getInstance().getHS("math").getHighScore());
-        Game mathGame2 = new Math();
+        BaseGame mathGame2 = new Math();
         for (int i = 0; i < 5; i++) {
             mathGame2.nextQuestion();
             System.out.println("Current answer: " + mathGame2.getCorrectAnswer());

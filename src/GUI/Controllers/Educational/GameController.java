@@ -1,6 +1,7 @@
 package GUI.Controllers.Educational;
 
-import BACKEND.Education.Game;
+import BACKEND.Education.BaseGame;
+import BACKEND.Education.IGame;
 import BACKEND.Education.ObservableWithTypes;
 import BACKEND.Education.Observer;
 import GUI.Controllers.Utility.AlertClass;
@@ -13,9 +14,9 @@ import java.io.IOException;
 
 public abstract class GameController implements Observer {
     public Label timerLabel;
-    private Game game;
+    private IGame game;
 
-    public void init(Game game) {
+    public void init(BaseGame game) {
         this.game = game;
 
         nextQuestion();
@@ -29,11 +30,11 @@ public abstract class GameController implements Observer {
 
     public abstract void nextQuestion();
 
-    private void updateTimer(Game game) {
+    private void updateTimer(BaseGame game) {
         Platform.runLater(() -> timerLabel.setText(game.getSecondsLeft().toString()));
     }
 
-    private void showFinalScore(Game game) throws IOException {
+    private void showFinalScore(BaseGame game) throws IOException {
         Platform.runLater(() -> AlertClass.showAlert(Alert.AlertType.INFORMATION, "Your score was: " + game.getCurrentscore() + "!"));
         backButtonClicked();
     }
@@ -43,7 +44,7 @@ public abstract class GameController implements Observer {
     }
 
     @Override
-    public void update(String eventType, Game game) {
+    public void update(String eventType, BaseGame game) {
         switch (eventType) {
             case "timer":
                 updateTimer(game);

@@ -1,5 +1,5 @@
 package BACKEND.Education;
 
 public interface Observer {
-    void update(String eventType, Game game);
+    void update(String eventType, BaseGame game);
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Math extends Game {
+public class Math extends BaseGame {
     private ArrayList<String> operators = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
     private String question = "";
 

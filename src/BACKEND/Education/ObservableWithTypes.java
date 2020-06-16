@@ -26,7 +26,7 @@ public class ObservableWithTypes {
     }
 
     // Notify the listeners that are listening for event type
-    public void notify(String eventType, Game game) {
+    public void notify(String eventType, BaseGame game) {
         for (Observer listener : listeners.get(eventType)) {
             listener.update(eventType, game);
         }

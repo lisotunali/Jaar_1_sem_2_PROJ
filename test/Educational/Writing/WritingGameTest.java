@@ -1,6 +1,6 @@
 package Educational.Writing;
 
-import BACKEND.Education.Game;
+import BACKEND.Education.BaseGame;
 import BACKEND.Education.ImageWithName;
 import BACKEND.Education.Math;
 import BACKEND.Education.Writing;
@@ -55,7 +55,7 @@ public class WritingGameTest {
         addQuestsToDatabase();
         Person testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
-        Game writingGame = new Writing();
+        BaseGame writingGame = new Writing();
         for (int i = 0; i < 10; i++) {
             writingGame.nextQuestion();
             System.out.println("Current answer: " + writingGame.getCorrectAnswer());
@@ -72,7 +72,7 @@ public class WritingGameTest {
         addQuestsToDatabase();
         Person testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
-        Game writingGame1 = new Math();
+        BaseGame writingGame1 = new Math();
         for (int i = 0; i < 10; i++) {
             writingGame1.nextQuestion();
             System.out.println("Current answer: " + writingGame1.getCorrectAnswer());
@@ -83,7 +83,7 @@ public class WritingGameTest {
         writingGame1.endGame();
         //After we've saved a new Highscore, let's make sure it doesn't get overwritten by a lower score. The score should still be 10.
         System.out.println("Highscore: " + singletonPerson.getInstance().getHS("math").getHighScore());
-        Game writingGame2 = new Math();
+        BaseGame writingGame2 = new Math();
         for (int i = 0; i < 5; i++) {
             writingGame2.nextQuestion();
             System.out.println("Current answer: " + writingGame2.getCorrectAnswer());
