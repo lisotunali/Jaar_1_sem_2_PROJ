@@ -1,6 +1,6 @@
 package Educational.Timer;
 
-import BACKEND.Education.Game;
+import BACKEND.Education.BaseGame;
 import BACKEND.Education.Math;
 import BACKEND.Education.Reading;
 import BACKEND.Education.Writing;
@@ -18,7 +18,7 @@ public class TimerTest {
     public void TimerTestMath() throws InterruptedException {
         Person testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
-        Game mathGame = new Math();
+        BaseGame mathGame = new Math();
         mathGame.setSecondsLeft(3);
         mathGame.startTimer();
         sleep(3000);
@@ -30,7 +30,7 @@ public class TimerTest {
     public void TimerTestReading() throws InterruptedException {
         Person testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
-        Game readingGame = new Reading();
+        BaseGame readingGame = new Reading();
         readingGame.setSecondsLeft(3);
         readingGame.startTimer();
         sleep(3000);
@@ -42,7 +42,7 @@ public class TimerTest {
     public void TimerTestWriting() throws InterruptedException {
         Person testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
-        Game writingGame = new Writing();
+        BaseGame writingGame = new Writing();
         writingGame.setSecondsLeft(3);
         writingGame.startTimer();
         sleep(3000);

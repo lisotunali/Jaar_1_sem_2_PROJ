@@ -5,7 +5,7 @@ import BACKEND.fakeDatabase;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Reading extends Game {
+public class Reading extends BaseGame {
     private ArrayList<ImageWithName> temps = new ArrayList<>();
 
     public Reading() {

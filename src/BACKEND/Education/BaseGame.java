@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public abstract class Game {
+public abstract class BaseGame implements IGame {
 
     private String currentGameType;
     private ArrayList currentGameQuestions = new ArrayList<>();
@@ -78,15 +78,13 @@ public abstract class Game {
 
     //    --------- END GETTERS/SETTERS ---------
 
-    public abstract void nextQuestion();
-
     public void checkAnswer(String input) {
         if (correctAnswer.equalsIgnoreCase(input)) {
             currentscore++;
             System.out.println("+1 score, total = " + currentscore);
         } else {
             setSecondsLeft(secondsLeft - 10);
-            events.notify("timer", Game.this);
+            events.notify("timer", BaseGame.this);
         }
     }
 
@@ -96,7 +94,7 @@ public abstract class Game {
             public void run() {
                 setSecondsLeft(secondsLeft - 1);
                 System.out.println(secondsLeft);
-                events.notify("timer", Game.this);
+                events.notify("timer", BaseGame.this);
             }
         }, 0, 1000);
     }
