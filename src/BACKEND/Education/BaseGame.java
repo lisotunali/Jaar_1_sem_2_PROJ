@@ -1,22 +1,18 @@
 package BACKEND.Education;
 
-import GUI.Controllers.Utility.singletonPerson;
-
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public abstract class BaseGame implements IGame {
-
-    private String currentGameType;
-    private ArrayList currentGameQuestions = new ArrayList<>();
-    private Timer timer = new Timer();
+    private final ArrayList currentGameQuestions = new ArrayList<>();
+    private final Timer timer = new Timer();
     private Integer currentscore = 0;
     private Integer currentQuestion = -1;
     private Integer secondsLeft = 60;
     private String correctAnswer;
 
-    private ObservableWithTypes events = new ObservableWithTypes("timer", "endGame", "newHighScore");
+    private final ObservableWithTypes events = new ObservableWithTypes("timer", "endGame", "newHighScore");
 
     public void saveQuestionsLocally(ArrayList source) {
         currentGameQuestions.clear();
@@ -43,14 +39,6 @@ public abstract class BaseGame implements IGame {
 
     public void setCurrentQuestion(Integer currentQuestion) {
         this.currentQuestion = currentQuestion;
-    }
-
-    public String GetCurrentGameType() {
-        return currentGameType;
-    }
-
-    public void setCurrentGameType(String currentGameType) {
-        this.currentGameType = currentGameType;
     }
 
     public Integer getSecondsLeft() {
@@ -112,11 +100,13 @@ public abstract class BaseGame implements IGame {
     }
 
     public void saveNewHS() {
-        Highscores hsCurrentPerson = singletonPerson.getInstance().getHS(GetCurrentGameType());
+        Highscores hsCurrentPerson = getCurrentPersonHs();
 
         if (getCurrentscore() > hsCurrentPerson.getHighScore()) {
             hsCurrentPerson.setHighscore(getCurrentscore());
             events.notify("newHighScore", this);
         }
     }
+
+    public abstract Highscores getCurrentPersonHs();
 }

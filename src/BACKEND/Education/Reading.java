@@ -1,18 +1,13 @@
 package BACKEND.Education;
 
 import BACKEND.fakeDatabase;
+import GUI.Controllers.Utility.singletonPerson;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Reading extends BaseGame {
-    private ArrayList<ImageWithName> temps = new ArrayList<>();
-
-    public Reading() {
-        // Need to figure out a way to remove this
-        // Or we can just override saveNewHS
-        super.setCurrentGameType("reading");
-    }
+    private final ArrayList<ImageWithName> temps = new ArrayList<>();
 
     @Override
     public void nextQuestion() {
@@ -41,5 +36,10 @@ public class Reading extends BaseGame {
     private void setCorrectAnswer() {
         super.setCorrectAnswer(temps.get(0).getName());
         Collections.shuffle(temps);
+    }
+
+    @Override
+    public Highscores getCurrentPersonHs() {
+        return singletonPerson.getInstance().getHS("reading");
     }
 }

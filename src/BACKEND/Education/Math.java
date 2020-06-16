@@ -1,6 +1,7 @@
 package BACKEND.Education;
 
 import BACKEND.fakeDatabase;
+import GUI.Controllers.Utility.singletonPerson;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -10,11 +11,10 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Math extends BaseGame {
-    private ArrayList<String> operators = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
+    private final ArrayList<String> operators = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
     private String question = "";
 
     public Math() {
-        setCurrentGameType("math");
         saveQuestionsLocally(fakeDatabase.getNumbersDatabase());
     }
 
@@ -74,5 +74,10 @@ public class Math extends BaseGame {
 
     public String getQuestion() {
         return question;
+    }
+
+    @Override
+    public Highscores getCurrentPersonHs() {
+        return singletonPerson.getInstance().getHS("math");
     }
 }

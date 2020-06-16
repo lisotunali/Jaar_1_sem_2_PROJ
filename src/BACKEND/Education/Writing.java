@@ -1,14 +1,13 @@
 package BACKEND.Education;
 
 import BACKEND.fakeDatabase;
+import GUI.Controllers.Utility.singletonPerson;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Writing extends BaseGame {
     public Writing() {
-        setCurrentGameType("writing");
-
         saveQuestionsLocally(fakeDatabase.getImagesDatabase());
         shuffleQuestions();
     }
@@ -34,5 +33,10 @@ public class Writing extends BaseGame {
 
     public void shuffleQuestions() {
         Collections.shuffle(getQuestions());
+    }
+
+    @Override
+    public Highscores getCurrentPersonHs() {
+        return singletonPerson.getInstance().getHS("writing");
     }
 }

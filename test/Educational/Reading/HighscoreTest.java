@@ -35,7 +35,7 @@ public class HighscoreTest {
 
         game.endGame();
 
-        Assertions.assertEquals(singletonPerson.getInstance().getHS(game.GetCurrentGameType()).getHighScore(), 2);
+        Assertions.assertEquals(singletonPerson.getInstance().getHS("reading").getHighScore(), 2);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class HighscoreTest {
 
         Reading game = new Reading();
 
-        Highscores hsCurrentPerson = singletonPerson.getInstance().getHS(game.GetCurrentGameType());
+        Highscores hsCurrentPerson = singletonPerson.getInstance().getHS("reading");
         hsCurrentPerson.setHighscore(10);
 
         for (int i = 0; i < 20; i++) {
@@ -54,7 +54,7 @@ public class HighscoreTest {
 
         game.endGame();
 
-        Assertions.assertEquals(singletonPerson.getInstance().getHS(game.GetCurrentGameType()).getHighScore(), 20);
+        Assertions.assertEquals(singletonPerson.getInstance().getHS("reading").getHighScore(), 20);
     }
 
     @Test
@@ -63,7 +63,7 @@ public class HighscoreTest {
 
         Reading game = new Reading();
 
-        Highscores hsCurrentPerson = singletonPerson.getInstance().getHS(game.GetCurrentGameType());
+        Highscores hsCurrentPerson = singletonPerson.getInstance().getHS("reading");
         hsCurrentPerson.setHighscore(10);
 
         game.nextQuestion();
@@ -76,6 +76,4 @@ public class HighscoreTest {
 
         Assertions.assertEquals(hsCurrentPerson.getHighScore(), 10);
     }
-
-
 }
