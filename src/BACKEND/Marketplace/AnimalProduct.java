@@ -7,10 +7,10 @@ public class AnimalProduct extends Product {
 
     private Animal animal;
 
-    public AnimalProduct(String advertTitle, String advertDescription, Integer price, Integer amount, Animal animal, Person person) {
-        super(advertTitle, advertDescription, price, amount, person);
+    public AnimalProduct(MarketplaceInformation marketinfo, Animal animal, Person person) {
+        super(marketinfo, person);
         this.animal = animal;
-        person.getAnimal(animal.getType()).removeAmount(amount);
+        person.getAnimal(animal.getType()).removeAmount(marketinfo.getAmount());
     }
 
     public Animal getAnimal() {
