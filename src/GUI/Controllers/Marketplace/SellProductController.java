@@ -73,8 +73,8 @@ public class SellProductController {
 
         if (livestockTable.getSelectionModel().getSelectedItem() != null) {
             System.out.println("Product selected");
-            String[] alertTextProduct = {"New Product", "Product Name", "Choose a name.", "This will be displayed on the marketplace.", "Name chosen: "};
-            String tempTitle = AlertClass.showText(alertTextProduct);
+            String[] alertTextTitle = {"New Product", "Product Name", "Choose a name.", "This will be displayed on the marketplace.", "Name chosen: "};
+            String tempTitle = AlertClass.showText(alertTextTitle);
             String[] alertTextDesc = {"Description", "Product Description", "Choose a description.", "Describe your product in a few words.", "Description chosen: "};
             String tempDesc = AlertClass.showText(alertTextDesc);
             String[] alertTextAmount = {"0", "Product amount", "Choose an amount.", "Choose a how many you'll sell at once.", "Amount chosen: "};
