@@ -7,22 +7,14 @@ import java.util.ArrayList;
 public class Product {
 
 
-    private String advertTitle;
-    private String advertDescription;
-    private Integer price;
-    private Integer initialPrice;
-    private Integer amount;
+    private MarketplaceInformation marketinfo;
     private ArrayList<Bid> hasBid = new ArrayList<>();
     private Integer ID;
     private Person person;
     private static Integer uniqueID = 0;
 
-    public Product(String advertTitle, String advertDescription, Integer price, Integer amount, Person person) {
-        this.advertTitle = advertTitle;
-        this.advertDescription = advertDescription;
-        this.price = price;
-        this.initialPrice = price;
-        this.amount = amount;
+    public Product(MarketplaceInformation marketinfo, Person person) {
+        this.marketinfo = marketinfo;
         this.person = person;
         this.ID = uniqueID++;
     }
@@ -58,39 +50,39 @@ public class Product {
     }
 
     public String getAdvertTitle() {
-        return advertTitle;
+        return marketinfo.getAdvertTitle();
     }
 
     public void setAdvertTitle(String advertTitle) {
-        this.advertTitle = advertTitle;
+        marketinfo.setAdvertTitle(advertTitle);
     }
 
     public String getAdvertDescription() {
-        return advertDescription;
+        return marketinfo.getAdvertDescription();
     }
 
     public void setAdvertDescription(String advertDescription) {
-        this.advertDescription = advertDescription;
+        marketinfo.setAdvertDescription( advertDescription);
     }
 
     public Integer getPrice() {
-        return price;
+        return marketinfo.getPrice();
     }
 
     public Integer getInitialPrice() {
-        return initialPrice;
+        return marketinfo.getInitialPrice();
     }
 
     public void setPrice(Integer price) {
-        this.price = price;
+        marketinfo.setPrice(price);
     }
 
     public Integer getAmount() {
-        return amount;
+        return marketinfo.getAmount();
     }
 
     public void setAmount(Integer amount) {
-        this.amount = amount;
+        marketinfo.setAmount(amount);
     }
 
     public Integer getID() {
