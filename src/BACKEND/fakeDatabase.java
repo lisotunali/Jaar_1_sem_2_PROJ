@@ -1,11 +1,20 @@
 package BACKEND;
 
+import BACKEND.Contact.Contact;
 import BACKEND.Education.Highscores;
 import BACKEND.Education.ImageWithName;
+import BACKEND.Marketplace.AnimalProduct;
+import BACKEND.Marketplace.MarketplaceInformation;
 import BACKEND.Marketplace.Product;
 import BACKEND.Medical.Appointment;
+import BACKEND.Medical.Appointments;
+import BACKEND.Person.Doctor;
 import BACKEND.Person.Person;
+import BACKEND.Person.SpecializationType;
+import javafx.scene.image.Image;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -90,7 +99,49 @@ public class fakeDatabase {
         marketplace.remove(product);
     }
 
+    public static void setUpTestInstances() {
+        Person testperson = new Person("1", "1");
+        Person testperson2 = new Person("2", "2");
+        Person testperson1 = new Person("Test2", "test123");
+        getUserDatabase().add(testperson);
+        getUserDatabase().add(testperson1);
+        getUserDatabase().add(testperson2);
+        Contact testContact1 = new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool");
+        testperson.addContact(testContact1);
 
 
+        testperson.addAnimal("Goat", 500);
+        testperson.addAnimal("Sheep", 30);
+        getUserDatabase().add(testperson);
 
+        Doctor testDoctor = new Doctor("doctor", "test123", SpecializationType.EAR);
+        testDoctor.setAvailableDay(DayOfWeek.SATURDAY, false);
+        getUserDatabase().add(testDoctor);
+
+        Doctor testDoctor2 = new Doctor("doctor2", "test123", Arrays.asList(SpecializationType.EAR, SpecializationType.GENERAL));
+        getUserDatabase().add(testDoctor2);
+
+        testperson.addContact(new Contact("jan", "0612345678", "hallo123@hotmail.com", "haagse hogeschool"));
+
+        MarketplaceInformation marketinfo = new MarketplaceInformation("Test Product", "Dit is een testproduct voor de marketplace", 999, 10);
+        MarketplaceInformation marketinfo2 = new MarketplaceInformation("New Product", "Nieuwe testproduct voor de marketplace", 50, 2);
+        addProduct(new AnimalProduct(marketinfo, testperson.getAnimal("Goat"), testperson));
+        addProduct(new AnimalProduct(marketinfo2, testperson.getAnimal("Sheep"), testperson));
+
+        Appointments.createAppointment(LocalDate.of(2020, 6, 2), "test condition for a test appointment", SpecializationType.EAR, testperson1);
+        Appointments.createAppointment(LocalDate.of(2022, 2, 13), "test condition", SpecializationType.GENERAL, testperson);
+    }
+
+    public static void setUpGameData() {
+        getImagesDatabase().add(new ImageWithName("bee", new Image(fakeDatabase.class.getResourceAsStream("/BACKEND/Education/Images/bee.png"))));
+        getImagesDatabase().add(new ImageWithName("doctor", new Image(fakeDatabase.class.getResourceAsStream("/BACKEND/Education/Images/doctor.jpg"))));
+        getImagesDatabase().add(new ImageWithName("dog", new Image(fakeDatabase.class.getResourceAsStream("/BACKEND/Education/Images/dog.jpg"))));
+        getImagesDatabase().add(new ImageWithName("elephant", new Image(fakeDatabase.class.getResourceAsStream("/BACKEND/Education/Images/elephant.png"))));
+        getImagesDatabase().add(new ImageWithName("fish", new Image(fakeDatabase.class.getResourceAsStream("/BACKEND/Education/Images/fish.png"))));
+        getImagesDatabase().add(new ImageWithName("giraffe", new Image(fakeDatabase.class.getResourceAsStream("/BACKEND/Education/Images/giraffe.png"))));
+        getImagesDatabase().add(new ImageWithName("rat", new Image(fakeDatabase.class.getResourceAsStream("/BACKEND/Education/Images/rat.png"))));
+        getImagesDatabase().add(new ImageWithName("sheep", new Image(fakeDatabase.class.getResourceAsStream("/BACKEND/Education/Images/sheep.png"))));
+        getImagesDatabase().add(new ImageWithName("turtle", new Image(fakeDatabase.class.getResourceAsStream("/BACKEND/Education/Images/turtle.png"))));
+        getImagesDatabase().add(new ImageWithName("zebra", new Image(fakeDatabase.class.getResourceAsStream("/BACKEND/Education/Images/zebra.png"))));
+    }
 }
