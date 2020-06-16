@@ -1,6 +1,7 @@
 package Marketplace;
 
 import BACKEND.Marketplace.AnimalProduct;
+import BACKEND.Marketplace.MarketplaceInformation;
 import BACKEND.Person.Person;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.singletonPerson;
@@ -68,12 +69,10 @@ class SellProductControllerTest extends TestFXTestBase {
     void removeOffer() throws IOException {
         getToCorrectScene();
         singletonPerson.getInstance().addAnimal("testanimal2", 100);
-        fakeDatabase.addProduct(new AnimalProduct("testtitleblablabla", "testdesc", 100, 100, singletonPerson.getInstance().getAnimal("testanimal2"), singletonPerson.getInstance()));
-        //sleep(100);
+        MarketplaceInformation definfo = new MarketplaceInformation("testtitleblablabla", "testdesc", 100, 100);
+        fakeDatabase.addProduct(new AnimalProduct(definfo, singletonPerson.getInstance().getAnimal("testanimal2"), singletonPerson.getInstance()));
         SceneController.switchTo("Marketplace/sell");
-        //sleep(100);
         clickOn("#productTableView");
-        //sleep(100);
         clickOn("testtitleblablabla");
         clickOn("#cancelButton");
         assertNull(fakeDatabase.getProductByAdvertTitle("testtitleblablabla"));
@@ -85,7 +84,8 @@ class SellProductControllerTest extends TestFXTestBase {
     void viewOffer() throws IOException {
         getToCorrectScene();
         singletonPerson.getInstance().addAnimal("testanimal2", 100);
-        fakeDatabase.addProduct(new AnimalProduct("testtitle", "testdesc", 100, 100, singletonPerson.getInstance().getAnimal("testanimal2"), singletonPerson.getInstance()));
+        MarketplaceInformation definfo = new MarketplaceInformation("testtitle", "testdesc", 100, 100);
+        fakeDatabase.addProduct(new AnimalProduct(definfo, singletonPerson.getInstance().getAnimal("testanimal2"), singletonPerson.getInstance()));
         SceneController.switchTo("Marketplace/sell");
         clickOn("#productTableView");
         clickOn("testtitle");

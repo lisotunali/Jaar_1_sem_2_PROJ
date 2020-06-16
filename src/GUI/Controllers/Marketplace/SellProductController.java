@@ -3,6 +3,7 @@ package GUI.Controllers.Marketplace;
 import BACKEND.Livestock.Animal;
 import BACKEND.Marketplace.AnimalProduct;
 import BACKEND.Marketplace.Bid;
+import BACKEND.Marketplace.MarketplaceInformation;
 import BACKEND.Marketplace.Product;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.AlertClass;
@@ -72,16 +73,21 @@ public class SellProductController {
 
         if (livestockTable.getSelectionModel().getSelectedItem() != null) {
             System.out.println("Product selected");
-            String tempTitle = AlertClass.showText("New Product", "Product Name", "Choose a name.", "This will be displayed on the marketplace.", "Name chosen: ");
-            String tempDesc = AlertClass.showText("Description", "Product Description", "Choose a description.", "Describe your product in a few words.", "Description chosen: ");
-            Integer tempAmount = ConvertClass.convertToInt(AlertClass.showText("0", "Product amount", "Choose an amount.", "Choose a how many you'll sell at once.", "Amount chosen: "));
-            Integer tempPrice = ConvertClass.convertToInt(AlertClass.showText("0", "Product price", "Choose a price.", "Choose a starting price.", "Price chosen: "));
+            String[] alertTextProduct = {"New Product", "Product Name", "Choose a name.", "This will be displayed on the marketplace.", "Name chosen: "};
+            String tempTitle = AlertClass.showText(alertTextProduct);
+            String[] alertTextDesc = {"Description", "Product Description", "Choose a description.", "Describe your product in a few words.", "Description chosen: "};
+            String tempDesc = AlertClass.showText(alertTextDesc);
+            String[] alertTextAmount = {"0", "Product amount", "Choose an amount.", "Choose a how many you'll sell at once.", "Amount chosen: "};
+            Integer tempAmount = ConvertClass.convertToInt(AlertClass.showText(alertTextAmount));
+            String[] alertTextPrice = {"0", "Product price", "Choose a price.", "Choose a starting price.", "Price chosen: "};
+            Integer tempPrice = ConvertClass.convertToInt(AlertClass.showText(alertTextPrice));
             if (tempTitle.isEmpty() || tempDesc.isEmpty() || tempAmount == null || tempAmount <= 0 || tempPrice == null || tempPrice < 0 || tempAmount > livestockTable.getSelectionModel().getSelectedItem().getAmount()) {
                 System.out.println("Invalid field detected");
                 AlertClass.showAlert(Alert.AlertType.ERROR, "One or more fields contain invalid data.");
                 return;
             }
-            fakeDatabase.addProduct(new AnimalProduct(tempTitle, tempDesc, tempPrice, tempAmount, livestockTable.getSelectionModel().getSelectedItem(), singletonPerson.getInstance()));
+            MarketplaceInformation DefaultInformation = new MarketplaceInformation(tempTitle, tempDesc, tempPrice, tempAmount);
+            fakeDatabase.addProduct(new AnimalProduct(DefaultInformation, livestockTable.getSelectionModel().getSelectedItem(), singletonPerson.getInstance()));
             System.out.println("Product added to marketplace.");
             livestockTable.refresh();
             refreshUserProducts();

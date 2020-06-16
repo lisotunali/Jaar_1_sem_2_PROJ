@@ -1,6 +1,7 @@
 package Marketplace;
 
 import BACKEND.Marketplace.Bid;
+import BACKEND.Marketplace.MarketplaceInformation;
 import BACKEND.Marketplace.Product;
 import BACKEND.Person.Person;
 import BACKEND.fakeDatabase;
@@ -22,7 +23,8 @@ public class viewProductControllerTest extends TestFXTestBase {
     public void viewOfferTest() throws IOException {
         singletonPerson.setPerson(new Person("testinst", "pass"));
         singletonPerson.getInstance().addAnimal("KIPPIES", 150);
-        Product product = new Product("KIPPIES MET KORTING", "20% korting op deze mooie meiden", 100, 5, singletonPerson.getInstance());
+        MarketplaceInformation definfo = new MarketplaceInformation("KIPPIES MET KORTING", "20% korting op deze mooie meiden", 100, 5);
+        Product product = new Product(definfo, singletonPerson.getInstance());
         Bid bid1 = new Bid(150, new Person("TESTBUY", "passw"), singletonPerson.getInstance(), "Jeff Bezos", "KIPPIES MET KORTING");
         Bid bid2 = new Bid(120, new Person("Winner", "passw"), singletonPerson.getInstance(), "BillGates", "KIPPIES MET KORTING");
         product.addBid(bid1);
@@ -52,7 +54,8 @@ public class viewProductControllerTest extends TestFXTestBase {
     public void acceptBidTestNoSelection() throws IOException {
         singletonPerson.setPerson(new Person("testinstance", "pass"));
         singletonPerson.getInstance().addAnimal("KIPPIES", 150);
-        Product product = new Product("KIPPIES MET KORTING", "20% korting op deze mooie meiden", 100, 5, singletonPerson.getInstance());
+        MarketplaceInformation definfo = new MarketplaceInformation("KIPPIES MET KORTING", "20% korting op deze mooie meiden", 100, 5);
+        Product product = new Product(definfo, singletonPerson.getInstance());
         fakeDatabase.addProduct(product);
         SceneController.switchTo("Marketplace/sell");
         clickOn("#productTableView");
@@ -66,7 +69,8 @@ public class viewProductControllerTest extends TestFXTestBase {
     public void acceptBidTest() throws IOException {
         singletonPerson.setPerson(new Person("testinstance", "pass"));
         singletonPerson.getInstance().addAnimal("KIPPIES", 150);
-        Product product = new Product("KIPPIES MET KORTING", "20% korting op deze mooie meiden", 100, 5, singletonPerson.getInstance());
+        MarketplaceInformation definfo = new MarketplaceInformation("KIPPIES MET KORTING", "20% korting op deze mooie meiden", 100, 5);
+        Product product = new Product(definfo, singletonPerson.getInstance());
         Bid bid1 = new Bid(150, new Person("TESTBUY", "passw"), singletonPerson.getInstance(), "Jeff Bezos", "KIPPIES MET KORTING");
         Bid bid2 = new Bid(120, new Person("Winner", "passw"), singletonPerson.getInstance(), "BillGates", "KIPPIES MET KORTING");
         product.addBid(bid1);

@@ -23,14 +23,14 @@ public class AlertClass {
         alert.showAndWait();
     }
 
-    public static String showText(String defaultValue, String title, String header, String context, String output) {
-        TextInputDialog dialog = new TextInputDialog(defaultValue);
-        dialog.setTitle(title);
-        dialog.setHeaderText(header);
-        dialog.setContentText(context);
+    public static String showText(String[] textArray) {
+        TextInputDialog dialog = new TextInputDialog(textArray[0]);
+        dialog.setTitle(textArray[1]);
+        dialog.setHeaderText(textArray[2]);
+        dialog.setContentText(textArray[3]);
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
-            System.out.println(output + result.get());
+            System.out.println(textArray[4] + result.get());
             return result.get();
         }
         return null;

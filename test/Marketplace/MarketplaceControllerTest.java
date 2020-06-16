@@ -2,6 +2,7 @@ package Marketplace;
 
 import BACKEND.Marketplace.AnimalProduct;
 import BACKEND.Marketplace.Bid;
+import BACKEND.Marketplace.MarketplaceInformation;
 import BACKEND.Marketplace.Product;
 import BACKEND.Person.Person;
 import BACKEND.fakeDatabase;
@@ -37,8 +38,10 @@ class  MarketplaceControllerTest extends TestFXTestBase {
         Person testperson = new Person("testperson", "test");
         testperson.addAnimal("testanimal1", 100);
         singletonPerson.setPerson(testperson);
-        AnimalProduct animalTestProduct = new AnimalProduct("testKoe", "testerino", 100, 100, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
-        AnimalProduct animalTestProduct2 = new AnimalProduct("testGeit", "testeroni", 50, 200, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
+        MarketplaceInformation definfo1 = new MarketplaceInformation("testKoe", "testerino", 100, 100);
+        AnimalProduct animalTestProduct = new AnimalProduct(definfo1, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
+        MarketplaceInformation definfo2 = new MarketplaceInformation("testGeit", "testeroni", 50, 200);
+        AnimalProduct animalTestProduct2 = new AnimalProduct(definfo2, singletonPerson.getInstance().getAnimal("testanimal1"), singletonPerson.getInstance());
         fakeDatabase.addProduct(animalTestProduct);
         fakeDatabase.addProduct(animalTestProduct2);
         SceneController.switchTo("Marketplace/marketplace");
