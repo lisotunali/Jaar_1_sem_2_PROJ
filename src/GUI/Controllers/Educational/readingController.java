@@ -10,13 +10,12 @@ import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 
 public class readingController extends GameController {
+    private final ArrayList<ImageView> imageViews = new ArrayList<>();
     public ImageView rImage1;
     public ImageView rImage2;
     public ImageView rImage3;
     public ImageView rImage4;
     public Label readingWord;
-
-    private ArrayList<ImageView> imageViews = new ArrayList<>();
     public Reading game = new Reading();
 
     public void initialize() {
@@ -26,7 +25,7 @@ public class readingController extends GameController {
 
     public void nextQuestion() {
         game.nextQuestion();
-        print4RandomTemps(game.getTemps());
+        print4RandomTemps(game.getQuestion());
         setCorrectAnswer();
     }
 
@@ -50,8 +49,9 @@ public class readingController extends GameController {
     public void buttonClicked(MouseEvent mouseEvent) {
         Integer integer = ConvertClass.convertToInt(mouseEvent.getPickResult().getIntersectedNode().getAccessibleText());
 
-        if (integer != null) game.checkAnswer(game.getTemps().get(integer).getName());
+        if (integer != null) game.checkAnswer(game.getQuestion().get(integer).getName());
 
         nextQuestion();
+
     }
 }

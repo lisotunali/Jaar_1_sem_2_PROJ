@@ -14,18 +14,24 @@ public class Math extends BaseGame {
     private final ArrayList<String> operators = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
     private String question = "";
 
-    public Math() {
-        saveQuestionsLocally(fakeDatabase.getNumbersDatabase());
+
+    public String getQuestion() {
+        return question;
     }
 
     @Override
-    public void nextQuestion() {
-        generateNewQuestion();
-        setAnswer();
+    public Highscores getCurrentPersonHs() {
+        return singletonPerson.getInstance().getHS("math");
     }
 
-    private void generateNewQuestion() {
-        ArrayList<Integer> numbers = getCurrentGameQuestions();
+    @Override
+    public ArrayList<?> getGameQuestions() {
+        return fakeDatabase.getNumbersDatabase();
+    }
+
+    @Override
+    public void getNextQuestion() {
+        ArrayList<Integer> numbers = super.getCurrentGameQuestions();
 
         Collections.shuffle(numbers);
         Integer a = numbers.get(0);
@@ -43,20 +49,8 @@ public class Math extends BaseGame {
         question = a + operator + b;
     }
 
-    private Boolean checkEasySum(Integer leftNumber, Integer rightNumber, String operator) {
-        switch (operator) {
-            case "*":
-                return leftNumber * rightNumber <= 40;
-            case "/":
-                return leftNumber % rightNumber == 0;
-            case "-":
-                return leftNumber - rightNumber >= 0;
-            default:
-                return true;
-        }
-    }
-
-    private void setAnswer() {
+    @Override
+    public String getCurrentCorrectAnswer() {
         ScriptEngineManager manager = new ScriptEngineManager();
         ScriptEngine engine = manager.getEngineByName("js");
 
@@ -69,15 +63,19 @@ public class Math extends BaseGame {
         }
 
         Integer res = (Integer) result;
-        setCorrectAnswer(res != null ? res.toString() : null);
+        return res != null ? res.toString() : null;
     }
 
-    public String getQuestion() {
-        return question;
-    }
-
-    @Override
-    public Highscores getCurrentPersonHs() {
-        return singletonPerson.getInstance().getHS("math");
+    private Boolean checkEasySum(Integer leftNumber, Integer rightNumber, String operator) {
+        switch (operator) {
+            case "*":
+                return leftNumber * rightNumber <= 40;
+            case "/":
+                return leftNumber % rightNumber == 0;
+            case "-":
+                return leftNumber - rightNumber >= 0;
+            default:
+                return true;
+        }
     }
 }
