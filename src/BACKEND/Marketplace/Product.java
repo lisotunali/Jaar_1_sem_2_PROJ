@@ -1,6 +1,6 @@
 package BACKEND.Marketplace;
 
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 
 import java.util.ArrayList;
 
@@ -10,23 +10,23 @@ public class Product {
     private MarketplaceInformation marketinfo;
     private ArrayList<Bid> hasBid = new ArrayList<>();
     private Integer ID;
-    private Person person;
+    private IPerson IPerson;
     private static Integer uniqueID = 0;
 
-    public Product(MarketplaceInformation marketinfo, Person person) {
+    public Product(MarketplaceInformation marketinfo, IPerson IPerson) {
         this.marketinfo = marketinfo;
-        this.person = person;
+        this.IPerson = IPerson;
         this.ID = uniqueID++;
     }
 
-    public Person getPerson() {
-        return person;
+    public IPerson getPerson() {
+        return IPerson;
     }
 
-    public String getPersonName() { return this.person.getName(); }
+    public String getPersonName() { return this.IPerson.getName(); }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setPerson(IPerson IPerson) {
+        this.IPerson = IPerson;
     }
 
     public ArrayList<Bid> getBids() {
@@ -89,7 +89,7 @@ public class Product {
         return this.ID;
     }
 
-    public void acceptBid(Person buyer) {
+    public void acceptBid(IPerson buyer) {
 
     }
 

@@ -1,6 +1,6 @@
 package BACKEND.Contact;
 
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 
 public class Contact {
 
@@ -8,7 +8,7 @@ public class Contact {
     private String phoneNumber;
     private String email;
     private String address;
-    private Person person = null;
+    private IPerson IPerson = null;
 
     public Contact(String name, String phoneNumber, String email, String address) {
         this.name = name;
@@ -17,12 +17,12 @@ public class Contact {
         this.address = address;
     }
 
-    public void setPerson(Person person){
-        this.person = person;
+    public void setPerson(IPerson IPerson){
+        this.IPerson = IPerson;
     }
 
-    public Person getPerson (){
-        return person;
+    public IPerson getPerson (){
+        return IPerson;
     }
 
     public String getName(){

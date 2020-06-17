@@ -2,6 +2,7 @@ package MedicalTests;//Testen of je een afspraak kan maken bij een doctor als de
 
 import BACKEND.Medical.Appointments;
 import BACKEND.Person.Doctor;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.Person.SpecializationType;
 import BACKEND.fakeDatabase;
@@ -16,7 +17,7 @@ public class doubleAppointmentTest {
     public void noDoctor() {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
         Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
@@ -28,7 +29,7 @@ public class doubleAppointmentTest {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
@@ -41,8 +42,8 @@ public class doubleAppointmentTest {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
-        Person testperson2 = new Person("testpers2", "123");
+        IPerson testperson = new Person("testpers", "123");
+        IPerson testperson2 = new Person("testpers2", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         fakeDatabase.getUserDatabase().add(testperson2);
@@ -58,7 +59,7 @@ public class doubleAppointmentTest {
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
         Doctor testdoc2 = new Doctor("testdoc2", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testdoc2);
         fakeDatabase.getUserDatabase().add(testperson);
@@ -74,8 +75,8 @@ public class doubleAppointmentTest {
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
         Doctor testdoc2 = new Doctor("testdoc2", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
-        Person testperson2 = new Person("testpers2", "123");
+        IPerson testperson = new Person("testpers", "123");
+        IPerson testperson2 = new Person("testpers2", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testdoc2);
         fakeDatabase.getUserDatabase().add(testperson);
@@ -92,7 +93,7 @@ public class doubleAppointmentTest {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
@@ -107,7 +108,7 @@ public class doubleAppointmentTest {
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
         Doctor testdoc2 = new Doctor("testdoc2", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testdoc2);
         fakeDatabase.getUserDatabase().add(testperson);

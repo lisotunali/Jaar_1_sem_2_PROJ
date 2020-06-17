@@ -2,6 +2,7 @@ package Educational.Math;
 
 import BACKEND.Education.BaseGame;
 import BACKEND.Education.Math;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import GUI.Controllers.Utility.singletonPerson;
 import org.junit.jupiter.api.Test;
@@ -52,7 +53,7 @@ public class MathGameTest {
     //Change the Highscore
     @Test
     public void ChangeScoreTest1() {
-        Person testperson = new Person("1", "1");
+        IPerson testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
         BaseGame mathGame = new Math();
         for (int i = 0; i < 10; i++) {
@@ -68,7 +69,7 @@ public class MathGameTest {
 
     @Test
     public void ChangeScoreTest2() {
-        Person testperson = new Person("1", "1");
+        IPerson testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
         BaseGame mathGame1 = new Math();
         for (int i = 0; i < 10; i++) {

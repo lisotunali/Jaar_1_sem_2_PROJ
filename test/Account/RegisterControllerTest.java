@@ -1,6 +1,6 @@
 package Account;
 
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.singletonPerson;
 import GUI.SceneController;
@@ -101,10 +101,10 @@ public class RegisterControllerTest  extends TestFXTestBase {
         write(password);
         clickOn(registerButtonID);
         boolean flag = false;
-        for (Person person : fakeDatabase.getUserDatabase()) {
-            if (person.getName().equals(name)) {
+        for (IPerson IPerson : fakeDatabase.getUserDatabase()) {
+            if (IPerson.getName().equals(name)) {
                 flag = true;
-                if (!person.getPassword().equals(password)){
+                if (!IPerson.getPassword().equals(password)){
                     flag = false;
                 }
             }

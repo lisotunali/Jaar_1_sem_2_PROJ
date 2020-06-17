@@ -1,6 +1,6 @@
 package GUI.Controllers.Account;
 
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.AlertClass;
 import GUI.Controllers.Utility.singletonPerson;
@@ -21,9 +21,9 @@ public class LoginController {
     public void loginButtonClicked() throws IOException {
         if (nameInput.getText().isEmpty() || passwordInput.getText().isEmpty()) return;
 
-        for (Person person : fakeDatabase.getUserDatabase()) {
-            if (person.getName().equals(nameInput.getText()) && person.getPassword().equals(passwordInput.getText())) {
-                singletonPerson.setPerson(person);
+        for (IPerson IPerson : fakeDatabase.getUserDatabase()) {
+            if (IPerson.getName().equals(nameInput.getText()) && IPerson.getPassword().equals(passwordInput.getText())) {
+                singletonPerson.setPerson(IPerson);
                 SceneController.switchTo("Main/mainUi");
                 return;
             }

@@ -1,5 +1,6 @@
 package Livestock;
 
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.singletonPerson;
@@ -69,7 +70,7 @@ public class LivestockControllerTest extends TestFXTestBase {
     }
 
     void getToCorrectScene() throws IOException {
-        Person testperson = new Person("testperson", "test");
+        IPerson testperson = new Person("testperson", "test");
         fakeDatabase.getUserDatabase().add(testperson);
         singletonPerson.setPerson(testperson);
         singletonPerson.getInstance().addAnimal("testanimal", 100);

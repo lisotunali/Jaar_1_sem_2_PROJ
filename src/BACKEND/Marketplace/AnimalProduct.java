@@ -1,16 +1,16 @@
 package BACKEND.Marketplace;
 
 import BACKEND.Livestock.Animal;
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 
 public class AnimalProduct extends Product {
 
     private Animal animal;
 
-    public AnimalProduct(MarketplaceInformation marketinfo, Animal animal, Person person) {
-        super(marketinfo, person);
+    public AnimalProduct(MarketplaceInformation marketinfo, Animal animal, IPerson IPerson) {
+        super(marketinfo, IPerson);
         this.animal = animal;
-        person.getAnimal(animal.getType()).removeAmount(marketinfo.getAmount());
+        IPerson.getAnimal(animal.getType()).removeAmount(marketinfo.getAmount());
     }
 
     public Animal getAnimal() {
@@ -18,7 +18,7 @@ public class AnimalProduct extends Product {
     }
 
     @Override
-    public void acceptBid(Person buyer) {
+    public void acceptBid(IPerson buyer) {
         buyer.addAnimal(getAnimal().getType(), getAmount());
     }
 

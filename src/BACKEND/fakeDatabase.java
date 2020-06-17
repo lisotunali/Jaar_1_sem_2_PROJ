@@ -9,6 +9,7 @@ import BACKEND.Marketplace.Product;
 import BACKEND.Medical.Appointment;
 import BACKEND.Medical.Appointments;
 import BACKEND.Person.Doctor;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.Person.SpecializationType;
 import javafx.scene.image.Image;
@@ -20,7 +21,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class fakeDatabase {
-    private static ArrayList<Person> userDatabase = new ArrayList<>();
+    private static ArrayList<IPerson> userDatabase = new ArrayList<>();
     private static ArrayList <Highscores>readingHSList = new ArrayList<>();
     private static ArrayList<ImageWithName> imagesDatabase = new ArrayList<>();
     private static ArrayList<Integer> numbersDatabase = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11));
@@ -31,7 +32,7 @@ public class fakeDatabase {
         return appointments;
     }
 
-    public static ArrayList<Person> getUserDatabase() {
+    public static ArrayList<IPerson> getUserDatabase() {
         return userDatabase;
     }
 
@@ -56,10 +57,10 @@ public class fakeDatabase {
     }
 
     // Find given person in the database and update it
-    public static void updatePerson(Person person) {
-        for (Person dbPerson : userDatabase) {
-            if (dbPerson.getPersonID().equals(person.getPersonID())) {
-                dbPerson.setPassword(person.getPassword());
+    public static void updatePerson(IPerson IPerson) {
+        for (IPerson dbIPerson : userDatabase) {
+            if (dbIPerson.getPersonID().equals(IPerson.getPersonID())) {
+                dbIPerson.setPassword(IPerson.getPassword());
             }
         }
     }
@@ -100,9 +101,9 @@ public class fakeDatabase {
     }
 
     public static void setUpTestInstances() {
-        Person testperson = new Person("1", "1");
-        Person testperson2 = new Person("2", "2");
-        Person testperson1 = new Person("Test2", "test123");
+        IPerson testperson = new Person("1", "1");
+        IPerson testperson2 = new Person("2", "2");
+        IPerson testperson1 = new Person("Test2", "test123");
         getUserDatabase().add(testperson);
         getUserDatabase().add(testperson1);
         getUserDatabase().add(testperson2);

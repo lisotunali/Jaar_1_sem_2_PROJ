@@ -4,6 +4,7 @@ import BACKEND.Education.BaseGame;
 import BACKEND.Education.ImageWithName;
 import BACKEND.Education.Math;
 import BACKEND.Education.Writing;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.singletonPerson;
@@ -26,7 +27,7 @@ public class WritingGameTest {
     @Test
     public void AddPointTest1() throws InterruptedException {
         addQuestsToDatabase();
-        Person testperson = new Person("1", "1");
+        IPerson testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
         Writing writingGame = new Writing();
         writingGame.nextQuestion();
@@ -40,7 +41,7 @@ public class WritingGameTest {
     @Test
     public void AddPointTest2() throws InterruptedException {
         addQuestsToDatabase();
-        Person testperson = new Person("1", "1");
+        IPerson testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
         Writing writingGame = new Writing();
         writingGame.nextQuestion();
@@ -53,7 +54,7 @@ public class WritingGameTest {
     @Test
     public void ChangeScoreTest1() {
         addQuestsToDatabase();
-        Person testperson = new Person("1", "1");
+        IPerson testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
         BaseGame writingGame = new Writing();
         for (int i = 0; i < 10; i++) {
@@ -70,7 +71,7 @@ public class WritingGameTest {
     @Test
     public void ChangeScoreTest2() {
         addQuestsToDatabase();
-        Person testperson = new Person("1", "1");
+        IPerson testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
         BaseGame writingGame1 = new Math();
         for (int i = 0; i < 10; i++) {

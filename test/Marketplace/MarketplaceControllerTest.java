@@ -4,6 +4,7 @@ import BACKEND.Marketplace.AnimalProduct;
 import BACKEND.Marketplace.Bid;
 import BACKEND.Marketplace.MarketplaceInformation;
 import BACKEND.Marketplace.Product;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.singletonPerson;
@@ -35,7 +36,7 @@ class  MarketplaceControllerTest extends TestFXTestBase {
     }
 
     static void addTestAnimals() throws IOException {
-        Person testperson = new Person("testperson", "test");
+        IPerson testperson = new Person("testperson", "test");
         testperson.addAnimal("testanimal1", 100);
         singletonPerson.setPerson(testperson);
         MarketplaceInformation definfo1 = new MarketplaceInformation("testKoe", "testerino", 100, 100);
@@ -50,7 +51,7 @@ class  MarketplaceControllerTest extends TestFXTestBase {
     @Test //Test whether bids on product are correctly listed in the product table
     void refreshBidsTest() throws IOException {
         addTestAnimals();
-        Person testBuyer = new Person("testBuyer", "easypassword");
+        IPerson testBuyer = new Person("testBuyer", "easypassword");
         Bid testBid = new Bid(98, testBuyer, singletonPerson.getInstance(), "testBuyer", "big papa");
         Bid testBid2 = new Bid(23, testBuyer, singletonPerson.getInstance(), "testBuyer", "big papa");
         ArrayList<Product> products = fakeDatabase.getAllProducts();

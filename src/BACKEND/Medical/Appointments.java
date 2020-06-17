@@ -1,7 +1,7 @@
 package BACKEND.Medical;
 
 import BACKEND.Person.Doctor;
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.SpecializationType;
 import BACKEND.fakeDatabase;
 
@@ -22,7 +22,7 @@ public interface Appointments {
         return fakeDatabase.getAppointments();
     }
 
-    static ArrayList<Appointment> getAllAppointments(Person patient) {
+    static ArrayList<Appointment> getAllAppointments(IPerson patient) {
         return fakeDatabase.getAppointments().stream().filter(p -> p.getPatient() == patient).collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -30,7 +30,7 @@ public interface Appointments {
         return fakeDatabase.getAppointments().stream().filter(p -> p.getDoctor() == doctor).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    static ArrayList<Appointment> getAllOpenAppointments(Person patient) {
+    static ArrayList<Appointment> getAllOpenAppointments(IPerson patient) {
         return getAllAppointments(patient).stream().filter(appointment -> !appointment.getDone()).collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -38,7 +38,7 @@ public interface Appointments {
         return getAllAppointments(doctor).stream().filter(appointment -> !appointment.getDone()).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    static ArrayList<Appointment> getDoneAppointments(Person patient) {
+    static ArrayList<Appointment> getDoneAppointments(IPerson patient) {
         return getAllAppointments(patient).stream().filter(Appointment::getDone).collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -46,7 +46,7 @@ public interface Appointments {
         return getAllAppointments(doctor).stream().filter(Appointment::getDone).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    static Appointment createAppointment(LocalDate date, String condition, SpecializationType specialtyType, Person patient) {
+    static Appointment createAppointment(LocalDate date, String condition, SpecializationType specialtyType, IPerson patient) {
         AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, specialtyType, patient);
 
         if (availableTimeAndDoctor == null) return null;
@@ -76,7 +76,7 @@ public interface Appointments {
 
     // Automatically plan an appointment with the earliest available doctor.
     // If a patient already has an appointment on specified date we'll deny it.
-    private static AppointmentResult findAvailableTimeAndDoctor(LocalDate date, SpecializationType specialtyType, Person patient) {
+    private static AppointmentResult findAvailableTimeAndDoctor(LocalDate date, SpecializationType specialtyType, IPerson patient) {
         // Assuming normal day is between 09:00 and 17:00
         LocalTime open = LocalTime.parse("09:00:00");
         LocalTime closed = LocalTime.parse("17:00:00");

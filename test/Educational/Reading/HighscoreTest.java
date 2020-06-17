@@ -3,6 +3,7 @@ package Educational.Reading;
 import BACKEND.Education.Highscores;
 import BACKEND.Education.ImageWithName;
 import BACKEND.Education.Reading;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.singletonPerson;
@@ -12,8 +13,8 @@ import org.junit.jupiter.api.Test;
 
 public class HighscoreTest {
     void init() {
-        Person testPerson = new Person("gameTester", "iAmTesting");
-        singletonPerson.setPerson(testPerson);
+        IPerson testIPerson = new Person("gameTester", "iAmTesting");
+        singletonPerson.setPerson(testIPerson);
 
         fakeDatabase.getImagesDatabase().add(new ImageWithName("bee", new Image(getClass().getResourceAsStream("/BACKEND/Education/Images/bee.png"))));
         fakeDatabase.getImagesDatabase().add(new ImageWithName("doctor", new Image(getClass().getResourceAsStream("/BACKEND/Education/Images/doctor.jpg"))));

@@ -1,6 +1,7 @@
 package Contact;
 
 import BACKEND.Contact.Contact;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.singletonPerson;
@@ -93,7 +94,7 @@ class contactsControllerTest extends TestFXTestBase {
     }
 
     void getToCorrectScene() throws IOException {
-        Person testperson = new Person("testperson", "test");
+        IPerson testperson = new Person("testperson", "test");
         fakeDatabase.getUserDatabase().add(testperson);
         singletonPerson.setPerson(testperson);
         Contact contact = new Contact("testcontact", "0612345676", "nonsense@nonsensemail.com", "doesnotexiststreet");

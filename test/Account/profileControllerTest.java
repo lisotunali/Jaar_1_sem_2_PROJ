@@ -1,5 +1,6 @@
 package Account;
 
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.singletonPerson;
@@ -15,7 +16,7 @@ public class profileControllerTest extends TestFXTestBase {
 
     @Test
     void onUpdateClickedCorrect() throws IOException {
-        Person testperson = new Person("testprofile", "test");
+        IPerson testperson = new Person("testprofile", "test");
         fakeDatabase.getUserDatabase().add(testperson);
         singletonPerson.setPerson(testperson);
         SceneController.switchTo("Profile/profile");
@@ -36,7 +37,7 @@ public class profileControllerTest extends TestFXTestBase {
 
     @Test
     void onUpdateClickedWrong() throws IOException {
-        Person testperson = new Person("testprofile", "test");
+        IPerson testperson = new Person("testprofile", "test");
         fakeDatabase.getUserDatabase().add(testperson);
         singletonPerson.setPerson(testperson);
         SceneController.switchTo("Profile/profile");

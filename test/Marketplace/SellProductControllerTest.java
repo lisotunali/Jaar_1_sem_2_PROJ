@@ -2,6 +2,7 @@ package Marketplace;
 
 import BACKEND.Marketplace.AnimalProduct;
 import BACKEND.Marketplace.MarketplaceInformation;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.singletonPerson;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SellProductControllerTest extends TestFXTestBase {
 
-    Person testperson;
+    IPerson testperson;
     AnimalProduct animalTestProduct;
     AnimalProduct animalTestProduct2;
 
