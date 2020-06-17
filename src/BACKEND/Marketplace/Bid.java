@@ -1,15 +1,15 @@
 package BACKEND.Marketplace;
 
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 
 public class Bid {
     private Integer price;
-    private Person buyer;
-    private Person seller;
+    private IPerson buyer;
+    private IPerson seller;
     private String buyerName;
     private String productName;
 
-    public Bid(Integer price, Person buyer, Person seller, String buyerName, String productName) {
+    public Bid(Integer price, IPerson buyer, IPerson seller, String buyerName, String productName) {
         this.price = price;
         this.buyer = buyer;
         this.seller = seller;
@@ -21,11 +21,11 @@ public class Bid {
         return price;
     }
 
-    public Person getBuyer() {
+    public IPerson getBuyer() {
         return buyer;
     }
 
-    public Person getSeller() {
+    public IPerson getSeller() {
         return seller;
     }
 

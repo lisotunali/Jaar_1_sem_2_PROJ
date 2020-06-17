@@ -1,7 +1,7 @@
 package BACKEND.Medical;
 
 import BACKEND.Person.Doctor;
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.SpecializationType;
 
 import java.time.LocalDateTime;
@@ -9,13 +9,13 @@ import java.time.format.DateTimeFormatter;
 
 public class Appointment {
     private Doctor doctor;
-    private Person patient;
+    private IPerson patient;
     private Boolean done;
     private String condition;
     private SpecializationType appointmentType;
     private LocalDateTime appointmentDate;
 
-    public Appointment(Person patient, Doctor doctor, String condition, SpecializationType appointmentType, LocalDateTime appointmentDate) {
+    public Appointment(IPerson patient, Doctor doctor, String condition, SpecializationType appointmentType, LocalDateTime appointmentDate) {
         this.doctor = doctor;
         this.patient = patient;
         this.appointmentType = appointmentType;
@@ -48,7 +48,7 @@ public class Appointment {
         return doctor;
     }
 
-    public Person getPatient() {
+    public IPerson getPatient() {
         return patient;
     }
 

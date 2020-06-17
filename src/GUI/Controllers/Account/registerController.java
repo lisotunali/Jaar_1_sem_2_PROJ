@@ -1,6 +1,7 @@
 package GUI.Controllers.Account;
 
 import BACKEND.Person.Doctor;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.Person.SpecializationType;
 import BACKEND.fakeDatabase;
@@ -31,24 +32,24 @@ public class registerController {
             return;
         }
 
-        for (Person person : fakeDatabase.getUserDatabase()) {
-            if (person.getName().equals(nameInput.getText())) {
+        for (IPerson IPerson : fakeDatabase.getUserDatabase()) {
+            if (IPerson.getName().equals(nameInput.getText())) {
                 AlertClass.showAlert(Alert.AlertType.ERROR, "Username already taken");
                 return;
             }
         }
 
-        Person person;
+        IPerson IPerson;
 
         if (isDoctor.isSelected()) {
             // TODO: Specialization from GUI?
-            person = new Doctor(nameInput.getText(), passwordInput.getText(), SpecializationType.GENERAL);
+            IPerson = new Doctor(nameInput.getText(), passwordInput.getText(), SpecializationType.GENERAL);
         } else {
-            person = new Person(nameInput.getText(), passwordInput.getText());
+            IPerson = new Person(nameInput.getText(), passwordInput.getText());
         }
 
-        fakeDatabase.getUserDatabase().add(person);
-        singletonPerson.setPerson(person);
+        fakeDatabase.getUserDatabase().add(IPerson);
+        singletonPerson.setPerson(IPerson);
 
         SceneController.switchTo("Main/mainUi");
     }

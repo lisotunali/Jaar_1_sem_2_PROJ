@@ -2,6 +2,7 @@ package MedicalTests;
 
 import BACKEND.Medical.Appointments;
 import BACKEND.Person.Doctor;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.Person.SpecializationType;
 import BACKEND.fakeDatabase;
@@ -13,29 +14,29 @@ import java.time.LocalDate;
 public class AppointmentsFilterTest {
 
     Doctor doctor;
-    Person person;
+    IPerson IPerson;
 
     public void init(){
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         doctor = new Doctor("testerino", "123", SpecializationType.GENERAL);
-        person = new Person("test", "123");
+        IPerson = new Person("test", "123");
         fakeDatabase.getUserDatabase().add(doctor);
-        fakeDatabase.getUserDatabase().add(person);
-        Appointments.createAppointment(LocalDate.now(), "helemaal niks", SpecializationType.GENERAL, person);
+        fakeDatabase.getUserDatabase().add(IPerson);
+        Appointments.createAppointment(LocalDate.now(), "helemaal niks", SpecializationType.GENERAL, IPerson);
     }
 
     @Test
     public void getAllAppointmentsPerson1(){
         init();
         Appointments.getAllAppointments().get(0).setDone(true);
-        Assertions.assertFalse(Appointments.getAllAppointments(person).isEmpty());
+        Assertions.assertFalse(Appointments.getAllAppointments(IPerson).isEmpty());
     }
 
     @Test
     public void getAllAppointmentsPerson2(){
         init();
-        Assertions.assertFalse(Appointments.getAllAppointments(person).isEmpty());
+        Assertions.assertFalse(Appointments.getAllAppointments(IPerson).isEmpty());
     }
 
     @Test
@@ -55,13 +56,13 @@ public class AppointmentsFilterTest {
     public void getAllDoneAppointmentsPerson1(){
         init();
         Appointments.getAllAppointments().get(0).setDone(true);
-        Assertions.assertFalse(Appointments.getDoneAppointments(person).isEmpty());
+        Assertions.assertFalse(Appointments.getDoneAppointments(IPerson).isEmpty());
     }
 
     @Test
     public void getAllDoneAppointmentsPerson2(){
         init();
-        Assertions.assertTrue(Appointments.getDoneAppointments(person).isEmpty());
+        Assertions.assertTrue(Appointments.getDoneAppointments(IPerson).isEmpty());
     }
 
     @Test
@@ -81,13 +82,13 @@ public class AppointmentsFilterTest {
     public void getAllNotDoneAppointmentsPerson1(){
         init();
         Appointments.getAllAppointments().get(0).setDone(true);
-        Assertions.assertTrue(Appointments.getAllOpenAppointments(person).isEmpty());
+        Assertions.assertTrue(Appointments.getAllOpenAppointments(IPerson).isEmpty());
     }
 
     @Test
     public void getAllNotDoneAppointmentsPerson2(){
         init();
-        Assertions.assertFalse(Appointments.getAllOpenAppointments(person).isEmpty());
+        Assertions.assertFalse(Appointments.getAllOpenAppointments(IPerson).isEmpty());
     }
 
     @Test

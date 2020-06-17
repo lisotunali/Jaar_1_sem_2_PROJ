@@ -2,7 +2,7 @@ package GUI.Controllers.Marketplace;
 
 import BACKEND.Marketplace.Bid;
 import BACKEND.Marketplace.Product;
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.AlertClass;
 import GUI.Controllers.Utility.ConvertClass;
@@ -60,7 +60,7 @@ public class MarketplaceController {
         }
 
         //If seller tries to bid on their own product
-        Person currentUser = singletonPerson.getInstance();
+        IPerson currentUser = singletonPerson.getInstance();
         if (currentUser.equals(selectedItem.getPerson())) {
             AlertClass.showAlert(Alert.AlertType.ERROR, "You can't place a bid on your own product.");
             return;

@@ -2,7 +2,7 @@ package GUI.Controllers.Medical;
 
 import BACKEND.Medical.Appointment;
 import BACKEND.Medical.Appointments;
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 import GUI.Controllers.Utility.singletonPerson;
 import GUI.SceneController;
 import javafx.collections.ObservableList;
@@ -51,7 +51,7 @@ public abstract class MedicalBaseController {
         }
     }
 
-    public Person getPerson() {
+    public IPerson getPerson() {
         return singletonPerson.getInstance();
     }
 

@@ -3,7 +3,7 @@ package GUI.Views.Main;
 import BACKEND.Medical.Appointment;
 import BACKEND.Medical.Appointments;
 import BACKEND.Person.Doctor;
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 import GUI.Controllers.Utility.singletonPerson;
 import GUI.SceneController;
 import javafx.collections.FXCollections;
@@ -23,12 +23,12 @@ public class mainUiController {
     public TableColumn<Appointment, String> appointmentCondition;
 
     public void initialize() {
-        Person currentUser = singletonPerson.getInstance();
+        IPerson currentUser = singletonPerson.getInstance();
         currentUserLabel.setText("Current user: " + currentUser.getName());
         setAppointments(currentUser);
     }
 
-    private void setAppointments(Person currentUser) {
+    private void setAppointments(IPerson currentUser) {
         ArrayList<Appointment> allOpenAppointments = new ArrayList<>();
         if (currentUser instanceof Doctor) {
             allOpenAppointments = Appointments.getAllOpenAppointments((Doctor) currentUser);

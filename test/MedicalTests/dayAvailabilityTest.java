@@ -2,6 +2,7 @@ package MedicalTests;
 
 import BACKEND.Medical.Appointments;
 import BACKEND.Person.Doctor;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import BACKEND.Person.SpecializationType;
 import BACKEND.fakeDatabase;
@@ -22,7 +23,7 @@ public class dayAvailabilityTest {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
@@ -35,7 +36,7 @@ public class dayAvailabilityTest {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         EnumSet.allOf(DayOfWeek.class).forEach(d -> testdoc.setAvailableDay(d, false));
@@ -49,7 +50,7 @@ public class dayAvailabilityTest {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
@@ -62,7 +63,7 @@ public class dayAvailabilityTest {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         EnumSet.allOf(DayOfWeek.class).forEach(d -> testdoc.setAvailableDay(d, false));
@@ -76,7 +77,7 @@ public class dayAvailabilityTest {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
@@ -89,7 +90,7 @@ public class dayAvailabilityTest {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
-        Person testperson = new Person("testpers", "123");
+        IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         EnumSet.allOf(DayOfWeek.class).forEach(d -> testdoc.setAvailableDay(d, false));

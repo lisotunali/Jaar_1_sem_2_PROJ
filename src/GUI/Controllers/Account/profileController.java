@@ -1,6 +1,6 @@
 package GUI.Controllers.Account;
 
-import BACKEND.Person.Person;
+import BACKEND.Person.IPerson;
 import BACKEND.fakeDatabase;
 import GUI.Controllers.Utility.AlertClass;
 import GUI.Controllers.Utility.singletonPerson;
@@ -20,14 +20,14 @@ public class profileController {
 
     // Initialize with current user data
     public void initialize() {
-        Person current = singletonPerson.getInstance();
+        IPerson current = singletonPerson.getInstance();
         nameInput.setText(current.getName());
         personalData.setText(current.getPersonalData());
     }
 
     // Updates the user in the database with the new values
     public void onUpdateClicked() {
-        Person currentPerson = singletonPerson.getInstance();
+        IPerson currentIPerson = singletonPerson.getInstance();
         String password = passwordInput.getText();
         String passwordConfirm = passwordConfirmInput.getText();
 
@@ -38,10 +38,10 @@ public class profileController {
         }
 
         // Just check if they want to update their password
-        if (!password.isEmpty()) currentPerson.setPassword(password);
+        if (!password.isEmpty()) currentIPerson.setPassword(password);
 
-        currentPerson.setPersonalData(personalData.getText());
-        fakeDatabase.updatePerson(currentPerson);
+        currentIPerson.setPersonalData(personalData.getText());
+        fakeDatabase.updatePerson(currentIPerson);
         AlertClass.showAlert(Alert.AlertType.INFORMATION, "Profile has been updated");
     }
 

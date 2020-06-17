@@ -4,6 +4,7 @@ import BACKEND.Education.BaseGame;
 import BACKEND.Education.Math;
 import BACKEND.Education.Reading;
 import BACKEND.Education.Writing;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import GUI.Controllers.Utility.singletonPerson;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ public class TimerTest {
     //Timer tests
     @Test
     public void TimerTestMath() throws InterruptedException {
-        Person testperson = new Person("1", "1");
+        IPerson testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
         BaseGame mathGame = new Math();
         mathGame.setSecondsLeft(3);
@@ -28,7 +29,7 @@ public class TimerTest {
 
     @Test
     public void TimerTestReading() throws InterruptedException {
-        Person testperson = new Person("1", "1");
+        IPerson testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
         BaseGame readingGame = new Reading();
         readingGame.setSecondsLeft(3);
@@ -40,7 +41,7 @@ public class TimerTest {
 
     @Test
     public void TimerTestWriting() throws InterruptedException {
-        Person testperson = new Person("1", "1");
+        IPerson testperson = new Person("1", "1");
         singletonPerson.setPerson(testperson);
         BaseGame writingGame = new Writing();
         writingGame.setSecondsLeft(3);

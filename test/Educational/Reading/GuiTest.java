@@ -1,6 +1,7 @@
 package Educational.Reading;
 
 import BACKEND.Education.ImageWithName;
+import BACKEND.Person.IPerson;
 import BACKEND.Person.Person;
 import GUI.Controllers.Educational.readingController;
 import GUI.Controllers.Utility.singletonPerson;
@@ -49,8 +50,8 @@ public class GuiTest extends TestFXTestBase {
 
     @Test
     public void pointsShouldIncreaseWhenCorrectImage() throws IOException {
-        Person testPerson = new Person("gameTester", "iAmTesting");
-        singletonPerson.setPerson(testPerson);
+        IPerson testIPerson = new Person("gameTester", "iAmTesting");
+        singletonPerson.setPerson(testIPerson);
 
         Stage primaryStage = getPrimaryStage();
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("Views/Educational/reading.fxml"));
