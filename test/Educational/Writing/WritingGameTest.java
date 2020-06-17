@@ -30,7 +30,7 @@ public class WritingGameTest {
         singletonPerson.setPerson(testperson);
         Writing writingGame = new Writing();
         writingGame.nextQuestion();
-        System.out.println("Current answer: " + writingGame.getCurrentImage().getName());
+        System.out.println("Current answer: " + writingGame.getQuestion().getName());
         writingGame.checkAnswer(writingGame.getCorrectAnswer());
         System.out.println("Current score: " + writingGame.getCurrentscore());
         assertEquals(1, writingGame.getCurrentscore());
@@ -44,7 +44,7 @@ public class WritingGameTest {
         singletonPerson.setPerson(testperson);
         Writing writingGame = new Writing();
         writingGame.nextQuestion();
-        System.out.println("Current answer: " + writingGame.getCurrentImage().getName());
+        System.out.println("Current answer: " + writingGame.getQuestion().getName());
         writingGame.checkAnswer("this will always be read as an incorrect answer");
         System.out.println("Current score: " + writingGame.getCurrentscore());
         assertNotEquals(1, writingGame.getCurrentscore());

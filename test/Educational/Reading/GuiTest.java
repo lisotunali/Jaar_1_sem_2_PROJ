@@ -60,7 +60,7 @@ public class GuiTest extends TestFXTestBase {
 
         for (int i = 0; i < 10; i++) {
             String question = controller.readingWord.getText();
-            ArrayList<ImageWithName> temps = controller.game.getTemps();
+            ArrayList<ImageWithName> temps = controller.game.getQuestion();
 
             for (int j = 0; j < temps.size(); j++) {
                 ImageWithName img = temps.get(j);

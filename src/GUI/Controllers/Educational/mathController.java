@@ -1,19 +1,13 @@
 package GUI.Controllers.Educational;
 
 import BACKEND.Education.Math;
-import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class mathController extends GameController {
-
-    @FXML
-    private Label exerciseLabel;
-
-    @FXML
-    private TextField guessField;
-
-    private Math game = new Math();
+    private final Math game = new Math();
+    public Label exerciseLabel;
+    public TextField guessField;
 
     public void initialize() {
         System.out.println("Initializing..");

@@ -1,18 +1,21 @@
 package BACKEND.Education;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public abstract class BaseGame implements IGame {
     private final ArrayList currentGameQuestions = new ArrayList<>();
     private final Timer timer = new Timer();
+    private final ObservableWithTypes events = new ObservableWithTypes("timer", "endGame", "newHighScore");
     private Integer currentscore = 0;
-    private Integer currentQuestion = -1;
     private Integer secondsLeft = 60;
     private String correctAnswer;
 
-    private final ObservableWithTypes events = new ObservableWithTypes("timer", "endGame", "newHighScore");
+    public BaseGame() {
+        loadQuestions();
+    }
 
     public void saveQuestionsLocally(ArrayList source) {
         currentGameQuestions.clear();
@@ -31,14 +34,6 @@ public abstract class BaseGame implements IGame {
 
     public void setCurrentscore(Integer currentscore) {
         this.currentscore = currentscore;
-    }
-
-    public Integer getCurrentQuestion() {
-        return currentQuestion;
-    }
-
-    public void setCurrentQuestion(Integer currentQuestion) {
-        this.currentQuestion = currentQuestion;
     }
 
     public Integer getSecondsLeft() {
@@ -109,4 +104,20 @@ public abstract class BaseGame implements IGame {
     }
 
     public abstract Highscores getCurrentPersonHs();
+
+    public void nextQuestion() {
+        Collections.shuffle(currentGameQuestions);
+        getNextQuestion();
+        setCorrectAnswer(getCurrentCorrectAnswer());
+    }
+
+    public void loadQuestions() {
+        saveQuestionsLocally(getGameQuestions());
+    }
+
+    public abstract ArrayList<?> getGameQuestions();
+
+    public abstract String getCurrentCorrectAnswer();
+
+    public abstract void getNextQuestion();
 }
