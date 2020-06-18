@@ -3,6 +3,8 @@ package GUI.Controllers.Educational;
 import BACKEND.Education.Math;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class mathController extends GameController {
     private final Math game = new Math();
@@ -25,4 +27,13 @@ public class mathController extends GameController {
         guessField.clear();
         nextQuestion();
     }
+    /*
+Press enter instead of clicking on the "GUESS" button to confirm answer.
+ */
+    public void pressEnter(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            doneClicked();
+        }
+    }
+
 }

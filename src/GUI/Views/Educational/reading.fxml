@@ -4,23 +4,25 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0"
-            style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="GUI.Controllers.Educational.readingController">
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.Educational.readingController">
     <children>
-        <VBox layoutY="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0"
-              prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <VBox layoutY="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="285.0"
-                          prefWidth="800.0" VBox.vgrow="ALWAYS">
+                <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="285.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="695.0" minWidth="10.0" prefWidth="400.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="400.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="695.0" minWidth="10.0" prefWidth="400.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="400.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints maxHeight="465.0" minHeight="10.0" prefHeight="251.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="465.0" minHeight="10.0" prefHeight="251.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="249.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
@@ -32,7 +34,7 @@
                 </GridPane>
             </children>
         </VBox>
-        <HBox layoutX="-2.0" prefHeight="100.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <HBox layoutX="-2.0" prefHeight="79.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Label fx:id="timerLabel" prefHeight="100.0" prefWidth="100.0" text="60" textFill="#f20c0c">
                <font>
@@ -42,12 +44,12 @@
                   <Insets left="30.0" />
                </padding>
             </Label>
-            <Label fx:id="readingWord" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="400.0" text="Label" textAlignment="CENTER" textFill="#191090" HBox.hgrow="ALWAYS">
+            <Label fx:id="readingWord" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="79.0" prefWidth="613.0" text="Label" textAlignment="CENTER" textFill="#191090" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Arial Rounded MT Bold" size="63.0" />
                </font>
             </Label>
-            <Button id="redsale" fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="74.0" prefWidth="125.0" stylesheets="@../../../buttonsheet.css" text="Back">
+            <Button id="redsale" fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="79.0" prefWidth="100.0" stylesheets="@../../../buttonsheet.css" text="Back">
                <padding>
                   <Insets right="5.0" top="5.0" />
                </padding></Button>

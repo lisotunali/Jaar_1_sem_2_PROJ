@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.*;
 
 import java.io.IOException;
 
@@ -34,5 +35,11 @@ public class LoginController {
 
     public void registerButtonClicked() throws IOException {
         SceneController.switchTo("Account/register");
+    }
+
+    public void enterPressed(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            loginButtonClicked();
+        }
     }
 }
