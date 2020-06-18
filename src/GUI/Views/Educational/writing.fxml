@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+            minHeight="600.0" minWidth="800.0" style="-fx-background-color: lightblue;"
+            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.Controllers.Educational.writingController">
+   <children>
+      <VBox centerShape="false" layoutX="25.0" layoutY="63.0" prefHeight="400.0" prefWidth="750.0"
+            AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0"
+            AnchorPane.topAnchor="88.0">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="400.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true"/>
+         </children>
+      </VBox>
+      <HBox layoutX="-2.0" prefHeight="55.0" prefWidth="800.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="#08004d" strokeType="OUTSIDE" strokeWidth="0.0" text="GUESS THE WORD" textAlignment="CENTER"
+                  wrappingWidth="695.0">
+               <font>
+                  <Font name="Bauhaus 93" size="56.0" />
+               </font>
+            </Text>
+            <Label fx:id="timerLabel" prefHeight="64.0" prefWidth="120.0" text="60" textAlignment="CENTER" textFill="#e80808">
+               <font>
+                  <Font name="Franklin Gothic Demi" size="48.0" />
+               </font>
+            </Label>
+         </children></HBox>
+      <HBox layoutX="25.0" layoutY="500.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="25.0">
+         <children>
+            <TextField fx:id="guessField" prefHeight="75.0" prefWidth="625.0">
+               <font>
+                  <Font name="Bodoni MT" size="48.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="670.0" layoutY="500.0" prefHeight="75.0" prefWidth="100.0" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
+         <children>
+            <Button id="sale" fx:id="guessButton" mnemonicParsing="false" onAction="#doneClicked" prefHeight="75.0" prefWidth="100.0" stylesheets="@../../../buttonsheet.css" text="GUESS">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Text fx:id="letterText" fill="#03b92a" layoutX="99.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="    letters" wrappingWidth="625.13671875" AnchorPane.leftAnchor="120.0">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
