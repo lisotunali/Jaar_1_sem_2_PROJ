@@ -25,7 +25,7 @@ public class Math extends BaseGame {
     }
 
     @Override
-    public ArrayList<?> getGameQuestions() {
+    public ArrayList<Integer> getGameQuestions() {
         return fakeDatabase.getNumbersDatabase();
     }
 
