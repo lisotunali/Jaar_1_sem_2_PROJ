@@ -1,14 +1,13 @@
 package MedicalTests;
 
-import BACKEND.Doctor;
-import BACKEND.SpecializationType;
+import BACKEND.Person.Doctor;
+import BACKEND.Person.SpecializationType;
+import GUI.Controllers.Utility.singletonPerson;
 import GUI.SceneController;
-import GUI.singletonPerson;
 import TestFXBase.TestFXTestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.EnumSet;
@@ -21,7 +20,7 @@ public class ProfileDoctorTest extends TestFXTestBase {
     public void profileDoctorControllerTest() throws IOException { //Testen of de gebruiker (dokter) op het profileDoctor scherm komt
         Doctor user = new Doctor("testdoctor", "passwerd", SpecializationType.EAR);
         singletonPerson.setPerson(user);
-        SceneController.switchTo("mainUi");
+        SceneController.switchTo("Main/mainUi");
         sleep(500); //loading..
         clickOn("Profile");
         Assertions.assertFalse(lookup("#doctorTypes").tryQuery().isEmpty(), "Doctors specializationtypes not found.");
@@ -32,7 +31,7 @@ public class ProfileDoctorTest extends TestFXTestBase {
     public void removeAvailableDayTest() throws IOException {
         Doctor user = new Doctor("testdoctor", "passwerd", SpecializationType.EAR);
         singletonPerson.setPerson(user);
-        SceneController.switchTo("profileDoctor");
+        SceneController.switchTo("Profile/profileDoctor");
         clickOn("MONDAY");
         clickOn("Update");
         Assertions.assertFalse(lookup("Profile has been updated").tryQuery().isEmpty(), "Confirmation message not shown.");
@@ -49,7 +48,7 @@ public class ProfileDoctorTest extends TestFXTestBase {
         Doctor user = new Doctor("testdoctor", "passwerd", SpecializationType.EAR);
         user.setAvailableDay(DayOfWeek.MONDAY, false);
         singletonPerson.setPerson(user);
-        SceneController.switchTo("profileDoctor");
+        SceneController.switchTo("Profile/profileDoctor");
         clickOn("MONDAY");
         clickOn("Update");
         Assertions.assertFalse(lookup("Profile has been updated").tryQuery().isEmpty(), "Confirmation message not shown.");
@@ -64,7 +63,7 @@ public class ProfileDoctorTest extends TestFXTestBase {
     public void addSpecializationsTest() throws IOException {
         Doctor user = new Doctor("testdoctor", "passwerd", SpecializationType.EAR);
         singletonPerson.setPerson(user);
-        SceneController.switchTo("profileDoctor");
+        SceneController.switchTo("Profile/profileDoctor");
         sleep(500); //loading..
         clickOn("EYES");
         clickOn("Update");
@@ -82,7 +81,7 @@ public class ProfileDoctorTest extends TestFXTestBase {
     public void removeSpecializationsTest() throws IOException {
         Doctor user = new Doctor("testdoctor", "passwerd", SpecializationType.EAR);
         singletonPerson.setPerson(user);
-        SceneController.switchTo("profileDoctor");
+        SceneController.switchTo("Profile/profileDoctor");
         sleep(500); //loading..
         clickOn("EAR");
         clickOn("Update");

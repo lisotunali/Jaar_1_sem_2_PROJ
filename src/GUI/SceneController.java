@@ -19,8 +19,8 @@ public class SceneController {
 
     // Changes the current scene to the given template name
     public static void switchTo(String templateName) throws IOException {
-            Stage primaryStage = getPrimaryStage();
-            Parent root = FXMLLoader.load(Main.class.getResource(templateName + ".fxml"));
-            primaryStage.getScene().setRoot(root);
+        Stage primaryStage = getPrimaryStage();
+        Parent root = FXMLLoader.load(Main.class.getResource("Views/" + templateName + ".fxml"));
+        primaryStage.getScene().setRoot(root);
     }
 }

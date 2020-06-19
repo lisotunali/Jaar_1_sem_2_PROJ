@@ -1,8 +1,8 @@
 package Educational.Reading;
 
-import Education.ImageWithName;
-import Education.Reading;
-import GUI.fakeDatabase;
+import BACKEND.Education.ImageWithName;
+import BACKEND.Education.Reading;
+import BACKEND.fakeDatabase;
 import javafx.scene.image.Image;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 //Testen of een punt wordt gegeven wanneer het juiste plaatje wordt aangeklikt bij het bijbehorend woord. (Decision + Operational Profiles)
 class PointsTest {
     void addQuestsToDatabase() {
-        fakeDatabase.getImagesDatabase().add(new ImageWithName("bee", new Image(getClass().getResourceAsStream("/Education/Images/bee.png"))));
-        fakeDatabase.getImagesDatabase().add(new ImageWithName("doctor", new Image(getClass().getResourceAsStream("/Education/Images/doctor.jpg"))));
-        fakeDatabase.getImagesDatabase().add(new ImageWithName("dog", new Image(getClass().getResourceAsStream("/Education/Images/dog.jpg"))));
-        fakeDatabase.getImagesDatabase().add(new ImageWithName("elephant", new Image(getClass().getResourceAsStream("/Education/Images/elephant.png"))));
+        fakeDatabase.getImagesDatabase().add(new ImageWithName("bee", new Image(getClass().getResourceAsStream("/BACKEND/Education/Images/bee.png"))));
+        fakeDatabase.getImagesDatabase().add(new ImageWithName("doctor", new Image(getClass().getResourceAsStream("/BACKEND/Education/Images/doctor.jpg"))));
+        fakeDatabase.getImagesDatabase().add(new ImageWithName("dog", new Image(getClass().getResourceAsStream("/BACKEND/Education/Images/dog.jpg"))));
+        fakeDatabase.getImagesDatabase().add(new ImageWithName("elephant", new Image(getClass().getResourceAsStream("/BACKEND/Education/Images/elephant.png"))));
     }
 
     @Test

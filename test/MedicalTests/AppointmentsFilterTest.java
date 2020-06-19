@@ -1,11 +1,11 @@
 package MedicalTests;
 
-import BACKEND.Appointment;
-import BACKEND.Doctor;
-import BACKEND.Person;
-import BACKEND.SpecializationType;
-import GUI.SingletonAppointments;
-import GUI.fakeDatabase;
+import BACKEND.Medical.Appointments;
+import BACKEND.Person.Doctor;
+import BACKEND.Person.IPerson;
+import BACKEND.Person.Person;
+import BACKEND.Person.SpecializationType;
+import BACKEND.fakeDatabase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,93 +14,93 @@ import java.time.LocalDate;
 public class AppointmentsFilterTest {
 
     Doctor doctor;
-    Person person;
+    IPerson IPerson;
 
-    public void init(){
-        SingletonAppointments.getInstance().resetArrayList();
+    public void init() throws Exception {
+        Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         doctor = new Doctor("testerino", "123", SpecializationType.GENERAL);
-        person = new Person("test", "123");
+        IPerson = new Person("test", "123");
         fakeDatabase.getUserDatabase().add(doctor);
-        fakeDatabase.getUserDatabase().add(person);
-        SingletonAppointments.getInstance().createAppointment(LocalDate.now(), "helemaal niks", SpecializationType.GENERAL, person);
+        fakeDatabase.getUserDatabase().add(IPerson);
+        Appointments.createAppointment(LocalDate.now(), "helemaal niks", SpecializationType.GENERAL, IPerson);
     }
 
     @Test
-    public void getAllAppointmentsPerson1(){
+    public void getAllAppointmentsPerson1() throws Exception {
         init();
-        SingletonAppointments.getInstance().getAllAppointments().get(0).setDone(true);
-        Assertions.assertFalse(SingletonAppointments.getInstance().getAllAppointments(person).isEmpty());
+        Appointments.getAllAppointments().get(0).setDone(true);
+        Assertions.assertFalse(Appointments.getAllAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllAppointmentsPerson2(){
+    public void getAllAppointmentsPerson2() throws Exception {
         init();
-        Assertions.assertFalse(SingletonAppointments.getInstance().getAllAppointments(person).isEmpty());
+        Assertions.assertFalse(Appointments.getAllAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllAppointmentsDoctor1(){
+    public void getAllAppointmentsDoctor1() throws Exception {
         init();
-        SingletonAppointments.getInstance().getAllAppointments().get(0).setDone(true);
-        Assertions.assertFalse(SingletonAppointments.getInstance().getAllAppointments(doctor).isEmpty());
+        Appointments.getAllAppointments().get(0).setDone(true);
+        Assertions.assertFalse(Appointments.getAllAppointments(doctor).isEmpty());
     }
 
     @Test
-    public void getAllAppointmentsDoctor2(){
+    public void getAllAppointmentsDoctor2() throws Exception {
         init();
-        Assertions.assertFalse(SingletonAppointments.getInstance().getAllAppointments(doctor).isEmpty());
+        Assertions.assertFalse(Appointments.getAllAppointments(doctor).isEmpty());
     }
 
     @Test
-    public void getAllDoneAppointmentsPerson1(){
+    public void getAllDoneAppointmentsPerson1() throws Exception {
         init();
-        SingletonAppointments.getInstance().getAllAppointments().get(0).setDone(true);
-        Assertions.assertFalse(SingletonAppointments.getInstance().getDoneAppointments(person).isEmpty());
+        Appointments.getAllAppointments().get(0).setDone(true);
+        Assertions.assertFalse(Appointments.getDoneAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllDoneAppointmentsPerson2(){
+    public void getAllDoneAppointmentsPerson2() throws Exception {
         init();
-        Assertions.assertTrue(SingletonAppointments.getInstance().getDoneAppointments(person).isEmpty());
+        Assertions.assertTrue(Appointments.getDoneAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllDoneAppointmentsDoctor1(){
+    public void getAllDoneAppointmentsDoctor1() throws Exception {
         init();
-        SingletonAppointments.getInstance().getAllAppointments().get(0).setDone(true);
-        Assertions.assertFalse(SingletonAppointments.getInstance().getDoneAppointments(doctor).isEmpty());
+        Appointments.getAllAppointments().get(0).setDone(true);
+        Assertions.assertFalse(Appointments.getDoneAppointments(doctor).isEmpty());
     }
 
     @Test
-    public void getAllDoneAppointmentsDoctor2(){
+    public void getAllDoneAppointmentsDoctor2() throws Exception {
         init();
-        Assertions.assertTrue(SingletonAppointments.getInstance().getDoneAppointments(doctor).isEmpty());
+        Assertions.assertTrue(Appointments.getDoneAppointments(doctor).isEmpty());
     }
 
     @Test
-    public void getAllNotDoneAppointmentsPerson1(){
+    public void getAllNotDoneAppointmentsPerson1() throws Exception {
         init();
-        SingletonAppointments.getInstance().getAllAppointments().get(0).setDone(true);
-        Assertions.assertTrue(SingletonAppointments.getInstance().getAllOpenAppointments(person).isEmpty());
+        Appointments.getAllAppointments().get(0).setDone(true);
+        Assertions.assertTrue(Appointments.getAllOpenAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllNotDoneAppointmentsPerson2(){
+    public void getAllNotDoneAppointmentsPerson2() throws Exception {
         init();
-        Assertions.assertFalse(SingletonAppointments.getInstance().getAllOpenAppointments(person).isEmpty());
+        Assertions.assertFalse(Appointments.getAllOpenAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllNotDoneAppointmentsDoctor1(){
+    public void getAllNotDoneAppointmentsDoctor1() throws Exception {
         init();
-        SingletonAppointments.getInstance().getAllAppointments().get(0).setDone(true);
-        Assertions.assertTrue(SingletonAppointments.getInstance().getAllOpenAppointments(doctor).isEmpty());
+        Appointments.getAllAppointments().get(0).setDone(true);
+        Assertions.assertTrue(Appointments.getAllOpenAppointments(doctor).isEmpty());
     }
 
     @Test
-    public void getAllNotDoneAppointmentsDoctor2(){
+    public void getAllNotDoneAppointmentsDoctor2() throws Exception {
         init();
-        Assertions.assertFalse(SingletonAppointments.getInstance().getAllOpenAppointments(doctor).isEmpty());
+        Assertions.assertFalse(Appointments.getAllOpenAppointments(doctor).isEmpty());
     }
 }

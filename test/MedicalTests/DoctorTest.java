@@ -1,12 +1,14 @@
 package MedicalTests;
 
-import BACKEND.Doctor;
-import BACKEND.SpecializationType;
+import BACKEND.Person.Doctor;
+import BACKEND.Person.SpecializationType;
 import TestFXBase.TestFXTestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DoctorTest extends TestFXTestBase {
 
