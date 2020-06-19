@@ -20,7 +20,12 @@ public class doubleAppointmentTest {
         IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+
+        try {
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        } catch (Exception ignored) {
+        }
+
         Assertions.assertTrue(Appointments.getAllAppointments().isEmpty());
     }
 
@@ -97,8 +102,13 @@ public class doubleAppointmentTest {
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+
+        try {
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        } catch (Exception ignored) {
+        }
+
         Assertions.assertTrue(Appointments.getAllAppointments(testdoc).size() == 1);
     }
 
@@ -113,8 +123,13 @@ public class doubleAppointmentTest {
         fakeDatabase.getUserDatabase().add(testdoc2);
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+
+        try {
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        } catch (Exception ignored) {
+        }
+
         Assertions.assertTrue(Appointments.getAllAppointments(testdoc).size() == 1);
         Assertions.assertTrue(Appointments.getAllAppointments(testdoc2).isEmpty());
     }
