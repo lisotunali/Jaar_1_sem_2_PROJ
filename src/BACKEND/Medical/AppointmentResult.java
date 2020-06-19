@@ -5,8 +5,8 @@ import BACKEND.Person.Doctor;
 import java.time.LocalDateTime;
 
 public class AppointmentResult {
-    Doctor doctor;
-    LocalDateTime appointmentTime;
+    private Doctor doctor;
+    private LocalDateTime appointmentTime;
 
     public AppointmentResult(Doctor doctor, LocalDateTime appointmentTime) {
         this.doctor = doctor;
