@@ -100,7 +100,7 @@ public class fakeDatabase {
         marketplace.remove(product);
     }
 
-    public static void setUpTestInstances() {
+    public static void setUpTestInstances() throws Exception {
         IPerson testperson = new Person("1", "1");
         IPerson testperson2 = new Person("2", "2");
         IPerson testperson1 = new Person("Test2", "test123");
@@ -129,7 +129,7 @@ public class fakeDatabase {
         addProduct(new AnimalProduct(marketinfo, testperson.getAnimal("Goat"), testperson));
         addProduct(new AnimalProduct(marketinfo2, testperson.getAnimal("Sheep"), testperson));
 
-        Appointments.createAppointment(LocalDate.of(2020, 6, 2), "test condition for a test appointment", SpecializationType.EAR, testperson1);
+        Appointments.createAppointment(LocalDate.of(2021, 6, 2), "test condition for a test appointment", SpecializationType.EAR, testperson1);
         Appointments.createAppointment(LocalDate.of(2022, 2, 13), "test condition", SpecializationType.GENERAL, testperson);
     }
 

@@ -57,7 +57,7 @@
                                 <TableColumn fx:id="conditionColumn" minWidth="181.0" prefWidth="-1.0" text="About appointment" />
                                 <TableColumn fx:id="dateColumn" minWidth="180.0" prefWidth="-1.0" text="Date" />
                                 <TableColumn fx:id="doneColumn" minWidth="75.0" prefWidth="-1.0" text="Done" />
-                                <TableColumn fx:id="specialtyColumn" prefWidth="75.0" text="Specialty"/>
+                        <TableColumn fx:id="specialtyColumn" prefWidth="75.0" text="Specialty"/>
                             </columns>
                         </TableView>
                     </center>

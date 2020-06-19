@@ -19,7 +19,7 @@ public class dayAvailabilityTest {
 
 
     @Test
-    public void availableDayBeforeToday() {
+    public void availableDayBeforeToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -32,7 +32,7 @@ public class dayAvailabilityTest {
     }
 
     @Test
-    public void unavailableDayBeforeToday() {
+    public void unavailableDayBeforeToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -46,7 +46,7 @@ public class dayAvailabilityTest {
     }
 
     @Test
-    public void availableToday() {
+    public void availableToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -59,7 +59,7 @@ public class dayAvailabilityTest {
     }
 
     @Test
-    public void unavailableToday() {
+    public void unavailableToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -73,7 +73,7 @@ public class dayAvailabilityTest {
     }
 
     @Test
-    public void availableDayAfterToday() {
+    public void availableDayAfterToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -86,7 +86,7 @@ public class dayAvailabilityTest {
     }
 
     @Test
-    public void unavailableDayAfterToday() {
+    public void unavailableDayAfterToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);

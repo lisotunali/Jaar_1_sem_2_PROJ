@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class doubleAppointmentTest {
 
     @Test
-    public void noDoctor() {
+    public void noDoctor() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         IPerson testperson = new Person("testpers", "123");
@@ -25,7 +25,7 @@ public class doubleAppointmentTest {
     }
 
     @Test
-    public void availableDoctor(){
+    public void availableDoctor() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -38,7 +38,7 @@ public class doubleAppointmentTest {
     }
 
     @Test
-    public void DoctorHasAppointment(){
+    public void DoctorHasAppointment() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -54,7 +54,7 @@ public class doubleAppointmentTest {
     }
 
     @Test
-    public void TwoDoctorsAvailable(){
+    public void TwoDoctorsAvailable() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -70,7 +70,7 @@ public class doubleAppointmentTest {
     }
 
     @Test
-    public void TwoDoctorsOneHasAppointment(){
+    public void TwoDoctorsOneHasAppointment() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -89,7 +89,7 @@ public class doubleAppointmentTest {
     }
 
     @Test
-    public void patientMakesTwoAppointmentsOneDoctor(){
+    public void patientMakesTwoAppointmentsOneDoctor() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -103,7 +103,7 @@ public class doubleAppointmentTest {
     }
 
     @Test
-    public void patientMakesTwoAppointmentsTwoDoctors(){
+    public void patientMakesTwoAppointmentsTwoDoctors() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);

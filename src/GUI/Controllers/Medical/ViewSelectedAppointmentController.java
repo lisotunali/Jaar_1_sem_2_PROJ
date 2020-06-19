@@ -35,7 +35,7 @@ public class ViewSelectedAppointmentController {
         doneCheck.setSelected(selectedAppointment.getDone());
     }
 
-    public void changeAppointment() throws IOException {
+    public void changeAppointment() throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to change this appointment?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
