@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.Medical.MedicalDoctorController">
     <children>
         <VBox prefHeight="74.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -67,17 +56,28 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button fx:id="viewAppointmentButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressViewAppointment" prefHeight="30.0" prefWidth="250.0" text="View appointment" />
+                                <Button fx:id="viewAppointmentButton" alignment="CENTER" minHeight="-Infinity"
+                                        minWidth="-Infinity" mnemonicParsing="false" onAction="#pressViewAppointment"
+                                        prefHeight="30.0" prefWidth="250.0" text="View appointment">
+                                    <GridPane.margin>
+                                        <Insets/>
+                                    </GridPane.margin>
+                                </Button>
                             </children>
                         </GridPane>
                     </bottom>
                     <center>
                         <TableView fx:id="appointmentTableView" prefHeight="200.0" prefWidth="350.0" BorderPane.alignment="CENTER">
                             <columns>
-                                <TableColumn fx:id="NameColumn" minWidth="118.0" prefWidth="-1.0" text="Patient" />
-                                <TableColumn fx:id="conditionColumn" minWidth="181.0" prefWidth="-1.0" text="About appointment" />
-                                <TableColumn fx:id="dateColumn" minWidth="180.0" prefWidth="-1.0" text="Date" />
-                                <TableColumn fx:id="doneColumn" minWidth="75.0" prefWidth="-1.0" text="Done" />
+                                <TableColumn fx:id="NameColumn" maxWidth="-1.0" minWidth="118.0" prefWidth="-1.0"
+                                             text="Patient"/>
+                                <TableColumn fx:id="conditionColumn" maxWidth="-1.0" minWidth="181.0" prefWidth="-1.0"
+                                             text="About appointment"/>
+                                <TableColumn fx:id="dateColumn" maxWidth="-1.0" minWidth="180.0" prefWidth="-1.0"
+                                             text="Date"/>
+                                <TableColumn fx:id="doneColumn" maxWidth="-1.0" minWidth="75.0" prefWidth="-1.0"
+                                             text="Done"/>
+                                <TableColumn fx:id="specialtyColumn" prefWidth="75.0" text="Specialty"/>
                             </columns>
                         </TableView>
                     </center>

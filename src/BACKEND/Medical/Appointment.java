@@ -94,6 +94,6 @@ public class Appointment {
                 ", condition='" + condition + '\'' +
                 ", appointmentType=" + appointmentType +
                 ", appointmentDate=" + appointmentDate +
-                '}';
+                "}\n";
     }
 }
