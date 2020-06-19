@@ -58,19 +58,16 @@ public interface Appointments {
         return appointment;
     }
 
-    static void resetArrayList(){
+    static void resetArrayList() {
         fakeDatabase.getAppointments().clear();
     }
 
-    static Appointment updateAppointment(Appointment appointment, LocalDate date) throws Exception {
-        AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, appointment.getAppointmentType(), appointment.getPatient());
-
-        if (availableTimeAndDoctor == null) return null;
-
+    static Appointment updateAppointment(Appointment appointment, LocalDate date, SpecializationType appointmentType) throws Exception {
+        AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, appointmentType, appointment.getPatient());
         System.out.format("Updated appointment with doctor: %s at: %s%n to doctor: %s at: %s%n", appointment.getDoctor(), appointment.getAppointmentDate(), availableTimeAndDoctor.getDoctor(), availableTimeAndDoctor.getAppointmentTime());
         appointment.setAppointmentDate(availableTimeAndDoctor.getAppointmentTime());
         appointment.setDoctor(availableTimeAndDoctor.getDoctor());
-
+        appointment.setAppointmentType(appointmentType);
         return appointment;
     }
 

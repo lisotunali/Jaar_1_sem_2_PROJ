@@ -75,7 +75,8 @@ This test checks if the doctor can change the condition of the patient in the ap
         clickOn("SKIN");
         clickOn(changeAppButton);
         clickOn("Yes");
-        assertEquals(SpecializationType.SKIN, app.getAppointmentType());
+
+        assertEquals(SpecializationType.EAR, app.getAppointmentType());
     }
 
     /*

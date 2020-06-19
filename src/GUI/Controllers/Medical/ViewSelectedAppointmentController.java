@@ -8,7 +8,6 @@ import GUI.SceneController;
 import javafx.scene.control.*;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class ViewSelectedAppointmentController {
 
@@ -39,35 +38,57 @@ public class ViewSelectedAppointmentController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to change this appointment?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
-            boolean changed = false;
-            if (!(conditionArea.getText().equals(currentAppointment.getCondition()))) {
+//            boolean changed = false;
+//            try {
+//                if (!(conditionArea.getText().equals(currentAppointment.getCondition()))) {
+//                    currentAppointment.setCondition(conditionArea.getText());
+//                    changed = true;
+//                }
+//                if (!(specialties.getSelectionModel().getSelectedItem().equals(currentAppointment.getAppointmentType())) && !(dateText.getValue().equals(currentAppointment.getAppointmentDate().toLocalDate()))) {
+//                    changed = true;
+//                    Appointments.updateAppointment(currentAppointment, currentAppointment.getAppointmentDate().toLocalDate(), specialties.getSelectionModel().getSelectedItem());
+////                    if (!(dateText.getValue().equals(currentAppointment.getAppointmentDate().toLocalDate()))) {
+////                        Appointments.updateAppointment(currentAppointment, dateText.getValue());
+//                    //}
+//                }
+//                else {
+//                    if (!(dateText.getValue().equals(currentAppointment.getAppointmentDate().toLocalDate()) || dateText.getValue().isBefore(LocalDate.now()))) {
+//                        changed = true;
+//                        Appointments.updateAppointment(currentAppointment, dateText.getValue(), currentAppointment.getAppointmentType());
+//                    }
+//                }
+//                if (!(doneCheck.isSelected() == currentAppointment.getDone())) {
+//                    currentAppointment.setDone(doneCheck.isSelected());
+//                    changed = true;
+//                }
+//            }
+//            catch(Exception e){
+//                System.out.println(changed);
+//                System.out.println();
+//                AlertClass.showAlert(Alert.AlertType.ERROR, e.getMessage());
+//            }
+////            if (changed == true) {
+////                AlertClass.showAlert(Alert.AlertType.INFORMATION, "Appointment has been changed.");
+////                mainScreen();
+////            } else {
+////                AlertClass.showAlert(Alert.AlertType.ERROR, "Appointment has not been changed.\n\nYou haven't changed any information,\nor you entered invalid data.\n\nIf you tried changing the specialization,\nyou must specify a new date as well.");
+////            }
+//        }
+//        System.out.println(currentAppointment);
+            if (!conditionArea.getText().equals(currentAppointment.getCondition())) {
                 currentAppointment.setCondition(conditionArea.getText());
-                changed = true;
-            }
-            if (!(dateText.getValue().equals(currentAppointment.getAppointmentDate().toLocalDate()) || dateText.getValue().isBefore(LocalDate.now()))) {
-                Appointments.updateAppointment(currentAppointment, dateText.getValue());
-                changed = true;
-            }
-            if (!(specialties.getSelectionModel().getSelectedItem().equals(currentAppointment.getAppointmentType()))) {
-                currentAppointment.setAppointmentType(specialties.getValue());
-                Appointments.updateAppointment(currentAppointment, currentAppointment.getAppointmentDate().toLocalDate());
-                if (!(dateText.getValue().equals(currentAppointment.getAppointmentDate().toLocalDate()))) {
-                    Appointments.updateAppointment(currentAppointment, dateText.getValue());
-                    changed = true;
-                }
             }
             if (!(doneCheck.isSelected() == currentAppointment.getDone())) {
                 currentAppointment.setDone(doneCheck.isSelected());
-                changed = true;
             }
-            if (changed == true) {
+            try {
+                Appointments.updateAppointment(currentAppointment, dateText.getValue(), specialties.getSelectionModel().getSelectedItem());
                 AlertClass.showAlert(Alert.AlertType.INFORMATION, "Appointment has been changed.");
                 mainScreen();
-            } else {
-                AlertClass.showAlert(Alert.AlertType.ERROR, "Appointment has not been changed.\n\nYou haven't changed any information,\nor you entered invalid data.\n\nIf you tried changing the specialization,\nyou must specify a new date as well.");
+            } catch (Exception e) {
+                AlertClass.showAlert(Alert.AlertType.ERROR, e.getMessage());
             }
         }
-        System.out.println(currentAppointment);
     }
 
     public void deleteAppointment() throws IOException {

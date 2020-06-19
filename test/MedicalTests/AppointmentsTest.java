@@ -44,8 +44,7 @@ class AppointmentsTest {
     void patientAlreadyHasAppointment() throws Exception {
         init();
         Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testIPerson);
-        Appointment app2 = Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition 2", SpecializationType.EAR, testIPerson);
-        assertNull(app2);
+        assertThrows(Exception.class, () -> Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition 2", SpecializationType.EAR, testIPerson));
     }
 
     @Test
@@ -62,8 +61,7 @@ class AppointmentsTest {
     @Test
     void noDoctorAvailableWithType() throws Exception {
         init();
-        Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.GENERAL, testIPerson);
-        assertNull(app);
+        assertThrows(Exception.class, () -> Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.GENERAL, testIPerson));
     }
 
     /*
@@ -98,7 +96,7 @@ class AppointmentsTest {
         init();
         Appointment app = Appointments.createAppointment(LocalDate.of(2021, 6, 10), "testCondition", SpecializationType.EAR, testIPerson);
         Appointment app2 = new Appointment(testIPerson, testDoc, "testCondition", SpecializationType.EAR, app.getAppointmentDate());
-        Appointments.updateAppointment(app, LocalDate.of(2021, 6, 11));
+        Appointments.updateAppointment(app, LocalDate.of(2021, 6, 11), app.getAppointmentType());
         assertNotEquals(app.getAppointmentDateString(), app2.getAppointmentDateString());
     }
 
