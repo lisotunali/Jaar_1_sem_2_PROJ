@@ -3,6 +3,7 @@ package GUI.Controllers.Medical;
 import BACKEND.Medical.Appointment;
 import BACKEND.Medical.Appointments;
 import BACKEND.Person.IPerson;
+import BACKEND.Person.SpecializationType;
 import GUI.Controllers.Utility.singletonPerson;
 import GUI.SceneController;
 import javafx.collections.ObservableList;
@@ -22,6 +23,7 @@ public abstract class MedicalBaseController {
     public TableColumn<Appointment, String> conditionColumn;
     public TableColumn<Appointment, Date> dateColumn;
     public TableColumn<Appointment, Boolean> doneColumn;
+    public TableColumn<Appointment, SpecializationType> specialtyColumn;
     public CheckBox showDoneCheck;
     public CheckBox showNotDoneCheck;
 
@@ -35,6 +37,7 @@ public abstract class MedicalBaseController {
         conditionColumn.setCellValueFactory(new PropertyValueFactory<>("condition"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentDateString"));
         doneColumn.setCellValueFactory(new PropertyValueFactory<>("doneToString"));
+        specialtyColumn.setCellValueFactory(new PropertyValueFactory<>("AppointmentType"));
         appointmentTableView.setItems(appointments);
         appointmentTableView.refresh();
     }

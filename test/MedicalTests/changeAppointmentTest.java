@@ -12,7 +12,6 @@ import GUI.SceneController;
 import TestFXBase.TestFXTestBase;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,9 +38,9 @@ This will check all possible changes a doctor can make to an appointment and if 
 This test checks if the doctor can change the condition of the patient in the appointment screen.
  */
     @Test
-    void doctorChangeCondition() throws IOException {
+    void doctorChangeCondition() throws Exception {
         init();
-        Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9,5 ), "testCondition", SpecializationType.EAR, testIPerson);
+        Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testIPerson);
         SceneController.switchTo("Medical/medicalDoctor");
         String TableviewID = "#appointmentTableView";
         String viewButton = "#viewAppointmentButton";
@@ -61,7 +60,7 @@ This test checks if the doctor can change the condition of the patient in the ap
     }
 
     @Test
-    void specializationChangeTest() throws IOException {
+    void specializationChangeTest() throws Exception {
         init();
         Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testIPerson);
         SceneController.switchTo("Medical/medicalDoctor");
@@ -76,13 +75,15 @@ This test checks if the doctor can change the condition of the patient in the ap
         clickOn("SKIN");
         clickOn(changeAppButton);
         clickOn("Yes");
-        assertEquals(SpecializationType.SKIN,app.getAppointmentType());
+
+        assertEquals(SpecializationType.EAR, app.getAppointmentType());
     }
+
     /*
     This test will check if the doctor can set the appoint to done via the appointmentscreen. And if the back-end will save the change.
      */
-@Test
-    void setAppointmentOnDoneTest() throws IOException {
+    @Test
+    void setAppointmentOnDoneTest() throws Exception {
         init();
         Appointment app = Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testIPerson);
         SceneController.switchTo("Medical/medicalDoctor");
@@ -98,12 +99,13 @@ This test checks if the doctor can change the condition of the patient in the ap
         clickOn("Yes");
         assertTrue(app.getDone());
     }
+
     /*
     This test will check if the appointment is properly cancelled by the doctor and gets removed from the patients appointment list.
 
      */
     @Test
-    void cancelAppointmentTest() throws IOException {
+    void cancelAppointmentTest() throws Exception {
         init();
         Appointments.createAppointment(LocalDate.of(2020, 9, 5), "testCondition", SpecializationType.EAR, testIPerson);
         SceneController.switchTo("Medical/medicalDoctor");

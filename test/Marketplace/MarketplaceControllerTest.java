@@ -85,6 +85,7 @@ class  MarketplaceControllerTest extends TestFXTestBase {
     void sendToSellPageTest() throws IOException {
         SceneController.switchTo("Marketplace/marketplace");
         singletonPerson.setPerson(new Person("seller", "password"));
+        sleep(200);
         clickOn("#sellPageButton");
         assertFalse(lookup("Sell products").tryQuery().isEmpty(), "User should be sent to sell page on clicking sell.");
         assertFalse(lookup("#offerButton").tryQuery().isEmpty(), "User should be sent to sell page on clicking sell.");

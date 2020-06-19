@@ -2,12 +2,9 @@ package BACKEND.Education;
 
 import javafx.scene.image.Image;
 
-import java.util.ArrayList;
-
-public class ImageWithName{
-    private String name;
-    private Image image;
-    private ArrayList<ImageWithName> imagesDatabase = new ArrayList<>();
+public class ImageWithName {
+    private final String name;
+    private final Image image;
 
     public ImageWithName(String name, Image image) {
         this.name = name;
@@ -20,10 +17,5 @@ public class ImageWithName{
 
     public Image getImage() {
         return image;
-    }
-
-    public ImageWithName getRandomImageWithName(){
-
-        return imagesDatabase.get(1);
     }
 }

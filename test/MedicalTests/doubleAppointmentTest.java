@@ -14,18 +14,23 @@ import java.time.LocalDate;
 public class doubleAppointmentTest {
 
     @Test
-    public void noDoctor() {
+    public void noDoctor() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         IPerson testperson = new Person("testpers", "123");
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+
+        try {
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        } catch (Exception ignored) {
+        }
+
         Assertions.assertTrue(Appointments.getAllAppointments().isEmpty());
     }
 
     @Test
-    public void availableDoctor(){
+    public void availableDoctor() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -38,7 +43,7 @@ public class doubleAppointmentTest {
     }
 
     @Test
-    public void DoctorHasAppointment(){
+    public void DoctorHasAppointment() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -54,7 +59,7 @@ public class doubleAppointmentTest {
     }
 
     @Test
-    public void TwoDoctorsAvailable(){
+    public void TwoDoctorsAvailable() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -70,7 +75,7 @@ public class doubleAppointmentTest {
     }
 
     @Test
-    public void TwoDoctorsOneHasAppointment(){
+    public void TwoDoctorsOneHasAppointment() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -89,7 +94,7 @@ public class doubleAppointmentTest {
     }
 
     @Test
-    public void patientMakesTwoAppointmentsOneDoctor(){
+    public void patientMakesTwoAppointmentsOneDoctor() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -97,13 +102,18 @@ public class doubleAppointmentTest {
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+
+        try {
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        } catch (Exception ignored) {
+        }
+
         Assertions.assertTrue(Appointments.getAllAppointments(testdoc).size() == 1);
     }
 
     @Test
-    public void patientMakesTwoAppointmentsTwoDoctors(){
+    public void patientMakesTwoAppointmentsTwoDoctors() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -113,8 +123,13 @@ public class doubleAppointmentTest {
         fakeDatabase.getUserDatabase().add(testdoc2);
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+
+        try {
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        } catch (Exception ignored) {
+        }
+
         Assertions.assertTrue(Appointments.getAllAppointments(testdoc).size() == 1);
         Assertions.assertTrue(Appointments.getAllAppointments(testdoc2).isEmpty());
     }

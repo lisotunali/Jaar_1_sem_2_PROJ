@@ -16,7 +16,7 @@ public class AppointmentsFilterTest {
     Doctor doctor;
     IPerson IPerson;
 
-    public void init(){
+    public void init() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         doctor = new Doctor("testerino", "123", SpecializationType.GENERAL);
@@ -27,79 +27,79 @@ public class AppointmentsFilterTest {
     }
 
     @Test
-    public void getAllAppointmentsPerson1(){
+    public void getAllAppointmentsPerson1() throws Exception {
         init();
         Appointments.getAllAppointments().get(0).setDone(true);
         Assertions.assertFalse(Appointments.getAllAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllAppointmentsPerson2(){
+    public void getAllAppointmentsPerson2() throws Exception {
         init();
         Assertions.assertFalse(Appointments.getAllAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllAppointmentsDoctor1(){
+    public void getAllAppointmentsDoctor1() throws Exception {
         init();
         Appointments.getAllAppointments().get(0).setDone(true);
         Assertions.assertFalse(Appointments.getAllAppointments(doctor).isEmpty());
     }
 
     @Test
-    public void getAllAppointmentsDoctor2(){
+    public void getAllAppointmentsDoctor2() throws Exception {
         init();
         Assertions.assertFalse(Appointments.getAllAppointments(doctor).isEmpty());
     }
 
     @Test
-    public void getAllDoneAppointmentsPerson1(){
+    public void getAllDoneAppointmentsPerson1() throws Exception {
         init();
         Appointments.getAllAppointments().get(0).setDone(true);
         Assertions.assertFalse(Appointments.getDoneAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllDoneAppointmentsPerson2(){
+    public void getAllDoneAppointmentsPerson2() throws Exception {
         init();
         Assertions.assertTrue(Appointments.getDoneAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllDoneAppointmentsDoctor1(){
+    public void getAllDoneAppointmentsDoctor1() throws Exception {
         init();
         Appointments.getAllAppointments().get(0).setDone(true);
         Assertions.assertFalse(Appointments.getDoneAppointments(doctor).isEmpty());
     }
 
     @Test
-    public void getAllDoneAppointmentsDoctor2(){
+    public void getAllDoneAppointmentsDoctor2() throws Exception {
         init();
         Assertions.assertTrue(Appointments.getDoneAppointments(doctor).isEmpty());
     }
 
     @Test
-    public void getAllNotDoneAppointmentsPerson1(){
+    public void getAllNotDoneAppointmentsPerson1() throws Exception {
         init();
         Appointments.getAllAppointments().get(0).setDone(true);
         Assertions.assertTrue(Appointments.getAllOpenAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllNotDoneAppointmentsPerson2(){
+    public void getAllNotDoneAppointmentsPerson2() throws Exception {
         init();
         Assertions.assertFalse(Appointments.getAllOpenAppointments(IPerson).isEmpty());
     }
 
     @Test
-    public void getAllNotDoneAppointmentsDoctor1(){
+    public void getAllNotDoneAppointmentsDoctor1() throws Exception {
         init();
         Appointments.getAllAppointments().get(0).setDone(true);
         Assertions.assertTrue(Appointments.getAllOpenAppointments(doctor).isEmpty());
     }
 
     @Test
-    public void getAllNotDoneAppointmentsDoctor2(){
+    public void getAllNotDoneAppointmentsDoctor2() throws Exception {
         init();
         Assertions.assertFalse(Appointments.getAllOpenAppointments(doctor).isEmpty());
     }

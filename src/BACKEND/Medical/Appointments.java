@@ -46,7 +46,7 @@ public interface Appointments {
         return getAllAppointments(doctor).stream().filter(Appointment::getDone).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    static Appointment createAppointment(LocalDate date, String condition, SpecializationType specialtyType, IPerson patient) {
+    static Appointment createAppointment(LocalDate date, String condition, SpecializationType specialtyType, IPerson patient) throws Exception {
         AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, specialtyType, patient);
 
         if (availableTimeAndDoctor == null) return null;
@@ -58,25 +58,22 @@ public interface Appointments {
         return appointment;
     }
 
-    static void resetArrayList(){
+    static void resetArrayList() {
         fakeDatabase.getAppointments().clear();
     }
 
-    static Appointment updateAppointment(Appointment appointment, LocalDate date) {
-        AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, appointment.getAppointmentType(), appointment.getPatient());
-
-        if (availableTimeAndDoctor == null) return null;
-
+    static Appointment updateAppointment(Appointment appointment, LocalDate date, SpecializationType appointmentType) throws Exception {
+        AppointmentResult availableTimeAndDoctor = findAvailableTimeAndDoctor(date, appointmentType, appointment.getPatient());
         System.out.format("Updated appointment with doctor: %s at: %s%n to doctor: %s at: %s%n", appointment.getDoctor(), appointment.getAppointmentDate(), availableTimeAndDoctor.getDoctor(), availableTimeAndDoctor.getAppointmentTime());
         appointment.setAppointmentDate(availableTimeAndDoctor.getAppointmentTime());
         appointment.setDoctor(availableTimeAndDoctor.getDoctor());
-
+        appointment.setAppointmentType(appointmentType);
         return appointment;
     }
 
     // Automatically plan an appointment with the earliest available doctor.
     // If a patient already has an appointment on specified date we'll deny it.
-    private static AppointmentResult findAvailableTimeAndDoctor(LocalDate date, SpecializationType specialtyType, IPerson patient) {
+    private static AppointmentResult findAvailableTimeAndDoctor(LocalDate date, SpecializationType specialtyType, IPerson patient) throws Exception {
         // Assuming normal day is between 09:00 and 17:00
         LocalTime open = LocalTime.parse("09:00:00");
         LocalTime closed = LocalTime.parse("17:00:00");
@@ -84,13 +81,18 @@ public interface Appointments {
         LocalDate currentDate = LocalDate.now();
 
         // Check if date is before current time or patient already has appointment
-        if (date.isBefore(currentDate) || getAllOpenAppointments(patient).stream().anyMatch(appointment -> appointment.getAppointmentDate().toLocalDate().equals(date)))
-            return null;
+        if (date.isBefore(currentDate)) {
+            throw new Exception("The date you tried entering, is invalid.");
+        }
+        if (getAllOpenAppointments(patient).stream().anyMatch(appointment -> appointment.getAppointmentDate().toLocalDate().equals(date))) {
+            throw new Exception("You already have an appointment set for your specified date.");
+        }
 
         // Grab all doctors available at date with specified type
         ArrayList<Doctor> doctors = getDoctorsAvailableAtDateWithType(date, specialtyType);
 
-        if (doctors.size() == 0) return null;
+        if (doctors.size() == 0)
+            throw new Exception("There aren't any doctors with this specialization available for your specified date.");
 
         // Grab all appointments on given date
         ArrayList<Appointment> appointments = getAllAppointmentsOnDate(date);
@@ -120,7 +122,8 @@ public interface Appointments {
 
         availableDoctors.sort(Comparator.comparing(AppointmentResult::getAppointmentTime));
 
-        if (availableDoctors.isEmpty()) return null;
+        if (availableDoctors.isEmpty())
+            throw new Exception("There aren't any doctors available on your specified date.");
 
         // Return the first in the array since that doctor is available at the earliest time
         return availableDoctors.get(0);

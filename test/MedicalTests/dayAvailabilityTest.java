@@ -19,7 +19,7 @@ public class dayAvailabilityTest {
 
 
     @Test
-    public void availableDayBeforeToday() {
+    public void availableDayBeforeToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -27,12 +27,15 @@ public class dayAvailabilityTest {
         fakeDatabase.getUserDatabase().add(testdoc);
         fakeDatabase.getUserDatabase().add(testperson);
         LocalDate localDate = LocalDate.now();
-        Appointments.createAppointment(localDate.minusDays(1), "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        try {
+            Appointments.createAppointment(localDate.minusDays(1), "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        } catch (Exception e) {
+        }
         Assertions.assertTrue(Appointments.getAllAppointments(testdoc).isEmpty());
     }
 
     @Test
-    public void unavailableDayBeforeToday() {
+    public void unavailableDayBeforeToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -41,12 +44,15 @@ public class dayAvailabilityTest {
         fakeDatabase.getUserDatabase().add(testperson);
         EnumSet.allOf(DayOfWeek.class).forEach(d -> testdoc.setAvailableDay(d, false));
         LocalDate localDate = LocalDate.now();
-        Appointments.createAppointment(localDate.minusDays(1), "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        try {
+            Appointments.createAppointment(localDate.minusDays(1), "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        } catch (Exception e) {
+        }
         Assertions.assertTrue(Appointments.getAllAppointments(testdoc).isEmpty());
     }
 
     @Test
-    public void availableToday() {
+    public void availableToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -59,7 +65,7 @@ public class dayAvailabilityTest {
     }
 
     @Test
-    public void unavailableToday() {
+    public void unavailableToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -68,12 +74,15 @@ public class dayAvailabilityTest {
         fakeDatabase.getUserDatabase().add(testperson);
         EnumSet.allOf(DayOfWeek.class).forEach(d -> testdoc.setAvailableDay(d, false));
         LocalDate localDate = LocalDate.now();
-        Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        try {
+            Appointments.createAppointment(localDate, "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        } catch (Exception e) {
+        }
         Assertions.assertTrue(Appointments.getAllAppointments(testdoc).isEmpty());
     }
 
     @Test
-    public void availableDayAfterToday() {
+    public void availableDayAfterToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -86,7 +95,7 @@ public class dayAvailabilityTest {
     }
 
     @Test
-    public void unavailableDayAfterToday() {
+    public void unavailableDayAfterToday() throws Exception {
         Appointments.resetArrayList();
         fakeDatabase.getUserDatabase().clear();
         Doctor testdoc = new Doctor("testdoc", "123", SpecializationType.GENERAL);
@@ -95,7 +104,10 @@ public class dayAvailabilityTest {
         fakeDatabase.getUserDatabase().add(testperson);
         EnumSet.allOf(DayOfWeek.class).forEach(d -> testdoc.setAvailableDay(d, false));
         LocalDate localDate = LocalDate.now();
-        Appointments.createAppointment(localDate.plusDays(1), "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        try {
+            Appointments.createAppointment(localDate.plusDays(1), "test condition for a test appointment", SpecializationType.GENERAL, testperson);
+        } catch (Exception e) {
+        }
         Assertions.assertTrue(Appointments.getAllAppointments(testdoc).isEmpty());
     }
 }

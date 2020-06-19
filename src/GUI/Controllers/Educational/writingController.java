@@ -4,6 +4,8 @@ import BACKEND.Education.ImageWithName;
 import BACKEND.Education.Writing;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 public class writingController extends GameController {
@@ -31,5 +33,13 @@ public class writingController extends GameController {
         game.checkAnswer(guessField.getText());
         guessField.clear();
         nextQuestion();
+    }
+/*
+Press enter instead of clicking on the "GUESS" button to confirm answer.
+ */
+    public void pressEnter(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            doneClicked();
+        }
     }
 }

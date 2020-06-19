@@ -1,6 +1,5 @@
 package GUI.Controllers.Medical;
 
-import BACKEND.Medical.Appointment;
 import BACKEND.Medical.Appointments;
 import BACKEND.Person.SpecializationType;
 import GUI.Controllers.Utility.AlertClass;
@@ -9,7 +8,6 @@ import GUI.SceneController;
 import javafx.scene.control.*;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class RequestController {
 
@@ -22,24 +20,24 @@ public class RequestController {
         specializationTypeComboBox.getItems().addAll(SpecializationType.values());
     }
 
-    public void createAppointment() throws IOException {
+    public void createAppointment() throws Exception {
         System.out.println("Attempting request...");
         if (!validateInput()) {
             return;
         }
-        Appointment appointment = Appointments.createAppointment(datePicker.getValue(), conditionField.getText(), specializationTypeComboBox.getSelectionModel().getSelectedItem(), singletonPerson.getInstance());
-        if (appointment == null) {
-            AlertClass.showAlert(Alert.AlertType.ERROR, "Unable to create appointment.\n\nNo doctors are available.");
-        } else {
+        try {
+            Appointments.createAppointment(datePicker.getValue(), conditionField.getText(), specializationTypeComboBox.getSelectionModel().getSelectedItem(), singletonPerson.getInstance());
             AlertClass.showAlert(Alert.AlertType.INFORMATION, "Appointment created.");
             mainScreen();
+        } catch (Exception e) {
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Unable to create appointment.\n\n" + e.getMessage());
         }
         System.out.println(Appointments.getAllAppointments());
     }
 
     private Boolean validateInput() {
-        if (datePicker.getValue() == null || datePicker.getValue().isBefore(LocalDate.now())) {
-            AlertClass.showAlert(Alert.AlertType.ERROR, "Unable to create appointment.\n\nInvalid date.\n\nYou haven't selected a date or the date you selected is set in the past.");
+        if (datePicker.getValue() == null) {
+            AlertClass.showAlert(Alert.AlertType.ERROR, "Unable to create appointment.\n\nPlease select a date.");
             return false;
         }
         if (specializationTypeComboBox.getSelectionModel().getSelectedItem() == null) {
