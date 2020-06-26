@@ -38,18 +38,24 @@ public class ViewSelectedAppointmentController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to change this appointment?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
+            boolean shouldChange = true;
             if (!conditionArea.getText().equals(currentAppointment.getCondition())) {
                 currentAppointment.setCondition(conditionArea.getText());
             }
             if (!(doneCheck.isSelected() == currentAppointment.getDone())) {
                 currentAppointment.setDone(doneCheck.isSelected());
             }
-            try {
-                Appointments.updateAppointment(currentAppointment, dateText.getValue(), specialties.getSelectionModel().getSelectedItem());
+            if (!dateText.getValue().equals(currentAppointment.getAppointmentDate().toLocalDate()) || !specialties.getSelectionModel().getSelectedItem().equals(currentAppointment.getAppointmentType())) {
+                try {
+                    Appointments.updateAppointment(currentAppointment, dateText.getValue(), specialties.getSelectionModel().getSelectedItem());
+                } catch (Exception e) {
+                    AlertClass.showAlert(Alert.AlertType.ERROR, e.getMessage());
+                    shouldChange = false;
+                }
+            }
+            if (shouldChange) {
                 AlertClass.showAlert(Alert.AlertType.INFORMATION, "Appointment has been changed.");
                 mainScreen();
-            } catch (Exception e) {
-                AlertClass.showAlert(Alert.AlertType.ERROR, e.getMessage());
             }
         }
     }
